@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/gameplay/Player.gd" type="Script" id=1]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="CapsuleShape" id=2]
+
+[node name="Player" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.687407, 0 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Pivot" type="Spatial" parent="."]
+
+[node name="PlayerMesh" type="MeshInstance" parent="Pivot"]
+transform = Transform( 0.453, 0, 0, 0, 0.677, 0, 0, 0, 0.637, 0, 0, 0 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../Camera")
+material/0 = null
+
+[node name="PlayerCollision" type="CollisionShape" parent="."]
+transform = Transform( 0.43665, 0, -7.02353e-10, 0, 0.662327, 0, -8.99955e-10, 0, 0.625208, 0, 0.000602424, 0 )
+shape = SubResource( 2 )

@@ -1,0 +1,108 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/gameplay/Ground.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/gameplay/Player.tscn" type="PackedScene" id=2]
+
+[sub_resource type="CubeMesh" id=7]
+
+[sub_resource type="Shader" id=10]
+code = "/*
+	ゆらゆらシェーダー by あるる（きのもと 結衣）
+	Yurayura Shader by Yui Kinomoto @arlez80
+
+	MIT License
+*/
+shader_type spatial;
+// render_mode;
+
+uniform float speed = 0.6;
+uniform float ring_scale = 4.4;
+uniform float wave_scale = 8.454;
+uniform float random_scale = 4.6;
+uniform float noise_scale = 0.03;
+
+
+vec3 hsv2rgb( float h, float s, float v )
+{
+	return (
+		(
+			clamp(
+				abs( fract( h + vec3( 0.0, 2.0, 1.0 ) / 3.0 ) * 6.0 - 3.0 ) - 1.0
+			,	0.0
+			,	1.0
+			) - 1.0
+		) * s + 1.0
+	) * v;
+}
+
+vec2 random( vec2 pos )
+{ 
+	return fract(
+		sin(
+			vec2(
+				dot(pos, vec2(12.9898,78.233))
+			,	dot(pos, vec2(-148.998,-65.233))
+			)
+		) * 43758.5453
+	);
+}
+
+float value_noise( vec2 pos )
+{
+	vec2 p = floor( pos );
+	vec2 f = fract( pos );
+
+	float v00 = random( p + vec2( 0.0, 0.0 ) ).x;
+	float v10 = random( p + vec2( 1.0, 0.0 ) ).x;
+	float v01 = random( p + vec2( 0.0, 1.0 ) ).x;
+	float v11 = random( p + vec2( 1.0, 1.0 ) ).x;
+
+	vec2 u = f * f * ( 3.0 - 2.0 * f );
+
+	return mix( mix( v00, v10, u.x ), mix( v01, v11, u.x ), u.y );
+}
+
+void fragment( )
+{
+	vec2 shift_uv = UV;
+	shift_uv.x += value_noise( UV * random_scale + sin( TIME * speed ) );
+	shift_uv.y += sin( cos( TIME ) * speed );
+	float x = shift_uv.x + sin( shift_uv.y * wave_scale );
+	float f = mod( x * ring_scale + random( UV ).x * noise_scale, 1.0 );
+
+	ALBEDO = hsv2rgb( f, 1.0, 1.0 );
+}
+"
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 10 )
+shader_param/speed = 0.6
+shader_param/ring_scale = 4.4
+shader_param/wave_scale = 8.454
+shader_param/random_scale = 4.6
+shader_param/noise_scale = 0.03
+
+[node name="Spatial" type="Spatial"]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.491314, 0.870982, 0, -0.870982, -0.491314, 0, 11.3697, 0 )
+shadow_enabled = true
+
+[node name="Ground" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00748, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 0.687407, 0 )
+
+[node name="Position3D" type="Position3D" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 0.804054, 0.594556, 0, -0.594556, 0.804054, -0.0152397, 3.92134, 5.85727 )
+
+[node name="Camera" type="Camera" parent="Player/Position3D"]
+
+[node name="CSGMesh2" type="CSGMesh" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.788014, 3.18515, -21.0366 )
+mesh = SubResource( 7 )
+material = SubResource( 9 )
+
+[editable path="Ground"]
+[editable path="Player"]
