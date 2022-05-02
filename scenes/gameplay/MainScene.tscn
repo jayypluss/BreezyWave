@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/gameplay/Ground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/gameplay/Player.tscn" type="PackedScene" id=2]
@@ -92,7 +92,19 @@ albedo_color = Color( 0, 0.509804, 0.956863, 1 )
 [sub_resource type="BoxShape" id=14]
 extents = Vector3( 2.5, 2.5, 0.1 )
 
+[sub_resource type="Environment" id=15]
+background_mode = 1
+background_color = Color( 0.509804, 0.505882, 0.956863, 1 )
+
 [node name="MainScene" type="Spatial"]
+
+[node name="PauseLayer" parent="." instance=ExtResource( 3 )]
+
+[node name="PressESCToOpenMenu" parent="PauseLayer" index="0"]
+visible = false
+
+[node name="PauseButton" parent="PauseLayer" index="1"]
+visible = false
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 3.00972, 2.04863e-08 )
@@ -127,8 +139,6 @@ transform = Transform( 10.9359, 0, 0, 0, 6.69691, 0, 0, 0, 0.997357, -0.663147, 
 mesh = SubResource( 11 )
 material = SubResource( 9 )
 
-[node name="PauseLayer" parent="." instance=ExtResource( 3 )]
-
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -0.662998, 7.191, -206.23 )
 mesh = SubResource( 12 )
@@ -147,6 +157,10 @@ material/0 = SubResource( 13 )
 transform = Transform( 1, 0, 0, 0, 1, 1.3027e-15, 0, 1.3027e-15, 1, 0.00695419, -0.0128098, -4.76837e-07 )
 shape = SubResource( 14 )
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 15 )
+
+[editable path="PauseLayer"]
 [editable path="Player"]
 [editable path="Ground"]
 [editable path="Ground2"]
