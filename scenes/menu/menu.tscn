@@ -83,12 +83,12 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="CenterContainer"]
-margin_left = 309.0
+margin_left = 308.0
 margin_top = 89.0
-margin_right = 714.0
+margin_right = 716.0
 margin_bottom = 172.0
 custom_fonts/font = SubResource( 5 )
-text = "Breeze Wave"
+text = "Breezy Wave"
 uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
