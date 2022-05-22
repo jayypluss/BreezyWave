@@ -1,4 +1,7 @@
-# Additional files that you can ignore: 
+.idea/
+.vscode/
+
+# Additional files that you can ignore:
 # - https://github.com/github/gitignore/blob/master/Godot.gitignore
 
 # Godot-specific ignores
@@ -10,5 +13,5 @@ builds
 # Imported translations (automatically generated from CSV files)
 *.translation
 
-# OSX 
+# OSX
 .DS_Store
