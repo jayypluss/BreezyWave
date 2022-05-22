@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/ui-theme.tres" type="Theme" id=1]
-[ext_resource path="res://assets/fonts/open-sans/open-sans-bold.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://scenes/menu/menu.gd" type="Script" id=5]
+[ext_resource path="res://assets/fonts/open-sans/open-sans-bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/ui-theme.tres" type="Theme" id=2]
+[ext_resource path="res://scenes/menu/menu.gd" type="Script" id=3]
+[ext_resource path="res://scenes/gameplay/main_scene.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Shader" id=1]
 code = "// From https://godotshaders.com/shader/vaporwave-grid/
@@ -41,7 +42,7 @@ shader = SubResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 60
-font_data = ExtResource( 4 )
+font_data = ExtResource( 1 )
 
 [sub_resource type="GDScript" id=4]
 script/source = "extends Label
@@ -52,12 +53,13 @@ script/source = "extends Label
 [node name="Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 1 )
-script = ExtResource( 5 )
+theme = ExtResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+new_game_scene = ExtResource( 4 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource( 2 )

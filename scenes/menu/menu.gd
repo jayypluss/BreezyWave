@@ -1,5 +1,6 @@
 extends Control
 
+export (PackedScene) var new_game_scene
 
 func _ready():
 	$Version/GameVersion.text = ProjectSettings.get_setting("application/config/version")
@@ -21,7 +22,7 @@ func _on_PlayButton_pressed() -> void:
 			"val": 15
 		},
 	}
-	Game.change_scene("res://scenes/gameplay/MainScene.tscn", params)
+	Game.change_scene(new_game_scene.get_path(), params)
 
 
 func _on_ExitButton_pressed() -> void:
