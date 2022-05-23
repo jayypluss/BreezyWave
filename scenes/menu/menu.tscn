@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/fonts/open-sans/open-sans-bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/ui-theme.tres" type="Theme" id=2]
 [ext_resource path="res://scenes/menu/menu.gd" type="Script" id=3]
-[ext_resource path="res://scenes/gameplay/main_scene.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/gameplay/level_1/level_1.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Shader" id=1]
 code = "// From https://godotshaders.com/shader/vaporwave-grid/

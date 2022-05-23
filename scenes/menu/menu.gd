@@ -22,7 +22,10 @@ func _on_PlayButton_pressed() -> void:
 			"val": 15
 		},
 	}
-	Game.change_scene(new_game_scene.get_path(), params)
+	if OS.has_feature('HTML5'):
+		Game.change_scene("res://scenes/gameplay/level_1/level_1.tscn", params)
+	else:
+		Game.change_scene(new_game_scene.get_path(), params)
 
 
 func _on_ExitButton_pressed() -> void:
