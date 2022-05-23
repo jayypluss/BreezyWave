@@ -1,13 +1,12 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://scenes/gameplay/Ground.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/gameplay/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/gameplay/ground.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/gameplay/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/gameplay/pause_layer/pause_layer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/gameplay/environment_objects/moving_platform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/ui-theme.tres" type="Theme" id=5]
 [ext_resource path="res://scenes/gameplay/environment_objects/platform.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/shaders/random_glitches.shader" type="Shader" id=7]
-[ext_resource path="res://scenes/gameplay/EndOfLevelArea.gd" type="Script" id=8]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -22,11 +21,11 @@ albedo_color = Color( 0, 0.509804, 0.956863, 1 )
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 2.5, 2.5, 0.1 )
 
-[sub_resource type="ConvexPolygonShape" id=7]
+[sub_resource type="ConvexPolygonShape" id=8]
 
-[sub_resource type="PrismMesh" id=5]
+[sub_resource type="PrismMesh" id=6]
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 7 )
 shader_param/speed = 0.6
 shader_param/ring_scale = 4.4
@@ -103,6 +102,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00683317, 0.00126982, 0.000
 [node name="Ground" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, 0.0626731, -0.07441 )
 
+[node name="MeshInstance" parent="Ground/StaticBody" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.648075, 0.107721, 1.03733 )
+
 [node name="Ground2" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -15.5644, -102.102 )
 
@@ -165,18 +167,16 @@ material/0 = SubResource( 3 )
 [node name="CollisionShape" type="CollisionShape" parent="Platform9"]
 shape = SubResource( 4 )
 
-[node name="EndOfLevelArea" type="Area" parent="."]
-script = ExtResource( 8 )
+[node name="Area" type="Area" parent="."]
 
-[node name="CollisionShape" type="CollisionShape" parent="EndOfLevelArea"]
-transform = Transform( 24.84, 0, 0, 0, 19.872, 0, 0, 0, 1.38, 0, 5, -241 )
-shape = SubResource( 7 )
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 24.84, 0, 0, 0, 19.872, 0, 0, 0, 1.38, 0, 5.2, -240.5 )
+shape = SubResource( 8 )
 
-[node name="MeshInstance" type="MeshInstance" parent="EndOfLevelArea"]
-transform = Transform( 5.4, 0, 0, 0, 4.32, 0, 0, 0, 0.3, 0, 5, -241 )
-mesh = SubResource( 5 )
-material/0 = SubResource( 6 )
-[connection signal="body_entered" from="EndOfLevelArea" to="EndOfLevelArea" method="_on_EndOfLevelArea_body_entered"]
+[node name="MeshInstance" type="MeshInstance" parent="Area"]
+transform = Transform( 5.4, 0, 0, 0, 4.32, 0, 0, 0, 0.3, 0, 5.2, -240.5 )
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
 
 [editable path="PauseLayer"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scenes/gameplay/Ground.gd" type="Script" id=1]
+[ext_resource path="res://scenes/gameplay/ground.gd" type="Script" id=1]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 30, 1, 30 )
@@ -41,7 +41,7 @@ vec3 hsv2rgb( float h, float s, float v )
 }
 
 vec2 random( vec2 pos )
-{ 
+{
 	return fract(
 		sin(
 			vec2(
