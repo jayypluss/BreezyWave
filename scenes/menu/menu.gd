@@ -1,6 +1,6 @@
 extends Control
 
-export (PackedScene) var new_game_scene
+#export (PackedScene) var new_game_scene
 
 func _ready():
 	$Version/GameVersion.text = ProjectSettings.get_setting("application/config/version")
@@ -22,10 +22,10 @@ func _on_PlayButton_pressed() -> void:
 			"val": 15
 		},
 	}
-	if OS.has_feature('HTML5'):
-		Game.change_scene("res://scenes/gameplay/level_1/level_1.tscn", params)
-	else:
-		Game.change_scene(new_game_scene.get_path(), params)
+#	if OS.has_feature('HTML5'):
+	Game.change_scene("res://scenes/gameplay/level_1/level_1.tscn", params)
+#	else:
+#		Game.change_scene(new_game_scene.get_path(), params)
 
 
 func _on_ExitButton_pressed() -> void:
