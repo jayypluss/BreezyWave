@@ -17,9 +17,9 @@ uniform float fov : hint_range(0.01, 1.0) = 0.2;
 uniform vec4 background_color : hint_color = vec4(0.0, 0.1, 0.2, 1.0);
 uniform vec4 grid_color : hint_color = vec4(1.0, 0.5, 1.0, 1.0);
 
-float grid(vec2 uv, float batt) {
+float grid(vec2 uv, float batt, float time) {
     vec2 size = vec2(uv.y, uv.y * uv.y * 0.2) * 0.01;
-    uv += vec2(0.0, TIME * speed_scale * (batt + 0.05));
+    uv += vec2(0.0, time * speed_scale * (batt + 0.05));
     uv = abs(fract(uv) - 0.5);
  	vec2 lines = smoothstep(size, vec2(0.0), uv);
  	lines += smoothstep(size * 5.0, vec2(0.0), uv) * 0.4 * batt;
@@ -32,13 +32,19 @@ void fragment() {
     uv.y = 3.0 / (abs(uv.y + fov) + 0.05);
 	uv.x += anchor;
     uv.x *= uv.y * 1.0;
-    float gridVal = grid(uv, battery);
+    float gridVal = grid(uv, battery, TIME);
     col = mix(background_color, grid_color, gridVal);
 	COLOR = col;
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
+shader_param/battery = 1.0
+shader_param/anchor = -0.5
+shader_param/speed_scale = 1.0
+shader_param/fov = 0.2
+shader_param/background_color = Color( 0, 0.1, 0.2, 1 )
+shader_param/grid_color = Color( 1, 0.5, 1, 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 60
@@ -65,7 +71,7 @@ new_game_scene = ExtResource( 4 )
 material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.176471, 0.682353, 0.647059, 1 )
+color = Color( 0.447059, 0.219608, 0.501961, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -73,6 +79,8 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -1.0
+margin_right = -1.0
 margin_bottom = -339.0
 __meta__ = {
 "_edit_use_anchors_": false

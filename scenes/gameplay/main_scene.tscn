@@ -1,103 +1,38 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/gameplay/Ground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/gameplay/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/gameplay/pause_layer/pause_layer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/gameplay/environment_objects/moving_platform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/ui-theme.tres" type="Theme" id=5]
+[ext_resource path="res://scenes/gameplay/environment_objects/platform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/shaders/random_glitches.shader" type="Shader" id=7]
+[ext_resource path="res://scenes/gameplay/EndOfLevelArea.gd" type="Script" id=8]
 
+[sub_resource type="Environment" id=1]
+background_mode = 1
+background_color = Color( 0.509804, 0.505882, 0.956863, 1 )
 
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 5, 5, 0.2 )
 
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0, 0.509804, 0.956863, 1 )
 
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 2.5, 2.5, 0.1 )
 
+[sub_resource type="ConvexPolygonShape" id=7]
 
-[sub_resource type="PrismMesh" id=1]
+[sub_resource type="PrismMesh" id=5]
 
-[sub_resource type="Shader" id=2]
-code = "/*
-	ゆらゆらシェーダー by あるる（きのもと 結衣）
-	Yurayura Shader by Yui Kinomoto @arlez80
-
-	MIT License
-*/
-shader_type spatial;
-// render_mode;
-
-uniform float speed = 0.6;
-uniform float ring_scale = 4.4;
-uniform float wave_scale = 8.454;
-uniform float random_scale = 4.6;
-uniform float noise_scale = 0.03;
-
-
-vec3 hsv2rgb( float h, float s, float v )
-{
-	return (
-		(
-			clamp(
-				abs( fract( h + vec3( 0.0, 2.0, 1.0 ) / 3.0 ) * 6.0 - 3.0 ) - 1.0
-			,	0.0
-			,	1.0
-			) - 1.0
-		) * s + 1.0
-	) * v;
-}
-
-vec2 random( vec2 pos )
-{
-	return fract(
-		sin(
-			vec2(
-				dot(pos, vec2(12.9898,78.233))
-			,	dot(pos, vec2(-148.998,-65.233))
-			)
-		) * 43758.5453
-	);
-}
-
-float value_noise( vec2 pos )
-{
-	vec2 p = floor( pos );
-	vec2 f = fract( pos );
-
-	float v00 = random( p + vec2( 0.0, 0.0 ) ).x;
-	float v10 = random( p + vec2( 1.0, 0.0 ) ).x;
-	float v01 = random( p + vec2( 0.0, 1.0 ) ).x;
-	float v11 = random( p + vec2( 1.0, 1.0 ) ).x;
-
-	vec2 u = f * f * ( 3.0 - 2.0 * f );
-
-	return mix( mix( v00, v10, u.x ), mix( v01, v11, u.x ), u.y );
-}
-
-void fragment( )
-{
-	vec2 shift_uv = UV;
-	shift_uv.x += value_noise( UV * random_scale + sin( TIME * speed ) );
-	shift_uv.y += sin( cos( TIME ) * speed );
-	float x = shift_uv.x + sin( shift_uv.y * wave_scale );
-	float f = mod( x * ring_scale + random( UV ).x * noise_scale, 1.0 );
-
-	ALBEDO = hsv2rgb( f, 1.0, 1.0 );
-}
-"
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 2 )
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 7 )
 shader_param/speed = 0.6
 shader_param/ring_scale = 4.4
 shader_param/wave_scale = 8.454
 shader_param/random_scale = 4.6
 shader_param/noise_scale = 0.03
-
-[sub_resource type="CubeMesh" id=4]
-size = Vector3( 5, 5, 0.2 )
-
-[sub_resource type="SpatialMaterial" id=5]
-albedo_color = Color( 0, 0.509804, 0.956863, 1 )
-
-[sub_resource type="Environment" id=7]
-background_mode = 1
-background_color = Color( 0.509804, 0.505882, 0.956863, 1 )
 
 [node name="MainScene" type="Spatial"]
 
@@ -109,8 +44,52 @@ visible = false
 [node name="PauseButton" parent="PauseLayer" index="1"]
 visible = false
 
+[node name="Resume" type="LinkButton" parent="PauseLayer/Pause/VBoxOptions" index="2"]
+margin_right = 161.0
+margin_bottom = 34.0
+focus_mode = 2
+text = "RESUME"
+
+[node name="Main Menu" type="LinkButton" parent="PauseLayer/Pause/VBoxOptions" index="3"]
+margin_top = 54.0
+margin_right = 161.0
+margin_bottom = 88.0
+focus_mode = 2
+text = "MAIN MENU"
+
+[node name="ColorRect" type="ColorRect" parent="PauseLayer/Pause" index="2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.243137, 0.211765, 0.290196, 0.717647 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxOptions" type="VBoxContainer" parent="PauseLayer/Pause" index="3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -80.5
+margin_top = -100.0
+margin_right = 80.5
+margin_bottom = 100.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause" type="Control" parent="PauseLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 3.00972, 2.04863e-08 )
+transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, -1, 5.00972, -230.556 )
 
 [node name="DirectionalLight" parent="Player" index="2"]
 visible = false
@@ -137,21 +116,67 @@ shadow_enabled = true
 [node name="DirectionalLight2" type="DirectionalLight" parent="."]
 transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -0.662995, 38.3499, -173.177 )
 
-[node name="CSGMesh2" type="CSGMesh" parent="."]
-transform = Transform( 10.9359, 0, 0, 0, 6.69691, 0, 0, 0, 0.997357, -0.663147, 7.19133, -247.809 )
-mesh = SubResource( 1 )
-material = SubResource( 3 )
-
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -0.662998, 7.191, -206.23 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 7 )
+environment = SubResource( 1 )
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17698, -81.8578 )
+
+[node name="Platform" parent="." instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -27.9754, -20.7237, -227.697 )
+
+[node name="Platform2" parent="." instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -17.0284, -20.7237, -235.931 )
+
+[node name="Platform3" parent="." instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -4.77099, -17.9806, -235.931 )
+
+[node name="Platform4" parent="." instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 3.84436, -15.412, -243.241 )
+
+[node name="Platform5" parent="." instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 12.9839, -10.9007, -235.672 )
+
+[node name="Platform6" parent="." instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 19.4529, -7.14057, -229.136 )
+
+[node name="Platform7" parent="." instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 26.4941, -4.21511, -224.348 )
+
+[node name="Platform8" parent="." instance=ExtResource( 6 )]
+transform = Transform( -2.36042e-07, 5.4, -2.36042e-07, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 15.6883, 0.766208, -216.392 )
+
+[node name="Mesh" type="MeshInstance" parent="Platform8"]
+mesh = SubResource( 2 )
+skeleton = NodePath("../../..")
+material/0 = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Platform8"]
+shape = SubResource( 4 )
+
+[node name="Platform9" parent="." instance=ExtResource( 6 )]
+transform = Transform( -1, 1.19209e-07, -2.98023e-08, 2.98023e-08, -4.37114e-08, -1, 2.08616e-07, -5.4, 2.36042e-07, -0.31172, 0.766208, -227.392 )
+
+[node name="Mesh" type="MeshInstance" parent="Platform9"]
+mesh = SubResource( 2 )
+skeleton = NodePath("../../..")
+material/0 = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Platform9"]
+shape = SubResource( 4 )
+
+[node name="EndOfLevelArea" type="Area" parent="."]
+script = ExtResource( 8 )
+
+[node name="CollisionShape" type="CollisionShape" parent="EndOfLevelArea"]
+transform = Transform( 24.84, 0, 0, 0, 19.872, 0, 0, 0, 1.38, 0, 5, -241 )
+shape = SubResource( 7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="EndOfLevelArea"]
+transform = Transform( 5.4, 0, 0, 0, 4.32, 0, 0, 0, 0.3, 0, 5, -241 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+[connection signal="body_entered" from="EndOfLevelArea" to="EndOfLevelArea" method="_on_EndOfLevelArea_body_entered"]
 
 [editable path="PauseLayer"]
 
@@ -162,3 +187,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17698, -81.8578 )
 [editable path="Ground2"]
 
 [editable path="Ground3"]
+
+[editable path="Platform8"]
+
+[editable path="Platform9"]
