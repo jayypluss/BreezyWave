@@ -15,15 +15,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Pause" type="Control" parent="ParentLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="ParentLayer/Pause"]
+[node name="ColorRect" type="ColorRect" parent="ParentLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1.0
@@ -35,7 +27,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxOptions" type="VBoxContainer" parent="ParentLayer/Pause"]
+[node name="VBoxOptions" type="VBoxContainer" parent="ParentLayer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -50,20 +42,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NextLevel" type="LinkButton" parent="ParentLayer/Pause/VBoxOptions"]
-margin_left = 85.0
-margin_top = 24.0
-margin_right = 178.0
+[node name="NextLevel" type="LinkButton" parent="ParentLayer/VBoxOptions"]
+visible = false
+margin_left = 106.0
+margin_top = 44.0
+margin_right = 157.0
 margin_bottom = 58.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "RESUME"
 
-[node name="MainMenu" type="LinkButton" parent="ParentLayer/Pause/VBoxOptions"]
-margin_left = 63.0
+[node name="MainMenu" type="LinkButton" parent="ParentLayer/VBoxOptions"]
+margin_left = 92.0
 margin_top = 78.0
-margin_right = 201.0
-margin_bottom = 112.0
+margin_right = 171.0
+margin_bottom = 92.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "MAIN MENU"
@@ -74,7 +67,7 @@ anchor_right = 0.5
 margin_left = -244.5
 margin_top = 140.0
 margin_right = 244.5
-margin_bottom = 71.0
+margin_bottom = 211.0
 theme = ExtResource( 3 )
 custom_colors/font_color = Color( 0.788235, 0.788235, 0.788235, 1 )
 text = "Awesome! 
@@ -84,5 +77,5 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="ParentLayer/Pause/VBoxOptions/NextLevel" to="." method="_on_NextLevel_pressed"]
-[connection signal="pressed" from="ParentLayer/Pause/VBoxOptions/MainMenu" to="." method="_on_MainMenu_pressed"]
+[connection signal="pressed" from="ParentLayer/VBoxOptions/NextLevel" to="." method="_on_NextLevel_pressed"]
+[connection signal="pressed" from="ParentLayer/VBoxOptions/MainMenu" to="." method="_on_MainMenu_pressed"]

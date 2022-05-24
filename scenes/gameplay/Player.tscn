@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/gameplay/player.gd" type="Script" id=1]
+[ext_resource path="res://addons/goutte.camera.trackball/trackball_camera.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleMesh" id=1]
 
@@ -45,3 +46,11 @@ shape = SubResource( 5 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.271037, 0, 0.962569, 0, 1, 0, -0.962569, 0, 0.271037, 5.2332, 1.41814, 0 )
+
+[node name="TrackballCamera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 10 )
+script = ExtResource( 2 )
+stabilize_horizon = true
+mouse_move_mode = true
+pitch_up_limit = 0.0
+pitch_down_limit = 0.0

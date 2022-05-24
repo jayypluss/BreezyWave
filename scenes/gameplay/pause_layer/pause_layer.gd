@@ -1,9 +1,10 @@
 extends CanvasLayer
 
-onready var pause := $Pause
-onready var pause_button := $PauseButton
-onready var resume_option := $Pause/VBoxOptions/Resume
-onready var label := $PressESCToOpenMenu
+onready var pause := $ParentLayer
+onready var pause_button := $ParentLayer/PauseButton
+onready var resume_option := $ParentLayer/VBoxOptions/Resume
+onready var main_menu_option := $ParentLayer/VBoxOptions/MainMenu
+onready var label := $ParentLayer/PressESCToOpenMenu
 
 
 func _ready():

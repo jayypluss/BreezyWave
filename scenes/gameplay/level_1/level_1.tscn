@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/gameplay/environment_objects/ground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/gameplay/player.tscn" type="PackedScene" id=2]
@@ -10,25 +10,38 @@
 [ext_resource path="res://scenes/gameplay/level_1/level_1.gd" type="Script" id=8]
 [ext_resource path="res://scenes/gameplay/win_game_layer/win_game_layer.tscn" type="PackedScene" id=9]
 
-[sub_resource type="Environment" id=1]
-background_mode = 1
-background_color = Color( 0.509804, 0.505882, 0.956863, 1 )
+[sub_resource type="ProceduralSky" id=1]
+radiance_size = 4
+sky_top_color = Color( 0.407843, 0, 1, 1 )
+sky_horizon_color = Color( 1, 0, 0.937255, 1 )
+sky_curve = 0.0258458
+ground_bottom_color = Color( 0, 0.027451, 0.235294, 1 )
+ground_horizon_color = Color( 0.380392, 0.972549, 1, 1 )
+ground_curve = 0.0123114
 
-[sub_resource type="CubeMesh" id=2]
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+background_color = Color( 0.509804, 0.505882, 0.956863, 1 )
+background_canvas_max_layer = 4
+fog_enabled = true
+fog_color = Color( 0.105882, 0.313726, 0.517647, 1 )
+
+[sub_resource type="CubeMesh" id=3]
 size = Vector3( 5, 5, 0.2 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=4]
 albedo_color = Color( 0, 0.509804, 0.956863, 1 )
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=5]
 extents = Vector3( 2.5, 2.5, 0.1 )
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape" id=6]
 extents = Vector3( 0.25, 0.25, 0.25 )
 
-[sub_resource type="PrismMesh" id=6]
+[sub_resource type="PrismMesh" id=7]
 
-[sub_resource type="ShaderMaterial" id=7]
+[sub_resource type="ShaderMaterial" id=8]
 shader = ExtResource( 7 )
 shader_param/speed = 0.6
 shader_param/ring_scale = 4.4
@@ -94,18 +107,6 @@ __meta__ = {
 
 [node name="WinGameLayer" parent="." instance=ExtResource( 9 )]
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 3.30068, -215.719 )
-
-[node name="DirectionalLight" parent="Player" index="2"]
-visible = false
-
-[node name="Position3D" type="Position3D" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 0.776926, 0.629592, 0, -0.629592, 0.776926, 0, 12, 11 )
-
-[node name="Camera" type="Camera" parent="Player/Position3D"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00683317, 0.00126982, 0.000114441 )
-
 [node name="Ground" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -2.50724, -0.07441 )
 
@@ -123,7 +124,7 @@ shadow_enabled = true
 transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -0.662995, 38.3499, -173.177 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 1 )
+environment = SubResource( 2 )
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17698, -81.8578 )
@@ -153,23 +154,23 @@ transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08,
 transform = Transform( -2.36042e-07, 5.4, -2.36042e-07, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 15.6883, 0.766208, -216.392 )
 
 [node name="Mesh" type="MeshInstance" parent="Platform8"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 skeleton = NodePath("../../..")
-material/0 = SubResource( 3 )
+material/0 = SubResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Platform8"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="Platform9" parent="." instance=ExtResource( 6 )]
 transform = Transform( -1, 1.19209e-07, -2.98023e-08, 2.98023e-08, -4.37114e-08, -1, 2.08616e-07, -5.4, 2.36042e-07, -0.31172, 0.766208, -227.392 )
 
 [node name="Mesh" type="MeshInstance" parent="Platform9"]
-mesh = SubResource( 2 )
+mesh = SubResource( 3 )
 skeleton = NodePath("../../..")
-material/0 = SubResource( 3 )
+material/0 = SubResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Platform9"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="Area" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.39477, -240.664 )
@@ -179,19 +180,26 @@ __meta__ = {
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 22.5913, 0, 0, 0, 18.0731, 0, 0, 0, 1.25507, 0, 0, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Area"]
 transform = Transform( 5.4, 0, 0, 0, 4.32, 0, 0, 0, 0.3, 0, 0, 0 )
-mesh = SubResource( 6 )
-material/0 = SubResource( 7 )
+mesh = SubResource( 7 )
+material/0 = SubResource( 8 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 3.30068, -215.719 )
+
+[node name="Position3D" type="Position3D" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 0.776926, 0.629592, 0, -0.629592, 0.776926, 0, 12, 11 )
+
+[node name="Camera" type="Camera" parent="Player/Position3D"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00683317, 0.00126982, 0.000114441 )
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 
 [editable path="PauseLayer"]
 
 [editable path="WinGameLayer"]
-
-[editable path="Player"]
 
 [editable path="Ground"]
 
