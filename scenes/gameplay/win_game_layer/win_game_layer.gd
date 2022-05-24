@@ -7,34 +7,31 @@ onready var level_win_text := $ParentLayer/LevelWinText
 
 
 func _exit_tree() -> void:
-	pause()
+	toggle_paused(true)
 
 
 func _on_NextLevel_pressed():
 	get_tree().paused = false
-	hide()
+	togle_visible(false)
 #	Game.restart_scene()
 	Game.change_scene("res://scenes/menu/menu.tscn", {
 		'show_progress_bar': false
 	})
 
 func _on_MainMenu_pressed():
-	get_tree().paused = false
-	hide()
+	toggle_paused(false)
+	togle_visible(false)
 	Game.change_scene("res://scenes/menu/menu.tscn", {
 		'show_progress_bar': false
 	})
 
-func win():
-	show()
+func show():
+	togle_visible(true)
 	get_tree().paused = true
 
-func hide():
-	parent_layer.visible = false
-	
-func show():
-	parent_layer.visible = true
-	
-func pause():
-	get_tree().paused = false
+func togle_visible(visible: bool = !parent_layer.visible):
+	parent_layer.visible = visible
+
+func toggle_paused(paused: bool = !get_tree().paused):
+	get_tree().paused = paused
 	

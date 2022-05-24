@@ -1,10 +1,9 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/gameplay/environment_objects/ground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/gameplay/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/gameplay/pause_layer/pause_layer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/gameplay/environment_objects/moving_platform.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/ui-theme.tres" type="Theme" id=5]
 [ext_resource path="res://scenes/gameplay/environment_objects/platform.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/shaders/random_glitches.shader" type="Shader" id=7]
 [ext_resource path="res://scenes/gameplay/level_1/level_1.gd" type="Script" id=8]
@@ -49,63 +48,12 @@ shader_param/wave_scale = 8.454
 shader_param/random_scale = 4.6
 shader_param/noise_scale = 0.03
 
-[node name="MainScene" type="Spatial"]
+[node name="Level1" type="Spatial"]
 script = ExtResource( 8 )
 
-[node name="PauseLayer" parent="." instance=ExtResource( 3 )]
+[node name="PauseScreen" parent="." instance=ExtResource( 3 )]
 
-[node name="PressESCToOpenMenu" parent="PauseLayer" index="0"]
-visible = false
-
-[node name="PauseButton" parent="PauseLayer" index="1"]
-visible = false
-
-[node name="Resume" type="LinkButton" parent="PauseLayer/Pause/VBoxOptions" index="2"]
-margin_top = 108.0
-margin_right = 161.0
-margin_bottom = 142.0
-focus_mode = 2
-text = "RESUME"
-
-[node name="Main Menu" type="LinkButton" parent="PauseLayer/Pause/VBoxOptions" index="3"]
-margin_top = 162.0
-margin_right = 161.0
-margin_bottom = 196.0
-focus_mode = 2
-text = "MAIN MENU"
-
-[node name="ColorRect" type="ColorRect" parent="PauseLayer/Pause" index="2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.243137, 0.211765, 0.290196, 0.717647 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxOptions" type="VBoxContainer" parent="PauseLayer/Pause" index="3"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -80.5
-margin_top = -100.0
-margin_right = 80.5
-margin_bottom = 100.0
-custom_constants/separation = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Pause" type="Control" parent="PauseLayer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="WinGameLayer" parent="." instance=ExtResource( 9 )]
+[node name="WinGameScreen" parent="." instance=ExtResource( 9 )]
 
 [node name="Ground" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -2.50724, -0.07441 )
@@ -119,9 +67,6 @@ transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -23
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.915452, 0.402427, 0, -0.402427, 0.915452, 0, 11.3697, 10.6355 )
 shadow_enabled = true
-
-[node name="DirectionalLight2" type="DirectionalLight" parent="."]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -0.662995, 38.3499, -173.177 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
@@ -150,7 +95,7 @@ transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08,
 [node name="Platform7" parent="." instance=ExtResource( 6 )]
 transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 26.4941, -4.21511, -224.348 )
 
-[node name="Platform8" parent="." instance=ExtResource( 6 )]
+[node name="Platform8" type="KinematicBody" parent="."]
 transform = Transform( -2.36042e-07, 5.4, -2.36042e-07, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 15.6883, 0.766208, -216.392 )
 
 [node name="Mesh" type="MeshInstance" parent="Platform8"]
@@ -161,7 +106,7 @@ material/0 = SubResource( 4 )
 [node name="CollisionShape" type="CollisionShape" parent="Platform8"]
 shape = SubResource( 5 )
 
-[node name="Platform9" parent="." instance=ExtResource( 6 )]
+[node name="Platform9" type="KinematicBody" parent="."]
 transform = Transform( -1, 1.19209e-07, -2.98023e-08, 2.98023e-08, -4.37114e-08, -1, 2.08616e-07, -5.4, 2.36042e-07, -0.31172, 0.766208, -227.392 )
 
 [node name="Mesh" type="MeshInstance" parent="Platform9"]
@@ -195,18 +140,5 @@ transform = Transform( 1, 0, 0, 0, 0.776926, 0.629592, 0, -0.629592, 0.776926, 0
 
 [node name="Camera" type="Camera" parent="Player/Position3D"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00683317, 0.00126982, 0.000114441 )
+
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
-
-[editable path="PauseLayer"]
-
-[editable path="WinGameLayer"]
-
-[editable path="Ground"]
-
-[editable path="Ground2"]
-
-[editable path="Ground3"]
-
-[editable path="Platform8"]
-
-[editable path="Platform9"]

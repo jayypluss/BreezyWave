@@ -10,4 +10,4 @@ func _ready():
 func _on_Area_body_entered(body : KinematicBody):
 	print('body entered portal: ', body)
 	if body.name == "Player":
-		$WinGameLayer.win()
+		$WinGameScreen.show()
