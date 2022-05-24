@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/gameplay/environment_objects/ground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/gameplay/player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/gameplay/environment_objects/platform.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/shaders/random_glitches.shader" type="Shader" id=7]
 [ext_resource path="res://scenes/gameplay/level_1/level_1.gd" type="Script" id=8]
+[ext_resource path="res://scenes/gameplay/win_game_layer/win_game_layer.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -22,7 +23,7 @@ albedo_color = Color( 0, 0.509804, 0.956863, 1 )
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 2.5, 2.5, 0.1 )
 
-[sub_resource type="BoxShape" id=8]
+[sub_resource type="BoxShape" id=5]
 extents = Vector3( 0.25, 0.25, 0.25 )
 
 [sub_resource type="PrismMesh" id=6]
@@ -47,15 +48,16 @@ visible = false
 visible = false
 
 [node name="Resume" type="LinkButton" parent="PauseLayer/Pause/VBoxOptions" index="2"]
+margin_top = 108.0
 margin_right = 161.0
-margin_bottom = 34.0
+margin_bottom = 142.0
 focus_mode = 2
 text = "RESUME"
 
 [node name="Main Menu" type="LinkButton" parent="PauseLayer/Pause/VBoxOptions" index="3"]
-margin_top = 54.0
+margin_top = 162.0
 margin_right = 161.0
-margin_bottom = 88.0
+margin_bottom = 196.0
 focus_mode = 2
 text = "MAIN MENU"
 
@@ -89,6 +91,8 @@ theme = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="WinGameLayer" parent="." instance=ExtResource( 9 )]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 3.30068, -215.719 )
@@ -175,7 +179,7 @@ __meta__ = {
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 22.5913, 0, 0, 0, 18.0731, 0, 0, 0, 1.25507, 0, 0, 0 )
-shape = SubResource( 8 )
+shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Area"]
 transform = Transform( 5.4, 0, 0, 0, 4.32, 0, 0, 0, 0.3, 0, 0, 0 )
@@ -184,6 +188,8 @@ material/0 = SubResource( 7 )
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
 
 [editable path="PauseLayer"]
+
+[editable path="WinGameLayer"]
 
 [editable path="Player"]
 
