@@ -1,6 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scenes/gameplay/environment_objects/platform.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/environment/static_platform/static_platform.tscn" type="PackedScene" id=1]
+
+
+
+
 
 [sub_resource type="Curve3D" id=1]
 _data = {

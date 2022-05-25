@@ -14,14 +14,14 @@ func _on_NextLevel_pressed():
 	get_tree().paused = false
 	togle_visible(false)
 #	Game.restart_scene()
-	Game.change_scene("res://scenes/menu/menu.tscn", {
+	Game.change_scene("res://src/gui/menu/menu.tscn", {
 		'show_progress_bar': false
 	})
 
 func _on_MainMenu_pressed():
 	toggle_paused(false)
 	togle_visible(false)
-	Game.change_scene("res://scenes/menu/menu.tscn", {
+	Game.change_scene("res://src/gui/menu/menu.tscn", {
 		'show_progress_bar': false
 	})
 

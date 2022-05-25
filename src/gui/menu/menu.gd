@@ -23,7 +23,7 @@ func _on_PlayButton_pressed() -> void:
 		},
 	}
 #	if OS.has_feature('HTML5'):
-	Game.change_scene("res://scenes/gameplay/level_1/level_1.tscn", params)
+	Game.change_scene("res://src/levels/level_1/level_1.tscn", params)
 #	else:
 #		Game.change_scene(new_game_scene.get_path(), params)
 

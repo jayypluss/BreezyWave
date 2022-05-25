@@ -1,12 +1,30 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://scenes/gameplay/player.gd" type="Script" id=1]
-[ext_resource path="res://scenes/gameplay/Camera/CameraRig.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/gameplay/StateMachine/StateMachine.gd" type="Script" id=3]
-[ext_resource path="res://scenes/gameplay/States/Run.gd" type="Script" id=4]
-[ext_resource path="res://scenes/gameplay/States/Move.gd" type="Script" id=5]
-[ext_resource path="res://scenes/gameplay/States/Air.gd" type="Script" id=6]
-[ext_resource path="res://scenes/gameplay/States/Idle.gd" type="Script" id=7]
+[ext_resource path="res://src/player/player.gd" type="Script" id=1]
+[ext_resource path="res://src/camera/camera_rig.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/fsm/state_machine.gd" type="Script" id=3]
+[ext_resource path="res://src/player/states/run.gd" type="Script" id=4]
+[ext_resource path="res://src/player/states/move.gd" type="Script" id=5]
+[ext_resource path="res://src/player/states/air.gd" type="Script" id=6]
+[ext_resource path="res://src/player/states/idle.gd" type="Script" id=7]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 [sub_resource type="CapsuleMesh" id=1]
 

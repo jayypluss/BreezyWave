@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/fonts/open-sans/open-sans-bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/ui-theme.tres" type="Theme" id=2]
-[ext_resource path="res://scenes/menu/menu.gd" type="Script" id=3]
+[ext_resource path="res://src/gui/menu/menu.gd" type="Script" id=3]
 [ext_resource path="res://assets/footer_labels_font.tres" type="DynamicFont" id=4]
 
 [sub_resource type="Shader" id=1]
