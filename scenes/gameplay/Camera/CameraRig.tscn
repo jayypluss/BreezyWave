@@ -31,10 +31,10 @@ collision_mask = 2
 transform = Transform( 1, 0, 0, 0, 0.87462, 0.48481, 0, -0.48481, 0.87462, 0, 0.5, 0.5 )
 collision_mask = 2
 shape = SubResource( 1 )
-spring_length = 13.5
+spring_length = 21.0
 margin = 0.5
 script = ExtResource( 8 )
-length_range = Vector2( 9, 18 )
+length_range = Vector2( 16, 26 )
 zoom = 0.5
 
 [node name="CameraTarget" type="Position3D" parent="SpringArm"]

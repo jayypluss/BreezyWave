@@ -66,7 +66,11 @@ transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -15
 transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -23.1726, -189.776 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.915452, 0.402427, 0, -0.402427, 0.915452, 0, 11.3697, 10.6355 )
+transform = Transform( 1, 0, 0, 0, 0.915452, 0.402427, 0, -0.402427, 0.915452, 0, 343.065, -110.774 )
+shadow_enabled = true
+
+[node name="DirectionalLight2" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.915452, 0.402427, 0, -0.402427, 0.915452, 0, 343.065, -110.774 )
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -119,7 +123,7 @@ material/0 = SubResource( 4 )
 shape = SubResource( 5 )
 
 [node name="Area" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.39477, -240.664 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344, 5.39477, -240.678 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -138,17 +142,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30069, -215.719 )
 
 [node name="PPOutlinesCamera" type="Camera" parent="Player"]
 transform = Transform( 0.686231, -0.243767, 0.685321, -0.437283, 0.614654, 0.656494, -0.581267, -0.750186, 0.315199, 4.54974, 15.9972, 9.50401 )
+cull_mask = 524287
 script = ExtResource( 5 )
-color_outline_scale = 2.0
-depth_outline_scale = 2.0
 depth_threshold = 1.0
-depth_multiplier = 1000.0
 edge_threshold = 0.2
-max_edge_alpha = 0.9
 edge_alpha_multiplier = 10.0
-edge_color = Color( 0, 0, 0, 1 )
-background_tex = null
 depth_use_laplace = false
-color_use_laplace = false
-use_bg_texture = false
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
