@@ -1,38 +1,14 @@
+tool
+class_name Player
 extends KinematicBody
+# Helper class for the Player scene's scripts to be able to have access to the
+# camera and its orientation.
 
-# How fast the player moves in meters per second.
-export var speed = 30#...
-# Vertical impulse applied to the character upon jumping in meters per second.
-export var jump_impulse = 27.5
-# The downward acceleration when in the air, in meters per second squared.
-export var fall_acceleration = 65
-
-var velocity = Vector3.ZERO
+onready var camera: CameraRig = $CameraRig
+#onready var skin: Mannequiny = $Mannequiny
+onready var state_machine: StateMachine = $StateMachine
 
 
-func _physics_process(delta):
-	var direction = Vector3.ZERO
+func _get_configuration_warning() -> String:
+	return "Missing camera node" if not camera else ""
 
-	if Input.is_action_pressed("move_right"):
-		direction.x += 1
-	if Input.is_action_pressed("move_left"):
-		direction.x -= 1
-	if Input.is_action_pressed("move_back"):
-		direction.z += 1
-	if Input.is_action_pressed("move_forward"):
-		direction.z -= 1
-
-	if direction != Vector3.ZERO:
-		direction = direction.normalized()
-		$Pivot.look_at(translation + direction, Vector3.UP)
-
-
-	# Jumping.
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		velocity.y += jump_impulse
-
-
-	velocity.x = direction.x * speed
-	velocity.z = direction.z * speed
-	velocity.y -= fall_acceleration * delta
-	velocity = move_and_slide(velocity, Vector3.UP)

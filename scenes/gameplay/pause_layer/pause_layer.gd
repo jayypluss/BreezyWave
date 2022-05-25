@@ -26,13 +26,16 @@ func _unhandled_input(event):
 	if event.is_action_pressed("pause"):
 		if get_tree().paused:
 			resume()
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		else:
 			pause_game()
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_tree().set_input_as_handled()
 
 
 func resume():
 	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	pause.hide()
 
 

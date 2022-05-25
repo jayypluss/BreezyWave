@@ -27,6 +27,7 @@ func _on_MainMenu_pressed():
 
 func show():
 	togle_visible(true)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true
 
 func togle_visible(visible: bool = !parent_layer.visible):

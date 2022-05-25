@@ -134,20 +134,21 @@ mesh = SubResource( 7 )
 material/0 = SubResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 3.30068, -215.719 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30069, -215.719 )
 
-[node name="Position3D" type="Position3D" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 0.776926, 0.629592, 0, -0.629592, 0.776926, 0, 12, 11 )
-
-[node name="Camera" type="Camera" parent="Player/Position3D"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00683317, 0.00126982, 0.000114441 )
-
-[node name="PPOutlinesCamera" type="Camera" parent="Player/Position3D/Camera"]
-transform = Transform( 0.686231, -0.243767, 0.685321, 0.0262246, 0.949851, 0.311601, -0.726911, -0.195858, 0.65821, 4.55657, 4.04607, 1.3542 )
+[node name="PPOutlinesCamera" type="Camera" parent="Player"]
+transform = Transform( 0.686231, -0.243767, 0.685321, -0.437283, 0.614654, 0.656494, -0.581267, -0.750186, 0.315199, 4.54974, 15.9972, 9.50401 )
 script = ExtResource( 5 )
+color_outline_scale = 2.0
+depth_outline_scale = 2.0
 depth_threshold = 1.0
+depth_multiplier = 1000.0
 edge_threshold = 0.2
+max_edge_alpha = 0.9
 edge_alpha_multiplier = 10.0
+edge_color = Color( 0, 0, 0, 1 )
+background_tex = null
 depth_use_laplace = false
-
+color_use_laplace = false
+use_bg_texture = false
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
