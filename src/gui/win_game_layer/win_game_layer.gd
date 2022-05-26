@@ -1,9 +1,9 @@
 extends CanvasLayer
 
-onready var parent_layer := $ParentLayer
-onready var next_level_button := $ParentLayer/VBoxOptions/NextLevel
-onready var main_menu := $ParentLayer/VBoxOptions/MainMenu
-onready var level_win_text := $ParentLayer/LevelWinText
+onready var parent_layer := $Hidable
+onready var next_level_button := $Hidable/VBoxOptions/NextLevel
+onready var main_menu := $Hidable/VBoxOptions/MainMenu
+onready var level_win_text := $Hidable/Label
 
 
 func _exit_tree() -> void:

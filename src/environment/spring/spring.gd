@@ -5,7 +5,8 @@ class_name Spring
 
 
 func _on_Trigger_body_entered(body):
-	print('_on_Trigger_body_entered')
 	if body.name == "Player":
-		print('player entered trigger')
-		body.state_machine.transition_to("Move/Air", { velocity = Vector3.ZERO, jump_impulse = 75 })
+		if Input.is_action_pressed("jump"):
+			body.state_machine.transition_to("Move/Air", { velocity = Vector3.ZERO, jump_impulse = 75 })
+		else:
+			body.state_machine.transition_to("Move/Air", { velocity = Vector3.ZERO, jump_impulse = 57.5 })

@@ -13,6 +13,8 @@
 [ext_resource path="res://src/levels/level_1/level_1.tres" type="Environment" id=11]
 [ext_resource path="res://src/environment/spring/spring.tscn" type="PackedScene" id=12]
 
+[sub_resource type="BoxShape" id=4]
+
 [sub_resource type="CubeMesh" id=1]
 size = Vector3( 5, 5, 0.2 )
 
@@ -21,8 +23,6 @@ albedo_color = Color( 0, 0.509804, 0.956863, 1 )
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 2.5, 2.5, 0.1 )
-
-[sub_resource type="BoxShape" id=4]
 
 [sub_resource type="BoxShape" id=5]
 extents = Vector3( 0.25, 0.25, 0.25 )
@@ -46,14 +46,28 @@ script = ExtResource( 8 )
 
 [node name="GameOverScreen" parent="." instance=ExtResource( 10 )]
 
-[node name="Ground" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -2.50724, -0.07441 )
+[node name="Player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.47998, -215.719 )
 
-[node name="Ground2" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -15.5644, -102.102 )
+[node name="PPOutlinesCamera" type="Camera" parent="Player"]
+transform = Transform( 0.686231, -0.243767, 0.685321, -0.437283, 0.614654, 0.656494, -0.581267, -0.750186, 0.315199, 4.54974, 15.9972, 9.50401 )
+cull_mask = 524287
+script = ExtResource( 5 )
+color_outline_scale = 2.0
+depth_outline_scale = 2.0
+depth_threshold = 1.0
+depth_multiplier = 1000.0
+edge_threshold = 0.2
+max_edge_alpha = 0.9
+edge_alpha_multiplier = 10.0
+edge_color = Color( 0, 0, 0, 1 )
+background_tex = null
+depth_use_laplace = false
+color_use_laplace = false
+use_bg_texture = false
 
-[node name="Ground3" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -23.1726, -189.776 )
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 11 )
 
 [node name="GlobalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 102.381, -110.774 )
@@ -62,8 +76,22 @@ shadow_enabled = true
 directional_shadow_bias_split_scale = 0.0
 directional_shadow_max_distance = 300.0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 11 )
+[node name="DyingTrigger" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30069, -205.875 )
+collision_layer = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="DyingTrigger"]
+transform = Transform( 896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.372 )
+shape = SubResource( 4 )
+
+[node name="Ground" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -2.50724, -0.07441 )
+
+[node name="Ground2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -15.5644, -102.102 )
+
+[node name="Ground3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -23.1726, -189.776 )
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17698, -81.8578 )
@@ -114,14 +142,6 @@ material/0 = SubResource( 2 )
 [node name="CollisionShape" type="CollisionShape" parent="Platform9"]
 shape = SubResource( 3 )
 
-[node name="DyingTrigger" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30069, -205.875 )
-collision_layer = 2
-
-[node name="CollisionShape" type="CollisionShape" parent="DyingTrigger"]
-transform = Transform( 896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.372 )
-shape = SubResource( 4 )
-
 [node name="PortalTrigger" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344, 5.39477, -240.678 )
 collision_layer = 2
@@ -137,26 +157,6 @@ shape = SubResource( 5 )
 transform = Transform( 5.4, 0, 0, 0, 4.32, 0, 0, 0, 0.3, 0, 0, 0 )
 mesh = SubResource( 6 )
 material/0 = SubResource( 7 )
-
-[node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.47998, -215.719 )
-
-[node name="PPOutlinesCamera" type="Camera" parent="Player"]
-transform = Transform( 0.686231, -0.243767, 0.685321, -0.437283, 0.614654, 0.656494, -0.581267, -0.750186, 0.315199, 4.54974, 15.9972, 9.50401 )
-cull_mask = 524287
-script = ExtResource( 5 )
-color_outline_scale = 2.0
-depth_outline_scale = 2.0
-depth_threshold = 1.0
-depth_multiplier = 1000.0
-edge_threshold = 0.2
-max_edge_alpha = 0.9
-edge_alpha_multiplier = 10.0
-edge_color = Color( 0, 0, 0, 1 )
-background_tex = null
-depth_use_laplace = false
-color_use_laplace = false
-use_bg_texture = false
 
 [node name="Spring" parent="." instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.24331, 1.85682, -216.454 )

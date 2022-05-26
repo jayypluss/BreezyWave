@@ -1,1 +1,4 @@
-Fixing platform animation.
+- Fixing and improving platform animation.
+- Changing spring parameters to have a better animation
+- Improving Spring mechanics to jump higher on jump action pressed
+- Fixing showing Game Over screen instead of Win screen

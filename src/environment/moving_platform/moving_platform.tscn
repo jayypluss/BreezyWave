@@ -10,7 +10,7 @@ _data = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "move_platform"
-length = 4.0
+length = 6.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("PathFollow:unit_offset")
@@ -19,10 +19,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 2, 3, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 1.0 ]
+"values": [ 0.0, 1.0, 1.0, 0.0 ]
 }
 
 [node name="MovingPlatform" type="Spatial"]
@@ -31,20 +31,20 @@ __meta__ = {
 }
 
 [node name="KinematicBody" parent="." instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -0.000876665, 8.41341e-17, 0.00133783 )
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -0.00076798, 3.12639e-13, 9.22948 )
 
 [node name="Path" type="Path" parent="."]
 transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 0, 0, 0 )
 curve = SubResource( 1 )
 
 [node name="PathFollow" type="PathFollow" parent="Path"]
-transform = Transform( 1, 0, 0, 0, 1, 1.3027e-15, 0, 1.3027e-15, 1, -0.00133783, -0.000876665, -1.55024e-12 )
+transform = Transform( 1, 0, 0, 0, 1, 1.3027e-15, 0, 1.3027e-15, 1, -9.22948, -0.000768384, -2.75027e-07 )
+offset = 9.22039
 
 [node name="RemoteTransform" type="RemoteTransform" parent="Path/PathFollow"]
 remote_path = NodePath("../../../KinematicBody")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Path"]
 autoplay = "move_platform"
-playback_process_mode = 0
 playback_speed = 0.5
 anims/move_platform = SubResource( 2 )

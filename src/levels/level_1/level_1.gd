@@ -1,17 +1,22 @@
 extends Spatial
 
+onready var player := $Player
+onready var win_game_screen := $WinGameScreen
+onready var game_over_screen := $GameOverScreen
+
+
 func _ready():
-	if !OS.has_feature("standalone"):
-		$Player.transform.origin = Vector3.ZERO
+	if OS.has_feature("standalone"):
+		player.transform.origin = Vector3.ZERO
 	else:
+		print('entering !standalone if on level_1.gd s _ready()')
 		print('Opened level_1 from editor.')
 
 
 
 func _on_PortalTrigger_body_entered(body : KinematicBody):
-	print('body entered PortalTrigger: ', body)
 	if body.name == "Player":
-		$WinGameScreen.show()
+		win_game_screen.show()
 
 
 func _input(event: InputEvent) -> void:
@@ -27,6 +32,5 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_DyingTrigger_body_entered(body):
-	print('body entered DyingTrigger: ', body)
 	if body.name == "Player":
-		$WinGameScreen.show()
+		game_over_screen.show()

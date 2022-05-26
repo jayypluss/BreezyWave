@@ -7,7 +7,7 @@
 pause_mode = 2
 script = ExtResource( 1 )
 
-[node name="ParentLayer" type="Control" parent="."]
+[node name="Hidable" type="Control" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,7 +15,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="ParentLayer"]
+[node name="ColorRect" type="ColorRect" parent="Hidable"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 1.0
@@ -27,7 +27,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxOptions" type="VBoxContainer" parent="ParentLayer"]
+[node name="VBoxOptions" type="VBoxContainer" parent="Hidable"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -42,7 +42,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NextLevel" type="LinkButton" parent="ParentLayer/VBoxOptions"]
+[node name="NextLevel" type="LinkButton" parent="Hidable/VBoxOptions"]
 visible = false
 margin_left = 106.0
 margin_top = 44.0
@@ -52,7 +52,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "RESUME"
 
-[node name="MainMenu" type="LinkButton" parent="ParentLayer/VBoxOptions"]
+[node name="MainMenu" type="LinkButton" parent="Hidable/VBoxOptions"]
 margin_left = 92.0
 margin_top = 78.0
 margin_right = 171.0
@@ -61,7 +61,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "MAIN MENU"
 
-[node name="LevelWinText" type="Label" parent="ParentLayer"]
+[node name="Label" type="Label" parent="Hidable"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -244.5
@@ -77,5 +77,5 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="ParentLayer/VBoxOptions/NextLevel" to="." method="_on_NextLevel_pressed"]
-[connection signal="pressed" from="ParentLayer/VBoxOptions/MainMenu" to="." method="_on_MainMenu_pressed"]
+[connection signal="pressed" from="Hidable/VBoxOptions/NextLevel" to="." method="_on_NextLevel_pressed"]
+[connection signal="pressed" from="Hidable/VBoxOptions/MainMenu" to="." method="_on_MainMenu_pressed"]

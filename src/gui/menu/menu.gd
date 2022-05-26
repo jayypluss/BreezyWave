@@ -3,7 +3,6 @@ extends Control
 #export (PackedScene) var new_game_scene
 
 func _ready():
-	print('Opened MENU from editor.')
 	$Version/GameVersion.text = ProjectSettings.get_setting("application/config/version")
 	$Version/GodotVersion.text = "Godot %s" % Engine.get_version_info().string
 	# needed for gamepads to work
@@ -12,6 +11,7 @@ func _ready():
 		$VBoxContainer/ExitButton.queue_free()
 			
 	if !OS.has_feature("standalone"):
+		print('entering !standalone if on menu.gd s _ready()')
 		yield(get_tree().create_timer(0.5), "timeout")
 		Game.change_scene("res://src/levels/level_1/level_1.tscn", { show_progress_bar = true })
 
