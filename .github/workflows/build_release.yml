@@ -59,7 +59,7 @@ jobs:
         run: ls -R
       - name: Zip Folder
         run: |
-          cp build/windows/windows.exe ./BreezyWave-Windows.exe
+          cp build/windows/breezywave.exe ./BreezyWave-Windows.exe
           zip -r BreezyWave-Windows.zip BreezyWave-Windows.exe
       - name: Release Artifact
         uses: actions/upload-release-asset@v1
