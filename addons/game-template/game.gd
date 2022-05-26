@@ -64,6 +64,10 @@ func _input(_event: InputEvent):
 		# prevent all input events
 		get_tree().set_input_as_handled()
 
+	if _event.is_action_pressed("toggle_fullscreen"):
+		OS.window_fullscreen = not OS.window_fullscreen
+		get_tree().set_input_as_handled()
+
 
 func _on_Transitions_transition_started(anim_name):
 	if pause_scenes_on_transitions:

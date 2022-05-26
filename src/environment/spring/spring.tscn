@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/levels/level_1/soft_body.gd" type="Script" id=1]
+[ext_resource path="res://src/environment/spring/spring.gd" type="Script" id=2]
+
+[sub_resource type="CylinderShape" id=1]
+height = 0.5
+
+[sub_resource type="SpatialMaterial" id=2]
+
+[sub_resource type="CylinderMesh" id=3]
+material = SubResource( 2 )
+
+[node name="Spring" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="HardShrinkLimitBody" type="StaticBody" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="ShrinkLimitCollision" type="CollisionShape" parent="HardShrinkLimitBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.746217, 0 )
+shape = SubResource( 1 )
+
+[node name="SpringTrigger" type="Area" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="SpringTriggerCollision" type="CollisionShape" parent="SpringTrigger"]
+transform = Transform( 0.992537, 0, 0, 0, 0.992537, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="SoftBody" type="SoftBody" parent="."]
+mesh = SubResource( 3 )
+material/0 = null
+collision_layer = 2
+collision_mask = 3
+simulation_precision = 6
+pressure_coefficient = 500.0
+damping_coefficient = 0.6
+drag_coefficient = 1.0
+pose_matching_coefficient = 1.0
+pinned_points = [ 339 ]
+attachments/0/point_index = 339
+attachments/0/spatial_attachment_path = NodePath("")
+attachments/0/offset = Vector3( 0, 0, 0 )
+script = ExtResource( 1 )
+[connection signal="body_entered" from="SpringTrigger" to="." method="_on_Trigger_body_entered"]

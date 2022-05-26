@@ -24,10 +24,6 @@ func _input(event: InputEvent) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		get_tree().set_input_as_handled()
 
-	if event.is_action_pressed("toggle_fullscreen"):
-		OS.window_fullscreen = not OS.window_fullscreen
-		get_tree().set_input_as_handled()
-
 
 func _on_DyingTrigger_body_entered(body):
 	print('body entered DyingTrigger: ', body)
