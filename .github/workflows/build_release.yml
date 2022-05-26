@@ -11,11 +11,10 @@ env:
   RELEASE_ANDROID: ${{ false }} #set to  true if you want to enable automatic android release export
 
 jobs:
-  create-release:
+  create_release:
     name: Create release
     runs-on: ubuntu-20.04
     outputs:
-      version: ${{ steps.step_version.outputs.version }}
       upload_url: ${{ steps.step_upload_url.outputs.upload_url }}
     steps:
       - name: Checkout
@@ -31,6 +30,8 @@ jobs:
           body_path: CHANGELOG.md
         env:
           GITHUB_TOKEN: ${{ github.token }}
+      - id: step_upload_url
+        run: echo "::set-output name=upload_url::${{ steps.create_release.outputs.upload_url }}"
 
   export-windows:
     name: Windows Export
@@ -58,7 +59,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          upload_url: ${{ needs.create-release.outputs.upload_url }}
+          upload_url: ${{ needs.create_release.outputs.upload_url }}
           asset_path: build/windows/windows.zip
           asset_name: BreezyWave-Windows.zip
           asset_content_type: application/zip
@@ -100,7 +101,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          upload_url: ${{ needs.create-release.outputs.upload_url }}
+          upload_url: ${{ needs.create_release.outputs.upload_url }}
           asset_path: build/linux/linux.zip
           asset_name: BreezyWave-Linux.zip
           asset_content_type: application/zip
