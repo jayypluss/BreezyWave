@@ -61,7 +61,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: build/windows/windows.zip
+          asset_path: ./build/windows/windows.zip
           asset_name: BreezyWave-Windows.zip
           asset_content_type: application/zip
       - name: Zip Folder
@@ -104,7 +104,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: build/linux/linux.zip
+          asset_path: ./build/linux/linux.zip
           asset_name: BreezyWave-Linux.zip
           asset_content_type: application/zip
       - name: Zip Folder
