@@ -79,7 +79,7 @@ run/main_scene="res://src/gui/menu/menu.tscn"
 boot_splash/image="res://assets/splash.png"
 boot_splash/bg_color=Color( 0.0862745, 0.0862745, 0.0862745, 1 )
 config/icon="res://assets/sprites/icon.png"
-config/version="0.0.5"
+config/version="0.0.6"
 
 [autoload]
 
@@ -185,7 +185,7 @@ interact={
 }
 toggle_mouse_captured={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777220,"unicode":0,"echo":false,"script":null)
  ]
 }
 click={

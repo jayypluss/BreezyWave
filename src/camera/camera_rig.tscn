@@ -9,21 +9,6 @@
 [ext_resource path="res://src/camera/states/aim.gd" type="Script" id=7]
 [ext_resource path="res://src/camera/spring_arm.gd" type="Script" id=8]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [sub_resource type="CapsuleShape" id=1]
 height = 0.5
 
@@ -46,11 +31,9 @@ collision_mask = 2
 transform = Transform( 1, 0, 0, 0, 0.87462, 0.48481, 0, -0.48481, 0.87462, 0, 0.5, 0.5 )
 collision_mask = 2
 shape = SubResource( 1 )
-spring_length = 21.0
 margin = 0.5
 script = ExtResource( 8 )
 length_range = Vector2( 16, 26 )
-zoom = 0.5
 
 [node name="CameraTarget" type="Position3D" parent="SpringArm"]
 transform = Transform( 1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 0 )
@@ -67,6 +50,7 @@ initial_state = NodePath("../../CameraRig/StateMachine/Camera/Default")
 
 [node name="Camera" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
+sensitivity_mouse = Vector2( 0.25, 0.25 )
 
 [node name="Default" type="Node" parent="StateMachine/Camera"]
 script = ExtResource( 3 )

@@ -16,7 +16,6 @@ script = ExtResource( 2 )
 
 [node name="HardShrinkLimitBody" type="StaticBody" parent="."]
 collision_layer = 2
-collision_mask = 3
 
 [node name="ShrinkLimitCollision" type="CollisionShape" parent="HardShrinkLimitBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.746217, 0 )
