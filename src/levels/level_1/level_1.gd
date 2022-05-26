@@ -1,7 +1,7 @@
 extends Spatial
 
 func _ready():
-	if OS.has_feature("standalone"):
+	if !OS.has_feature("standalone"):
 		$Player.transform.origin = Vector3.ZERO
 	else:
 		print('Opened level_1 from editor.')
