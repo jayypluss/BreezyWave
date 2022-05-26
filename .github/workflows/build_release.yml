@@ -36,6 +36,7 @@ jobs:
   export-windows:
     name: Windows Export
     runs-on: ubuntu-20.04
+    needs: create_release
     container:
       image: barichello/godot-ci:3.4.4
     steps:
@@ -78,6 +79,7 @@ jobs:
   export-linux:
     name: Linux Export
     runs-on: ubuntu-20.04
+    needs: create_release
     container:
       image: barichello/godot-ci:3.4.4
     steps:
