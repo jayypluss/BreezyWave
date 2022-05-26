@@ -56,7 +56,7 @@ jobs:
           name: windows
           path: build/windows
       - name: Release Artifact
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v2
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
@@ -99,7 +99,7 @@ jobs:
           name: linux
           path: build/linux
       - name: Release Artifact
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v2
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
