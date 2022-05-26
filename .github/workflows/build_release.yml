@@ -58,14 +58,16 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -R
       - name: Zip Folder
-        run: zip -r itch.zip build/windows
+        run: |
+          cp build/windows/windows.exe ./BreezyWave-Windows.exe
+          zip -r BreezyWave-Windows.zip BreezyWave-Windows.exe
       - name: Release Artifact
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
           upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: itch.zip
+          asset_path: BreezyWave-Windows.zip
           asset_name: BreezyWave-Windows.zip
           asset_content_type: application/zip
       - name: Deploy to itch.io
