@@ -22,6 +22,7 @@ height = 0.1
 [sub_resource type="CapsuleShape" id=5]
 
 [node name="Player" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0920637, 0.165794, -2.45488 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -53,6 +54,10 @@ shape = SubResource( 5 )
 [node name="InterpolatedCamera" parent="CameraRig" index="0"]
 far = 600.0
 
+[node name="SpringArm" parent="CameraRig" index="1"]
+spring_length = 21.0
+zoom = 0.5
+
 [node name="Camera" parent="CameraRig/StateMachine" index="0"]
 is_y_inverted = true
 
@@ -75,5 +80,9 @@ script = ExtResource( 6 )
 
 [node name="Run" type="Node" parent="StateMachine/Move"]
 script = ExtResource( 4 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0.0621428, -15.7893 )
+editor_only = true
 
 [editable path="CameraRig"]

@@ -1,11 +1,11 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/fonts/open-sans/open-sans-regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/sprites/icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/player.png" type="Texture" id=2]
 [ext_resource path="res://addons/game-template/transition/progress.gd" type="Script" id=3]
 [ext_resource path="res://addons/game-template/transition/transition.gd" type="Script" id=4]
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_position")
@@ -20,8 +20,7 @@ tracks/0/keys = {
 "values": [ Vector2( -20, -79 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "idle"
+[sub_resource type="Animation" id=2]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -37,11 +36,7 @@ tracks/0/keys = {
 "values": [ -90.0, -90.0, 0.0, 0.0, 90.0, 90.0, 0.0, 0.0 ]
 }
 
-[sub_resource type="DynamicFont" id=4]
-size = 18
-font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.305882, 0.560784, 0.74902, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -54,7 +49,7 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.176471, 0.282353, 0.372549, 1 )
 border_width_left = 2
 border_width_top = 2
@@ -71,7 +66,11 @@ expand_margin_right = 2.0
 expand_margin_top = 2.0
 expand_margin_bottom = 2.0
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="DynamicFont" id=5]
+size = 18
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=6]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
@@ -122,7 +121,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
@@ -149,8 +148,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "transition-in"
+[sub_resource type="Animation" id=8]
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
@@ -202,7 +200,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 length = 0.3
 step = 0.05
 tracks/0/type = "value"
@@ -254,7 +252,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=10]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:color")
@@ -294,19 +292,16 @@ mouse_filter = 2
 color = Color( 0.0862745, 0.0862745, 0.0862745, 0 )
 
 [node name="Progress" type="Control" parent="ColorRect"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -141.0
-margin_top = -55.0
-margin_right = -101.0
-margin_bottom = -15.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
 mouse_filter = 2
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Spinner" type="TextureRect" parent="ColorRect/Progress"]
 modulate = Color( 1, 1, 1, 0 )
@@ -314,47 +309,52 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -40.0
-margin_top = -99.0
-margin_right = 40.0
-margin_bottom = -19.0
+margin_left = -288.0
+margin_top = -288.0
+margin_right = 288.0
+margin_bottom = 288.0
 rect_rotation = -90.0
-rect_scale = Vector2( 0.6, 0.6 )
-rect_pivot_offset = Vector2( 40, 40 )
+rect_scale = Vector2( 0.3, 0.3 )
+rect_pivot_offset = Vector2( 288, 288 )
 mouse_filter = 2
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/Progress/Spinner"]
 autoplay = "idle"
-anims/RESET = SubResource( 9 )
-anims/idle = SubResource( 1 )
+anims/RESET = SubResource( 1 )
+anims/idle = SubResource( 2 )
 
 [node name="ProgressBar" type="ProgressBar" parent="ColorRect/Progress"]
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 margin_left = -85.0
-margin_top = -11.0
+margin_top = 197.0
 margin_right = 85.0
-margin_bottom = 11.0
+margin_bottom = 219.0
 mouse_filter = 2
-custom_fonts/font = SubResource( 4 )
-custom_styles/fg = SubResource( 2 )
-custom_styles/bg = SubResource( 3 )
+custom_styles/fg = SubResource( 3 )
+custom_styles/bg = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 max_value = 1.0
 percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tween" type="Tween" parent="ColorRect/Progress/ProgressBar"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "transparent"
-anims/RESET = SubResource( 10 )
-anims/black = SubResource( 5 )
-anims/transition-in = SubResource( 6 )
-anims/transition-out = SubResource( 7 )
-anims/transparent = SubResource( 8 )
-
+anims/RESET = SubResource( 6 )
+anims/black = SubResource( 7 )
+anims/transition-in = SubResource( 8 )
+anims/transition-out = SubResource( 9 )
+anims/transparent = SubResource( 10 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]

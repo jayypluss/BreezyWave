@@ -13,15 +13,15 @@
 [ext_resource path="res://src/levels/level_1/level_1.tres" type="Environment" id=11]
 [ext_resource path="res://src/environment/spring/spring.tscn" type="PackedScene" id=12]
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=1]
 
-[sub_resource type="CubeMesh" id=1]
+[sub_resource type="CubeMesh" id=2]
 size = Vector3( 5, 5, 0.2 )
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0, 0.509804, 0.956863, 1 )
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=4]
 extents = Vector3( 2.5, 2.5, 0.1 )
 
 [sub_resource type="BoxShape" id=5]
@@ -82,7 +82,7 @@ collision_layer = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="DyingTrigger"]
 transform = Transform( 896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.372 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="Ground" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -2.50724, -0.07441 )
@@ -123,24 +123,24 @@ collision_layer = 2
 
 [node name="Mesh" type="MeshInstance" parent="Platform8"]
 transform = Transform( 1, 0, 0, 0, 1, 1.3027e-15, -3.55271e-15, 1.3027e-15, 1, 0, 0, 0 )
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 skeleton = NodePath("../../..")
-material/0 = SubResource( 2 )
+material/0 = SubResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Platform8"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Platform9" type="KinematicBody" parent="."]
 transform = Transform( -1, 1.19209e-07, -2.98023e-08, 2.98023e-08, -4.37114e-08, -1, 2.08616e-07, -5.4, 2.36042e-07, -0.31172, 0.766208, -227.392 )
 collision_layer = 2
 
 [node name="Mesh" type="MeshInstance" parent="Platform9"]
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 skeleton = NodePath("../../..")
-material/0 = SubResource( 2 )
+material/0 = SubResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Platform9"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="PortalTrigger" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344, 5.39477, -240.678 )
