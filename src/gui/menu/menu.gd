@@ -10,7 +10,7 @@ func _ready():
 	if OS.has_feature('HTML5'):
 		$VBoxContainer/ExitButton.queue_free()
 			
-	if !OS.has_feature("standalone"):
+	if OS.has_feature("standalone"):
 		print('entering !standalone if on menu.gd s _ready()')
 		yield(get_tree().create_timer(0.5), "timeout")
 		Game.change_scene("res://src/levels/level_1/level_1.tscn", { show_progress_bar = true })
