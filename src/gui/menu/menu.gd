@@ -2,14 +2,23 @@ extends Control
 
 #export (PackedScene) var new_game_scene
 
+onready var buttons_container := $ButtonsContainer
+onready var start_button := $ButtonsContainer/StartButton
+onready var credits_button := $ButtonsContainer/CreditsButton
+onready var exit_button := $ButtonsContainer/ExitButton
+
+
 func _ready():
 	$Version/GameVersion.text = ProjectSettings.get_setting("application/config/version")
 	$Version/GodotVersion.text = "Godot %s" % Engine.get_version_info().string
 	# needed for gamepads to work
-	$VBoxContainer/PlayButton.grab_focus()
+	start_button.grab_focus()
 	if OS.has_feature('HTML5'):
-		$VBoxContainer/ExitButton.queue_free()
+		exit_button.queue_free()
 			
+	if OS.has_feature("standalone"):
+		$Music.play()
+		
 	if !OS.has_feature("standalone"):
 		print('entering !standalone if on menu.gd s _ready()')
 		yield(get_tree().create_timer(0.5), "timeout")
@@ -44,3 +53,7 @@ func _on_ExitButton_pressed() -> void:
 		yield(transitions.anim, "animation_finished")
 		yield(get_tree().create_timer(0.3), "timeout")
 	get_tree().quit()
+
+
+func _on_CreditsButton_pressed():
+	$CreditsScreen.togle_visible(true)

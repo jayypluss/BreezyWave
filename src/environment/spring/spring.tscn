@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/levels/level_1/soft_body.gd" type="Script" id=1]
 [ext_resource path="res://src/environment/spring/spring.gd" type="Script" id=2]
+[ext_resource path="res://assets/sounds/effects/bounce/bounce_01.ogg" type="AudioStream" id=3]
 
 [sub_resource type="CylinderShape" id=1]
 height = 0.5
@@ -39,4 +40,9 @@ linear_stiffness = 1.0
 pressure_coefficient = 10.0
 pose_matching_coefficient = 0.5
 script = ExtResource( 1 )
+
+[node name="BounceSoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -25.0
+
 [connection signal="body_entered" from="SpringTrigger" to="." method="_on_Trigger_body_entered"]

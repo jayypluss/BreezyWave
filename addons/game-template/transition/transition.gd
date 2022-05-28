@@ -10,6 +10,7 @@ signal transition_finished(anim_name)
 
 onready var anim: AnimationPlayer = $AnimationPlayer
 onready var progress = $ColorRect/Progress
+onready var spinner_anim: AnimationPlayer = $ColorRect/Progress/Spinner/AnimationPlayer
 
 
 # Tells if transition is currently displayed
@@ -29,6 +30,8 @@ func fade_in(params = {}):
 		if params.get('show_progress_bar') == true:
 			progress.show()
 	anim.play("transition-in")
+	spinner_anim.stop(true)
+	spinner_anim.play("spinner")
 
 
 # disappear
@@ -82,3 +85,4 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func _on_AnimationPlayer_animation_started(anim_name):
 	if anim_name == "transition-in":
 		emit_signal("transition_started", anim_name)
+
