@@ -176,8 +176,8 @@ text = "<x.y.z>"
 margin_top = 27.0
 margin_right = 576.0
 margin_bottom = 50.0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.92549, 0.92549, 0.92549, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "<GodotVersion>"
 script = SubResource( 4 )
 
@@ -201,8 +201,8 @@ __meta__ = {
 margin_top = 24.0
 margin_right = 131.0
 margin_bottom = 47.0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "Game by:"
 align = 2
 
@@ -211,8 +211,8 @@ margin_top = 51.0
 margin_right = 131.0
 margin_bottom = 74.0
 grow_horizontal = 0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.92549, 0.92549, 0.92549, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "jayypluss"
 align = 2
 
@@ -222,8 +222,8 @@ margin_top = 76.0
 margin_right = 135.0
 margin_bottom = 110.0
 grow_horizontal = 0
-custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.886275, 0.87451, 0.87451, 1 )
+custom_fonts/font = ExtResource( 4 )
 text = "Developer 2"
 
 [node name="CreditsScreen" parent="." instance=ExtResource( 5 )]
@@ -233,7 +233,8 @@ script = ExtResource( 8 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -10.0
+volume_db = -20.0
+
 [connection signal="pressed" from="ButtonsContainer/StartButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="ButtonsContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="ButtonsContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
