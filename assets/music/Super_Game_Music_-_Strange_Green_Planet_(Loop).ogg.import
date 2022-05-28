@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Super_Game_Music_-_Strange_Green_Planet_(Loop).ogg-922d7588f2eb4b62d565d6b93d5f8c02.oggstr"
+
+[deps]
+
+source_file="res://assets/music/Super_Game_Music_-_Strange_Green_Planet_(Loop).ogg"
+dest_files=[ "res://.import/Super_Game_Music_-_Strange_Green_Planet_(Loop).ogg-922d7588f2eb4b62d565d6b93d5f8c02.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

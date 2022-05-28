@@ -8,6 +8,7 @@ onready var game_over_screen := $GameOverScreen
 func _ready():
 	if OS.has_feature("standalone"):
 		player.transform.origin = Vector3.ZERO
+		$Music.play()
 	else:
 		print('entering !standalone if on level_1.gd s _ready()')
 		print('Opened level_1 from editor.')

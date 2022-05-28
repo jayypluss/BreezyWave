@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/environment/ground/ground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/player/player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://src/gui/game_over_screen/game_over_screen.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/levels/level_1/level_1.tres" type="Environment" id=11]
 [ext_resource path="res://src/environment/spring/spring.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/music/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg" type="AudioStream" id=13]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -166,5 +167,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7519, -20.9326, -168.034 )
 
 [node name="Spring3" parent="." instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9811, -13.4274, -100.458 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -10.0
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]
 [connection signal="body_entered" from="PortalTrigger" to="." method="_on_PortalTrigger_body_entered"]
