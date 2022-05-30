@@ -10,6 +10,7 @@ params_alpha_scissor_threshold = 0.98
 albedo_texture = ExtResource( 1 )
 
 [sub_resource type="QuadMesh" id=13]
+resource_local_to_scene = true
 material = SubResource( 14 )
 size = Vector2( 2, 2 )
 
