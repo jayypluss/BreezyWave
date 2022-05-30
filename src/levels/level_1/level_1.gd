@@ -1,8 +1,8 @@
 extends Spatial
 
-onready var player := $Player
-onready var win_game_screen := $WinGameScreen
-onready var game_over_screen := $GameOverScreen
+onready var player := $Screens/Player
+onready var win_game_screen := $Screens/WinGameScreen
+onready var game_over_screen := $Screens/GameOverScreen
 
 
 func _ready():
