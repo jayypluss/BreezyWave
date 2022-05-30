@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/sprites/colorful_star.png" type="Texture" id=1]
+[ext_resource path="res://src/environment/collectables/colorful_star/colorful_star.gd" type="Script" id=2]
+
+[sub_resource type="SpatialMaterial" id=14]
+params_billboard_mode = 1
+params_use_alpha_scissor = true
+params_alpha_scissor_threshold = 0.98
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="QuadMesh" id=13]
+material = SubResource( 14 )
+size = Vector2( 2, 2 )
+
+[sub_resource type="SphereShape" id=10]
+radius = 2.0
+
+[node name="ColorfulStar" type="Area"]
+collision_layer = 2
+script = ExtResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 13 )
+skeleton = NodePath("")
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 10 )
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
