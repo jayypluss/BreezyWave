@@ -2,10 +2,15 @@ extends Area
 
 onready var mesh_instance : MeshInstance = $MeshInstance
 onready var quad_mesh : QuadMesh = $MeshInstance.mesh
+onready var key = self.get_parent().get_parent().name+"-"+name
 
 var t = 0.0
 var player : KinematicBody
 var collected = false
+
+func _ready():
+	if GameState.colorful_stars_collected.has(key):
+		queue_free()
 
 func _on_body_entered(body : KinematicBody):
 	player = body
@@ -24,5 +29,6 @@ func _physics_process(delta):
 
 
 func collect():
-	print('collected')
+	GameState.colorful_stars_collected[key] = true
+	get_tree().call_group("update_on_star_collect", "on_star_collected")
 	queue_free()

@@ -86,6 +86,7 @@ config/version="0.0.8"
 Game="*res://addons/game-template/game.gd"
 Transitions="*res://addons/game-template/transition/transition.tscn"
 Utils="*res://addons/game-template/utils.gd"
+GameState="*res://src/game/game_state/game_state.gd"
 
 [category]
 
