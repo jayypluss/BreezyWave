@@ -17,15 +17,6 @@
 
 [sub_resource type="BoxShape" id=1]
 
-[sub_resource type="CubeMesh" id=2]
-size = Vector3( 5, 5, 0.2 )
-
-[sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0, 0.509804, 0.956863, 1 )
-
-[sub_resource type="BoxShape" id=4]
-extents = Vector3( 2.5, 2.5, 0.1 )
-
 [sub_resource type="BoxShape" id=5]
 extents = Vector3( 0.25, 0.25, 0.25 )
 
@@ -39,14 +30,17 @@ shader_param/wave_scale = 8.454
 shader_param/random_scale = 4.6
 shader_param/noise_scale = 0.03
 
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 5, 5, 0.2 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0, 0.509804, 0.956863, 1 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 2.5, 2.5, 0.1 )
+
 [node name="Level1" type="Spatial"]
 script = ExtResource( 8 )
-
-[node name="PauseScreen" parent="." instance=ExtResource( 3 )]
-
-[node name="WinGameScreen" parent="." instance=ExtResource( 9 )]
-
-[node name="GameOverScreen" parent="." instance=ExtResource( 10 )]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.47998, 4.18251 )
@@ -78,64 +72,6 @@ collision_layer = 2
 transform = Transform( 896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.372 )
 shape = SubResource( 1 )
 
-[node name="Ground" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -2.50724, -0.07441 )
-
-[node name="Ground2" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -15.5644, -102.102 )
-
-[node name="Ground3" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -23.1726, -189.776 )
-
-[node name="MovingPlatform" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17698, -81.8578 )
-
-[node name="Platform" parent="." instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -27.9754, -20.7237, -227.697 )
-
-[node name="Platform2" parent="." instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -17.0284, -20.7237, -235.931 )
-
-[node name="Platform3" parent="." instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -4.77099, -17.9806, -235.931 )
-
-[node name="Platform4" parent="." instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 3.84436, -15.412, -243.241 )
-
-[node name="Platform5" parent="." instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 12.9839, -10.9007, -235.672 )
-
-[node name="Platform6" parent="." instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 19.4529, -7.14057, -229.136 )
-
-[node name="Platform7" parent="." instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 26.4941, -4.21511, -224.348 )
-
-[node name="Platform8" type="KinematicBody" parent="."]
-transform = Transform( -2.36042e-07, 5.4, -2.36042e-07, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 15.6883, 0.766208, -216.392 )
-collision_layer = 2
-
-[node name="Mesh" type="MeshInstance" parent="Platform8"]
-transform = Transform( 1, 0, 0, 0, 1, 1.3027e-15, -3.55271e-15, 1.3027e-15, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
-skeleton = NodePath("../../..")
-material/0 = SubResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Platform8"]
-shape = SubResource( 4 )
-
-[node name="Platform9" type="KinematicBody" parent="."]
-transform = Transform( -1, 1.19209e-07, -2.98023e-08, 2.98023e-08, -4.37114e-08, -1, 2.08616e-07, -5.4, 2.36042e-07, -0.31172, 0.766208, -227.392 )
-collision_layer = 2
-
-[node name="Mesh" type="MeshInstance" parent="Platform9"]
-mesh = SubResource( 2 )
-skeleton = NodePath("../../..")
-material/0 = SubResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Platform9"]
-shape = SubResource( 4 )
-
 [node name="PortalTrigger" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344, 5.39477, -240.678 )
 collision_layer = 2
@@ -152,27 +88,103 @@ transform = Transform( 5.4, 0, 0, 0, 4.32, 0, 0, 0, 0.3, 0, 0, 0 )
 mesh = SubResource( 6 )
 material/0 = SubResource( 7 )
 
-[node name="ColorfulStar" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3797, 2.15521, -9.69087 )
-
-[node name="ColorfulStar2" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15312, 2.15521, -9.69087 )
-
-[node name="ColorfulStar3" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.39384, 2.5196, -8.94211 )
-
-[node name="Spring1" parent="." instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.12322, 1.72832, -216.204 )
-
-[node name="Spring2" parent="." instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7519, -20.9326, -168.034 )
-
-[node name="Spring3" parent="." instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9811, -13.4274, -100.458 )
-
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 volume_db = -20.0
+
+[node name="Collectables" type="Spatial" parent="."]
+
+[node name="Spring1" parent="Collectables" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.12322, 1.72832, -216.204 )
+
+[node name="Spring2" parent="Collectables" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7519, -20.9326, -168.034 )
+
+[node name="Spring3" parent="Collectables" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9811, -13.4274, -100.458 )
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="ColorfulStar" parent="Spatial" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3797, 2.15521, -9.69087 )
+
+[node name="ColorfulStar2" parent="Spatial" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15312, 2.15521, -9.69087 )
+
+[node name="ColorfulStar3" parent="Spatial" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.39384, 2.5196, -8.94211 )
+
+[node name="Platforms" type="Spatial" parent="."]
+
+[node name="MovingPlatform" parent="Platforms" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17698, -81.8578 )
+
+[node name="Static" type="Spatial" parent="Platforms"]
+
+[node name="Platform" parent="Platforms/Static" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -27.9754, -20.7237, -227.697 )
+
+[node name="Platform2" parent="Platforms/Static" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -17.0284, -20.7237, -235.931 )
+
+[node name="Platform3" parent="Platforms/Static" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -4.77099, -17.9806, -235.931 )
+
+[node name="Platform4" parent="Platforms/Static" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 3.84436, -15.412, -243.241 )
+
+[node name="Platform5" parent="Platforms/Static" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 12.9839, -10.9007, -235.672 )
+
+[node name="Platform6" parent="Platforms/Static" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 19.4529, -7.14057, -229.136 )
+
+[node name="Platform7" parent="Platforms/Static" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 26.4941, -4.21511, -224.348 )
+
+[node name="Platform8" type="KinematicBody" parent="Platforms/Static"]
+transform = Transform( -2.36042e-07, 5.4, -2.36042e-07, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 15.6883, 0.766208, -216.392 )
+collision_layer = 2
+
+[node name="Mesh" type="MeshInstance" parent="Platforms/Static/Platform8"]
+transform = Transform( 1, 0, 0, 0, 1, 1.3027e-15, -3.55271e-15, 1.3027e-15, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../../../..")
+material/0 = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Platforms/Static/Platform8"]
+shape = SubResource( 4 )
+
+[node name="Platform9" type="KinematicBody" parent="Platforms/Static"]
+transform = Transform( -1, 1.19209e-07, -2.98023e-08, 2.98023e-08, -4.37114e-08, -1, 2.08616e-07, -5.4, 2.36042e-07, -0.31172, 0.766208, -227.392 )
+collision_layer = 2
+
+[node name="Mesh" type="MeshInstance" parent="Platforms/Static/Platform9"]
+mesh = SubResource( 2 )
+skeleton = NodePath("../../../../..")
+material/0 = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Platforms/Static/Platform9"]
+shape = SubResource( 4 )
+
+[node name="Grounds" type="Spatial" parent="."]
+
+[node name="Ground" parent="Grounds" instance=ExtResource( 1 )]
+transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -2.50724, -0.07441 )
+
+[node name="Ground2" parent="Grounds" instance=ExtResource( 1 )]
+transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -15.5644, -102.102 )
+
+[node name="Ground3" parent="Grounds" instance=ExtResource( 1 )]
+transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -23.1726, -189.776 )
+
+[node name="Screens" type="Node" parent="."]
+
+[node name="PauseScreen" parent="Screens" instance=ExtResource( 3 )]
+
+[node name="WinGameScreen" parent="Screens" instance=ExtResource( 9 )]
+
+[node name="GameOverScreen" parent="Screens" instance=ExtResource( 10 )]
 
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]
 [connection signal="body_entered" from="PortalTrigger" to="." method="_on_PortalTrigger_body_entered"]
