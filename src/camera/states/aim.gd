@@ -31,7 +31,7 @@ func process(delta: float) -> void:
 	camera_rig.aim_target.update(camera_rig.aim_ray)
 
 
-func enter(msg: Dictionary = {}) -> void:
+func enter(_msg: Dictionary = {}) -> void:
 	_parent._is_aiming = true
 	camera_rig.aim_target.visible = true
 

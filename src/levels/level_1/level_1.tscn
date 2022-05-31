@@ -45,7 +45,6 @@ script = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.47998, 4.18251 )
-collision_mask = 2
 
 [node name="PPOutlinesCamera" type="Camera" parent="Player"]
 transform = Transform( 0.686231, -0.243767, 0.685321, -0.437283, 0.614654, 0.656494, -0.581267, -0.750186, 0.315199, 4.54974, 15.9972, 9.50401 )
@@ -97,13 +96,13 @@ volume_db = -20.0
 [node name="Springs" type="Spatial" parent="."]
 
 [node name="Spring1" parent="Springs" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.12322, 1.72832, -216.204 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.33138, 1.88336, -216.204 )
 
 [node name="Spring2" parent="Springs" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7519, -20.9326, -168.034 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7519, -21.0523, -168.034 )
 
 [node name="Spring3" parent="Springs" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9811, -13.4274, -100.458 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9811, -13.3698, -100.458 )
 
 [node name="Collectables" type="Spatial" parent="."]
 
@@ -382,7 +381,7 @@ shape = SubResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.1324, 0 )
 
 [node name="Ground2" parent="Grounds" instance=ExtResource( 1 )]
-transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -15.5644, -102.102 )
+transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -1.32892, -15.4904, -101.113 )
 
 [node name="Ground3" parent="Grounds" instance=ExtResource( 1 )]
 transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -0.0503519, -23.1726, -189.776 )
@@ -404,7 +403,9 @@ margin_bottom = 119.0
 mouse_filter = 2
 
 [node name="CollectedStarsInfo" parent="HUD" instance=ExtResource( 15 )]
+margin_left = 821.0
 margin_top = -80.0
+margin_right = 1021.0
 margin_bottom = 0.0
 
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]

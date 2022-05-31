@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sparkle_01.ogg-33e55fd5de890150133094227cea43c0.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/effects/sparkle/sparkle_01.ogg"
+dest_files=[ "res://.import/sparkle_01.ogg-33e55fd5de890150133094227cea43c0.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

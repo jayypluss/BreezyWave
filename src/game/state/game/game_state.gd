@@ -1,17 +1,16 @@
 extends Node
 
 var colorful_stars_collected: Dictionary = {}
+var remaining_lives: int
 
 func _ready():
 	restore()
-	
 
 func persist():
 	var save_game = File.new()
 	save_game.open("user://savegame.save", File.WRITE)
 	save_game.store_line(to_json(colorful_stars_collected))
 	save_game.close()
-	
 
 func restore():
 	var save_game = File.new()

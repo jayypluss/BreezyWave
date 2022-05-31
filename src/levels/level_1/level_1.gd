@@ -1,6 +1,6 @@
 extends Spatial
 
-onready var player := $Screens/Player
+onready var player := $Player
 onready var win_game_screen := $Screens/WinGameScreen
 onready var game_over_screen := $Screens/GameOverScreen
 
@@ -14,8 +14,7 @@ func _ready():
 		print('Opened level_1 from editor.')
 
 
-
-func _on_PortalTrigger_body_entered(body : KinematicBody):
+func _on_PortalTrigger_body_entered(_body : KinematicBody):
 	GameState.persist()
 	win_game_screen.show()
 
@@ -32,6 +31,6 @@ func _input(event: InputEvent) -> void:
 		get_tree().set_input_as_handled()
 
 
-func _on_DyingTrigger_body_entered(player: Player):
-	player.die()
-	game_over_screen.show()
+func _on_DyingTrigger_body_entered(body: Player):
+	body.die()
+#	game_over_screen.show()
