@@ -22,7 +22,7 @@ func die():
 		translation = last_floor_position
 
 func _on_LastPositionTimer_timeout():
-	if is_on_floor() && translation:
-		last_floor_position = translation
+	if is_on_floor() && get_last_slide_collision().collider is StaticBody:
+			last_floor_position = translation
 
 	last_position_timer.start()
