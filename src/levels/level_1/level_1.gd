@@ -16,8 +16,8 @@ func _ready():
 
 
 func _on_PortalTrigger_body_entered(body : KinematicBody):
-	if body.name == "Player":
-		win_game_screen.show()
+	GameState.persist()
+	win_game_screen.show()
 
 
 func _input(event: InputEvent) -> void:
@@ -32,6 +32,6 @@ func _input(event: InputEvent) -> void:
 		get_tree().set_input_as_handled()
 
 
-func _on_DyingTrigger_body_entered(body):
-	if body.name == "Player":
-		game_over_screen.show()
+func _on_DyingTrigger_body_entered(player: Player):
+	player.die()
+	game_over_screen.show()
