@@ -74,7 +74,6 @@ func calculate_velocity(
 		var aux_move_speed: float = move_speed
 		if Input.is_action_pressed('sprint'):
 			aux_move_speed = aux_move_speed * sprint_multiplier
-		print('current_speed: ', aux_move_speed)
 		var velocity_new := move_direction * aux_move_speed
 		if velocity_new.length() > max_speed:
 			velocity_new = velocity_new.normalized() * max_speed

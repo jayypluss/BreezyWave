@@ -34,3 +34,9 @@ func _input(event: InputEvent) -> void:
 func _on_DyingTrigger_body_entered(body: Player):
 	body.die()
 #	game_over_screen.show()
+
+
+
+func _on_MovingPlatform1_button_pressed(is_active: bool):
+	$Platforms/MovingPlatform1.play_animation()
+	print('received move platform signal')

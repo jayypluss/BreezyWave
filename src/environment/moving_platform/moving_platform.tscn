@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/environment/static_platform/static_platform.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/environment/moving_platform/moving_platform.gd" type="Script" id=2]
 
 [sub_resource type="Curve3D" id=1]
 _data = {
@@ -26,12 +27,13 @@ tracks/0/keys = {
 }
 
 [node name="MovingPlatform" type="Spatial"]
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="KinematicBody" parent="." instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -0.000876665, 8.41341e-17, 0.00133783 )
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 0, -0.1, 0 )
 
 [node name="Path" type="Path" parent="."]
 transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 0, 0, 0 )
@@ -47,6 +49,5 @@ transform = Transform( 1, 0, 0, 0, 1, 1.3027e-15, 0, 1.3027e-15, 1, -0.00133783,
 remote_path = NodePath("../../../KinematicBody")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Path"]
-autoplay = "move_platform"
 playback_speed = 0.5
 anims/move_platform = SubResource( 2 )

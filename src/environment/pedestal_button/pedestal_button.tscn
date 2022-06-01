@@ -1,0 +1,114 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/environment/pedestal_button/pedestal_button.gd" type="Script" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+
+[sub_resource type="CylinderMesh" id=1]
+material = SubResource( 2 )
+top_radius = 0.4
+bottom_radius = 0.4
+
+[sub_resource type="CylinderShape" id=3]
+radius = 0.4
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.733333, 0, 0, 1 )
+
+[sub_resource type="CylinderMesh" id=6]
+material = SubResource( 7 )
+top_radius = 0.4
+bottom_radius = 0.3
+height = 0.6
+
+[sub_resource type="CylinderShape" id=4]
+radius = 0.4
+height = 0.6
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 2, 1.1, 2 )
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Button:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.19972, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "activate_button"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Button:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1.19972, 0 ), Vector3( 0, 0.8, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "unactivate_button"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Button:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.8, 0 ), Vector3( 0, 1.2, 0 ) ]
+}
+
+[node name="PedestalButton" type="Area"]
+collision_layer = 2
+script = ExtResource( 1 )
+
+[node name="Pedestal" type="StaticBody" parent="."]
+collision_layer = 2
+
+[node name="MeshInstance" type="MeshInstance" parent="Pedestal"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Pedestal"]
+shape = SubResource( 3 )
+
+[node name="Button" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19972, 0 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="MeshInstance" type="MeshInstance" parent="Button"]
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Button"]
+shape = SubResource( 4 )
+
+[node name="InteractableArea" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1.35488, 0, 0, 0, 1, 0, 0.473902, 0 )
+shape = SubResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 10 )
+anims/activate_button = SubResource( 8 )
+anims/unactivate_button = SubResource( 9 )
+
+[connection signal="body_entered" from="." to="." method="_on_PedestalButton_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_PedestalButton_body_exited"]
