@@ -78,9 +78,6 @@ material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.447059, 0.219608, 0.501961, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Header" type="CenterContainer" parent="."]
 anchor_right = 1.0

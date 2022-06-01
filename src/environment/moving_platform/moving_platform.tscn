@@ -1,12 +1,44 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/environment/static_platform/static_platform.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/environment/moving_platform/moving_platform.gd" type="Script" id=2]
 
 [sub_resource type="Curve3D" id=1]
 _data = {
-"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -0.00133783, -0.000876665, -1.55024e-12, 0, 0, 0, 0, 0, 0, -74.5037, 0.0183855, -1.748e-05 ),
-"tilts": PoolRealArray( 0, 0 )
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -0.00133783, -0.000876665, -1.55024e-12, 0, 0, 0, 0, 0, 0, -0.00133783, -0.000876665, -1.55024e-12, 0, 0, 0, 0, 0, 0, -88, -3.8466e-06, -2.6226e-06, 0, 0, 0, 0, 0, 0, -0.00133783, -0.000876665, -1.55024e-12 ),
+"tilts": PoolRealArray( 0, 0, 0, 0 )
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("PathFollow:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "move"
+length = 7.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PathFollow:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 3, 3.5, 6.5, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.5, 0.5, 0.0, 0.0 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -28,12 +60,9 @@ tracks/0/keys = {
 
 [node name="MovingPlatform" type="Spatial"]
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="KinematicBody" parent="." instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 0, -0.1, 0 )
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -0.000733526, -8.52651e-14, 14.3695 )
 
 [node name="Path" type="Path" parent="."]
 transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 0, 0, 0 )
@@ -50,4 +79,6 @@ remote_path = NodePath("../../../KinematicBody")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Path"]
 playback_speed = 0.5
+anims/RESET = SubResource( 4 )
+anims/move = SubResource( 3 )
 anims/move_platform = SubResource( 2 )
