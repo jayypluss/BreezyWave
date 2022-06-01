@@ -7,6 +7,7 @@ extends PlayerState
 
 export var max_speed: = 12.0
 export var move_speed: = 10.0
+export var sprint_multiplier = 1.2
 export var gravity = -80.0
 export var jump_impulse = 25
 export(float, 0.1, 20.0, 0.1) var rotation_speed_factor: = 10.0
@@ -70,7 +71,11 @@ func calculate_velocity(
 		move_direction: Vector3,
 		delta: float
 	) -> Vector3:
-		var velocity_new := move_direction * move_speed
+		var aux_move_speed: float = move_speed
+		if Input.is_action_pressed('sprint'):
+			aux_move_speed = aux_move_speed * sprint_multiplier
+		print('current_speed: ', aux_move_speed)
+		var velocity_new := move_direction * aux_move_speed
 		if velocity_new.length() > max_speed:
 			velocity_new = velocity_new.normalized() * max_speed
 		velocity_new.y = velocity_current.y + gravity * delta

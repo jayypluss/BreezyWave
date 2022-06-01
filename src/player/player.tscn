@@ -67,8 +67,9 @@ initial_state = NodePath("Move/Idle")
 
 [node name="Move" type="Node" parent="StateMachine"]
 script = ExtResource( 5 )
-max_speed = 40.0
+max_speed = 100.0
 move_speed = 35.0
+sprint_multiplier = 1.5
 jump_impulse = 40
 rotation_speed_factor = 15.0
 
