@@ -3,12 +3,15 @@ extends Spatial
 onready var player := $Player
 onready var win_game_screen := $Screens/WinGameScreen
 onready var game_over_screen := $Screens/GameOverScreen
+onready var music: AudioStreamPlayer = $Music
+onready var moving_platform_1: Spatial = $Platforms/MovingPlatform1
+onready var secret_passage_platform_1: KinematicBody = $SecretPassagePlatform1
 
 
 func _ready():
 	if OS.has_feature("standalone"):
 		player.transform.origin = Vector3.ZERO
-		$Music.play()
+		music.play()
 	else:
 		print('entering !standalone if on level_1.gd s _ready()')
 		print('Opened level_1 from editor.')
@@ -39,6 +42,11 @@ func _on_DyingTrigger_body_entered(body: Player):
 
 func _on_MovingPlatform1_button_pressed(is_active: bool):
 	if is_active:
-		$Platforms/MovingPlatform1.start_moving()
+		moving_platform_1.start_moving()
 	else:
-		$Platforms/MovingPlatform1.stop_moving()
+		moving_platform_1.stop_moving()
+
+
+func _on_SecretePassage1Button_on_button_pressed(is_active: bool):
+	if is_active:
+		secret_passage_platform_1.fade_in()

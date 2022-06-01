@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://src/environment/ground/ground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/player/player.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://src/environment/collectables/colorful_star/colorful_star.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/gui/collected_stars_info/collected_stars_info.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/environment/pedestal_button/pedestal_button.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/environment/secret_passage_platform/secret_passage_platform.tscn" type="PackedScene" id=17]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -45,7 +46,7 @@ extents = Vector3( 2.5, 2.5, 0.1 )
 script = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -92.8278, 2.73754, -109.351 )
 
 [node name="PPOutlinesCamera" type="Camera" parent="Player"]
 transform = Transform( 0.686231, -0.243767, 0.685321, -0.437283, 0.614654, 0.656494, -0.581267, -0.750186, 0.315199, 4.54974, 15.9972, 9.50401 )
@@ -422,6 +423,109 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.218, 3.6993, 27.2259 )
 [node name="MovingPlatform1Button" parent="." instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8201, 2.12989, -28.3489 )
 
+[node name="SecretePassage1Button" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -123.15, 2.12989, -95.3299 )
+can_deactivate = false
+
+[node name="SecretPassagePlatform1" parent="." instance=ExtResource( 17 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -120.32, 1.0095, -89.0329 )
+
+[node name="ColorfulStar84" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -7.60777 )
+visible = false
+
+[node name="ColorfulStar85" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -7.60777 )
+visible = false
+
+[node name="ColorfulStar86" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -7.60777 )
+visible = false
+
+[node name="ColorfulStar87" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -7.60777 )
+visible = false
+
+[node name="ColorfulStar88" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -4.60777 )
+visible = false
+
+[node name="ColorfulStar89" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -4.60777 )
+visible = false
+
+[node name="ColorfulStar90" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -4.60777 )
+visible = false
+
+[node name="ColorfulStar91" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -4.60777 )
+visible = false
+
+[node name="ColorfulStar92" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -1.60777 )
+visible = false
+
+[node name="ColorfulStar93" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -1.60777 )
+visible = false
+
+[node name="ColorfulStar94" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -1.60777 )
+visible = false
+
+[node name="ColorfulStar95" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -1.60777 )
+visible = false
+
+[node name="ColorfulStar96" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 1.39223 )
+visible = false
+
+[node name="ColorfulStar97" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 1.39223 )
+visible = false
+
+[node name="ColorfulStar98" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 1.39223 )
+visible = false
+
+[node name="ColorfulStar99" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 1.39223 )
+visible = false
+
+[node name="ColorfulStar100" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 4.39223 )
+visible = false
+
+[node name="ColorfulStar101" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 4.39223 )
+visible = false
+
+[node name="ColorfulStar102" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 4.39223 )
+visible = false
+
+[node name="ColorfulStar103" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 4.39223 )
+visible = false
+
+[node name="ColorfulStar104" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 7.39223 )
+visible = false
+
+[node name="ColorfulStar105" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 7.39223 )
+visible = false
+
+[node name="ColorfulStar106" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 7.39223 )
+visible = false
+
+[node name="ColorfulStar107" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 7.39223 )
+visible = false
+
 [node name="Platforms" type="Spatial" parent="."]
 
 [node name="MovingPlatform1" parent="Platforms" instance=ExtResource( 4 )]
@@ -510,11 +614,10 @@ margin_bottom = 119.0
 mouse_filter = 2
 
 [node name="CollectedStarsInfo" parent="HUD" instance=ExtResource( 15 )]
-margin_left = 821.0
 margin_top = -80.0
-margin_right = 1021.0
 margin_bottom = 0.0
 
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]
 [connection signal="body_entered" from="PortalTrigger" to="." method="_on_PortalTrigger_body_entered"]
 [connection signal="on_button_pressed" from="MovingPlatform1Button" to="." method="_on_MovingPlatform1_button_pressed"]
+[connection signal="on_button_pressed" from="SecretePassage1Button" to="." method="_on_SecretePassage1Button_on_button_pressed"]

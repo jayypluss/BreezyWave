@@ -8,8 +8,8 @@ export var can_deactivate: bool = false
 var player: Player
 var is_active = false
 
-
 signal on_button_pressed(is_active)
+
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("interact") && is_instance_valid(player):
