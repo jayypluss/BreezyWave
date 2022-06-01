@@ -90,9 +90,6 @@ transform = Transform( 5.4, 0, 0, 0, 4.32, 0, 0, 0, 0.3, 0, 0, 0 )
 mesh = SubResource( 6 )
 material/0 = SubResource( 7 )
 
-[node name="Button" parent="." instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8201, 2.12989, -28.3489 )
-
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 volume_db = -20.0
@@ -422,6 +419,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.218, 3.6993, 27.2259 )
 [node name="ColorfulStar84" parent="Collectables" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.218, 3.6993, 27.2259 )
 
+[node name="MovingPlatform1Button" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8201, 2.12989, -28.3489 )
+
 [node name="Platforms" type="Spatial" parent="."]
 
 [node name="MovingPlatform1" parent="Platforms" instance=ExtResource( 4 )]
@@ -517,4 +517,4 @@ margin_bottom = 0.0
 
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]
 [connection signal="body_entered" from="PortalTrigger" to="." method="_on_PortalTrigger_body_entered"]
-[connection signal="on_button_pressed" from="Button" to="." method="_on_MovingPlatform1_button_pressed"]
+[connection signal="on_button_pressed" from="MovingPlatform1Button" to="." method="_on_MovingPlatform1_button_pressed"]

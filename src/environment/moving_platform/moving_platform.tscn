@@ -62,7 +62,7 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 
 [node name="KinematicBody" parent="." instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -0.000733526, -8.52651e-14, 14.3695 )
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -0.000876665, 8.41341e-17, 0.00133783 )
 
 [node name="Path" type="Path" parent="."]
 transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 0, 0, 0 )
@@ -77,7 +77,8 @@ transform = Transform( 1, 0, 0, 0, 1, 1.3027e-15, 0, 1.3027e-15, 1, -0.00133783,
 [node name="RemoteTransform" type="RemoteTransform" parent="Path/PathFollow"]
 remote_path = NodePath("../../../KinematicBody")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Path"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Path")
 playback_speed = 0.5
 anims/RESET = SubResource( 4 )
 anims/move = SubResource( 3 )

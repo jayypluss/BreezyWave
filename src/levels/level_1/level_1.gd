@@ -38,5 +38,7 @@ func _on_DyingTrigger_body_entered(body: Player):
 
 
 func _on_MovingPlatform1_button_pressed(is_active: bool):
-	$Platforms/MovingPlatform1.play_animation()
-	print('received move platform signal')
+	if is_active:
+		$Platforms/MovingPlatform1.start_moving()
+	else:
+		$Platforms/MovingPlatform1.stop_moving()
