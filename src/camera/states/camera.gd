@@ -37,8 +37,10 @@ func process(delta: float) -> void:
 		move_direction.x >= -deadzone
 		and move_direction.x <= deadzone
 	)
-	if not (is_moving_towards_camera or _is_aiming):
-		auto_rotate(move_direction)
+	
+#	Removed this to try and enhance Camera
+#	if not (is_moving_towards_camera or _is_aiming):
+#		auto_rotate(move_direction)
 
 	camera_rig.rotation.y = wrapf(camera_rig.rotation.y, -PI, PI)
 
