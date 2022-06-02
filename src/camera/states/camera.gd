@@ -43,7 +43,7 @@ func process(delta: float) -> void:
 	camera_rig.rotation.y = wrapf(camera_rig.rotation.y, -PI, PI)
 
 
-func auto_rotate(move_direction: Vector3) -> void:
+func auto_rotate(_move_direction: Vector3) -> void:
 	var offset: float = camera_rig.player.rotation.y - camera_rig.rotation.y
 	var target_angle: float = (
 		camera_rig.player.rotation.y - 2 * PI

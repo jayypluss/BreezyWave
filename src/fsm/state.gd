@@ -22,19 +22,19 @@ func _ready() -> void:
 		_parent = parent
 
 
-func unhandled_input(event: InputEvent) -> void:
+func unhandled_input(_event: InputEvent) -> void:
 	pass
 
 
-func process(delta: float) -> void:
+func process(_delta: float) -> void:
 	pass
 
 
-func physics_process(delta: float) -> void:
+func physics_process(_delta: float) -> void:
 	pass
 
 
-func enter(msg := {}) -> void:
+func enter(_msg := {}) -> void:
 	pass
 
 

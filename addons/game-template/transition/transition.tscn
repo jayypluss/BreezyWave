@@ -17,7 +17,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -20, -79 ) ]
+"values": [ Vector2( 224, 12 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -53,8 +53,12 @@ tracks/0/keys = {
 "values": [ 0.0, 0.0, -20.0, -20.0, 1080.0, 1080.0 ]
 }
 
+[sub_resource type="DynamicFont" id=5]
+size = 18
+font_data = ExtResource( 1 )
+
 [sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.305882, 0.560784, 0.74902, 1 )
+bg_color = Color( 0.67451, 0.0196078, 0.572549, 1 )
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -67,7 +71,7 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.176471, 0.282353, 0.372549, 1 )
+bg_color = Color( 0.258824, 0.0235294, 0.415686, 1 )
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -82,10 +86,6 @@ expand_margin_left = 2.0
 expand_margin_right = 2.0
 expand_margin_top = 2.0
 expand_margin_bottom = 2.0
-
-[sub_resource type="DynamicFont" id=5]
-size = 18
-font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=6]
 length = 0.001
@@ -335,9 +335,6 @@ rect_scale = Vector2( 0.3, 0.3 )
 rect_pivot_offset = Vector2( 288, 288 )
 mouse_filter = 2
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/Progress/Spinner"]
 anims/RESET = SubResource( 1 )
@@ -346,22 +343,20 @@ anims/spinner = SubResource( 11 )
 
 [node name="ProgressBar" type="ProgressBar" parent="ColorRect/Progress"]
 modulate = Color( 1, 1, 1, 0 )
-anchor_top = 0.694
-anchor_right = 1.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 191.5
-margin_top = 41.6
-margin_right = -191.5
-margin_bottom = -59.0
+margin_left = -158.0
+margin_top = -130.0
+margin_right = 158.0
+margin_bottom = -103.0
 mouse_filter = 2
+custom_fonts/font = SubResource( 5 )
 custom_styles/fg = SubResource( 3 )
 custom_styles/bg = SubResource( 4 )
-custom_fonts/font = SubResource( 5 )
 max_value = 1.0
 percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Tween" type="Tween" parent="ColorRect/Progress/ProgressBar"]
 
@@ -372,5 +367,6 @@ anims/black = SubResource( 7 )
 anims/transition-in = SubResource( 8 )
 anims/transition-out = SubResource( 9 )
 anims/transparent = SubResource( 10 )
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
