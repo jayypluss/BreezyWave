@@ -24,7 +24,7 @@ func fade_in():
 
 func move_away():
 	main_camera.make_current()
-	animation_player.play("move_away")
+	#animation_player.play("move_away")
 	animation_player2.play("change_colors")
 
 func _on_CinematicAnimation_animation_finished(anim_name: String):

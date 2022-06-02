@@ -46,7 +46,7 @@ extents = Vector3( 2.5, 2.5, 0.1 )
 script = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -131.679 )
 
 [node name="PPOutlinesCamera" type="Camera" parent="Player"]
 transform = Transform( 0.686231, -0.243767, 0.685321, -0.437283, 0.614654, 0.656494, -0.581267, -0.750186, 0.315199, 4.54974, 15.9972, 9.50401 )
@@ -101,7 +101,7 @@ volume_db = -20.0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8201, 2.12989, -28.3489 )
 
 [node name="MovingPlatform1" parent="Interactables" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.0716, 1.15362, -25.6687 )
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 34.5807, 0.950626, -23.9323 )
 
 [node name="SecretePassage1Button" parent="Interactables" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -123.15, 2.12989, -95.3299 )
@@ -209,25 +209,25 @@ visible = false
 [node name="StaticPlatforms" type="Spatial" parent="."]
 
 [node name="Platform" parent="StaticPlatforms" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -27.9754, -25.6723, -283.046 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.9754, -25.6723, -287.732 )
 
 [node name="Platform2" parent="StaticPlatforms" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -17.0284, -22.3732, -290.906 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0284, -22.3732, -295.592 )
 
 [node name="Platform3" parent="StaticPlatforms" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -4.77099, -18.5628, -294.897 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.77099, -18.5628, -299.583 )
 
 [node name="Platform4" parent="StaticPlatforms" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 3.84436, -15.412, -299.463 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.26649, -15.412, -301.952 )
 
 [node name="Platform5" parent="StaticPlatforms" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 12.9839, -10.9007, -304.863 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.406, -10.9007, -307.352 )
 
 [node name="Platform6" parent="StaticPlatforms" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 19.4529, -8.06237, -296.955 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.875, -8.06237, -299.444 )
 
 [node name="Platform7" parent="StaticPlatforms" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 26.4941, -3.82698, -289.839 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.9162, -3.82698, -292.328 )
 
 [node name="Platform8" type="KinematicBody" parent="StaticPlatforms"]
 transform = Transform( -2.36042e-07, 5.4, -2.36042e-07, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 15.6883, 0.766208, -282.425 )
@@ -265,16 +265,16 @@ shape = SubResource( 4 )
 [node name="Springs" type="Spatial" parent="."]
 
 [node name="Spring2" parent="Springs" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0297318, -27.877, -224.964 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0297318, -26.736, -224.964 )
 
 [node name="Spring3" parent="Springs" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2928, -12.841, -148.167 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2928, -11.7, -148.167 )
 
 [node name="Spring5" parent="Springs" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1984, -18.3751, -184.66 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1984, -17.2341, -184.66 )
 
 [node name="Spring4" parent="Springs" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.9166, -1.05013, -143.274 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.9166, 0.0908269, -143.274 )
 
 [node name="Collectables" type="Spatial" parent="."]
 
@@ -438,46 +438,46 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -117.446, 4.96061, -111.859 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0968676, -24.0188, -224.819 )
 
 [node name="ColorfulStar85" parent="Collectables" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0879, -23.419, -283.028 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0879, -23.419, -287.714 )
 
 [node name="ColorfulStar86" parent="Collectables" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0879, -19.1501, -283.028 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0879, -19.1501, -287.714 )
 
 [node name="ColorfulStar87" parent="Collectables" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9878, -19.9871, -290.909 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9878, -19.9871, -295.595 )
 
 [node name="ColorfulStar88" parent="Collectables" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9878, -15.7182, -290.909 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9878, -15.7182, -295.595 )
 
 [node name="ColorfulStar89" parent="Collectables" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48547, -16.1208, -294.892 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48547, -16.1208, -299.578 )
 
 [node name="ColorfulStar90" parent="Collectables" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48547, -11.8518, -294.892 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48547, -11.8518, -299.578 )
 
 [node name="ColorfulStar91" parent="Collectables" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.87591, -12.9575, -299.46 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.29804, -12.9575, -301.949 )
 
 [node name="ColorfulStar92" parent="Collectables" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.87591, -8.68851, -299.46 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.29804, -8.68851, -301.949 )
 
 [node name="ColorfulStar93" parent="Collectables" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6028, -8.47607, -304.959 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0249, -8.47607, -307.448 )
 
 [node name="ColorfulStar94" parent="Collectables" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6028, -4.2071, -304.959 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0249, -4.2071, -307.448 )
 
 [node name="ColorfulStar95" parent="Collectables" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5963, -5.57633, -296.89 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0184, -5.57633, -299.379 )
 
 [node name="ColorfulStar96" parent="Collectables" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5963, -1.30737, -296.89 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0184, -1.30737, -299.379 )
 
 [node name="ColorfulStar97" parent="Collectables" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4105, -1.44641, -289.896 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8326, -1.44641, -292.385 )
 
 [node name="ColorfulStar98" parent="Collectables" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4105, 2.82255, -289.896 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8326, 2.82255, -292.385 )
 
 [node name="ColorfulStar99" parent="Collectables" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8467, 3.06681, -282.326 )
@@ -620,6 +620,8 @@ margin_bottom = 119.0
 mouse_filter = 2
 
 [node name="CollectedStarsInfo" parent="HUD" instance=ExtResource( 15 )]
+margin_left = 821.0
+margin_right = 1021.0
 
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]
 [connection signal="body_entered" from="PortalTrigger" to="." method="_on_PortalTrigger_body_entered"]

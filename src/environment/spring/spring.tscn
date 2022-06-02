@@ -9,11 +9,13 @@ radius = 2.5
 height = 0.5
 
 [sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 1, 0, 0.447059, 1 )
 
 [sub_resource type="CylinderMesh" id=3]
 material = SubResource( 2 )
 top_radius = 2.5
 bottom_radius = 2.5
+height = 2.5
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 5, 2.5, 5 )
@@ -25,7 +27,7 @@ script = ExtResource( 2 )
 collision_layer = 2
 
 [node name="ShrinkLimitCollision" type="CollisionShape" parent="HardShrinkLimitBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.746217, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00019, 0 )
 shape = SubResource( 1 )
 
 [node name="SpringTrigger" type="Area" parent="."]
@@ -40,11 +42,10 @@ shape = SubResource( 1 )
 mesh = SubResource( 3 )
 material/0 = null
 collision_layer = 2
-parent_collision_ignore = NodePath("..")
-total_mass = 20.0
-linear_stiffness = 1.0
-pressure_coefficient = 10.0
-pose_matching_coefficient = 0.5
+simulation_precision = 9
+linear_stiffness = 0.1
+areaAngular_stiffness = 0.1
+volume_stiffness = 0.1
 script = ExtResource( 1 )
 
 [node name="BounceSoundEffect" type="AudioStreamPlayer" parent="."]
