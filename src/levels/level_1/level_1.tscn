@@ -46,7 +46,7 @@ extents = Vector3( 2.5, 2.5, 0.1 )
 script = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -92.8278, 2.73754, -109.351 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
 
 [node name="PPOutlinesCamera" type="Camera" parent="Player"]
 transform = Transform( 0.686231, -0.243767, 0.685321, -0.437283, 0.614654, 0.656494, -0.581267, -0.750186, 0.315199, 4.54974, 15.9972, 9.50401 )
@@ -94,6 +94,173 @@ material/0 = SubResource( 7 )
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 volume_db = -20.0
+
+[node name="Interactables" type="Spatial" parent="."]
+
+[node name="MovingPlatform1Button" parent="Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8201, 2.12989, -28.3489 )
+
+[node name="MovingPlatform1" parent="Interactables" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.0716, 1.15362, -25.6687 )
+
+[node name="SecretePassage1Button" parent="Interactables" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -123.15, 2.12989, -95.3299 )
+can_deactivate = false
+
+[node name="SecretPassagePlatform1" parent="Interactables" instance=ExtResource( 17 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -120.32, 1.0095, -89.0329 )
+
+[node name="ColorfulStar84" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -7.60777 )
+visible = false
+
+[node name="ColorfulStar85" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -7.60777 )
+visible = false
+
+[node name="ColorfulStar86" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -7.60777 )
+visible = false
+
+[node name="ColorfulStar87" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -7.60777 )
+visible = false
+
+[node name="ColorfulStar88" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -4.60777 )
+visible = false
+
+[node name="ColorfulStar89" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -4.60777 )
+visible = false
+
+[node name="ColorfulStar90" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -4.60777 )
+visible = false
+
+[node name="ColorfulStar91" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -4.60777 )
+visible = false
+
+[node name="ColorfulStar92" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -1.60777 )
+visible = false
+
+[node name="ColorfulStar93" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -1.60777 )
+visible = false
+
+[node name="ColorfulStar94" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -1.60777 )
+visible = false
+
+[node name="ColorfulStar95" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -1.60777 )
+visible = false
+
+[node name="ColorfulStar96" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 1.39223 )
+visible = false
+
+[node name="ColorfulStar97" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 1.39223 )
+visible = false
+
+[node name="ColorfulStar98" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 1.39223 )
+visible = false
+
+[node name="ColorfulStar99" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 1.39223 )
+visible = false
+
+[node name="ColorfulStar100" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 4.39223 )
+visible = false
+
+[node name="ColorfulStar101" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 4.39223 )
+visible = false
+
+[node name="ColorfulStar102" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 4.39223 )
+visible = false
+
+[node name="ColorfulStar103" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 4.39223 )
+visible = false
+
+[node name="ColorfulStar104" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 7.39223 )
+visible = false
+
+[node name="ColorfulStar105" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 7.39223 )
+visible = false
+
+[node name="ColorfulStar106" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 7.39223 )
+visible = false
+
+[node name="ColorfulStar107" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 7.39223 )
+visible = false
+
+[node name="StaticPlatforms" type="Spatial" parent="."]
+
+[node name="Platform" parent="StaticPlatforms" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -27.9754, -25.6723, -283.046 )
+
+[node name="Platform2" parent="StaticPlatforms" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -17.0284, -22.3732, -290.906 )
+
+[node name="Platform3" parent="StaticPlatforms" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -4.77099, -18.5628, -294.897 )
+
+[node name="Platform4" parent="StaticPlatforms" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 3.84436, -15.412, -299.463 )
+
+[node name="Platform5" parent="StaticPlatforms" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 12.9839, -10.9007, -304.863 )
+
+[node name="Platform6" parent="StaticPlatforms" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 19.4529, -8.06237, -296.955 )
+
+[node name="Platform7" parent="StaticPlatforms" instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 26.4941, -3.82698, -289.839 )
+
+[node name="Platform8" type="KinematicBody" parent="StaticPlatforms"]
+transform = Transform( -2.36042e-07, 5.4, -2.36042e-07, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 15.6883, 0.766208, -282.425 )
+collision_layer = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Mesh" type="MeshInstance" parent="StaticPlatforms/Platform8"]
+transform = Transform( 1, 0, 0, 0, 1, 1.3027e-15, -2.4869e-14, 1.3027e-15, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../../..")
+material/0 = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticPlatforms/Platform8"]
+shape = SubResource( 4 )
+
+[node name="Platform9" type="KinematicBody" parent="StaticPlatforms"]
+transform = Transform( -1, 1.19209e-07, -2.98023e-08, 2.98023e-08, -4.37114e-08, -1, 2.08616e-07, -5.4, 2.36042e-07, -0.31172, 0.766208, -293.425 )
+collision_layer = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Mesh" type="MeshInstance" parent="StaticPlatforms/Platform9"]
+transform = Transform( 1, 0, 3.56454e-14, 0, 1, 0, -3.56148e-14, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../../../..")
+material/0 = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticPlatforms/Platform9"]
+transform = Transform( 1, 0, 4.27508e-14, 0, 1, 0, -4.27202e-14, 0, 1, 0, 0, 0 )
+shape = SubResource( 4 )
 
 [node name="Springs" type="Spatial" parent="."]
 
@@ -420,173 +587,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.218, 3.6993, 27.2259 )
 [node name="ColorfulStar84" parent="Collectables" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.218, 3.6993, 27.2259 )
 
-[node name="MovingPlatform1Button" parent="." instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8201, 2.12989, -28.3489 )
-
-[node name="SecretePassage1Button" parent="." instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -123.15, 2.12989, -95.3299 )
-can_deactivate = false
-
-[node name="SecretPassagePlatform1" parent="." instance=ExtResource( 17 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -120.32, 1.0095, -89.0329 )
-
-[node name="ColorfulStar84" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -7.60777 )
-visible = false
-
-[node name="ColorfulStar85" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -7.60777 )
-visible = false
-
-[node name="ColorfulStar86" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -7.60777 )
-visible = false
-
-[node name="ColorfulStar87" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -7.60777 )
-visible = false
-
-[node name="ColorfulStar88" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -4.60777 )
-visible = false
-
-[node name="ColorfulStar89" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -4.60777 )
-visible = false
-
-[node name="ColorfulStar90" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -4.60777 )
-visible = false
-
-[node name="ColorfulStar91" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -4.60777 )
-visible = false
-
-[node name="ColorfulStar92" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -1.60777 )
-visible = false
-
-[node name="ColorfulStar93" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -1.60777 )
-visible = false
-
-[node name="ColorfulStar94" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -1.60777 )
-visible = false
-
-[node name="ColorfulStar95" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -1.60777 )
-visible = false
-
-[node name="ColorfulStar96" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 1.39223 )
-visible = false
-
-[node name="ColorfulStar97" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 1.39223 )
-visible = false
-
-[node name="ColorfulStar98" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 1.39223 )
-visible = false
-
-[node name="ColorfulStar99" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 1.39223 )
-visible = false
-
-[node name="ColorfulStar100" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 4.39223 )
-visible = false
-
-[node name="ColorfulStar101" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 4.39223 )
-visible = false
-
-[node name="ColorfulStar102" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 4.39223 )
-visible = false
-
-[node name="ColorfulStar103" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 4.39223 )
-visible = false
-
-[node name="ColorfulStar104" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 7.39223 )
-visible = false
-
-[node name="ColorfulStar105" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 7.39223 )
-visible = false
-
-[node name="ColorfulStar106" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 7.39223 )
-visible = false
-
-[node name="ColorfulStar107" parent="SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 7.39223 )
-visible = false
-
-[node name="Platforms" type="Spatial" parent="."]
-
-[node name="MovingPlatform1" parent="Platforms" instance=ExtResource( 4 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.0716, 1.15362, -25.6687 )
-
-[node name="Static" type="Spatial" parent="Platforms"]
-
-[node name="Platform" parent="Platforms/Static" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -27.9754, -25.6723, -283.046 )
-
-[node name="Platform2" parent="Platforms/Static" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -17.0284, -22.3732, -290.906 )
-
-[node name="Platform3" parent="Platforms/Static" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, -4.77099, -18.5628, -294.897 )
-
-[node name="Platform4" parent="Platforms/Static" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 3.84436, -15.412, -299.463 )
-
-[node name="Platform5" parent="Platforms/Static" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 12.9839, -10.9007, -304.863 )
-
-[node name="Platform6" parent="Platforms/Static" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 19.4529, -8.06237, -296.955 )
-
-[node name="Platform7" parent="Platforms/Static" instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, -4.37114e-08, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 26.4941, -3.82698, -289.839 )
-
-[node name="Platform8" type="KinematicBody" parent="Platforms/Static"]
-transform = Transform( -2.36042e-07, 5.4, -2.36042e-07, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 15.6883, 0.766208, -282.425 )
-collision_layer = 2
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Mesh" type="MeshInstance" parent="Platforms/Static/Platform8"]
-transform = Transform( 1, 0, 0, 0, 1, 1.3027e-15, -2.4869e-14, 1.3027e-15, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
-skeleton = NodePath("../../../../..")
-material/0 = SubResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Platforms/Static/Platform8"]
-shape = SubResource( 4 )
-
-[node name="Platform9" type="KinematicBody" parent="Platforms/Static"]
-transform = Transform( -1, 1.19209e-07, -2.98023e-08, 2.98023e-08, -4.37114e-08, -1, 2.08616e-07, -5.4, 2.36042e-07, -0.31172, 0.766208, -293.425 )
-collision_layer = 2
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Mesh" type="MeshInstance" parent="Platforms/Static/Platform9"]
-transform = Transform( 1, 0, 3.56454e-14, 0, 1, 0, -3.56148e-14, 0, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
-skeleton = NodePath("../../../../..")
-material/0 = SubResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Platforms/Static/Platform9"]
-transform = Transform( 1, 0, 4.27508e-14, 0, 1, 0, -4.27202e-14, 0, 1, 0, 0, 0 )
-shape = SubResource( 4 )
-
 [node name="Grounds" type="Spatial" parent="."]
 
 [node name="Ground" parent="Grounds" instance=ExtResource( 1 )]
@@ -614,12 +614,8 @@ margin_bottom = 119.0
 mouse_filter = 2
 
 [node name="CollectedStarsInfo" parent="HUD" instance=ExtResource( 15 )]
-margin_left = 821.0
-margin_top = -80.0
-margin_right = 1021.0
-margin_bottom = 0.0
 
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]
 [connection signal="body_entered" from="PortalTrigger" to="." method="_on_PortalTrigger_body_entered"]
-[connection signal="on_button_pressed" from="MovingPlatform1Button" to="." method="_on_MovingPlatform1_button_pressed"]
-[connection signal="on_button_pressed" from="SecretePassage1Button" to="." method="_on_SecretePassage1Button_on_button_pressed"]
+[connection signal="on_button_pressed" from="Interactables/MovingPlatform1Button" to="." method="_on_MovingPlatform1_button_pressed"]
+[connection signal="on_button_pressed" from="Interactables/SecretePassage1Button" to="." method="_on_SecretePassage1Button_on_button_pressed"]

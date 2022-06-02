@@ -1,12 +1,13 @@
 extends Spatial
 
-onready var player := $Player
-onready var win_game_screen := $Screens/WinGameScreen
-onready var game_over_screen := $Screens/GameOverScreen
-onready var music: AudioStreamPlayer = $Music
-onready var moving_platform_1: Spatial = $Platforms/MovingPlatform1
-onready var secret_passage_platform_1: KinematicBody = $SecretPassagePlatform1
+onready var player : Player = $Player
+onready var win_game_screen : CanvasLayer = $Screens/WinGameScreen
+onready var game_over_screen : CanvasLayer= $Screens/GameOverScreen
+onready var music : AudioStreamPlayer = $Music
+onready var moving_platform_1 : Spatial = $Interactables/MovingPlatform1
+onready var secret_passage_platform_1 : KinematicBody = $Interactables/SecretPassagePlatform1
 
+var has_activate_secret_passage_1 = false
 
 func _ready():
 	if OS.has_feature("standalone"):
@@ -40,13 +41,15 @@ func _on_DyingTrigger_body_entered(body: Player):
 
 
 
-func _on_MovingPlatform1_button_pressed(is_active: bool):
-	if is_active:
+func _on_MovingPlatform1_button_pressed(activate: bool):
+	if activate:
 		moving_platform_1.start_moving()
 	else:
 		moving_platform_1.stop_moving()
 
 
-func _on_SecretePassage1Button_on_button_pressed(is_active: bool):
-	if is_active:
-		secret_passage_platform_1.fade_in()
+func _on_SecretePassage1Button_on_button_pressed(activate: bool):
+	if activate && !has_activate_secret_passage_1:
+		secret_passage_platform_1.start_cinematics()
+		has_activate_secret_passage_1 = true
+		

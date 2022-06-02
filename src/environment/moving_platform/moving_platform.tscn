@@ -79,6 +79,7 @@ remote_path = NodePath("../../../KinematicBody")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Path")
+playback_process_mode = 0
 playback_speed = 0.5
 anims/RESET = SubResource( 4 )
 anims/move = SubResource( 3 )
