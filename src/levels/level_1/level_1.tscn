@@ -268,7 +268,13 @@ shape = SubResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0297318, -27.877, -224.964 )
 
 [node name="Spring3" parent="Springs" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.841, -148.167 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2928, -12.841, -148.167 )
+
+[node name="Spring5" parent="Springs" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1984, -18.3751, -184.66 )
+
+[node name="Spring4" parent="Springs" instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.9166, -1.05013, -143.274 )
 
 [node name="Collectables" type="Spatial" parent="."]
 
