@@ -614,7 +614,9 @@ margin_bottom = 119.0
 mouse_filter = 2
 
 [node name="CollectedStarsInfo" parent="HUD" instance=ExtResource( 15 )]
+margin_left = 821.0
 margin_top = -80.0
+margin_right = 1021.0
 margin_bottom = 0.0
 
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]

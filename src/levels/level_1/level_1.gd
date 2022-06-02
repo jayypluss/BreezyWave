@@ -10,7 +10,7 @@ onready var secret_passage_platform_1: KinematicBody = $SecretPassagePlatform1
 
 func _ready():
 	if OS.has_feature("standalone"):
-		player.transform.origin = Vector3.ZERO
+		player.transform.origin = Vector3(0,3,0)
 		music.play()
 	else:
 		print('entering !standalone if on level_1.gd s _ready()')
