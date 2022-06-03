@@ -8,7 +8,7 @@ var ready_to_higher_jump = false
 
 
 func _physics_process(delta):
-	if Input.is_action_pressed("jump") && is_inside_higher_jump_availability_area:
+	if is_inside_higher_jump_availability_area && Input.is_action_pressed("jump"):
 		ready_to_higher_jump = true
 
 func _on_Trigger_body_entered(body):

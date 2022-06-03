@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 onready var hidable := $Hidable
-onready var main_menu := $Hidable/MainMenu
 
 
 func togle_visible(visible: bool = !hidable.visible):
