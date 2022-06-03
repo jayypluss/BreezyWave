@@ -265,10 +265,10 @@ shape = SubResource( 4 )
 [node name="Springs" type="Spatial" parent="."]
 
 [node name="Spring2" parent="Springs" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0297318, -26.736, -224.964 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0297318, -27.7477, -224.964 )
 
 [node name="Spring3" parent="Springs" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2928, -11.7, -148.167 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2928, -12.7117, -148.167 )
 
 [node name="Spring5" parent="Springs" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1984, -17.2341, -184.66 )
@@ -620,8 +620,6 @@ margin_bottom = 119.0
 mouse_filter = 2
 
 [node name="CollectedStarsInfo" parent="HUD" instance=ExtResource( 15 )]
-margin_left = 821.0
-margin_right = 1021.0
 
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]
 [connection signal="body_entered" from="PortalTrigger" to="." method="_on_PortalTrigger_body_entered"]
