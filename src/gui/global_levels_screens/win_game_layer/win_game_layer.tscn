@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://src/gui/win_game_layer/win_game_layer.gd" type="Script" id=1]
+[ext_resource path="res://src/gui/global_levels_screens/win_game_layer/win_game_layer.gd" type="Script" id=1]
 [ext_resource path="res://assets/ui-theme.tres" type="Theme" id=3]
 
 [node name="WinGameLayer" type="CanvasLayer"]

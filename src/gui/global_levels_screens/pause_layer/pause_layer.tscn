@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://src/gui/pause_layer/pause_layer.gd" type="Script" id=2]
+[ext_resource path="res://src/gui/global_levels_screens/pause_layer/pause_layer.gd" type="Script" id=2]
 [ext_resource path="res://assets/ui-theme.tres" type="Theme" id=3]
 [ext_resource path="res://assets/pause_button.png" type="Texture" id=4]
 

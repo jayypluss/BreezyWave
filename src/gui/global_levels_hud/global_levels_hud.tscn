@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/gui/collected_stars_info/collected_stars_info.gd" type="Script" id=1]
+[ext_resource path="res://src/gui/collected_stars_info/collected_stars_info.tscn" type="PackedScene" id=2]
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+margin_bottom = 119.0
+mouse_filter = 2
+
+[node name="CollectedStarsInfo" type="Control" parent="." groups=["update_on_star_collect"] instance=ExtResource( 2 )]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = 821.0
+margin_top = -80.0
+margin_right = 1021.0
+grow_horizontal = 0
+rect_min_size = Vector2( 200, 80 )
+script = ExtResource( 1 )

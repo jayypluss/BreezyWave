@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/ui-theme.tres" type="Theme" id=1]
-[ext_resource path="res://src/gui/game_over_screen/game_over_screen.gd" type="Script" id=2]
+[ext_resource path="res://src/gui/global_levels_screens/game_over_screen/game_over_screen.gd" type="Script" id=2]
 
 [node name="GameOverScreen" type="CanvasLayer"]
 pause_mode = 2
