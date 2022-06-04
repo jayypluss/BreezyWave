@@ -1,13 +1,15 @@
 extends CanvasLayer
 
-onready var pause := $Hidable
+onready var hidable := $Hidable
 onready var pause_button := $Hidable/PauseButton
 onready var resume_option := $Hidable/VBoxOptions/ResumeButton
 onready var main_menu_option := $Hidable/VBoxOptions/MainMenuButton
 onready var label := $Hidable/InfoLabel
+export var hidden: bool
 
 
 func _ready():
+	hidable.visible = false
 	if OS.has_touchscreen_ui_hint():
 		label.visible = false
 	else:
@@ -24,9 +26,8 @@ func _exit_tree() -> void:
 
 func _unhandled_input(event):
 	if event.is_action_pressed("pause"):
-		if get_tree().paused:
+		if hidable.visible:
 			resume()
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		else:
 			pause_game()
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -34,15 +35,16 @@ func _unhandled_input(event):
 
 
 func resume():
-	get_tree().paused = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	pause.hide()
+	if !GameState.is_showing_tutorial_step:
+		get_tree().paused = false
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	hidable.hide()
 
 
 func pause_game():
+	hidable.show()
 	resume_option.grab_focus()
 	get_tree().paused = true
-	pause.show()
 
 
 func _on_Resume_pressed():

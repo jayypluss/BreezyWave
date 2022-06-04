@@ -1,10 +1,13 @@
 extends CanvasLayer
 
-onready var parent_layer := $Hidable
+onready var hidable := $Hidable
 onready var next_level_button := $Hidable/VBoxOptions/NextLevel
 onready var main_menu := $Hidable/VBoxOptions/MainMenu
 onready var level_win_text := $Hidable/Label
 
+
+func _ready():
+	hidable.visible = false
 
 func _exit_tree() -> void:
 	toggle_paused(true)
@@ -36,8 +39,8 @@ func show():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true
 
-func togle_visible(visible: bool = !parent_layer.visible):
-	parent_layer.visible = visible
+func togle_visible(visible: bool = !hidable.visible):
+	hidable.visible = visible
 
 func toggle_paused(paused: bool = !get_tree().paused):
 	get_tree().paused = paused

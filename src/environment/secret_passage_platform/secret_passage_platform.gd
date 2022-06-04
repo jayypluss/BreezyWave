@@ -1,6 +1,5 @@
 extends KinematicBody
 
-onready var mesh: MeshInstance = $Mesh
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 onready var animation_player2: AnimationPlayer = $AnimationPlayer2
 onready var cinematic_animation_player: AnimationPlayer = $CinematicAnimation

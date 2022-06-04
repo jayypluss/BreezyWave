@@ -1,5 +1,7 @@
 extends Node
 
+var tutorial_steps: Array
+var is_showing_tutorial_step: bool = false
 var colorful_stars_collected: Dictionary = {}
 var remaining_lives: int
 

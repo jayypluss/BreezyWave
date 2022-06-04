@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/environment/ground/ground.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/player/player.tscn" type="PackedScene" id=2]
@@ -9,12 +9,15 @@
 [ext_resource path="res://assets/shaders/random_glitches.shader" type="Shader" id=7]
 [ext_resource path="res://src/levels/level_1/level_1.gd" type="Script" id=8]
 [ext_resource path="res://src/gui/global_levels_hud/global_levels_hud.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/ui-theme.tres" type="Theme" id=10]
 [ext_resource path="res://src/levels/level_1/level_1.tres" type="Environment" id=11]
 [ext_resource path="res://src/environment/spring/spring.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/music/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg" type="AudioStream" id=13]
 [ext_resource path="res://src/environment/collectables/colorful_star/colorful_star.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/game/tutorial/tutorial.gd" type="Script" id=15]
 [ext_resource path="res://src/environment/pedestal_button/pedestal_button.tscn" type="PackedScene" id=16]
 [ext_resource path="res://src/environment/secret_passage_platform/secret_passage_platform.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/game/tutorial/triggers/tutorial_trigger.tscn" type="PackedScene" id=18]
 
 [sub_resource type="BoxShape" id=1]
 
@@ -44,7 +47,7 @@ extents = Vector3( 2.5, 2.5, 0.1 )
 script = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -296.545 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 6 )
 
 [node name="PPOutlinesCamera" type="Camera" parent="Player"]
 transform = Transform( 0.686231, -0.243767, 0.685321, -0.437283, 0.614654, 0.656494, -0.581267, -0.750186, 0.315199, 4.54974, 15.9972, 9.50401 )
@@ -608,7 +611,63 @@ transform = Transform( 1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -93.548, 0, -12
 
 [node name="GlobalLevelsHud" parent="." instance=ExtResource( 9 )]
 
+[node name="Tutorial" type="CanvasLayer" parent="."]
+
+[node name="TutorialControl" type="Control" parent="Tutorial"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+script = ExtResource( 15 )
+
+[node name="Step" type="PopupDialog" parent="Tutorial/TutorialControl"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -279.0
+margin_top = 40.0
+margin_right = 279.0
+margin_bottom = 323.0
+theme = ExtResource( 10 )
+popup_exclusive = true
+
+[node name="Button" type="Button" parent="Tutorial/TutorialControl/Step"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -51.5
+margin_top = -74.0
+margin_right = 52.5
+margin_bottom = -24.0
+text = "OK"
+
+[node name="Label" type="Label" parent="Tutorial/TutorialControl/Step"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -181.0
+margin_top = 17.0
+margin_right = 183.0
+margin_bottom = 171.0
+text = "W, A, S, D: Walking
+SPACE: Jumping
+SHIFT: Sprinting"
+align = 1
+valign = 1
+
+[node name="TutorialTriggers" type="Spatial" parent="Tutorial"]
+
+[node name="Step0" parent="Tutorial/TutorialTriggers" instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32573, 0 )
+collision_layer = 2
+
+[node name="Step1" parent="Tutorial/TutorialTriggers" instance=ExtResource( 18 )]
+transform = Transform( 3, 0, 0, 0, 1, 0, 0, 0, 3, 30.2344, 1.32573, -24.7292 )
+collision_layer = 2
+
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]
 [connection signal="body_entered" from="PortalTrigger" to="." method="_on_PortalTrigger_body_entered"]
 [connection signal="on_button_pressed" from="Interactables/MovingPlatform1Button" to="." method="_on_MovingPlatform1_button_pressed"]
 [connection signal="on_button_pressed" from="Interactables/SecretePassage1Button" to="." method="_on_SecretePassage1Button_on_button_pressed"]
+[connection signal="pressed" from="Tutorial/TutorialControl/Step/Button" to="Tutorial/TutorialControl" method="_on_Button_pressed"]
+[connection signal="custom_body_entered" from="Tutorial/TutorialTriggers/Step0" to="Tutorial/TutorialControl" method="_on_Step_body_entered"]
+[connection signal="custom_body_entered" from="Tutorial/TutorialTriggers/Step1" to="Tutorial/TutorialControl" method="_on_Step_body_entered"]

@@ -8,6 +8,6 @@
 
 [node name="PauseScreen" parent="." instance=ExtResource( 5 )]
 
-[node name="WinGameScreen" parent="." instance=ExtResource( 4 )]
-
 [node name="GameOverScreen" parent="." instance=ExtResource( 6 )]
+
+[node name="WinGameScreen" parent="." instance=ExtResource( 4 )]
