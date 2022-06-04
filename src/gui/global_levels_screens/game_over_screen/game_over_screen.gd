@@ -13,7 +13,7 @@ func _on_RestartLevel_pressed():
 	get_tree().paused = false
 	togle_visible(false)
 #	Game.restart_scene()
-	Game.change_scene("res://src/gui/menu/menu.tscn", {
+	Game.change_scene("res://src/levels/level_1/level_1.tscn", {
 		'show_progress_bar': false
 	})
 

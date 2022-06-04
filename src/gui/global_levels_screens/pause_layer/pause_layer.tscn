@@ -20,49 +20,52 @@ __meta__ = {
 [node name="Background" type="ColorRect" parent="Hidable"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.243137, 0.211765, 0.290196, 0.717647 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color( 0.25098, 0.0901961, 0.494118, 0.717647 )
 
 [node name="VBoxOptions" type="VBoxContainer" parent="Hidable"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -80.5
-margin_top = -100.0
-margin_right = 80.5
-margin_bottom = 100.0
+margin_left = -132.0
+margin_top = -118.0
+margin_right = 132.0
+margin_bottom = 118.0
 custom_constants/separation = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
+alignment = 1
 
-[node name="ResumeButton" type="LinkButton" parent="Hidable/VBoxOptions"]
-margin_right = 161.0
-margin_bottom = 34.0
-focus_mode = 2
-text = "RESUME"
+[node name="ResumeButton" type="Button" parent="Hidable/VBoxOptions"]
+margin_top = 74.0
+margin_right = 264.0
+margin_bottom = 108.0
+focus_neighbour_top = NodePath("../MainMenuButton")
+focus_neighbour_bottom = NodePath("../MainMenuButton")
+focus_next = NodePath("../MainMenuButton")
+focus_previous = NodePath("../MainMenuButton")
+text = "Resume"
 
-[node name="MainMenuButton" type="LinkButton" parent="Hidable/VBoxOptions"]
-margin_top = 54.0
-margin_right = 161.0
-margin_bottom = 88.0
-focus_mode = 2
-text = "MAIN MENU"
+[node name="MainMenuButton" type="Button" parent="Hidable/VBoxOptions"]
+margin_top = 128.0
+margin_right = 264.0
+margin_bottom = 162.0
+focus_neighbour_top = NodePath("../ResumeButton")
+focus_neighbour_bottom = NodePath("../ResumeButton")
+focus_next = NodePath("../ResumeButton")
+focus_previous = NodePath("../ResumeButton")
+text = "Main Menu"
 
 [node name="InfoLabel" type="Label" parent="Hidable"]
-visible = false
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -244.5
-margin_top = 24.0
-margin_right = 284.5
-margin_bottom = 58.0
+margin_left = -142.0
+margin_top = 93.0
+margin_right = 142.0
+margin_bottom = 169.0
 theme = ExtResource( 3 )
 custom_colors/font_color = Color( 0.788235, 0.788235, 0.788235, 1 )
-text = "Pause: ESC (keyboard) or START button (joypad)"
+text = "Game Paused"
+align = 1
+valign = 1
 
 [node name="PauseButton" type="TextureButton" parent="Hidable"]
 visible = false

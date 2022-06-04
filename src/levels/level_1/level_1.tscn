@@ -44,7 +44,7 @@ extents = Vector3( 2.5, 2.5, 0.1 )
 script = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -131.679 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
 
 [node name="PPOutlinesCamera" type="Camera" parent="Player"]
 transform = Transform( 0.686231, -0.243767, 0.685321, -0.437283, 0.614654, 0.656494, -0.581267, -0.750186, 0.315199, 4.54974, 15.9972, 9.50401 )

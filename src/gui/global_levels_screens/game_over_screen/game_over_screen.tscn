@@ -11,6 +11,7 @@ script = ExtResource( 2 )
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -22,46 +23,39 @@ margin_left = 1.0
 margin_top = 1.0
 margin_right = 1.0
 margin_bottom = 1.0
-color = Color( 0.243137, 0.211765, 0.290196, 0.717647 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color( 0.25098, 0.0901961, 0.494118, 0.717647 )
 
 [node name="VBoxOptions" type="VBoxContainer" parent="Hidable"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -132.0
-margin_top = -68.0
-margin_right = 132.0
-margin_bottom = 68.0
+margin_left = -130.0
+margin_top = -116.0
+margin_right = 134.0
+margin_bottom = 120.0
 custom_constants/separation = 20
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="RestartLevel" type="LinkButton" parent="Hidable/VBoxOptions"]
-visible = false
-margin_left = 90.0
-margin_top = 44.0
-margin_right = 173.0
-margin_bottom = 58.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
+[node name="RestartLevel" type="Button" parent="Hidable/VBoxOptions"]
+margin_top = 74.0
+margin_right = 264.0
+margin_bottom = 108.0
+focus_neighbour_top = NodePath("../MainMenu")
+focus_neighbour_bottom = NodePath("../MainMenu")
+focus_next = NodePath("../MainMenu")
+focus_previous = NodePath("../MainMenu")
 text = "Restart Level"
-underline = 1
 
-[node name="MainMenu" type="LinkButton" parent="Hidable/VBoxOptions"]
-margin_left = 88.0
-margin_top = 78.0
-margin_right = 175.0
-margin_bottom = 92.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Back to Menu"
-underline = 1
+[node name="MainMenu" type="Button" parent="Hidable/VBoxOptions"]
+margin_top = 128.0
+margin_right = 264.0
+margin_bottom = 162.0
+focus_neighbour_top = NodePath("../RestartLevel")
+focus_neighbour_bottom = NodePath("../RestartLevel")
+focus_next = NodePath("../RestartLevel")
+focus_previous = NodePath("../RestartLevel")
+text = "Main Menu"
 
 [node name="Label" type="Label" parent="Hidable"]
 anchor_left = 0.5
@@ -72,11 +66,12 @@ margin_right = 244.5
 margin_bottom = 211.0
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 0.788235, 0.788235, 0.788235, 1 )
-text = "You died."
+text = "Game Over"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="Hidable/VBoxOptions/RestartLevel" to="." method="_on_RestartLevel_pressed"]
 [connection signal="pressed" from="Hidable/VBoxOptions/MainMenu" to="." method="_on_MainMenu_pressed"]

@@ -1,8 +1,8 @@
 extends Spatial
 
 onready var player : Player = $Player
-onready var win_game_screen : CanvasLayer = $Screens/WinGameScreen
-onready var game_over_screen : CanvasLayer= $Screens/GameOverScreen
+onready var win_game_screen : CanvasLayer = $GlobalLevelsScreens/WinGameScreen
+onready var game_over_screen : CanvasLayer= $GlobalLevelsScreens/GameOverScreen
 onready var music : AudioStreamPlayer = $Music
 onready var moving_platform_1 : Spatial = $Interactables/MovingPlatform1
 onready var secret_passage_platform_1 : KinematicBody = $Interactables/SecretPassagePlatform1
