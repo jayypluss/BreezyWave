@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://src/levels/level_1/soft_body.gd" type="Script" id=1]
+[ext_resource path="res://src/environment/spring/soft_body.gd" type="Script" id=1]
 [ext_resource path="res://src/environment/spring/spring.gd" type="Script" id=2]
 [ext_resource path="res://assets/sounds/effects/bounce/bounce_01.ogg" type="AudioStream" id=3]
 

@@ -6,6 +6,10 @@ var remaining_lives: int
 func _ready():
 	restore()
 
+func get_next_level(last_level: String):
+	return "res://src/levels/level_2/level_2.tscn"
+
+
 func persist():
 	var save_game = File.new()
 	save_game.open("user://savegame.save", File.WRITE)

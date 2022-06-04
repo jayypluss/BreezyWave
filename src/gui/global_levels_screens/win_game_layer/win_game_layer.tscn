@@ -8,7 +8,6 @@ pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="Hidable" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 3 )
@@ -61,15 +60,16 @@ text = "Main Menu"
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -244.5
-margin_top = 75.0
+margin_top = 47.0
 margin_right = 244.5
-margin_bottom = 220.0
+margin_bottom = 229.0
 theme = ExtResource( 3 )
 custom_colors/font_color = Color( 0.788235, 0.788235, 0.788235, 1 )
 text = "YOU WIN this level!
 Awesome!!
 But actually this is it (for now)
-Next Level is comming soon"
+Next Level is comming soon
+(beware of unfinished level ahead)"
 align = 1
 valign = 1
 
