@@ -17,6 +17,6 @@ Currently protype game made on [Godot Engine](https://github.com/godotengine/god
 
 #### **Where are the settings stored?**
 
-* Windows: `%APPDATA%/Godot/app_userdata/BreezyWave/settings.cfg`
-* Linux: `~/.local/share/godot/app_userdata/BreezyWave/settings.cfg`
-* Mac: `~/Library/Application Support/Godot/app_userdata/BreezyWave/settings.cfg`
+* Windows: `%APPDATA%/Godot/app_userdata/Breezy\ Wave/settings.cfg`
+* Linux: `~/.local/share/godot/app_userdata/Breezy\ Wave/settings.cfg`
+* Mac: `~/Library/Application Support/Godot/app_userdata/Breezy\ Wave/settings.cfg`
