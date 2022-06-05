@@ -1,12 +1,14 @@
 extends Control
 
+
 onready var step: PopupDialog = $Step
 onready var step_label: Label = $Step/Label
 
 var tutorial_texts = [
 	"W, A, S, D: Walking \nSPACE: Jumping \nSHIFT: Sprinting", 
 	"E: Interact",
-	"This is a jumping \nspring, jump on it!"
+	"This is a jumping \nspring, jump on it!",
+	"Hold SPACE for \nHigher Jumps"
 ]
 
 

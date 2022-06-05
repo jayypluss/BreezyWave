@@ -1,5 +1,7 @@
 extends Spatial
 
+# This level has 156 stars	
+
 onready var player : Player = $Player
 onready var win_game_screen : CanvasLayer = $GlobalLevelsScreens/WinGameScreen
 onready var game_over_screen : CanvasLayer= $GlobalLevelsScreens/GameOverScreen
