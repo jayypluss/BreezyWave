@@ -1,9 +1,11 @@
 extends Node
 
-var tutorial_steps: Array
+var tutorial_steps: Array = []
 var is_showing_tutorial_step: bool = false
 var colorful_stars_collected: Dictionary = {}
-var remaining_lives: int
+var remaining_lives: int = 0
+var levels: Array = []
+var current_level_name: String = ""
 
 func _ready():
 	restore()

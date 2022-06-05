@@ -7,7 +7,10 @@
 [node name="GlobalLevelsScreens" type="Node"]
 
 [node name="PauseScreen" parent="." instance=ExtResource( 5 )]
+layer = 2
 
 [node name="GameOverScreen" parent="." instance=ExtResource( 6 )]
+layer = 3
 
 [node name="WinGameScreen" parent="." instance=ExtResource( 4 )]
+layer = 3

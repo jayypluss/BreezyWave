@@ -6,9 +6,7 @@
 
 [node name="PauseScreen" type="CanvasLayer"]
 pause_mode = 2
-layer = 4
 script = ExtResource( 2 )
-hidden = true
 
 [node name="Hidable" type="Control" parent="."]
 visible = false
@@ -34,6 +32,7 @@ custom_constants/separation = 20
 alignment = 1
 
 [node name="ResumeButton" type="Button" parent="Hidable/VBoxOptions"]
+pause_mode = 2
 margin_top = 74.0
 margin_right = 264.0
 margin_bottom = 108.0
@@ -44,6 +43,7 @@ focus_previous = NodePath("../MainMenuButton")
 text = "Resume"
 
 [node name="MainMenuButton" type="Button" parent="Hidable/VBoxOptions"]
+pause_mode = 2
 margin_top = 128.0
 margin_right = 264.0
 margin_bottom = 162.0

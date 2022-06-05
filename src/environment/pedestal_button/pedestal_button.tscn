@@ -2,10 +2,10 @@
 
 [ext_resource path="res://src/environment/pedestal_button/pedestal_button.gd" type="Script" id=1]
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=11]
 
 [sub_resource type="CylinderMesh" id=1]
-material = SubResource( 2 )
+material = SubResource( 11 )
 top_radius = 0.4
 bottom_radius = 0.4
 

@@ -5,7 +5,6 @@ onready var pause_button := $Hidable/PauseButton
 onready var resume_option := $Hidable/VBoxOptions/ResumeButton
 onready var main_menu_option := $Hidable/VBoxOptions/MainMenuButton
 onready var label := $Hidable/InfoLabel
-export var hidden: bool
 
 
 func _ready():
@@ -30,21 +29,25 @@ func _unhandled_input(event):
 			resume()
 		else:
 			pause_game()
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_tree().set_input_as_handled()
 
 
 func resume():
-	if !GameState.is_showing_tutorial_step:
-		get_tree().paused = false
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	unpause_game()
+#	if !GameState.is_showing_tutorial_step:
 	hidable.hide()
 
 
 func pause_game():
 	hidable.show()
 	resume_option.grab_focus()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true
+
+func unpause_game():
+	hidable.hide()
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func _on_Resume_pressed():

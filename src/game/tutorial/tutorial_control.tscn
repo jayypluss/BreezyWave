@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/ui-theme.tres" type="Theme" id=1]
+[ext_resource path="res://src/game/tutorial/tutorial_control.gd" type="Script" id=2]
+
+[node name="TutorialControl" type="Control"]
+anchor_bottom = 1.0
+margin_right = 299.0
+mouse_filter = 2
+script = ExtResource( 2 )
+
+[node name="Step" type="PopupDialog" parent="."]
+visible = true
+modulate = Color( 1, 1, 1, 0.752941 )
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 30.0
+margin_top = -25.0
+margin_right = 297.0
+margin_bottom = 253.0
+rect_min_size = Vector2( 240, 214 )
+size_flags_vertical = 2
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Step"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -112.0
+margin_top = 27.0
+margin_right = 112.0
+margin_bottom = 178.0
+size_flags_vertical = 1
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="Step"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -42.5
+margin_top = -70.0
+margin_right = 42.5
+margin_bottom = -15.0
+rect_min_size = Vector2( 85, 55 )
+focus_mode = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Ok (E)"
+
+[node name="Triggers" type="Spatial" parent="."]
