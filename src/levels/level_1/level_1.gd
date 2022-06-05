@@ -9,6 +9,7 @@ onready var secret_passage_platform_1 : KinematicBody = $Interactables/SecretPas
 
 var has_activate_secret_passage_1 = false
 
+
 func _ready():
 	GameState.current_level_name = self.name
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

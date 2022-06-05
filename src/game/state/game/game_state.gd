@@ -10,7 +10,7 @@ var current_level_name: String = ""
 func _ready():
 	restore()
 
-func get_next_level(last_level: String):
+func get_next_level(_last_level: String):
 	return "res://src/levels/level_2/level_2.tscn"
 
 

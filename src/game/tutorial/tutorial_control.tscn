@@ -5,7 +5,7 @@
 
 [node name="TutorialControl" type="Control"]
 anchor_bottom = 1.0
-margin_right = 299.0
+margin_right = 316.0
 mouse_filter = 2
 script = ExtResource( 2 )
 

@@ -1,58 +1,142 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://src/environment/spring/soft_body.gd" type="Script" id=1]
 [ext_resource path="res://src/environment/spring/spring.gd" type="Script" id=2]
 [ext_resource path="res://assets/sounds/effects/bounce/bounce_01.ogg" type="AudioStream" id=3]
+
+[sub_resource type="CylinderMesh" id=12]
+resource_local_to_scene = true
+top_radius = 2.5
+bottom_radius = 2.5
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 1, 0, 0.447059, 1 )
+
+[sub_resource type="CylinderShape" id=9]
+radius = 2.5
+height = 1.0
 
 [sub_resource type="CylinderShape" id=1]
 radius = 2.5
 height = 0.5
 
-[sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 1, 0, 0.447059, 1 )
-
-[sub_resource type="CylinderMesh" id=3]
-material = SubResource( 2 )
-top_radius = 2.5
-bottom_radius = 2.5
-height = 2.5
-
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 5, 2.5, 5 )
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("KinematicBody/MeshInstance:mesh:top_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2.5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("KinematicBody/MeshInstance:mesh:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("KinematicBody/MeshInstance:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "shrink_and_expand"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("KinematicBody/MeshInstance:mesh:top_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0396161, 0.0966694, 0.15536, 0.216534, 0.287002, 0.343333 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 2.5, 2.15, 3.0, 2.25, 2.6, 2.4, 2.5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("KinematicBody/MeshInstance:mesh:height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0396155, 0.0967336, 0.155354, 0.216574, 0.2869, 0.343427 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 2.0, 1.5, 2.2, 1.9, 2.05, 1.95, 2.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("KinematicBody/MeshInstance:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.0396484, 0.0966753, 0.1554, 0.216742, 0.287064, 0.343348 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -0.257743, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, -0.0501888, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, -0.029, 0 ), Vector3( 0, 0, 0 ) ]
+}
 
 [node name="Spring" type="Spatial"]
 script = ExtResource( 2 )
 
-[node name="HardShrinkLimitBody" type="StaticBody" parent="."]
+[node name="KinematicBody" type="KinematicBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.254197, 0 )
 collision_layer = 2
 
-[node name="ShrinkLimitCollision" type="CollisionShape" parent="HardShrinkLimitBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00019, 0 )
-shape = SubResource( 1 )
+[node name="MeshInstance" type="MeshInstance" parent="KinematicBody"]
+mesh = SubResource( 12 )
+material/0 = SubResource( 8 )
+
+[node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.503008, 0 )
+shape = SubResource( 9 )
 
 [node name="SpringTrigger" type="Area" parent="."]
 collision_layer = 2
-collision_mask = 3
 
 [node name="SpringTriggerCollision" type="CollisionShape" parent="SpringTrigger"]
 transform = Transform( 0.992537, 0, 0, 0, 0.992537, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 1 )
 
-[node name="SoftBody" type="SoftBody" parent="."]
-mesh = SubResource( 3 )
-material/0 = null
+[node name="HigherJumpAvailabilityArea" type="Area" parent="."]
 collision_layer = 2
-script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="HigherJumpAvailabilityArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+shape = SubResource( 4 )
 
 [node name="BounceSoundEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -25.0
 
-[node name="HigherJumpAvailabilityArea" type="Area" parent="."]
-
-[node name="CollisionShape" type="CollisionShape" parent="HigherJumpAvailabilityArea"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
-shape = SubResource( 4 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 11 )
+anims/shrink_and_expand = SubResource( 10 )
 
 [connection signal="body_entered" from="SpringTrigger" to="." method="_on_Trigger_body_entered"]
 [connection signal="body_shape_entered" from="HigherJumpAvailabilityArea" to="." method="_on_HigherJumpAvailabilityArea_body_shape_entered"]

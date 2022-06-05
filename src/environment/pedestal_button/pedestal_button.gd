@@ -11,7 +11,7 @@ var is_active = false
 signal on_button_pressed(is_active)
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.is_action_just_pressed("interact") && is_instance_valid(player):
 		if can_deactivate:
 			if (!is_active): 
@@ -31,5 +31,5 @@ func _physics_process(delta):
 func _on_PedestalButton_body_entered(body: Player):
 	player = body
 
-func _on_PedestalButton_body_exited(body):
+func _on_PedestalButton_body_exited(_body):
 	player = null

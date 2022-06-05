@@ -25,7 +25,7 @@ func process(delta: float) -> void:
 	)
 
 	var look_direction := get_look_direction()
-	var move_direction := get_move_direction()
+#	var move_direction := get_move_direction()
 
 	if _input_relative.length() > 0:
 		update_rotation(_input_relative * sensitivity_mouse * delta)
@@ -33,12 +33,11 @@ func process(delta: float) -> void:
 	elif look_direction.length() > 0:
 		update_rotation(look_direction * sensitivity_gamepad * delta)
 
-	var is_moving_towards_camera: bool = (
-		move_direction.x >= -deadzone
-		and move_direction.x <= deadzone
-	)
-	
 #	Removed this to try and enhance Camera
+#	var is_moving_towards_camera: bool = (
+#		move_direction.x >= -deadzone
+#		and move_direction.x <= deadzone
+#	)
 #	if not (is_moving_towards_camera or _is_aiming):
 #		auto_rotate(move_direction)
 

@@ -24,7 +24,7 @@ func _on_Player_entered_area(_player: Player, area: Area):
 	show_next_step(tutorial_text_index)
 	GameState.tutorial_steps.append(tutorial_text_index)
 
-func _on_Player_exited_area(_player: Player, area: Area):
+func _on_Player_exited_area(_player: Player, _area: Area):
 	hide_popup()
 	
 func hide_popup():
