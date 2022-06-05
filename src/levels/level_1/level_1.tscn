@@ -33,20 +33,20 @@ shader_param/wave_scale = 8.454
 shader_param/random_scale = 4.6
 shader_param/noise_scale = 0.03
 
-[sub_resource type="CubeMesh" id=2]
+[sub_resource type="CubeMesh" id=11]
 size = Vector3( 5, 5, 0.2 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=12]
 albedo_color = Color( 0, 0.509804, 0.956863, 1 )
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape" id=13]
 extents = Vector3( 2.5, 2.5, 0.1 )
 
 [node name="Level1" type="Spatial"]
 script = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4636, 3, -147.851 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3685, 3, -120.025 )
 
 [node name="PPOutlinesCamera" type="Camera" parent="Player"]
 transform = Transform( 0.686231, -0.243767, 0.685321, -0.437283, 0.614654, 0.656494, -0.581267, -0.750186, 0.315199, 4.54974, 15.9972, 9.50401 )
@@ -238,12 +238,12 @@ __meta__ = {
 
 [node name="Mesh" type="MeshInstance" parent="StaticPlatforms/Platform8"]
 transform = Transform( 1, 0, 0, 0, 1, 1.3027e-15, -2.4869e-14, 1.3027e-15, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 11 )
 skeleton = NodePath("../../../..")
-material/0 = SubResource( 3 )
+material/0 = SubResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticPlatforms/Platform8"]
-shape = SubResource( 4 )
+shape = SubResource( 13 )
 
 [node name="Platform9" type="KinematicBody" parent="StaticPlatforms"]
 transform = Transform( -1, 1.19209e-07, -2.98023e-08, 2.98023e-08, -4.37114e-08, -1, 2.08616e-07, -5.4, 2.36042e-07, -0.31172, 0.766208, -293.425 )
@@ -254,13 +254,13 @@ __meta__ = {
 
 [node name="Mesh" type="MeshInstance" parent="StaticPlatforms/Platform9"]
 transform = Transform( 1, 0, 3.56454e-14, 0, 1, 0, -3.56148e-14, 0, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 11 )
 skeleton = NodePath("../../../..")
-material/0 = SubResource( 3 )
+material/0 = SubResource( 12 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticPlatforms/Platform9"]
 transform = Transform( 1, 0, 4.27508e-14, 0, 1, 0, -4.27202e-14, 0, 1, 0, 0, 0 )
-shape = SubResource( 4 )
+shape = SubResource( 13 )
 
 [node name="Springs" type="Spatial" parent="."]
 

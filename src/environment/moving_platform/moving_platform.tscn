@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/environment/moving_platform/moving_platform.gd" type="Script" id=2]
 
-[sub_resource type="CubeMesh" id=1]
+[sub_resource type="CubeMesh" id=8]
 size = Vector3( 10, 0.2, 10 )
 
 [sub_resource type="SpatialMaterial" id=2]
@@ -32,7 +32,24 @@ tracks/0/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=9]
+length = 7.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PathFollow:unit_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 3, 3.5, 6.5, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.5, 0.5, 0.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "move_up"
 length = 7.0
 loop = true
 tracks/0/type = "value"
@@ -56,7 +73,7 @@ transform = Transform( 1, 0, 0, 0, 1, 1.3027e-15, 0, 1.3027e-15, 1, -0.00133783,
 collision_layer = 2
 
 [node name="Mesh" type="MeshInstance" parent="KinematicBody"]
-mesh = SubResource( 1 )
+mesh = SubResource( 8 )
 skeleton = NodePath("../../..")
 material/0 = SubResource( 2 )
 
@@ -80,4 +97,5 @@ root_node = NodePath("../Path")
 playback_process_mode = 0
 playback_speed = 0.5
 anims/RESET = SubResource( 4 )
-anims/move = SubResource( 6 )
+anims/move = SubResource( 9 )
+anims/move_up = SubResource( 10 )

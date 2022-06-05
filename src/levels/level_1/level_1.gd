@@ -5,6 +5,7 @@ onready var win_game_screen : CanvasLayer = $GlobalLevelsScreens/WinGameScreen
 onready var game_over_screen : CanvasLayer= $GlobalLevelsScreens/GameOverScreen
 onready var music : AudioStreamPlayer = $Music
 onready var moving_platform_1 : Spatial = $Interactables/MovingPlatform1
+onready var moving_platform_2 : Spatial = $Interactables/MovingPlatformAbs
 onready var secret_passage_platform_1 : KinematicBody = $Interactables/SecretPassagePlatform1
 
 var has_activate_secret_passage_1 = false
@@ -56,3 +57,11 @@ func _on_SecretePassage1Button_on_button_pressed(activate: bool):
 		secret_passage_platform_1.start_cinematics()
 		has_activate_secret_passage_1 = true
 		
+
+
+func _on_MovingPlatform1Button2_on_button_pressed(activate: bool):
+	if activate:
+		moving_platform_2.move()
+	else:
+		moving_platform_2.stop_moving()
+
