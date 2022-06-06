@@ -25,9 +25,9 @@ func _exit_tree() -> void:
 
 func _unhandled_input(event):
 	if event.is_action_pressed("pause"):
-		if hidable.visible:
+		if hidable.visible and is_paused():
 			resume()
-		else:
+		elif !is_paused():
 			pause_game()
 		get_tree().set_input_as_handled()
 
@@ -37,6 +37,9 @@ func resume():
 #	if !GameState.is_showing_tutorial_step:
 	hidable.hide()
 
+
+func is_paused():
+	return get_tree().paused
 
 func pause_game():
 	hidable.show()
