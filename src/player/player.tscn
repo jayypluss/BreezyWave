@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/player/player.gd" type="Script" id=1]
 [ext_resource path="res://src/camera/camera_rig.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://src/player/states/move.gd" type="Script" id=5]
 [ext_resource path="res://src/player/states/air.gd" type="Script" id=6]
 [ext_resource path="res://src/player/states/idle.gd" type="Script" id=7]
+[ext_resource path="res://assets/2d/on_screen_controls/Sprites/transparentDark09.png" type="Texture" id=8]
+[ext_resource path="res://assets/2d/on_screen_controls/Sprites/transparentDark07.png" type="Texture" id=9]
 
 [sub_resource type="CapsuleMesh" id=1]
 
@@ -55,9 +57,6 @@ shape = SubResource( 5 )
 [node name="InterpolatedCamera" parent="CameraRig" index="0"]
 far = 600.0
 
-[node name="SpringArm" parent="CameraRig" index="1"]
-spring_length = 21.0
-
 [node name="Camera" parent="CameraRig/StateMachine" index="0"]
 is_y_inverted = true
 
@@ -87,6 +86,16 @@ transform = Transform( 1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0.06
 editor_only = true
 
 [node name="LastPositionTimer" type="Timer" parent="."]
+
+[node name="LeftTouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2( 89, 390 )
+normal = ExtResource( 9 )
+visibility_mode = 1
+
+[node name="RightTouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2( 763, 390 )
+normal = ExtResource( 8 )
+visibility_mode = 1
 
 [connection signal="timeout" from="LastPositionTimer" to="." method="_on_LastPositionTimer_timeout"]
 

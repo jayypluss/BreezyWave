@@ -75,6 +75,7 @@ shape = SubResource( 1 )
 
 [node name="PortalTrigger" type="Area" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344, 5.39477, -306.761 )
+visible = false
 collision_layer = 2
 __meta__ = {
 "_edit_group_": true
@@ -97,16 +98,20 @@ volume_db = -20.0
 
 [node name="MovingPlatform1Button" parent="Interactables" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8201, 2.12989, -28.3489 )
+visible = false
 
 [node name="MovingPlatform1" parent="Interactables" instance=ExtResource( 4 )]
 transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 34.5807, 0.950626, -23.9323 )
+visible = false
 
 [node name="SecretePassage1Button" parent="Interactables" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -123.15, 2.12989, -95.3299 )
+visible = false
 can_deactivate = false
 
 [node name="SecretPassagePlatform1" parent="Interactables" instance=ExtResource( 17 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -120.32, 1.0095, -89.0329 )
+visible = false
 
 [node name="ColorfulStar84" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -7.60777 )
@@ -208,9 +213,11 @@ visible = false
 
 [node name="Platform" parent="StaticPlatforms" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.9754, -25.6723, -287.732 )
+visible = false
 
 [node name="Platform8" type="KinematicBody" parent="StaticPlatforms"]
 transform = Transform( -2.36042e-07, 5.4, -2.36042e-07, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 15.6883, 0.766208, -282.425 )
+visible = false
 collision_layer = 2
 __meta__ = {
 "_edit_group_": true
@@ -229,11 +236,13 @@ shape = SubResource( 4 )
 
 [node name="Spring2" parent="Springs" instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0297318, -27.7477, -224.964 )
+visible = false
 
 [node name="Collectables" type="Spatial" parent="."]
 
 [node name="ColorfulStar" parent="Collectables" instance=ExtResource( 14 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.5214, -11.306, -130.314 )
+visible = false
 
 [node name="Grounds" type="Spatial" parent="."]
 

@@ -12,17 +12,17 @@ onready var last_position_timer = $LastPositionTimer
 var last_floor_position: Vector3
 
 func _ready():
-	last_position_timer.start()
+    last_position_timer.start()
 
 func _get_configuration_warning() -> String:
-	return "Missing camera node" if not camera else ""
+    return "Missing camera node" if not camera else ""
 
 func die():
-	if translation: 
-		translation = last_floor_position
+    if translation: 
+        translation = last_floor_position
 
 func _on_LastPositionTimer_timeout():
-	if is_on_floor() && get_last_slide_collision().collider is StaticBody:
-			last_floor_position = translation
+    if is_on_floor() && get_last_slide_collision().collider is StaticBody:
+            last_floor_position = translation
 
-	last_position_timer.start()
+    last_position_timer.start()

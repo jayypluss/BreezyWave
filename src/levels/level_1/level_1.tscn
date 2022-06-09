@@ -725,7 +725,7 @@ mouse_filter = 1
 transform = Transform( 0.6645, 0, 0.747288, 0, 1, 0, -0.747288, 0, 0.6645, -3.75387, 2.33517, -8.31338 )
 
 [node name="Step1" parent="TutorialControl/Triggers" index="1" instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4953, 2.09418, -28.1547 )
+transform = Transform( 0.762318, 0, 0.647202, 0, 1, 0, -0.647202, 0, 0.762318, 18.2948, 2.09418, -26.9939 )
 
 [node name="Step2" parent="TutorialControl/Triggers" index="2" instance=ExtResource( 15 )]
 transform = Transform( 0.0711149, 0, 0.997468, 0, 1, 0, -0.997468, 0, 0.0711149, -23.8925, -12.7491, -135.661 )
