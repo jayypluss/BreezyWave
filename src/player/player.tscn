@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/player/player.gd" type="Script" id=1]
 [ext_resource path="res://src/camera/camera_rig.tscn" type="PackedScene" id=2]
@@ -7,8 +7,7 @@
 [ext_resource path="res://src/player/states/move.gd" type="Script" id=5]
 [ext_resource path="res://src/player/states/air.gd" type="Script" id=6]
 [ext_resource path="res://src/player/states/idle.gd" type="Script" id=7]
-[ext_resource path="res://assets/2d/on_screen_controls/Sprites/transparentDark09.png" type="Texture" id=8]
-[ext_resource path="res://assets/2d/on_screen_controls/Sprites/transparentDark07.png" type="Texture" id=9]
+[ext_resource path="res://src/gui/mobile_joystick/mobile_joystick.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CapsuleMesh" id=1]
 
@@ -87,16 +86,9 @@ editor_only = true
 
 [node name="LastPositionTimer" type="Timer" parent="."]
 
-[node name="LeftTouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2( 89, 390 )
-normal = ExtResource( 9 )
-visibility_mode = 1
-
-[node name="RightTouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2( 763, 390 )
-normal = ExtResource( 8 )
-visibility_mode = 1
+[node name="MobileJoystick" parent="." instance=ExtResource( 11 )]
 
 [connection signal="timeout" from="LastPositionTimer" to="." method="_on_LastPositionTimer_timeout"]
+[connection signal="use_move_vector" from="MobileJoystick" to="CameraRig/StateMachine/Camera" method="_on_MobileJoystick_use_move_vector"]
 
 [editable path="CameraRig"]

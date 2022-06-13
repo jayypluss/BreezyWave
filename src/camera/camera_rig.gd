@@ -19,17 +19,17 @@ onready var _position_start: Vector3 = translation
 
 
 func _ready() -> void:
-	set_as_toplevel(true)
-	yield(owner, "ready")
-	player = owner
+    set_as_toplevel(true)
+    yield(owner, "ready")
+    player = owner
 
 
 func _get_configuration_warning() -> String:
-	return "Missing player node" if not player else ""
+    return "Missing player node" if not player else ""
 
 
 func set_zoom(value: float) -> void:
-	zoom = clamp(value, 0.0, 1.0)
-	if not spring_arm:
-		yield(spring_arm, "ready")
-	spring_arm.zoom = zoom
+    zoom = clamp(value, 0.0, 1.0)
+    if not spring_arm:
+        yield(spring_arm, "ready")
+    spring_arm.zoom = zoom

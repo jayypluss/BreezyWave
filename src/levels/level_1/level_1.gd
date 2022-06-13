@@ -15,7 +15,7 @@ var has_activate_secret_passage_1 = false
 
 func _ready():
     GameState.current_level_name = self.name
-    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+    #Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     if OS.has_feature("standalone"):
         player.transform.origin = Vector3(0,3,0)
         music.play()
@@ -32,12 +32,14 @@ func _on_PortalTrigger_body_entered(_body : KinematicBody):
 func _input(event: InputEvent) -> void:
     if event.is_action_pressed("click"):
         if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
-            Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+            pass
+            #Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
     if event.is_action_pressed("toggle_mouse_captured"):
         if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
             Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
         else:
-            Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+            pass
+            #Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
         get_tree().set_input_as_handled()
 
 

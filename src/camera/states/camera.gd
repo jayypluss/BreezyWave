@@ -19,19 +19,19 @@ var _is_aiming := false
 
 
 func process(delta: float) -> void:
-	camera_rig.global_transform.origin = (
-		camera_rig.player.global_transform.origin
-		+ camera_rig._position_start
-	)
+    camera_rig.global_transform.origin = (
+        camera_rig.player.global_transform.origin
+        + camera_rig._position_start
+    )
 
-	var look_direction := get_look_direction()
+    var look_direction := get_look_direction()
 #	var move_direction := get_move_direction()
 
-	if _input_relative.length() > 0:
-		update_rotation(_input_relative * sensitivity_mouse * delta)
-		_input_relative = Vector2.ZERO
-	elif look_direction.length() > 0:
-		update_rotation(look_direction * sensitivity_gamepad * delta)
+    if _input_relative.length() > 0:
+        update_rotation(_input_relative * sensitivity_mouse * delta)
+        _input_relative = Vector2.ZERO
+    elif look_direction.length() > 0:
+        update_rotation(look_direction * sensitivity_gamepad * delta)
 
 #	Removed this to try and enhance Camera
 #	var is_moving_towards_camera: bool = (
@@ -41,43 +41,83 @@ func process(delta: float) -> void:
 #	if not (is_moving_towards_camera or _is_aiming):
 #		auto_rotate(move_direction)
 
-	camera_rig.rotation.y = wrapf(camera_rig.rotation.y, -PI, PI)
+    camera_rig.rotation.y = wrapf(camera_rig.rotation.y, -PI, PI)
 
 
 func auto_rotate(_move_direction: Vector3) -> void:
-	var offset: float = camera_rig.player.rotation.y - camera_rig.rotation.y
-	var target_angle: float = (
-		camera_rig.player.rotation.y - 2 * PI
-		if offset > PI
-		else camera_rig.player.rotation.y + 2 * PI if offset < -PI else camera_rig.player.rotation.y
-	)
-	camera_rig.rotation.y = lerp(camera_rig.rotation.y, target_angle, 0.015)
+    var offset: float = camera_rig.player.rotation.y - camera_rig.rotation.y
+    var target_angle: float = (
+        camera_rig.player.rotation.y - 2 * PI
+        if offset > PI
+        else camera_rig.player.rotation.y + 2 * PI if offset < -PI else camera_rig.player.rotation.y
+    )
+    camera_rig.rotation.y = lerp(camera_rig.rotation.y, target_angle, 0.015)
 
 
 func unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("zoom_in"):
-		camera_rig.zoom += ZOOM_STEP
-	elif event.is_action_pressed("zoom_out"):
-		camera_rig.zoom -= ZOOM_STEP
-	elif event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		_input_relative += event.get_relative()
+    if event.is_action_pressed("zoom_in"):
+        camera_rig.zoom += ZOOM_STEP
+    elif event.is_action_pressed("zoom_out"):
+        camera_rig.zoom -= ZOOM_STEP
+    elif event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+        _input_relative += event.get_relative()
 
 
 func update_rotation(offset: Vector2) -> void:
-	camera_rig.rotation.y -= offset.x
-	camera_rig.rotation.x += offset.y * -1.0 if is_y_inverted else offset.y
-	camera_rig.rotation.x = clamp(camera_rig.rotation.x, ANGLE_X_MIN, ANGLE_X_MAX)
-	camera_rig.rotation.z = 0
+    camera_rig.rotation.y -= offset.x
+    camera_rig.rotation.x += offset.y * -1.0 if is_y_inverted else offset.y
+    camera_rig.rotation.x = clamp(camera_rig.rotation.x, ANGLE_X_MIN, ANGLE_X_MAX)
+    camera_rig.rotation.z = 0
 
 
 # Returns the direction of the camera movement from the player
 static func get_look_direction() -> Vector2:
-	return Vector2(Input.get_action_strength("look_right") - Input.get_action_strength("look_left"), Input.get_action_strength("look_up") - Input.get_action_strength("look_down")).normalized()
+    return Vector2(Input.get_action_strength("look_right") - Input.get_action_strength("look_left"), Input.get_action_strength("look_up") - Input.get_action_strength("look_down")).normalized()
 
 # Returns the move direction of the character controlled by the player
 static func get_move_direction() -> Vector3:
-	return Vector3(
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		0,
-		Input.get_action_strength("move_back") - Input.get_action_strength("move_front")
-	)
+    return Vector3(
+        Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+        0,
+        Input.get_action_strength("move_back") - Input.get_action_strength("move_front")
+    )
+
+func _on_MobileJoystick_use_move_vector(move_vector: Vector2):
+    
+    if move_vector.x > 0.2:
+        Input.action_press("look_right", move_vector.x)
+    else:
+        Input.action_release("look_right") 
+    
+    if move_vector.x < -0.2:
+        Input.action_press("look_left", -move_vector.x)
+    else:
+        Input.action_release("look_left") 
+    
+    if move_vector.y > 0.2:
+        Input.action_press("look_up", move_vector.y)
+    else:
+        Input.action_release("look_up") 
+    
+    if move_vector.y < -0.2:
+        Input.action_press("look_down", move_vector.y)
+    else:
+        Input.action_release("look_down") 
+    
+    
+    print(move_vector)
+#    if move_vector.x == 0:
+#        Input.action_release("look_left")
+#        Input.action_release("look_right")
+#    if move_vector.y == 0:
+#        Input.action_release("look_up")
+#        Input.action_release("look_down")
+#    if move_vector.x > 0:
+#        Input.action_press("look_right", move_vector.x)
+#    elif move_vector.x < 0:
+#        Input.action_press("look_left", -move_vector.x)
+#    if move_vector.y < 0:
+#        Input.action_press("look_down", -move_vector.y)
+#    elif move_vector.y > 0:
+#        Input.action_press("look_up", move_vector.y)    
+#    pass
