@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://src/gui/collected_stars_info/collected_stars_info.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/gui/global_levels_screens/pause_layer/pause_layer.gd" type="Script" id=2]
 [ext_resource path="res://assets/ui-theme.tres" type="Theme" id=3]
 [ext_resource path="res://assets/pause_button.png" type="Texture" id=4]
@@ -76,6 +77,11 @@ texture_normal = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CollectedStarsInfo" parent="Hidable" instance=ExtResource( 1 )]
+margin_left = 821.0
+margin_right = 1021.0
+is_timer_on = false
 
 [connection signal="pressed" from="Hidable/VBoxOptions/ResumeButton" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="Hidable/VBoxOptions/MainMenuButton" to="." method="_on_Main_Menu_pressed"]

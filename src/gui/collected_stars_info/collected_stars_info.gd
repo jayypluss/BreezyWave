@@ -6,10 +6,15 @@ onready var counter_label : Label = $HBoxContainer/Counter
 onready var animation_player : AnimationPlayer = $AnimationPlayer
 onready var timer : Timer = $Timer
 
+export var is_timer_on : bool = true
+export var visible_from_start : bool = true
+
 var is_star_counter_showing : bool = false
 
 
 func _ready():
+	if visible_from_start:
+		show_hud()
 	update_label()
 	
 func _physics_process(delta):
@@ -25,7 +30,7 @@ func update_label():
 	counter_label.text = str(stars_collected)
 
 func _on_Timer_timeout():
-	if is_star_counter_showing:
+	if is_timer_on && is_star_counter_showing:
 		animation_player.play("hide")
 		is_star_counter_showing = false
 
@@ -34,4 +39,5 @@ func show_hud():
 		animation_player.play("show")
 		is_star_counter_showing = true
 		
-	timer.start()
+	if is_timer_on:
+		timer.start()

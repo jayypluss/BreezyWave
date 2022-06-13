@@ -148,6 +148,6 @@ anims/hide = SubResource( 11 )
 anims/show = SubResource( 9 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 4.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

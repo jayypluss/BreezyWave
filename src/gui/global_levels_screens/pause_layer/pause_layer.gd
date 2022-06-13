@@ -43,6 +43,7 @@ func is_paused():
 
 func pause_game():
 	hidable.show()
+	#$Hidable/CollectedStarsInfo.show_hud()
 	resume_option.grab_focus()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true
