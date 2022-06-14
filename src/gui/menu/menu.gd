@@ -21,8 +21,8 @@ func _ready():
 		
 	if !OS.has_feature("standalone"):
 		print('entering !standalone if on menu.gd s _ready()')
-		yield(get_tree().create_timer(0.5), "timeout")
-		Game.change_scene("res://src/levels/level_1/level_1.tscn", { show_progress_bar = true })
+#		yield(get_tree().create_timer(0.5), "timeout")
+#		Game.change_scene("res://src/levels/level_1/level_1.tscn", { show_progress_bar = true })
 
 
 
@@ -55,5 +55,9 @@ func _on_ExitButton_pressed() -> void:
 	get_tree().quit()
 
 
+func _on_SettingsButton_pressed():
+	$SettingsScreen.toggle_visible(true)
+
+
 func _on_CreditsButton_pressed():
-	$CreditsScreen.togle_visible(true)
+	$CreditsScreen.toggle_visible(true)

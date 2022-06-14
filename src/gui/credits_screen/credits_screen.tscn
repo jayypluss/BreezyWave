@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/ui-theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/gui/credits_screen/credits_screen.gd" type="Script" id=2]
+[ext_resource path="res://src/gui/components/cancel_button.tscn" type="PackedScene" id=3]
 
 [node name="CreditsScreen" type="CanvasLayer"]
 pause_mode = 2
@@ -17,15 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.243137, 0.211765, 0.290196, 0.831373 )
 
-[node name="MainMenuButton" type="Button" parent="Hidable"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -105.0
-margin_top = 45.0
-margin_right = -57.0
-margin_bottom = 90.0
-theme = ExtResource( 1 )
-text = "X"
+[node name="CancelButton" parent="Hidable" instance=ExtResource( 3 )]
 
 [node name="Credits" type="Label" parent="Hidable"]
 anchor_left = 0.5
@@ -56,4 +49,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="Hidable/MainMenuButton" to="." method="_on_MainMenu_pressed"]
+[connection signal="pressed" from="Hidable/CancelButton" to="." method="_on_CancelButton_pressed"]
