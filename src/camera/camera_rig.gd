@@ -11,7 +11,7 @@ signal aim_fired(target_position)
 @onready var aim_ray: RayCast3D = $Camera3D/AimRay
 @onready var aim_target: Sprite3D = $AimTarget
 
-var player: CharacterBody3D
+@onready var player: CharacterBody3D = $Player
 
 var zoom := 0.5 : set = set_zoom
 
@@ -24,8 +24,8 @@ func _ready() -> void:
 	player = owner
 
 
-func _get_configuration_warnings() -> String:
-	return "Missing player node" if not player else ""
+func _get_configuration_warnings() -> PackedStringArray:
+	return  PackedStringArray(["Missing player node"]) if not player else PackedStringArray([""])
 
 
 func set_zoom(value: float) -> void:

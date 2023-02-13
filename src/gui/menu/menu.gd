@@ -19,10 +19,10 @@ func _ready():
 	if OS.has_feature("standalone"):
 		$Music.play()
 		
-	if !OS.has_feature("standalone"):
-		print('entering !standalone if checked menu.gd s _ready()')
-		await get_tree().create_timer(0.5).timeout
-		Game.change_scene_to_file("res://src/levels/level_1/level_1.tscn", { show_progress_bar = true })
+#	if !OS.has_feature("standalone"):
+#		print('entering !standalone if checked menu.gd s _ready()')
+#		await get_tree().create_timer(0.5).timeout
+#		Game.change_scene_to_file("res://src/levels/level_1/level_1.tscn", { show_progress_bar = true })
 
 
 
