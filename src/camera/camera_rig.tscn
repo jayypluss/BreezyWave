@@ -4,31 +4,31 @@
 [ext_resource path="res://src/camera/aim_target.gd" type="Script" id=2]
 [ext_resource path="res://src/camera/states/default.gd" type="Script" id=3]
 [ext_resource path="res://src/fsm/state_machine.gd" type="Script" id=4]
-[ext_resource path="res://assets/2d/reticle.png" type="Texture" id=5]
+[ext_resource path="res://assets/2d/reticle.png" type="Texture2D" id=5]
 [ext_resource path="res://src/camera/states/camera.gd" type="Script" id=6]
 [ext_resource path="res://src/camera/states/aim.gd" type="Script" id=7]
 [ext_resource path="res://src/camera/spring_arm.gd" type="Script" id=8]
 
-[sub_resource type="CapsuleShape" id=1]
+[sub_resource type="CapsuleShape3D" id=1]
 height = 0.5
 
-[node name="CameraRig" type="Spatial"]
+[node name="CameraRig" type="Node3D"]
 script = ExtResource( 1 )
 
-[node name="InterpolatedCamera" type="InterpolatedCamera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.87462, 0.48481, 0, -0.48481, 0.87462, 0, 0.5, 0.5 )
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 0.87462, 0.48481, 0, -0.48481, 0.87462, 0, 0.5, 0.5 )
 current = true
-target = NodePath("../SpringArm/CameraTarget")
+target = NodePath("../SpringArm3D/CameraTarget")
 speed = 7.0
 enabled = true
 
-[node name="AimRay" type="RayCast" parent="InterpolatedCamera"]
-transform = Transform( 1, 0, 0, 0, 0.999847, 0.0174524, 0, -0.0174524, 0.999847, 0, -0.194905, -0.679715 )
+[node name="AimRay" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D( 1, 0, 0, 0, 0.999847, 0.0174524, 0, -0.0174524, 0.999847, 0, -0.194905, -0.679715 )
 cast_to = Vector3( 0, 0, -20 )
 collision_mask = 2
 
-[node name="SpringArm" type="SpringArm" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.87462, 0.48481, 0, -0.48481, 0.87462, 0, 0.5, 0.5 )
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 0.87462, 0.48481, 0, -0.48481, 0.87462, 0, 0.5, 0.5 )
 collision_mask = 2
 shape = SubResource( 1 )
 spring_length = 21.0
@@ -36,8 +36,8 @@ margin = 0.5
 script = ExtResource( 8 )
 length_range = Vector2( 16, 26 )
 
-[node name="CameraTarget" type="Position3D" parent="SpringArm"]
-transform = Transform( 1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 0 )
+[node name="CameraTarget" type="Marker3D" parent="SpringArm3D"]
+transform = Transform3D( 1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 0 )
 
 [node name="AimTarget" type="Sprite3D" parent="."]
 visible = false
@@ -47,17 +47,17 @@ script = ExtResource( 2 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 4 )
-initial_state = NodePath("../../CameraRig/StateMachine/Camera/Default")
+initial_state = NodePath("../../CameraRig/StateMachine/Camera3D/Default")
 
-[node name="Camera" type="Node" parent="StateMachine"]
+[node name="Camera3D" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
 sensitivity_mouse = Vector2( 0.25, 0.25 )
 
-[node name="Default" type="Node" parent="StateMachine/Camera"]
+[node name="Default" type="Node" parent="StateMachine/Camera3D"]
 script = ExtResource( 3 )
 
-[node name="Aim" type="Node" parent="StateMachine/Camera"]
+[node name="Aim" type="Node" parent="StateMachine/Camera3D"]
 script = ExtResource( 7 )
 offset_camera = Vector3( 0.75, -1, 0 )
 
-[node name="Tween" type="Tween" parent="StateMachine/Camera/Aim"]
+[node name="Tween" type="Tween" parent="StateMachine/Camera3D/Aim"]

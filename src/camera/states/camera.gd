@@ -1,6 +1,6 @@
 extends CameraState
-# Parent state for all camera based states for the Camera. Handles input based on
-# the mouse or the gamepad. The camera's movement depends on the active child state.
+# Parent state for all camera based states for the Camera3D. Handles input based checked
+# the mouse or the gamepad. The camera's movement depends checked the active child state.
 # Holds shared logic between all states that move or rotate the camera.
 
 const ZOOM_STEP := 0.1
@@ -8,11 +8,11 @@ const ZOOM_STEP := 0.1
 const ANGLE_X_MIN := -PI / 4
 const ANGLE_X_MAX := PI / 3
 
-export var is_y_inverted := false
-export var fov_default := 70.0
-export var deadzone := PI / 10
-export var sensitivity_gamepad := Vector2(2.5, 2.5)
-export var sensitivity_mouse := Vector2(0.1, 0.1)
+@export var is_y_inverted := false
+@export var fov_default := 70.0
+@export var deadzone := PI / 10
+@export var sensitivity_gamepad := Vector2(2.5, 2.5)
+@export var sensitivity_mouse := Vector2(0.1, 0.1)
 
 var _input_relative := Vector2.ZERO
 var _is_aiming := false
@@ -33,7 +33,7 @@ func process(delta: float) -> void:
 	elif look_direction.length() > 0:
 		update_rotation(look_direction * sensitivity_gamepad * delta)
 
-#	Removed this to try and enhance Camera
+#	Removed this to try and enhance Camera3D
 #	var is_moving_towards_camera: bool = (
 #		move_direction.x >= -deadzone
 #		and move_direction.x <= deadzone

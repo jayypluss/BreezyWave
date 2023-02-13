@@ -1,0 +1,9 @@
+res://src/gui/menu/menu.tscn
+res://assets/ui-theme.tres
+res://src/gui/menu/menu.gd
+res://addons/game-template/scenes.gd
+res://addons/game-template/transition/transition.gd
+res://addons/game-template/utils.gd
+res://src/game/state/game/game_state.gd
+res://src/gui/credits_screen/credits_screen.gd
+res://addons/game-template/game.gd

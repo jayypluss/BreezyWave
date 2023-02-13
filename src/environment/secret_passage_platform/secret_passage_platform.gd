@@ -1,15 +1,15 @@
-extends KinematicBody
+extends CharacterBody3D
 
-onready var animation_player: AnimationPlayer = $AnimationPlayer
-onready var animation_player2: AnimationPlayer = $AnimationPlayer2
-onready var cinematic_animation_player: AnimationPlayer = $CinematicAnimation
-onready var cinematic_camera: InterpolatedCamera = $Cinematic
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player2: AnimationPlayer = $AnimationPlayer2
+@onready var cinematic_animation_player: AnimationPlayer = $CinematicAnimation
+@onready var cinematic_camera: Camera3D = $Cinematic
 
 var is_showing = false
 var main_camera
 
 func start_cinematics():
-	main_camera = get_viewport().get_camera()
+	main_camera = get_viewport().get_camera_3d()
 	cinematic_camera.make_current()
 	cinematic_animation_player.play("move_camera")
 

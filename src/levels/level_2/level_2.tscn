@@ -6,7 +6,7 @@
 [ext_resource path="res://src/environment/moving_platform/moving_platform.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/jm_pp_outlines/jm_pp_outlines_camera.gd" type="Script" id=5]
 [ext_resource path="res://src/environment/static_platform/static_platform.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/shaders/random_glitches.shader" type="Shader" id=7]
+[ext_resource path="res://assets/shaders/random_glitches.gdshader" type="Shader" id=7]
 [ext_resource path="res://src/levels/level_2/level_2.gd" type="Script" id=8]
 [ext_resource path="res://src/gui/global_levels_hud/global_levels_hud.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/levels/level_2/level_2.tres" type="Environment" id=10]
@@ -16,9 +16,9 @@
 [ext_resource path="res://src/environment/pedestal_button/pedestal_button.tscn" type="PackedScene" id=16]
 [ext_resource path="res://src/environment/secret_passage_platform/secret_passage_platform.tscn" type="PackedScene" id=17]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="BoxShape3D" id=1]
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape3D" id=5]
 extents = Vector3( 0.25, 0.25, 0.25 )
 
 [sub_resource type="PrismMesh" id=6]
@@ -31,23 +31,23 @@ shader_param/wave_scale = 8.454
 shader_param/random_scale = 4.6
 shader_param/noise_scale = 0.03
 
-[sub_resource type="CubeMesh" id=2]
+[sub_resource type="BoxMesh" id=2]
 size = Vector3( 5, 5, 0.2 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="StandardMaterial3D" id=3]
 albedo_color = Color( 0, 0.509804, 0.956863, 1 )
 
-[sub_resource type="BoxShape" id=4]
+[sub_resource type="BoxShape3D" id=4]
 extents = Vector3( 2.5, 2.5, 0.1 )
 
-[node name="Level2" type="Spatial"]
+[node name="Level2" type="Node3D"]
 script = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
 
-[node name="PPOutlinesCamera" type="Camera" parent="Player"]
-transform = Transform( 0.686231, -0.243767, 0.685321, -0.437283, 0.614654, 0.656494, -0.581267, -0.750186, 0.315199, 4.54974, 15.9972, 9.50401 )
+[node name="PPOutlinesCamera" type="Camera3D" parent="Player"]
+transform = Transform3D( 0.686231, -0.243767, 0.685321, -0.437283, 0.614654, 0.656494, -0.581267, -0.750186, 0.315199, 4.54974, 15.9972, 9.50401 )
 cull_mask = 524287
 script = ExtResource( 5 )
 depth_threshold = 1.0
@@ -58,35 +58,35 @@ depth_use_laplace = false
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 10 )
 
-[node name="GlobalLight" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 102.381, -110.774 )
+[node name="GlobalLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 102.381, -110.774 )
 light_energy = 0.9
 shadow_enabled = true
 directional_shadow_bias_split_scale = 0.0
 directional_shadow_max_distance = 300.0
 
-[node name="DyingTrigger" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30069, -205.875 )
+[node name="DyingTrigger" type="Area3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30069, -205.875 )
 collision_layer = 2
 
-[node name="CollisionShape" type="CollisionShape" parent="DyingTrigger"]
-transform = Transform( 896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.372 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DyingTrigger"]
+transform = Transform3D( 896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.372 )
 shape = SubResource( 1 )
 
-[node name="PortalTrigger" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344, 5.39477, -306.761 )
+[node name="PortalTrigger" type="Area3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344, 5.39477, -306.761 )
 visible = false
 collision_layer = 2
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionShape" type="CollisionShape" parent="PortalTrigger"]
-transform = Transform( 22.5913, 0, 0, 0, 18.0731, 0, 0, 0, 1.25507, 0, 0, 0 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PortalTrigger"]
+transform = Transform3D( 22.5913, 0, 0, 0, 18.0731, 0, 0, 0, 1.25507, 0, 0, 0 )
 shape = SubResource( 5 )
 
-[node name="MeshInstance" type="MeshInstance" parent="PortalTrigger"]
-transform = Transform( 5.4, 0, 0, 0, 4.32, 0, 0, 0, 0.3, 0, 0, 0 )
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PortalTrigger"]
+transform = Transform3D( 5.4, 0, 0, 0, 4.32, 0, 0, 0, 0.3, 0, 0, 0 )
 mesh = SubResource( 6 )
 material/0 = SubResource( 7 )
 
@@ -94,157 +94,157 @@ material/0 = SubResource( 7 )
 stream = ExtResource( 13 )
 volume_db = -20.0
 
-[node name="Interactables" type="Spatial" parent="."]
+[node name="Interactables" type="Node3D" parent="."]
 
 [node name="MovingPlatform1Button" parent="Interactables" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8201, 2.12989, -28.3489 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8201, 2.12989, -28.3489 )
 visible = false
 
 [node name="MovingPlatform1" parent="Interactables" instance=ExtResource( 4 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 34.5807, 0.950626, -23.9323 )
+transform = Transform3D( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 34.5807, 0.950626, -23.9323 )
 visible = false
 
 [node name="SecretePassage1Button" parent="Interactables" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -123.15, 2.12989, -95.3299 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -123.15, 2.12989, -95.3299 )
 visible = false
 can_deactivate = false
 
 [node name="SecretPassagePlatform1" parent="Interactables" instance=ExtResource( 17 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -120.32, 1.0095, -89.0329 )
+transform = Transform3D( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -120.32, 1.0095, -89.0329 )
 visible = false
 
 [node name="ColorfulStar84" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -7.60777 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -7.60777 )
 visible = false
 
 [node name="ColorfulStar85" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -7.60777 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -7.60777 )
 visible = false
 
 [node name="ColorfulStar86" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -7.60777 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -7.60777 )
 visible = false
 
 [node name="ColorfulStar87" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -7.60777 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -7.60777 )
 visible = false
 
 [node name="ColorfulStar88" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -4.60777 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -4.60777 )
 visible = false
 
 [node name="ColorfulStar89" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -4.60777 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -4.60777 )
 visible = false
 
 [node name="ColorfulStar90" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -4.60777 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -4.60777 )
 visible = false
 
 [node name="ColorfulStar91" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -4.60777 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -4.60777 )
 visible = false
 
 [node name="ColorfulStar92" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -1.60777 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -1.60777 )
 visible = false
 
 [node name="ColorfulStar93" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -1.60777 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -1.60777 )
 visible = false
 
 [node name="ColorfulStar94" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -1.60777 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -1.60777 )
 visible = false
 
 [node name="ColorfulStar95" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -1.60777 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -1.60777 )
 visible = false
 
 [node name="ColorfulStar96" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 1.39223 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 1.39223 )
 visible = false
 
 [node name="ColorfulStar97" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 1.39223 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 1.39223 )
 visible = false
 
 [node name="ColorfulStar98" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 1.39223 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 1.39223 )
 visible = false
 
 [node name="ColorfulStar99" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 1.39223 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 1.39223 )
 visible = false
 
 [node name="ColorfulStar100" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 4.39223 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 4.39223 )
 visible = false
 
 [node name="ColorfulStar101" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 4.39223 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 4.39223 )
 visible = false
 
 [node name="ColorfulStar102" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 4.39223 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 4.39223 )
 visible = false
 
 [node name="ColorfulStar103" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 4.39223 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 4.39223 )
 visible = false
 
 [node name="ColorfulStar104" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 7.39223 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 7.39223 )
 visible = false
 
 [node name="ColorfulStar105" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 7.39223 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 7.39223 )
 visible = false
 
 [node name="ColorfulStar106" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 7.39223 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 7.39223 )
 visible = false
 
 [node name="ColorfulStar107" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 7.39223 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 7.39223 )
 visible = false
 
-[node name="StaticPlatforms" type="Spatial" parent="."]
+[node name="StaticPlatforms" type="Node3D" parent="."]
 
 [node name="Platform" parent="StaticPlatforms" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.9754, -25.6723, -287.732 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.9754, -25.6723, -287.732 )
 visible = false
 
-[node name="Platform8" type="KinematicBody" parent="StaticPlatforms"]
-transform = Transform( -2.36042e-07, 5.4, -2.36042e-07, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 15.6883, 0.766208, -282.425 )
+[node name="Platform8" type="CharacterBody3D" parent="StaticPlatforms"]
+transform = Transform3D( -2.36042e-07, 5.4, -2.36042e-07, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 15.6883, 0.766208, -282.425 )
 visible = false
 collision_layer = 2
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Mesh" type="MeshInstance" parent="StaticPlatforms/Platform8"]
-transform = Transform( 1, 0, 0, 0, 1, 1.3027e-15, -2.4869e-14, 1.3027e-15, 1, 0, 0, 0 )
+[node name="Mesh" type="MeshInstance3D" parent="StaticPlatforms/Platform8"]
+transform = Transform3D( 1, 0, 0, 0, 1, 1.3027e-15, -2.4869e-14, 1.3027e-15, 1, 0, 0, 0 )
 mesh = SubResource( 2 )
 skeleton = NodePath("../../../..")
 material/0 = SubResource( 3 )
 
-[node name="CollisionShape" type="CollisionShape" parent="StaticPlatforms/Platform8"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticPlatforms/Platform8"]
 shape = SubResource( 4 )
 
-[node name="Springs" type="Spatial" parent="."]
+[node name="Springs" type="Node3D" parent="."]
 
 [node name="Spring2" parent="Springs" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0297318, -27.7477, -224.964 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0297318, -27.7477, -224.964 )
 visible = false
 
-[node name="Collectables" type="Spatial" parent="."]
+[node name="Collectables" type="Node3D" parent="."]
 
 [node name="ColorfulStar" parent="Collectables" instance=ExtResource( 14 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.5214, -11.306, -130.314 )
+transform = Transform3D( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.5214, -11.306, -130.314 )
 visible = false
 
-[node name="Grounds" type="Spatial" parent="."]
+[node name="Grounds" type="Node3D" parent="."]
 
 [node name="Ground" parent="Grounds" instance=ExtResource( 1 )]
 

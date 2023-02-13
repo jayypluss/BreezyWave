@@ -1,10 +1,10 @@
 extends Control
 
 
-onready var stars_collected = GameState.colorful_stars_collected.size()
-onready var counter_label : Label = $HBoxContainer/Counter
-onready var animation_player : AnimationPlayer = $AnimationPlayer
-onready var timer : Timer = $Timer
+@onready var stars_collected = GameState.colorful_stars_collected.size()
+@onready var counter_label : Label = $HBoxContainer/Counter
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var timer : Timer = $Timer
 
 var is_star_counter_showing : bool = false
 

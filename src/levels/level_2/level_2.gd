@@ -1,11 +1,11 @@
-extends Spatial
+extends Node3D
 
-onready var player : Player = $Player
-onready var win_game_screen : CanvasLayer = $GlobalLevelsScreens/WinGameScreen
-onready var game_over_screen : CanvasLayer= $GlobalLevelsScreens/GameOverScreen
-onready var music : AudioStreamPlayer = $Music
-onready var moving_platform_1 : Spatial = $Interactables/MovingPlatform1
-onready var secret_passage_platform_1 : KinematicBody = $Interactables/SecretPassagePlatform1
+@onready var player : Player = $Player
+@onready var win_game_screen : CanvasLayer = $GlobalLevelsScreens/WinGameScreen
+@onready var game_over_screen : CanvasLayer= $GlobalLevelsScreens/GameOverScreen
+@onready var music : AudioStreamPlayer = $Music
+@onready var moving_platform_1 : Node3D = $Interactables/MovingPlatform1
+@onready var secret_passage_platform_1 : CharacterBody3D = $Interactables/SecretPassagePlatform1
 
 var has_activate_secret_passage_1 = false
 
@@ -14,11 +14,11 @@ func _ready():
         player.transform.origin = Vector3(0,3,0)
         music.play()
     else:
-        print('entering !standalone if on level_1.gd s _ready()')
+        print('entering !standalone if checked level_1.gd s _ready()')
         print('Opened level_1 from editor.')
 
 
-func _on_PortalTrigger_body_entered(_body : KinematicBody):
+func _on_PortalTrigger_body_entered(_body : CharacterBody3D):
     GameState.persist()
     win_game_screen.show()
 
@@ -32,7 +32,7 @@ func _input(event: InputEvent) -> void:
             Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
         else:
             Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-        get_tree().set_input_as_handled()
+        get_viewport().set_input_as_handled()
 
 
 func _on_DyingTrigger_body_entered(body: Player):

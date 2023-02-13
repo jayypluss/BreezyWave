@@ -1,10 +1,10 @@
 extends CanvasLayer
 
-onready var hidable := $Hidable
-onready var pause_button := $Hidable/PauseButton
-onready var resume_option := $Hidable/VBoxOptions/ResumeButton
-onready var main_menu_option := $Hidable/VBoxOptions/MainMenuButton
-onready var label := $Hidable/InfoLabel
+@onready var hidable := $Hidable
+@onready var pause_button := $Hidable/PauseButton
+@onready var resume_option := $Hidable/VBoxOptions/ResumeButton
+@onready var main_menu_option := $Hidable/VBoxOptions/MainMenuButton
+@onready var label := $Hidable/InfoLabel
 
 
 func _ready():
@@ -12,7 +12,7 @@ func _ready():
     if OS.has_touchscreen_ui_hint():
         label.visible = false
     else:
-        # to hide the pause_button on desktop: un-comment the next line
+        # to hide the pause_button checked desktop: un-comment the next line
         # pause_button.hide()
         pass
 
@@ -29,7 +29,7 @@ func _unhandled_input(event):
             resume()
         elif !is_paused():
             pause_game()
-        get_tree().set_input_as_handled()
+        get_viewport().set_input_as_handled()
 
 
 func resume():
@@ -58,7 +58,7 @@ func _on_Resume_pressed():
 
 
 func _on_Main_Menu_pressed():
-    Game.change_scene("res://src/gui/menu/menu.tscn", {
+    Game.change_scene_to_file("res://src/gui/menu/menu.tscn", {
         'show_progress_bar': false
     })
 

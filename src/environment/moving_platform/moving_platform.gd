@@ -1,6 +1,6 @@
-extends Spatial
+extends Node3D
 
-onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func start_moving():

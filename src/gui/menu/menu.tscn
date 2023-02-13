@@ -1,15 +1,13 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=10 format=3 uid="uid://cha5glu2f05ci"]
 
-[ext_resource path="res://assets/fonts/open-sans/open-sans-bold.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/ui-theme.tres" type="Theme" id=2]
-[ext_resource path="res://src/gui/menu/menu.gd" type="Script" id=3]
-[ext_resource path="res://assets/footer_labels_font.tres" type="DynamicFont" id=4]
-[ext_resource path="res://src/gui/credits_screen/credits_screen.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/music/Super_Game_Music_-_Strange_Green_Planet_(Loop).ogg" type="AudioStream" id=6]
-[ext_resource path="res://src/gui/configs_screen/configs_screen.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/gui/configs_screen/configs_screen.gd" type="Script" id=8]
+[ext_resource type="Theme" uid="uid://db51ncs4eb7e0" path="res://assets/ui-theme.tres" id="2"]
+[ext_resource type="Script" path="res://src/gui/menu/menu.gd" id="3"]
+[ext_resource type="PackedScene" path="res://src/gui/credits_screen/credits_screen.tscn" id="5"]
+[ext_resource type="AudioStream" uid="uid://deqfgbwvacuil" path="res://assets/music/Super_Game_Music_-_Strange_Green_Planet_(Loop).ogg" id="6"]
+[ext_resource type="PackedScene" path="res://src/gui/configs_screen/configs_screen.tscn" id="7"]
+[ext_resource type="Script" path="res://src/gui/configs_screen/configs_screen.gd" id="8"]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="Shader" id="1"]
 code = "// From https://godotshaders.com/shader/vaporwave-grid/
 
 shader_type canvas_item;
@@ -18,8 +16,8 @@ uniform float battery : hint_range(0.0,1.0) = 1.0;
 uniform float anchor : hint_range(-1.0,1.0) = -0.5;
 uniform float speed_scale : hint_range(1.0, 10.0) = 1.0;
 uniform float fov : hint_range(0.01, 1.0) = 0.2;
-uniform vec4 background_color : hint_color = vec4(0.0, 0.1, 0.2, 1.0);
-uniform vec4 grid_color : hint_color = vec4(1.0, 0.5, 1.0, 1.0);
+uniform vec4 background_color : source_color = vec4(0.0, 0.1, 0.2, 1.0);
+uniform vec4 grid_color : source_color = vec4(1.0, 0.5, 1.0, 1.0);
 
 float grid(vec2 uv, float batt, float time) {
     vec2 size = vec2(uv.y, uv.y * uv.y * 0.2) * 0.01;
@@ -41,195 +39,139 @@ void fragment() {
 	COLOR = col;
 }"
 
-[sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 1 )
-shader_param/battery = 1.0
-shader_param/anchor = -0.5
-shader_param/speed_scale = 1.0
-shader_param/fov = 0.2
-shader_param/background_color = Color( 0, 0.1, 0.2, 1 )
-shader_param/grid_color = Color( 1, 0.5, 1, 1 )
+[sub_resource type="ShaderMaterial" id="2"]
+shader = SubResource("1")
+shader_parameter/battery = 1.0
+shader_parameter/anchor = -0.5
+shader_parameter/speed_scale = 1.0
+shader_parameter/fov = 0.2
+shader_parameter/background_color = Color(0, 0.1, 0.2, 1)
+shader_parameter/grid_color = Color(1, 0.5, 1, 1)
 
-[sub_resource type="DynamicFont" id=3]
-size = 62
-outline_size = 6
-outline_color = Color( 0.501961, 0, 1, 1 )
-use_filter = true
-font_data = ExtResource( 1 )
-
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id="4"]
 script/source = "extends Label
 
 
 "
 
 [node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 2 )
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2")
+script = ExtResource("3")
 
 [node name="Background" type="ColorRect" parent="."]
-material = SubResource( 2 )
+material = SubResource("2")
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.447059, 0.219608, 0.501961, 1 )
+color = Color(0.447059, 0.219608, 0.501961, 1)
 
 [node name="Header" type="CenterContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1.0
-margin_right = -1.0
-margin_bottom = -339.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = -1.0
+offset_right = -1.0
+offset_bottom = -339.0
 
 [node name="Title" type="Label" parent="Header"]
-margin_left = 315.0
-margin_top = 87.0
-margin_right = 709.0
-margin_bottom = 173.0
-custom_fonts/font = SubResource( 3 )
+layout_mode = 2
 text = "Breezy Wave"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ButtonsContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -100.0
-margin_top = -69.0
-margin_right = 100.0
-margin_bottom = 173.0
-custom_constants/separation = 16
+offset_left = -100.0
+offset_top = -69.0
+offset_right = 100.0
+offset_bottom = 173.0
 alignment = 1
 
 [node name="StartButton" type="Button" parent="ButtonsContainer"]
-margin_top = 30.0
-margin_right = 200.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 50, 50 )
-focus_neighbour_bottom = NodePath("../CreditsButton")
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../CreditsButton")
 focus_next = NodePath("../CreditsButton")
 focus_previous = NodePath("../ExitButton")
 text = "Start"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CreditsButton" type="Button" parent="ButtonsContainer"]
-margin_top = 96.0
-margin_right = 200.0
-margin_bottom = 146.0
-rect_min_size = Vector2( 50, 50 )
-focus_neighbour_bottom = NodePath("../ExitButton")
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../ExitButton")
 focus_next = NodePath("../ExitButton")
 focus_previous = NodePath("../StartButton")
 text = "Credits"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ExitButton" type="Button" parent="ButtonsContainer"]
-margin_top = 162.0
-margin_right = 200.0
-margin_bottom = 212.0
-rect_min_size = Vector2( 50, 50 )
-focus_neighbour_top = NodePath("../CreditsButton")
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_neighbor_top = NodePath("../CreditsButton")
 focus_next = NodePath("../StartButton")
 focus_previous = NodePath("../CreditsButton")
 text = "Exit"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Version" type="VBoxContainer" parent="."]
+layout_mode = 0
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 15.0
-margin_top = -67.0
-margin_right = 591.0
-margin_bottom = -17.0
+offset_left = 15.0
+offset_top = -67.0
+offset_right = 591.0
+offset_bottom = -17.0
 alignment = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="GameVersion" type="Label" parent="Version"]
-margin_right = 576.0
-margin_bottom = 23.0
-custom_fonts/font = ExtResource( 4 )
+layout_mode = 2
 text = "<x.y.z>"
 
 [node name="GodotVersion" type="Label" parent="Version"]
-margin_top = 27.0
-margin_right = 576.0
-margin_bottom = 50.0
-custom_colors/font_color = Color( 0.92549, 0.92549, 0.92549, 1 )
-custom_fonts/font = ExtResource( 4 )
+layout_mode = 2
 text = "<GodotVersion>"
-script = SubResource( 4 )
+script = SubResource("4")
 
 [node name="Authors" type="VBoxContainer" parent="."]
+layout_mode = 0
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -147.0
-margin_top = -90.0
-margin_right = -16.0
-margin_bottom = -16.0
+offset_left = -147.0
+offset_top = -90.0
+offset_right = -16.0
+offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
 alignment = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="MadeByLabel" type="Label" parent="Authors"]
-margin_top = 24.0
-margin_right = 131.0
-margin_bottom = 47.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = ExtResource( 4 )
+layout_mode = 2
 text = "Game by:"
-align = 2
 
 [node name="Developer1" type="Label" parent="Authors"]
-margin_top = 51.0
-margin_right = 131.0
-margin_bottom = 74.0
-grow_horizontal = 0
-custom_colors/font_color = Color( 0.92549, 0.92549, 0.92549, 1 )
-custom_fonts/font = ExtResource( 4 )
+layout_mode = 2
 text = "jayypluss"
-align = 2
 
 [node name="Developer2" type="Label" parent="Authors"]
 visible = false
-margin_top = 76.0
-margin_right = 135.0
-margin_bottom = 110.0
-grow_horizontal = 0
-custom_colors/font_color = Color( 0.886275, 0.87451, 0.87451, 1 )
-custom_fonts/font = ExtResource( 4 )
+layout_mode = 2
 text = "Developer 2"
 
-[node name="CreditsScreen" parent="." instance=ExtResource( 5 )]
+[node name="CreditsScreen" parent="." instance=ExtResource("5")]
 
-[node name="ConfigsScreen" parent="." instance=ExtResource( 7 )]
-script = ExtResource( 8 )
+[node name="ConfigsScreen" parent="." instance=ExtResource("7")]
+script = ExtResource("8")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
+stream = ExtResource("6")
 volume_db = -20.0
 
 [connection signal="pressed" from="ButtonsContainer/StartButton" to="." method="_on_PlayButton_pressed"]

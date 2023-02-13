@@ -14,13 +14,13 @@ func _ready() -> void:
 
 
 func load_scene(path):
-	var state = thread.start(self, "_thread_load", path)
+	var state = thread.start(Callable(self,"_thread_load").bind(path))
 	if state != OK:
 		print("Error while starting thread: " + str(state))
 
 
 func _thread_load(path):
-	var ril = ResourceLoader.load_interactive(path)
+	var ril = ResourceLoader.load_threaded_request(path)
 	stages_amount = ril.get_stage_count()
 	var res = null
 
@@ -39,7 +39,7 @@ func _thread_load(path):
 
 func _thread_done(resource):
 	assert(resource)
-	# Always wait for threads to finish, this is required on Windows.
+	# Always wait for threads to finish, this is required checked Windows.
 	thread.wait_to_finish()
 	emit_signal("resource_stage_loaded", stages_amount, stages_amount)
 	# Instantiate new scene.

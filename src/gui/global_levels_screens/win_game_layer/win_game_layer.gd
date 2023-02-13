@@ -1,9 +1,9 @@
 extends CanvasLayer
 
-onready var hidable := $Hidable
-onready var next_level_button := $Hidable/VBoxOptions/NextLevel
-onready var main_menu := $Hidable/VBoxOptions/MainMenu
-onready var level_win_text := $Hidable/Label
+@onready var hidable := $Hidable
+@onready var next_level_button := $Hidable/VBoxOptions/NextLevel
+@onready var main_menu := $Hidable/VBoxOptions/MainMenu
+@onready var level_win_text := $Hidable/Label
 
 
 func _ready():
@@ -23,14 +23,14 @@ func _on_NextLevel_pressed():
 	print(next_level)
 	togle_visible(false)
 #	Game.restart_scene()
-	Game.change_scene(next_level, {
+	Game.change_scene_to_file(next_level, {
 		'show_progress_bar': false
 	})
 
 func _on_MainMenu_pressed():
 	toggle_paused(false)
 	togle_visible(false)
-	Game.change_scene("res://src/gui/menu/menu.tscn", {
+	Game.change_scene_to_file("res://src/gui/menu/menu.tscn", {
 		'show_progress_bar': false
 	})
 

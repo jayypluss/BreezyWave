@@ -6,8 +6,8 @@ uniform float edge_threshold : hint_range(0,1) = 0.04; // General threshold for 
 uniform float max_edge_alpha : hint_range(0,1) = 0.8; // Max edge alpha, lower values means edges blend more with background
 uniform float edge_alpha_multiplier = 3.0; // General multiplier for edge alpha value, higher values mean harder edges
 
-uniform vec4 edge_color : hint_color = vec4(0,0,0,1); // Outlines color
-uniform sampler2D bgTex : hint_albedo; // BG texture
+uniform vec4 edge_color : source_color = vec4(0,0,0,1); // Outlines color
+uniform sampler2D bgTex : source_color; // BG texture
 
 uniform bool color_use_laplace = false; // Sets color edges to use the laplace operator instead of sobel
 uniform bool use_bg_texture = false; // Sets shader to use render the BG behind the edges

@@ -1,5 +1,5 @@
-tool
-extends Spatial
+@tool
+extends Node3D
 class_name Spring
 
 

@@ -1,9 +1,9 @@
-extends Area
+extends Area3D
 
-onready var interactable_area: CollisionShape = $InteractableArea
-onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var interactable_area: CollisionShape3D = $InteractableArea
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-export var can_deactivate: bool = false
+@export var can_deactivate: bool = false
 
 var player: Player
 var is_active = false

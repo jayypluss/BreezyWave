@@ -4,7 +4,7 @@
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
-margin_bottom = 119.0
+offset_bottom = 119.0
 mouse_filter = 2
 
 [node name="CollectedStarsInfo" parent="." instance=ExtResource( 2 )]

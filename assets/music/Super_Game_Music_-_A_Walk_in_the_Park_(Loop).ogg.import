@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg-3bb05d7e05d589261f92e8f772ba23f1.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d4aj57xuv7pic"
+path="res://.godot/imported/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg-3bb05d7e05d589261f92e8f772ba23f1.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/music/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg"
-dest_files=[ "res://.import/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg-3bb05d7e05d589261f92e8f772ba23f1.oggstr" ]
+dest_files=["res://.godot/imported/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg-3bb05d7e05d589261f92e8f772ba23f1.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
