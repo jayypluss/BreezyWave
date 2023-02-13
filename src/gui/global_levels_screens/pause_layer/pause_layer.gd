@@ -9,12 +9,12 @@ extends CanvasLayer
 
 func _ready():
 	hidable.visible = false
-	if OS.has_touchscreen_ui_hint():
-		label.visible = false
-	else:
-		# to hide the pause_button checked desktop: un-comment the next line
-		# pause_button.hide()
-		pass
+#	if OS.has_touchscreen_ui_hint():
+#		label.visible = false
+#	else:
+#		# to hide the pause_button checked desktop: un-comment the next line
+#		# pause_button.hide()
+#		pass
 
 
 # when the node is removed from the tree (mostly because of a scene change)

@@ -72,7 +72,8 @@ anchor_bottom = 1.0
 color = Color(0.447059, 0.219608, 0.501961, 1)
 
 [node name="Header" type="CenterContainer" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -1.0

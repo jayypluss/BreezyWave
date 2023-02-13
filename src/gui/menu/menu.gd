@@ -27,6 +27,7 @@ func _ready():
 
 
 func _on_PlayButton_pressed() -> void:
+	print("teste")
 	var params = {
 		"show_progress_bar": true,
 		"a_number": 10,
