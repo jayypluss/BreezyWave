@@ -7,40 +7,40 @@ var global_post_process_material : ShaderMaterial = preload("post_process_outlin
 var instance_post_process_material : ShaderMaterial = global_post_process_material.duplicate();
 
 #Size of color outlines
-@export (float) var color_outline_scale = 2.0 : get = get_color_scale, set = set_color_scale
+@export var color_outline_scale: float = 2.0 : get = get_color_scale, set = set_color_scale
 
 #Size of depth outlines
-@export (float) var depth_outline_scale = 2.0 : get = get_depth_scale, set = set_depth_scale
+@export var depth_outline_scale: float = 2.0 : get = get_depth_scale, set = set_depth_scale
 
 #Controls sensitivity to depth changes (lower values mean more outlines, but more artifacts too)
-@export (float,0,10) var depth_threshold = 10.0 : get = get_depth_thres, set = set_depth_thres
+@export_range (0,10) var depth_threshold: float = 10.0 : get = get_depth_thres, set = set_depth_thres
 
 #Multiplier for depth values
-@export (float) var depth_multiplier = 1000.0 : get = get_depth_multiplier, set = set_depth_multiplier
+@export var depth_multiplier: float = 1000.0 : get = get_depth_multiplier, set = set_depth_multiplier
 
 #General threshold for values to be considered as edges
-@export (float,0,1) var edge_threshold = 0.05 : get = get_edge_threshold, set = set_edge_threshold
+@export_range (0,1) var edge_threshold: float = 0.05 : get = get_edge_threshold, set = set_edge_threshold
 
 #Max edge alpha, lower values means edges blend more with background
-@export (float,0,1) var max_edge_alpha = 0.9 : get = get_max_edge_alpha, set = set_max_edge_alpha
+@export_range (0,1) var max_edge_alpha: float = 0.9 : get = get_max_edge_alpha, set = set_max_edge_alpha
 
 #General multiplier for edge alpha value, higher values mean harder edges
-@export (float) var edge_alpha_multiplier = 3.0 : get = get_alpha_multiplier, set = set_alpha_multiplier
+@export var edge_alpha_multiplier: float = 3.0 : get = get_alpha_multiplier, set = set_alpha_multiplier
 
 #Outlines color
-@export (Color) var edge_color = Color(0,0,0,1) : get = get_edge_color, set = set_edge_color
+@export var edge_color: Color = Color(0,0,0,1) : get = get_edge_color, set = set_edge_color
 
 #Sets depth edges to use the laplace operator instead of sobel
-@export (Texture2D) var background_tex : get = get_bg_tex, set = set_bg_tex
+@export var background_tex: Texture2D : get = get_bg_tex, set = set_bg_tex
 
 #Sets depth edges to use the laplace operator instead of sobel
-@export (bool) var depth_use_laplace = true : get = get_depth_use_laplace, set = set_depth_use_laplace
+@export var depth_use_laplace: bool = true : get = get_depth_use_laplace, set = set_depth_use_laplace
 
 #Sets color edges to use the laplace operator instead of sobel
-@export (bool) var color_use_laplace = false : get = get_color_use_laplace, set = set_color_use_laplace
+@export var color_use_laplace: bool = false : get = get_color_use_laplace, set = set_color_use_laplace
 
 #Sets shader to use render the BG behind the edges
-@export (bool) var use_bg_texture = false : get = get_use_bg_texture, set = set_use_bg_texture
+@export var use_bg_texture: bool = false : get = get_use_bg_texture, set = set_use_bg_texture
 
 func set_color_scale(value):
 	color_outline_scale = value;

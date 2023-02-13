@@ -1,6 +1,8 @@
 shader_type spatial;
-render_mode depth_draw_never, depth_test_disable, unshaded;
+render_mode depth_draw_never, unshaded;
 
+uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_linear_mipmap;
+uniform sampler2D SCREEN_TEXTURE : hint_depth_texture, filter_linear_mipmap;
 uniform float color_outline_scale = 2.0; // Size of color outlines
 uniform float depth_outline_scale = 2.0; // Size of depth outlines
 uniform float depth_threshold : hint_range(0,10) = 2.5; // Controls sensitivity to depth changes (lower values mean more outlines, but more artifacts too)

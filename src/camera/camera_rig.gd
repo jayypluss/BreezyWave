@@ -25,7 +25,7 @@ func _ready() -> void:
 
 
 func _get_configuration_warnings() -> PackedStringArray:
-	return  PackedStringArray(["Missing player node"]) if not player else PackedStringArray([""])
+	return PackedStringArray(["Missing player node"]) if not player else PackedStringArray([""])
 
 
 func set_zoom(value: float) -> void:

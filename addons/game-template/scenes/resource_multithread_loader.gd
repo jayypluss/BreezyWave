@@ -47,5 +47,5 @@ func _thread_done(resource):
 
 
 func _exit_tree() -> void:
-	if thread and thread.is_active():
+	if thread and thread.is_alive():
 		thread.wait_to_finish()

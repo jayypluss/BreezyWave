@@ -27,7 +27,7 @@ func _on_MainMenu_pressed():
 		'show_progress_bar': false
 	})
 
-func show():
+func _show():
 	togle_visible(true)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true

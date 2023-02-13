@@ -26,7 +26,7 @@ func _ready():
 
 func _on_PortalTrigger_body_entered(_body : CharacterBody3D):
 	GameState.persist()
-	win_game_screen.show()
+	win_game_screen._show()
 
 
 func _input(event: InputEvent) -> void:
@@ -43,7 +43,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_DyingTrigger_body_entered(body: Player):
 	body.die()
-#	game_over_screen.show()
+#	game_over_screen._show()
 
 
 

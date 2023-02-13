@@ -3,7 +3,7 @@ extends CameraState
 # Moves the camera to the character's shoulder, and narrows the field of view.
 # Projects a target checked the environment.
 
-@onready var tween := $Tween
+var tween = get_tree().create_tween()
 
 @export var fov := 40.0
 @export var offset_camera := Vector3(0.75, -0.7, 0)

@@ -16,7 +16,7 @@ func get_next_level(_last_level: String):
 
 func persist():
 	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
-	save_game.store_line(JSON.new().stringify(colorful_stars_collected))
+	save_game.store_line(JSON.stringify(colorful_stars_collected))
 	save_game.close()
 
 func restore():

@@ -50,7 +50,7 @@ func _on_fade_out_finished(cur_anim):
 # progress_ratio: value between 0 and 1
 func _update_progress_bar(progress_ratio):
 	var tween = get_tree().create_tween()
-	if tween.is_active():
+	if tween and tween.is_active():
 		tween.stop_all() # stop previous animation
 	tween.interpolate_property(
 		progress.bar,
