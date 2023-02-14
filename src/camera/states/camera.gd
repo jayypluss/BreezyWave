@@ -71,7 +71,7 @@ func update_rotation(offset: Vector2) -> void:
 
 
 # Returns the direction of the camera movement from the player
-static func get_look_direction() -> Vector2:
+func get_look_direction() -> Vector2:
 	return Vector2(Input.get_action_strength("look_right") - Input.get_action_strength("look_left"), Input.get_action_strength("look_up") - Input.get_action_strength("look_down")).normalized()
 
 # Returns the move direction of the character controlled by the player

@@ -79,6 +79,8 @@ anchor_bottom = 1.0
 offset_left = -1.0
 offset_right = -1.0
 offset_bottom = -339.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Title" type="Label" parent="Header"]
 layout_mode = 2

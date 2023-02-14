@@ -39,8 +39,8 @@ func _show():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().paused = true
 
-func togle_visible(visible: bool = !hidable.visible):
-	hidable.visible = visible
+func togle_visible(setValue: bool = !hidable.visible):
+	hidable.visible = setValue
 
 func toggle_paused(paused: bool = !get_tree().paused):
 	get_tree().paused = paused

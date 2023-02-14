@@ -12,6 +12,7 @@ var size: Vector2
 
 
 func _enter_tree() -> void:
+#	get_tree().root.print_tree_pretty()
 	process_mode = Node.PROCESS_MODE_ALWAYS # needed to make "prevent_input_on_transitions" work even if the game is paused
 	_register_size()
 	#get_tree().connect("screen_resized",Callable(self,"_on_screen_resized"))

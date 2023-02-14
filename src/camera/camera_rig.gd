@@ -11,7 +11,7 @@ signal aim_fired(target_position)
 @onready var aim_ray: RayCast3D = $Camera3D/AimRay
 @onready var aim_target: Sprite3D = $AimTarget
 
-@onready var player: CharacterBody3D = $Player
+@onready var player: CharacterBody3D = %Player
 
 var zoom := 0.5 : set = set_zoom
 

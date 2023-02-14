@@ -61,7 +61,7 @@ func _on_Camera_aim_fired(target_vector: Vector3) -> void:
 	_state_machine.transition_to("Move/Zip", { target = target_vector })
 
 
-static func get_input_direction() -> Vector3:
+func get_input_direction() -> Vector3:
 	return Vector3(
 			Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 			0,
