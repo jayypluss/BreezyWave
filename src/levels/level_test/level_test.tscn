@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://tegbw71txl81"]
+
+[ext_resource type="Script" path="res://src/levels/level_1/level_1.gd" id="1_h8lqc"]
+[ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2_osuac"]
+[ext_resource type="Environment" uid="uid://drv6f08qwuiuo" path="res://src/levels/level_test/level_test.tres" id="3_ks77p"]
+[ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/ground/ground.tscn" id="12_kq16o"]
+
+[node name="LevelTest" type="Node3D"]
+script = ExtResource("1_h8lqc")
+
+[node name="Player" parent="." instance=ExtResource("2_osuac")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_ks77p")
+
+[node name="GlobalLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 102.381, -110.774)
+light_energy = 0.9
+shadow_enabled = true
+directional_shadow_max_distance = 300.0
+
+[node name="Grounds" type="Node3D" parent="."]
+
+[node name="Ground" parent="Grounds" instance=ExtResource("12_kq16o")]

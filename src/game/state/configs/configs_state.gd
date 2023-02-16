@@ -1,12 +1,12 @@
 extends Node
 
+
 var audio_configs : Dictionary = {
 	"master_volume": 100
 }
 
 func _ready():
 	restore()
-
 
 func persist():
 	# Create new ConfigFile object.

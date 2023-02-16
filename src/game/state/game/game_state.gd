@@ -1,18 +1,19 @@
 extends Node
 
+
 var tutorial_steps: Array = []
 var is_showing_tutorial_step: bool = false
 var colorful_stars_collected: Dictionary = {}
 var remaining_lives: int = 0
 var levels: Array = []
 var current_level_name: String = ""
+var player
 
 func _ready():
 	restore()
 
 func get_next_level(_last_level: String):
 	return "res://src/levels/level_2/level_2.tscn"
-
 
 func persist():
 	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)

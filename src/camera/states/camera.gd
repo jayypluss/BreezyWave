@@ -15,7 +15,6 @@ const ANGLE_X_MAX := PI / 3
 @export var sensitivity_mouse := Vector2(0.1, 0.1)
 
 var _input_relative := Vector2.ZERO
-var _is_aiming := false
 
 
 func process(delta: float) -> void:

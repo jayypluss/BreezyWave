@@ -16,6 +16,7 @@ var velocity: = Vector3.ZERO
 
 
 func unhandled_input(event: InputEvent) -> void:
+	print('fired event: ', event)
 	if event.is_action_pressed("jump"):
 		_state_machine.transition_to("Move/Air", { velocity = velocity, jump_impulse = jump_impulse })
 

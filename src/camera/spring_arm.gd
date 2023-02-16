@@ -5,8 +5,6 @@ extends SpringArm3D
 @export var length_range := Vector2(3.0, 6.0) : set = set_length_range
 @export var zoom := 0.5 : set = set_zoom
 
-@onready var _position_start: Vector3 = position
-
 
 # Ensures that each value is greater than 0, and that length_range.x <= length_range.y
 # Then updates the zoom

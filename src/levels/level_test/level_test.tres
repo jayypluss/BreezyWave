@@ -1,0 +1,12 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://drv6f08qwuiuo"]
+
+[sub_resource type="Sky" id="1"]
+radiance_size = 4
+
+[resource]
+background_mode = 2
+background_color = Color(0.509804, 0.505882, 0.956863, 1)
+background_canvas_max_layer = 4
+sky = SubResource("1")
+ambient_light_color = Color(0.407843, 0, 0.811765, 1)
+fog_enabled = true

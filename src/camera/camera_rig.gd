@@ -22,11 +22,25 @@ func _ready() -> void:
 	set_as_top_level(true)
 	await owner.ready
 	player = owner
+	check_everything_is_not_null()
 
+func check_everything_is_not_null():
+	if !camera:
+		print('camera is null')
+	if !spring_arm:
+		print('state_machine is null')
+	if !aim_ray:
+		print('last_position_timer is null')
+	if !aim_target:
+		print('last_position_timer is null')
+	if !player:
+		print('last_position_timer is null')
 
 func _get_configuration_warnings() -> PackedStringArray:
-	return PackedStringArray(["Missing player node"]) if not player else PackedStringArray([""])
-
+	if not player:
+		return PackedStringArray(["Missing player node"])
+	else:
+		return []
 
 func set_zoom(value: float) -> void:
 	zoom = clamp(value, 0.0, 1.0)
