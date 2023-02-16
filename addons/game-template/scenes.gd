@@ -65,8 +65,8 @@ func _set_new_scene(resource: PackedScene):
 			await coroutine_state.completed
 	if transitions:
 		transitions.fade_out()
-	if transitions:
-		await transitions.anim.animation_finished
+#	if transitions:
+#		await transitions.anim.animation_finished
 	if instanced_scn.has_method("start"):
 		instanced_scn.start()
 	emit_signal("change_finished")
@@ -104,8 +104,8 @@ func change_scene_background_loading(new_scene: String, params = {}):
 	_params = params
 	_loading_start_time = Time.get_ticks_msec()
 	_transition_appear(params)
-	if transitions:
-		await transitions.anim.animation_finished
+#	if transitions:
+#		await transitions.anim.animation_finished
 	_loader_ri.load_scene(new_scene)
 
 
@@ -114,14 +114,14 @@ func _on_change_started(new_scene, params):
 
 
 func _on_resource_loaded(resource):
-	if transitions and transitions.is_transition_in_playing():
-		await transitions.anim.animation_finished
-	var load_time = Time.get_ticks_msec() - _loading_start_time # ms
-	print("{scn} loaded in {elapsed}ms".format({
-		'scn': resource.resource_path,
-		'elapsed': load_time
-	}))
-	# artificially wait some time in order to have a gentle scene transition
-	if transitions and load_time < MINIMUM_TRANSITION_DURATION:
-		await get_tree().create_timer((MINIMUM_TRANSITION_DURATION - load_time) / 1000.0).timeout
+#	if transitions and transitions.is_transition_in_playing():
+#		await transitions.anim.animation_finished
+#	var load_time = Time.get_ticks_msec() - _loading_start_time # ms
+#	print("{scn} loaded in {elapsed}ms".format({
+#		'scn': resource.resource_path,
+#		'elapsed': load_time
+#	}))
+#	# artificially wait some time in order to have a gentle scene transition
+#	if transitions and load_time < MINIMUM_TRANSITION_DURATION:
+#		await get_tree().create_timer((MINIMUM_TRANSITION_DURATION - load_time) / 1000.0).timeout
 	_set_new_scene(resource)

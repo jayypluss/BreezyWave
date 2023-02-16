@@ -50,19 +50,19 @@ func _on_fade_out_finished(cur_anim):
 # progress_ratio: value between 0 and 1
 func _update_progress_bar(progress_ratio):
 	var tween = get_tree().create_tween()
-	if tween and tween.is_active():
-		tween.stop_all() # stop previous animation
-	tween.interpolate_property(
-		progress.bar,
-		"value",
+	if tween and tween.is_running():
+		tween.stop() # stop previous animation
+	tween.interpolate_value(
 		progress.bar.value,
-		progress_ratio,
+		progress_ratio-progress.bar.value,
+		tween.get_total_elapsed_time(),
 		1,
 		Tween.TRANS_QUAD,
-		Tween.EASE_IN_OUT,
-		0
+		Tween.EASE_IN_OUT
 	)
-	tween.start()
+	tween.play()
+	print('progress_ratio: ', progress_ratio)
+	print('tween: ', tween.get_total_elapsed_time())
 	if progress_ratio == 1:
 		await tween.finished
 		emit_signal("progress_bar_filled")
@@ -70,8 +70,13 @@ func _update_progress_bar(progress_ratio):
 
 # called by the scene loader
 func _on_resource_stage_loaded(stage: int, stages_amount: int):
-	if progress.visible:
+	print('stage: ', stage)
+	print('stages_amount: ', stages_amount)
+	if progress.visible and stages_amount:
 		var percentage = float(stage) / float(stages_amount)
+#		if is_nan(percentage):
+#			_update_progress_bar(0)
+#		else:
 		_update_progress_bar(percentage)
 	else:
 		pass

@@ -20,20 +20,18 @@ func load_scene(path):
 
 
 func _thread_load(path):
-	var ril = ResourceLoader.load_threaded_request(path)
-	stages_amount = ril.get_stage_count()
-	var res = null
-
+	var requestErr = ResourceLoader.load_threaded_request(path, '', true)
 	while true:
-		emit_signal("resource_stage_loaded", ril.get_stage(), stages_amount)
 		OS.delay_msec(SIMULATED_DELAY_MS)
-		var err = ril.poll()
-		if err == ERR_FILE_EOF:
-			res = ril.get_resource()
+		var status = ResourceLoader.load_threaded_get_status(path)
+		if status == ResourceLoader.THREAD_LOAD_LOADED:
 			break
-		elif err != OK:
-			print("There was an error loading")
+		if status == ResourceLoader.THREAD_LOAD_FAILED:
+			print("There was an error loading resource for path: ", path)
 			break
+
+	var res = ResourceLoader.load_threaded_get(path)
+	res.set_meta('path', path)
 	call_deferred("_thread_done", res)
 
 

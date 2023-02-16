@@ -3,7 +3,7 @@
 extends Node
 
 
-@onready var transitions = get_node_or_null("/root/Transitions")
+@onready var transitions = get_node_or_null("/root/CTransitions")
 
 var pause_scenes_on_transitions = false
 var prevent_input_on_transitions = true
@@ -40,12 +40,12 @@ func _register_size():
 func change_scene_to_file(new_scene: String, params = {}):
 	if not Utils.file_exists(new_scene):
 		printerr("Scene file not found: ", new_scene)
-		return
+		return	
 
-	if OS.has_feature('HTML5'): # See https://github.com/crystal-bit/godot-game-template/wiki/2.-Features#single-thread-vs-multihtread
-		scenes.change_scene_background_loading(new_scene, params) # single-thread
-	else:
-		scenes.change_scene_multithread(new_scene, params) # multi-thread
+#	if OS.has_feature('HTML5'): # See https://github.com/crystal-bit/godot-game-template/wiki/2.-Features#single-thread-vs-multihtread
+	scenes.change_scene_background_loading(new_scene, params) # single-thread
+#	else:
+#		scenes.change_scene_multithread(new_scene, params) # multi-thread
 
 
 # Restart the current scene

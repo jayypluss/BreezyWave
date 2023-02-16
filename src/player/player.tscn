@@ -17,7 +17,7 @@ height = 0.1
 [sub_resource type="CapsuleShape3D" id="5"]
 
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0920637, 0.165794, -2.45488)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 collision_mask = 2
 script = ExtResource("1")
 
@@ -28,11 +28,11 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 mesh = SubResource("1")
 
 [node name="EyeBallRight" type="MeshInstance3D" parent="Pivot"]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -0.262636, 0.730088, -0.958491)
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -0.262636, 0.43464, -0.444121)
 mesh = SubResource("3")
 
 [node name="EyeBallRight2" type="MeshInstance3D" parent="Pivot"]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0.257771, 0.730088, -0.958491)
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0.257771, 0.43464, -0.444121)
 mesh = SubResource("3")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
@@ -40,8 +40,10 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 shape = SubResource("5")
 
 [node name="CameraRig" parent="." instance=ExtResource("2")]
+transform = Transform3D(1, 0, 0, 0, -0.965926, -0.258819, 0, 0.258819, -0.965926, 0, 0, 0)
 
 [node name="Camera3D" parent="CameraRig" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.87462, 0.48481, 0, -0.48481, 0.87462, 0, 7.39292, 12.9224)
 far = 600.0
 
 [node name="Camera3D" parent="CameraRig/StateMachine" index="0"]

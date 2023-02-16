@@ -27,19 +27,12 @@ func _ready():
 
 
 func _on_PlayButton_pressed() -> void:
-	print("teste")
-	var params = {
-		"show_progress_bar": true,
-		"a_number": 10,
-		"a_string": "Ciao mamma!",
-		"an_array": [1, 2, 3, 4],
-		"a_dict": {
-			"name": "test",
-			"val": 15
-		},
-	}
+#	print("teste")
+#	var params = {
+#		"show_progress_bar": true
+#	}
 #	if OS.has_feature('HTML5'):
-	Game.change_scene_to_file("res://src/levels/level_0/level_0.tscn", params)
+	get_tree().change_scene_to_file("res://src/levels/level_1/level_1.tscn")
 #	else:
 #		Game.change_scene_to_file(new_game_scene.get_path(), params)
 

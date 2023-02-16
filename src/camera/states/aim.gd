@@ -3,11 +3,13 @@ extends CameraState
 # Moves the camera to the character's shoulder, and narrows the field of view.
 # Projects a target checked the environment.
 
-var tween = get_tree().create_tween()
+var tween
 
 @export var fov := 40.0
 @export var offset_camera := Vector3(0.75, -0.7, 0)
 
+func _ready():
+	tween = get_tree().create_tween()
 
 func unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_aim"):
