@@ -4,7 +4,7 @@ extends CharacterBody3D
 # Helper class for the Player scene's scripts to be able to have access to the
 # camera and its orientation.
 
-@onready var camera: Camera3D = $Camera3D
+@onready var camera: Camera3D = %Camera3D
 @onready var last_position_timer = $LastPositionTimer
 
 var last_floor_position: Vector3

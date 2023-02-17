@@ -13,34 +13,44 @@ height = 0.1
 [sub_resource type="CapsuleShape3D" id="5"]
 
 [node name="Player" type="CharacterBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 collision_mask = 2
 script = ExtResource("1")
 
-[node name="Body" type="Node3D" parent="."]
+[node name="PlayerBody" type="Node3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 
-[node name="PlayerMesh" type="MeshInstance3D" parent="Body"]
+[node name="PlayerMesh" type="MeshInstance3D" parent="PlayerBody"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("1")
 
-[node name="EyeBallRight" type="MeshInstance3D" parent="Body"]
+[node name="EyeBallRight" type="MeshInstance3D" parent="PlayerBody"]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 3.55271e-15, -0.262636, -0.496609, -0.444121)
 mesh = SubResource("3")
 
-[node name="EyeBallRight2" type="MeshInstance3D" parent="Body"]
+[node name="EyeBallRight2" type="MeshInstance3D" parent="PlayerBody"]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 3.55271e-15, 0.257771, -0.496609, -0.444121)
 mesh = SubResource("3")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("5")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.952167, 0.305579, 0, -0.305579, 0.952167, 0, 2.25302, 6.79271)
-script = ExtResource("2_1lrpx")
-
 [node name="LastPositionTimer" type="Timer" parent="."]
 
 [node name="Input" type="Node" parent="."]
 script = ExtResource("2_6ltf4")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_1lrpx")
+
+[node name="Horizontal" type="Node3D" parent="CameraPivot"]
+
+[node name="Vertical" type="Node3D" parent="CameraPivot/Horizontal"]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/Horizontal/Vertical"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.952167, 0.305579, 0, -0.305579, 0.952167, 0, 2.25302, 6.79271)
 
 [connection signal="timeout" from="LastPositionTimer" to="." method="_on_LastPositionTimer_timeout"]

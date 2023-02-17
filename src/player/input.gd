@@ -42,13 +42,13 @@ func _physics_process(delta: float) -> void:
 	)
 	
 #	# Rotate direction based checked camera.
-#	var horizontal_rotation = $CameraPivot/Horizontal.global_transform.basis.get_euler().y
-#	direction = direction.rotated(Vector3.UP, horizontal_rotation).normalized()
-
+	var horizontal_rotation = %CameraPivot/Horizontal.global_transform.basis.get_euler().y
+	direction = direction.rotated(Vector3.UP, horizontal_rotation).normalized()
+	
 	if direction != Vector3.ZERO: # Player is moving.
 		direction = direction.normalized()
 		
-#		$ModelPivot.look_at(player.position + direction, Vector3.UP)
+		%PlayerBody.look_at(player.position + direction, Vector3.DOWN)
 		
 		if Input.is_action_pressed("sprint"): # Running.
 			speed = run_speed
