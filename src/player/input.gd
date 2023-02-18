@@ -6,9 +6,12 @@ extends Node
 @export var jump_impulse := 25.0
 @export var fall_acceleration := 75.0
 
+@export var glide_velocity_multiplier := 0.25
+
 #var is_double_jumping := false
 var paused := false
 var is_jumping := false
+var has_jumped_sprinting := false
 
 @onready var player: Player
 
@@ -54,18 +57,32 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("sprint"): # Running.
 			speed = run_speed
 #			$AnimationPlayer.speed_scale = 3.0
+			if is_jumping:
+				if has_jumped_sprinting:
+					speed = run_speed
+				else:
+					speed = walk_speed
 		else: # Walking.
 			speed = walk_speed
+			if is_jumping:
+				if has_jumped_sprinting:
+					speed = run_speed
+				else:
+					speed = walk_speed
 #			$AnimationPlayer.speed_scale = 2.25
-	else: # Idle
+#	else: # Idle
 #		$AnimationPlayer.speed_scale = 1.0
-		pass
+#		pass
+
 	
 	if not is_jumping and Input.is_action_pressed("jump"): # Single jump.
 		player.velocity.y = jump_impulse
 		is_jumping = true
+		if Input.is_action_pressed("sprint"):
+			has_jumped_sprinting = true
 	elif player.is_on_floor() and player.get_slide_collision_count() > 0: # Reset both jumps.
 		is_jumping = false
+		has_jumped_sprinting = false
 #		is_double_jumping = false
 
 	
@@ -78,7 +95,7 @@ func _physics_process(delta: float) -> void:
 #		player.velocity.y = jump_impulse * 1.3 # Double jump goes higher than single jump.
 	
 	if (Input.is_action_pressed("jump") && player.velocity.y < 0):
-		player.velocity.y -= fall_acceleration*0.25 * delta
+		player.velocity.y -= fall_acceleration * glide_velocity_multiplier * delta
 	else:
 		player.velocity.y -= fall_acceleration * delta
 

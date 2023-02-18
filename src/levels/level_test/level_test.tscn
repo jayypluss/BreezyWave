@@ -44,15 +44,29 @@ material = SubResource("StandardMaterial3D_uq4v4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.878, -93.6788, 327.571)
 material = SubResource("StandardMaterial3D_uq4v4")
 
+[node name="FloatingRoundIsland5" parent="FloatingRoundIslands" instance=ExtResource("4_dk115")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.0732, -88.8294, 566.851)
+material = SubResource("StandardMaterial3D_uq4v4")
+
+[node name="FloatingRoundIsland6" parent="FloatingRoundIslands" instance=ExtResource("4_dk115")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 322.455, -163.336, 565.139)
+material = SubResource("StandardMaterial3D_uq4v4")
+
 [node name="ColorPalette" parent="." instance=ExtResource("5_8b8gd")]
 
 [node name="BounceObjects" type="Node3D" parent="."]
 
 [node name="Spring" parent="BounceObjects" instance=ExtResource("6_x3g7k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.9686, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.9686, -7.85498)
 
 [node name="Spring2" parent="BounceObjects" instance=ExtResource("6_x3g7k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.5768, -18.9686, 126.005)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.8369, -18.9686, 117.5)
 
 [node name="Spring3" parent="BounceObjects" instance=ExtResource("6_x3g7k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174.785, -92.3279, 309.237)
+
+[node name="Spring4" parent="BounceObjects" instance=ExtResource("6_x3g7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.1618, -87.4505, 560.67)
+
+[node name="Spring5" parent="BounceObjects" instance=ExtResource("6_x3g7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 338.548, -162.019, 546.805)
