@@ -1,13 +1,14 @@
 extends Node
 
 @export var walk_speed := 14.0
-@export var run_speed := 22.0
+@export var run_speed := 50.0
 
 @export var jump_impulse := 25.0
 @export var fall_acceleration := 75.0
 
-@export var paused := false
-@export var is_jumping := false
+#var is_double_jumping := false
+var paused := false
+var is_jumping := false
 
 @onready var player: Player
 
@@ -48,7 +49,7 @@ func _physics_process(delta: float) -> void:
 	if direction != Vector3.ZERO: # Player is moving.
 		direction = direction.normalized()
 		
-		%PlayerBody.look_at(player.position + direction, Vector3.DOWN)
+		%PlayerBody.look_at(player.position + direction, Vector3.UP)
 		
 		if Input.is_action_pressed("sprint"): # Running.
 			speed = run_speed
@@ -65,8 +66,21 @@ func _physics_process(delta: float) -> void:
 		is_jumping = true
 	elif player.is_on_floor() and player.get_slide_collision_count() > 0: # Reset both jumps.
 		is_jumping = false
-		
-	player.velocity.y -= fall_acceleration * delta
+#		is_double_jumping = false
+
+	
+#	if player.is_on_floor(): # Reset double jump.
+#		is_double_jumping = false
+#	elif (is_jumping and not is_double_jumping
+#		and player.velocity.y <= 20 # Only allow double jump after player slows down a bit.
+#		and Input.is_action_just_pressed("jump")):
+#		is_double_jumping = true
+#		player.velocity.y = jump_impulse * 1.3 # Double jump goes higher than single jump.
+	
+	if (Input.is_action_pressed("jump") && player.velocity.y < 0):
+		player.velocity.y -= fall_acceleration*0.25 * delta
+	else:
+		player.velocity.y -= fall_acceleration * delta
 
 	player.velocity.x = direction.x * speed
 	player.velocity.z = direction.z * speed

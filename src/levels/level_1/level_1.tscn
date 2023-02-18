@@ -1,6 +1,6 @@
-[gd_scene load_steps=22 format=3 uid="uid://c627nf68gdmx2"]
+[gd_scene load_steps=22 format=3]
 
-[ext_resource type="PackedScene" path="res://src/environment/ground/ground.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://src/gui/global_levels_screens/global_levels_screens.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://src/environment/moving_platform/moving_platform.tscn" id="4"]
@@ -38,13 +38,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="PPOutlinesCamera" type="Camera3D" parent="Player"]
 transform = Transform3D(0.686231, -0.243767, 0.685321, -0.437283, 0.614654, 0.656494, -0.581267, -0.750186, 0.315199, 4.54974, 15.9972, 9.50401)
-visible = false
 cull_mask = 524287
 script = ExtResource("5")
-depth_threshold = 1.0
-edge_threshold = 0.2
-edge_alpha_multiplier = 10.0
-depth_use_laplace = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("11")

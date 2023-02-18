@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://tegbw71txl81"]
+[gd_scene load_steps=8 format=3 uid="uid://b638w4o4nmlo4"]
 
 [ext_resource type="Script" path="res://src/levels/level_1/level_1.gd" id="1_h8lqc"]
 [ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2_osuac"]
 [ext_resource type="Environment" uid="uid://drv6f08qwuiuo" path="res://src/levels/level_test/level_test.tres" id="3_ks77p"]
-[ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/ground/ground.tscn" id="12_kq16o"]
+[ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="4_dk115"]
+[ext_resource type="PackedScene" uid="uid://bm04qxj87wk4j" path="res://src/utils/color_palette/color_palette.tscn" id="5_8b8gd"]
+[ext_resource type="PackedScene" uid="uid://sqlonw8gtwb0" path="res://src/environment/spring/spring.tscn" id="6_x3g7k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uq4v4"]
+albedo_color = Color(0.235294, 0.141176, 0.611765, 1)
 
 [node name="LevelTest" type="Node3D"]
 script = ExtResource("1_h8lqc")
@@ -15,11 +20,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 environment = ExtResource("3_ks77p")
 
 [node name="GlobalLight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 102.381, -110.774)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 102.381, -110.774)
 light_energy = 0.9
 shadow_enabled = true
 directional_shadow_max_distance = 300.0
 
-[node name="Grounds" type="Node3D" parent="."]
+[node name="FloatingRoundIslands" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.84936, 0)
 
-[node name="Ground" parent="Grounds" instance=ExtResource("12_kq16o")]
+[node name="FloatingRoundIsland1" parent="FloatingRoundIslands" instance=ExtResource("4_dk115")]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, -20.5618, -48.2026)
+material = SubResource("StandardMaterial3D_uq4v4")
+
+[node name="FloatingRoundIsland2" parent="FloatingRoundIslands" instance=ExtResource("4_dk115")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20.5618, 46.9614)
+material = SubResource("StandardMaterial3D_uq4v4")
+
+[node name="FloatingRoundIsland3" parent="FloatingRoundIslands" instance=ExtResource("4_dk115")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.3154, -20.5618, 104.717)
+material = SubResource("StandardMaterial3D_uq4v4")
+
+[node name="FloatingRoundIsland4" parent="FloatingRoundIslands" instance=ExtResource("4_dk115")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.878, -93.6788, 327.571)
+material = SubResource("StandardMaterial3D_uq4v4")
+
+[node name="ColorPalette" parent="." instance=ExtResource("5_8b8gd")]
+
+[node name="BounceObjects" type="Node3D" parent="."]
+
+[node name="Spring" parent="BounceObjects" instance=ExtResource("6_x3g7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.9686, 0)
+
+[node name="Spring2" parent="BounceObjects" instance=ExtResource("6_x3g7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.5768, -18.9686, 126.005)
+
+[node name="Spring3" parent="BounceObjects" instance=ExtResource("6_x3g7k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174.785, -92.3279, 309.237)

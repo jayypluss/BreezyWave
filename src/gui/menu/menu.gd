@@ -18,9 +18,9 @@ func _ready():
 	if OS.has_feature("standalone"):
 		$Music.play()
 		
-	if !OS.has_feature("standalone"):
-		await get_tree().create_timer(0.5).timeout
-		get_tree().change_scene_to_file("res://src/levels/level_test/level_test.tscn")
+#	if !OS.has_feature("standalone"):
+#		await get_tree().create_timer(0.5).timeout
+#		get_tree().change_scene_to_file("res://src/levels/level_test/level_test.tscn")
 
 
 
@@ -34,3 +34,14 @@ func _on_ExitButton_pressed() -> void:
 
 func _on_CreditsButton_pressed():
 	$CreditsScreen.togle_visible(true)
+
+
+func _on_test_level_pressed():
+	get_tree().change_scene_to_file("res://src/levels/level_test/level_test.tscn")
+	
+func _on_level1_pressed():
+	get_tree().change_scene_to_file("res://src/levels/level_1/level_1.tscn")
+
+func _on_level2_pressed():
+	get_tree().change_scene_to_file("res://src/levels/level_2/level_2.tscn")
+	

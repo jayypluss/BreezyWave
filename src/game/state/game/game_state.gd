@@ -8,7 +8,6 @@ var remaining_lives: int = 0
 var levels: Array = []
 var current_level_name: String = ""
 var player
-var camera_distance = 20
 
 func _ready():
 	restore()

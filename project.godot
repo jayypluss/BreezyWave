@@ -27,6 +27,10 @@ ConfigsState="*res://src/game/state/configs/configs_state.gd"
 
 property_name=1
 
+[debug]
+
+file_logging/enable_file_logging=true
+
 [display]
 
 window/stretch/mode="2d"

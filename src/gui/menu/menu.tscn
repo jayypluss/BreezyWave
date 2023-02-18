@@ -104,7 +104,23 @@ layout_mode = 2
 focus_neighbor_bottom = NodePath("../CreditsButton")
 focus_next = NodePath("../CreditsButton")
 focus_previous = NodePath("../ExitButton")
-text = "Start"
+text = "Start (Test Level)"
+
+[node name="Level1Button" type="Button" parent="ButtonsContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../CreditsButton")
+focus_next = NodePath("../CreditsButton")
+focus_previous = NodePath("../ExitButton")
+text = "Level 1"
+
+[node name="Level2Button" type="Button" parent="ButtonsContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../CreditsButton")
+focus_next = NodePath("../CreditsButton")
+focus_previous = NodePath("../ExitButton")
+text = "Level 2"
 
 [node name="CreditsButton" type="Button" parent="ButtonsContainer"]
 custom_minimum_size = Vector2(50, 50)
@@ -178,5 +194,7 @@ stream = ExtResource("6")
 volume_db = -20.0
 
 [connection signal="pressed" from="ButtonsContainer/StartButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="ButtonsContainer/Level1Button" to="." method="_on_level1_pressed"]
+[connection signal="pressed" from="ButtonsContainer/Level2Button" to="." method="_on_level2_pressed"]
 [connection signal="pressed" from="ButtonsContainer/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="ButtonsContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
