@@ -26,7 +26,7 @@ func _ready():
 
 func _on_PortalTrigger_body_entered(_body : CharacterBody3D):
 	GameState.persist()
-	win_game_screen._show()
+#	win_game_screen._show()
 
 
 func _input(event: InputEvent) -> void:
@@ -41,29 +41,27 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 
-func _on_DyingTrigger_body_entered(body: Player):
+func _on_dying_trigger_body_entered(body: Player):
 	body.die()
 #	game_over_screen._show()
 
 
-
-func _on_MovingPlatform1_button_pressed(activate: bool):
-	if activate:
-		moving_platform_1.start_moving()
-	else:
-		moving_platform_1.stop_moving()
-
-
-func _on_SecretePassage1Button_on_button_pressed(activate: bool):
-	if activate && !has_activate_secret_passage_1:
-		secret_passage_platform_1.start_cinematics()
-		has_activate_secret_passage_1 = true
-		
-
-
-func _on_MovingPlatform1Button2_on_button_pressed(activate: bool):
-	if activate:
-		moving_platform_2.move()
-	else:
-		moving_platform_2.stop_moving()
-
+#func _on_MovingPlatform1_button_pressed(activate: bool):
+#	if activate:
+#		moving_platform_1.start_moving()
+#	else:
+#		moving_platform_1.stop_moving()
+#
+#
+#func _on_SecretePassage1Button_on_button_pressed(activate: bool):
+#	if activate && !has_activate_secret_passage_1:
+#		secret_passage_platform_1.start_cinematics()
+#		has_activate_secret_passage_1 = true
+#
+#
+#
+#func _on_MovingPlatform1Button2_on_button_pressed(activate: bool):
+#	if activate:
+#		moving_platform_2.move()
+#	else:
+#		moving_platform_2.stop_moving()

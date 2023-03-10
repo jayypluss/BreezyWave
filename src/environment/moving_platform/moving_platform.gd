@@ -4,8 +4,8 @@ extends Node3D
 
 
 func start_moving():
-    animation_player.play("move")
-    animation_player.playback_active = true
+	animation_player.play("move")
+	animation_player.playback_active = true
 
 func stop_moving():
-    animation_player.playback_active = false
+	animation_player.playback_active = false

@@ -13,7 +13,7 @@ func _ready():
 	GameState.player = self
 	last_position_timer.start()
 	check_everything_is_not_null()
-	
+
 func check_everything_is_not_null():
 	if !camera:
 		print('camera is null')
@@ -27,7 +27,7 @@ func _get_configuration_warnings() -> PackedStringArray:
 		return []
 
 func die():
-	if position: 
+	if position:
 		position = last_floor_position
 
 func _on_LastPositionTimer_timeout():
@@ -35,3 +35,4 @@ func _on_LastPositionTimer_timeout():
 			last_floor_position = position
 
 	last_position_timer.start()	
+

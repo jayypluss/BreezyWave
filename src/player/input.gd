@@ -13,6 +13,8 @@ var paused := false
 var is_jumping := false
 var has_jumped_sprinting := false
 
+var is_gliding := false
+
 @onready var player: Player
 
 # Starts as "forward", might behave weird depending checked spawn direction.
@@ -24,17 +26,7 @@ var speed = 0
 func _ready():
 	player = self.owner
 
-func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("move_front"):
-		print('move_front pressed')
-	if Input.is_action_pressed("move_back"):
-		print('move_back pressed')
-	if Input.is_action_pressed("move_left"):
-		print('move_left pressed')
-	if Input.is_action_pressed("move_right"):
-		print('move_right pressed')
-		
-		
+func _physics_process(delta: float) -> void:		
 	if paused: # Used to prevent movement during a cutscene.
 		return
 	
@@ -52,11 +44,10 @@ func _physics_process(delta: float) -> void:
 	if direction != Vector3.ZERO: # Player is moving.
 		direction = direction.normalized()
 		
-		%PlayerBody.look_at(player.position + direction, Vector3.UP)
+		%PlayerPivot.look_at(player.position + direction, Vector3.UP)
 		
 		if Input.is_action_pressed("sprint"): # Running.
 			speed = run_speed
-#			$AnimationPlayer.speed_scale = 3.0
 			if is_jumping:
 				if has_jumped_sprinting:
 					speed = run_speed
@@ -69,38 +60,31 @@ func _physics_process(delta: float) -> void:
 					speed = run_speed
 				else:
 					speed = walk_speed
-#			$AnimationPlayer.speed_scale = 2.25
-#	else: # Idle
-#		$AnimationPlayer.speed_scale = 1.0
-#		pass
 
 	
 	if not is_jumping and Input.is_action_pressed("jump"): # Single jump.
 		player.velocity.y = jump_impulse
 		is_jumping = true
+		last_direction = direction
 		if Input.is_action_pressed("sprint"):
 			has_jumped_sprinting = true
 	elif player.is_on_floor() and player.get_slide_collision_count() > 0: # Reset both jumps.
 		is_jumping = false
 		has_jumped_sprinting = false
-#		is_double_jumping = false
-
 	
-#	if player.is_on_floor(): # Reset double jump.
-#		is_double_jumping = false
-#	elif (is_jumping and not is_double_jumping
-#		and player.velocity.y <= 20 # Only allow double jump after player slows down a bit.
-#		and Input.is_action_just_pressed("jump")):
-#		is_double_jumping = true
-#		player.velocity.y = jump_impulse * 1.3 # Double jump goes higher than single jump.
-	
-	if (Input.is_action_pressed("jump") && player.velocity.y < 0):
+	if (Input.is_action_pressed("jump") && player.velocity.y < 0): # Glide
 		player.velocity.y -= fall_acceleration * glide_velocity_multiplier * delta
+		is_gliding = true
 	else:
 		player.velocity.y -= fall_acceleration * delta
+		is_gliding = false
 
-	player.velocity.x = direction.x * speed
-	player.velocity.z = direction.z * speed
+#	if is_jumping and not is_gliding:
+#		player.velocity.x = last_direction.x * speed
+#		player.velocity.z = last_direction.z * speed
+#	else:
+		player.velocity.x = direction.x * speed
+		player.velocity.z = direction.z * speed
 	
 	# Assign move_and_slide to velocity prevents the velocity from accumulating.
 	player.set_velocity(player.velocity)

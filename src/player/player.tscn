@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8aem4qjchnrf"]
+[gd_scene load_steps=16 format=3 uid="uid://c8aem4qjchnrf"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1"]
 [ext_resource type="Script" path="res://src/player/camera.gd" id="2_1lrpx"]
 [ext_resource type="Script" path="res://src/player/input.gd" id="2_6ltf4"]
+[ext_resource type="Script" path="res://src/player/weapon.gd" id="4_x4gqo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_haaje"]
 albedo_color = Color(0.87451, 0.34902, 1, 1)
@@ -17,6 +18,48 @@ height = 0.1
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mmkm"]
 albedo_color = Color(0, 0, 0, 1)
 
+[sub_resource type="Curve3D" id="Curve3D_dls2p"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0.53, 0, 0, 0.639625, 0.888855, 0.378629, 0.687, 0.437, 0, -0.547, -0.273, 0, 0.221, 0.219, -0.902),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pxb6j"]
+top_radius = 0.05
+bottom_radius = 0.01
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbwbk"]
+albedo_color = Color(0.737255, 0.498039, 0.14902, 1)
+
+[sub_resource type="Animation" id="Animation_cwyvw"]
+length = 0.001
+step = 0.25
+
+[sub_resource type="Animation" id="Animation_ojo4n"]
+resource_name = "bat_hit"
+length = 0.25
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_shbt6"]
+_data = {
+"RESET": SubResource("Animation_cwyvw"),
+"bat_hit": SubResource("Animation_ojo4n")
+}
+
 [sub_resource type="CapsuleShape3D" id="5"]
 
 [node name="Player" type="CharacterBody3D"]
@@ -24,21 +67,41 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 collision_mask = 2
 script = ExtResource("1")
 
-[node name="PlayerBody" type="Node3D" parent="."]
+[node name="PlayerPivot" type="Node3D" parent="."]
 unique_name_in_owner = true
 
-[node name="PlayerMesh" type="MeshInstance3D" parent="PlayerBody"]
+[node name="PlayerMesh" type="MeshInstance3D" parent="PlayerPivot"]
 mesh = SubResource("1")
 
-[node name="EyeBallRight" type="MeshInstance3D" parent="PlayerBody"]
+[node name="EyeBallRight" type="MeshInstance3D" parent="PlayerPivot"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.262636, 0.553334, -0.444121)
 mesh = SubResource("3")
 surface_material_override/0 = SubResource("StandardMaterial3D_7mmkm")
 
-[node name="EyeBallRight2" type="MeshInstance3D" parent="PlayerBody"]
+[node name="EyeBallRight2" type="MeshInstance3D" parent="PlayerPivot"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.257771, 0.553334, -0.444121)
 mesh = SubResource("3")
 surface_material_override/0 = SubResource("StandardMaterial3D_7mmkm")
+
+[node name="Weapon" type="Node3D" parent="PlayerPivot"]
+script = ExtResource("4_x4gqo")
+
+[node name="Path3D" type="Path3D" parent="PlayerPivot/Weapon"]
+curve = SubResource("Curve3D_dls2p")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="PlayerPivot/Weapon/Path3D"]
+transform = Transform3D(-4.37113e-08, 0, 0.999999, 0, 0.999996, 0, -0.999997, 0, -4.37113e-08, 0.639625, 0.888855, 0.378629)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="PlayerPivot/Weapon/Path3D/PathFollow3D"]
+transform = Transform3D(0.00649187, -0.0313208, -0.999489, -0.202854, 0.978688, -0.0319865, 0.979188, 0.202959, -4.54639e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_pxb6j")
+material = SubResource("StandardMaterial3D_hbwbk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerPivot/Weapon"]
+speed_scale = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_shbt6")
+}
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("5")

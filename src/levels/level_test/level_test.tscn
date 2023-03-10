@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b638w4o4nmlo4"]
+[gd_scene load_steps=9 format=3 uid="uid://b638w4o4nmlo4"]
 
-[ext_resource type="Script" path="res://src/levels/level_1/level_1.gd" id="1_h8lqc"]
+[ext_resource type="Script" path="res://src/levels/level_test/level_test.gd" id="1_tn8lh"]
 [ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2_osuac"]
 [ext_resource type="Environment" uid="uid://drv6f08qwuiuo" path="res://src/levels/level_test/level_test.tres" id="3_ks77p"]
 [ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="4_dk115"]
@@ -10,8 +10,10 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uq4v4"]
 albedo_color = Color(0.235294, 0.141176, 0.611765, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ehkjh"]
+
 [node name="LevelTest" type="Node3D"]
-script = ExtResource("1_h8lqc")
+script = ExtResource("1_tn8lh")
 
 [node name="Player" parent="." instance=ExtResource("2_osuac")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
@@ -41,15 +43,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.3154, -20.5618, 104.717)
 material = SubResource("StandardMaterial3D_uq4v4")
 
 [node name="FloatingRoundIsland4" parent="FloatingRoundIslands" instance=ExtResource("4_dk115")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.878, -93.6788, 327.571)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164.726, -93.6788, 263.373)
 material = SubResource("StandardMaterial3D_uq4v4")
 
 [node name="FloatingRoundIsland5" parent="FloatingRoundIslands" instance=ExtResource("4_dk115")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.0732, -88.8294, 566.851)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5867, -88.8294, 346.372)
 material = SubResource("StandardMaterial3D_uq4v4")
 
 [node name="FloatingRoundIsland6" parent="FloatingRoundIslands" instance=ExtResource("4_dk115")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 322.455, -163.336, 565.139)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 202.891, -163.336, 286.163)
 material = SubResource("StandardMaterial3D_uq4v4")
 
 [node name="ColorPalette" parent="." instance=ExtResource("5_8b8gd")]
@@ -63,10 +65,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -18.9686, -7.85498)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.8369, -18.9686, 117.5)
 
 [node name="Spring3" parent="BounceObjects" instance=ExtResource("6_x3g7k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -174.785, -92.3279, 309.237)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -148.633, -92.3279, 261.461)
 
 [node name="Spring4" parent="BounceObjects" instance=ExtResource("6_x3g7k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.1618, -87.4505, 560.67)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.6753, -87.4505, 340.191)
 
 [node name="Spring5" parent="BounceObjects" instance=ExtResource("6_x3g7k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 338.548, -162.019, 546.805)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 218.984, -162.019, 267.829)
+
+[node name="DyingTrigger" type="Area3D" parent="."]
+transform = Transform3D(1.45634, 0, 0, 0, 1, 0, 0, 0, 1.78404, 0, -124.683, -205.875)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DyingTrigger"]
+transform = Transform3D(896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.372)
+shape = SubResource("BoxShape3D_ehkjh")
+
+[connection signal="body_entered" from="DyingTrigger" to="." method="_on_dying_trigger_body_entered"]

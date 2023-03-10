@@ -19,3 +19,7 @@ func _input(event: InputEvent) -> void:
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		get_viewport().set_input_as_handled()
+
+func _on_DyingTrigger_body_entered(body: Player):
+	body.die()
+#	game_over_screen.show()
