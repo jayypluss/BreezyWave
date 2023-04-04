@@ -1,15 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://081auaywl3t8"]
+[gd_scene load_steps=24 format=3 uid="uid://081auaywl3t8"]
 
 [ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://src/gui/global_levels_screens/global_levels_screens.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://c8mmmyxugnefa" path="res://src/environment/moving_platform/moving_platform.tscn" id="4"]
+[ext_resource type="Environment" uid="uid://dei285upuk8bp" path="res://src/levels/level_1/level_1_env.tres" id="4_smvl8"]
 [ext_resource type="Script" path="res://addons/jm_pp_outlines/jm_pp_outlines_camera.gd" id="5"]
 [ext_resource type="PackedScene" path="res://src/environment/static_platform/static_platform.tscn" id="6"]
 [ext_resource type="Script" path="res://src/levels/level_1/level_1.gd" id="8"]
 [ext_resource type="PackedScene" path="res://src/gui/global_levels_hud/global_levels_hud.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://src/game/tutorial/tutorial_control.tscn" id="10"]
-[ext_resource type="Environment" uid="uid://crwljeb715rhh" path="res://src/levels/level_1/level_1.tres" id="11"]
 [ext_resource type="PackedScene" uid="uid://sqlonw8gtwb0" path="res://src/environment/spring/spring.tscn" id="12"]
 [ext_resource type="AudioStream" uid="uid://d4aj57xuv7pic" path="res://assets/music/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg" id="13"]
 [ext_resource type="PackedScene" path="res://src/environment/collectables/colorful_star/colorful_star.tscn" id="14"]
@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://qat4x6q0ehfq" path="res://src/environment/pedestal_button/pedestal_button.tscn" id="16"]
 [ext_resource type="PackedScene" path="res://src/environment/secret_passage_platform/secret_passage_platform.tscn" id="17"]
 
-[sub_resource type="BoxShape3D" id="1"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_llkap"]
 
 [sub_resource type="BoxShape3D" id="5"]
 size = Vector3(0.5, 0.5, 0.5)
@@ -30,6 +30,13 @@ size = Vector3(5, 5, 0.2)
 [sub_resource type="BoxShape3D" id="13"]
 size = Vector3(5, 5, 0.2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vst65"]
+albedo_color = Color(0.301961, 0.192157, 0.752941, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a7nm4"]
+material = SubResource("StandardMaterial3D_vst65")
+size = Vector3(35, 1, 35)
+
 [node name="Level1" type="Node3D"]
 script = ExtResource("8")
 
@@ -38,14 +45,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="PPOutlinesCamera" type="Camera3D" parent="Player"]
 transform = Transform3D(0.686231, -0.243767, 0.685321, -0.437283, 0.614654, 0.656494, -0.581267, -0.750186, 0.315199, 4.54974, 15.9972, 9.50401)
+visible = false
 cull_mask = 524287
 script = ExtResource("5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("11")
+environment = ExtResource("4_smvl8")
 
 [node name="GlobalLight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 102.381, -110.774)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 102.381, -110.774)
 light_energy = 0.9
 shadow_enabled = true
 directional_shadow_max_distance = 300.0
@@ -56,7 +64,7 @@ collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DyingTrigger"]
 transform = Transform3D(896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.372)
-shape = SubResource("1")
+shape = SubResource("BoxShape3D_llkap")
 
 [node name="PortalTrigger" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344, 5.39477, -306.761)
@@ -672,18 +680,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.218, 3.6993, 27.2259)
 [node name="Grounds" type="Node3D" parent="."]
 
 [node name="Ground" parent="Grounds" instance=ExtResource("1")]
+transform = Transform3D(1.75, 0, 0, 0, 1, 0, 0, 0, 1.75, -1.10378, 0.662905, 0)
+mesh = SubResource("BoxMesh_a7nm4")
 
 [node name="Ground2" parent="Grounds" instance=ExtResource("1")]
-transform = Transform3D(1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, 0, -15, -125)
+transform = Transform3D(1.75, 0, 0, 0, 1.0001, 0, 0, 0, 1.75, 0, -14.4744, -125)
+mesh = SubResource("BoxMesh_a7nm4")
 
 [node name="Ground3" parent="Grounds" instance=ExtResource("1")]
-transform = Transform3D(1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, 0, -30, -250)
+transform = Transform3D(1.75, 0, 0, 0, 1.0001, 0, 0, 0, 1.75, 0, -29.4852, -250)
+mesh = SubResource("BoxMesh_a7nm4")
 
 [node name="Ground4" parent="Grounds" instance=ExtResource("1")]
-transform = Transform3D(1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -93.548, 0, -125)
+transform = Transform3D(1.75, 0, 0, 0, 1.0001, 0, 0, 0, 1.75, -93.548, 0.582253, -125)
+mesh = SubResource("BoxMesh_a7nm4")
 
 [node name="Ground5" parent="Grounds" instance=ExtResource("1")]
-transform = Transform3D(1.0001, 0, 0, 0, 1.0001, 0, 0, 0, 1.0001, -174.895, 0, -200.139)
+transform = Transform3D(1.75, 0, 0, 0, 1.0001, 0, 0, 0, 1.75, -174.895, 0, -200.139)
+mesh = SubResource("BoxMesh_a7nm4")
 
 [node name="GlobalLevelsScreens" parent="." instance=ExtResource("3")]
 

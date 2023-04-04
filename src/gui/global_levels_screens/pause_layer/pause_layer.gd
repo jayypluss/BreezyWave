@@ -58,9 +58,10 @@ func _on_Resume_pressed():
 
 
 func _on_Main_Menu_pressed():
-	Game.change_scene_to_file("res://src/gui/menu/menu.tscn", {
-		'show_progress_bar': false
-	})
+#	Game.change_scene_to_file("res://src/gui/menu/menu.tscn", {
+#		'show_progress_bar': false
+#	})
+	get_tree().change_scene_to_file("res://src/gui/menu/menu.tscn")
 
 
 func _on_PauseButton_pressed():

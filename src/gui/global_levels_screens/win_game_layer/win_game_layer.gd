@@ -23,16 +23,18 @@ func _on_NextLevel_pressed():
 	print(next_level)
 	togle_visible(false)
 #	Game.restart_scene()
-	Game.change_scene_to_file(next_level, {
-		'show_progress_bar': false
-	})
+#	Game.change_scene_to_file(next_level, {
+#		'show_progress_bar': false
+#	})
+	get_tree().change_scene_to_file(next_level)
 
 func _on_MainMenu_pressed():
 	toggle_paused(false)
 	togle_visible(false)
-	Game.change_scene_to_file("res://src/gui/menu/menu.tscn", {
-		'show_progress_bar': false
-	})
+#	Game.change_scene_to_file("res://src/gui/menu/menu.tscn", {
+#		'show_progress_bar': false
+#	})
+	get_tree().change_scene_to_file("res://src/gui/menu/menu.tscn")
 
 func _show():
 	togle_visible(true)

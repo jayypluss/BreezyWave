@@ -84,6 +84,7 @@ mesh = SubResource("3")
 surface_material_override/0 = SubResource("StandardMaterial3D_7mmkm")
 
 [node name="Weapon" type="Node3D" parent="PlayerPivot"]
+visible = false
 script = ExtResource("4_x4gqo")
 
 [node name="Path3D" type="Path3D" parent="PlayerPivot/Weapon"]
