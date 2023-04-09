@@ -48,18 +48,18 @@ func _physics_process(delta: float) -> void:
 		
 		if Input.is_action_pressed("sprint"): # Running.
 			speed = run_speed
-			if is_jumping:
-				if has_jumped_sprinting:
-					speed = run_speed
-				else:
-					speed = walk_speed
+#			if is_jumping:
+#				if has_jumped_sprinting:
+#					speed = run_speed
+#				else:
+#					speed = walk_speed
 		else: # Walking.
 			speed = walk_speed
-			if is_jumping:
-				if has_jumped_sprinting:
-					speed = run_speed
-				else:
-					speed = walk_speed
+#			if is_jumping:
+#				if has_jumped_sprinting:
+#					speed = run_speed
+#				else:
+#					speed = walk_speed
 
 	
 	if not is_jumping and Input.is_action_pressed("jump"): # Single jump.
@@ -73,11 +73,13 @@ func _physics_process(delta: float) -> void:
 		has_jumped_sprinting = false
 	
 	if (Input.is_action_pressed("jump") && player.velocity.y < 0): # Glide
-		player.velocity.y -= fall_acceleration * glide_velocity_multiplier * delta
 		is_gliding = true
+		player.velocity.y -= fall_acceleration * glide_velocity_multiplier * delta
+		player.velocity.x = direction.x * speed
+		player.velocity.z = direction.z * speed
 	else:
-		player.velocity.y -= fall_acceleration * delta
 		is_gliding = false
+		player.velocity.y -= fall_acceleration * delta
 
 #	if is_jumping and not is_gliding:
 #		player.velocity.x = last_direction.x * speed
