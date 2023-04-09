@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://c8aem4qjchnrf"]
+[gd_scene load_steps=19 format=3 uid="uid://c8aem4qjchnrf"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1"]
 [ext_resource type="Script" path="res://src/player/camera.gd" id="2_1lrpx"]
 [ext_resource type="Script" path="res://src/player/input.gd" id="2_6ltf4"]
 [ext_resource type="Script" path="res://src/player/weapon.gd" id="4_x4gqo"]
+[ext_resource type="Shader" path="res://assets/shaders/pp_outline.gdshader" id="5_7vn4u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_haaje"]
 albedo_color = Color(0.87451, 0.34902, 1, 1)
@@ -61,6 +62,26 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="5"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_3dh2o"]
+lightmap_size_hint = Vector2i(12, 12)
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1url"]
+render_priority = 0
+shader = ExtResource("5_7vn4u")
+shader_parameter/color_outline_scale = 2.0
+shader_parameter/depth_outline_scale = 2.0
+shader_parameter/depth_threshold = 2.5
+shader_parameter/depth_multiplier = 1000.0
+shader_parameter/edge_threshold = 0.04
+shader_parameter/max_edge_alpha = 0.8
+shader_parameter/edge_alpha_multiplier = 3.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/depth_use_laplace = true
+shader_parameter/color_use_laplace = false
+shader_parameter/use_bg_texture = false
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -123,5 +144,9 @@ script = ExtResource("2_1lrpx")
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/Horizontal/Vertical"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.952167, 0.305579, 0, -0.305579, 0.952167, 0, 2.25302, 6.79271)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CameraPivot/Horizontal/Vertical/Camera3D"]
+mesh = SubResource("QuadMesh_3dh2o")
+surface_material_override/0 = SubResource("ShaderMaterial_p1url")
 
 [connection signal="timeout" from="LastPositionTimer" to="." method="_on_LastPositionTimer_timeout"]
