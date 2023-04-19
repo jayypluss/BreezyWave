@@ -1,8 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://c8aem4qjchnrf"]
+[gd_scene load_steps=21 format=3 uid="uid://c8aem4qjchnrf"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1"]
 [ext_resource type="Script" path="res://src/player/camera.gd" id="2_1lrpx"]
 [ext_resource type="Script" path="res://src/player/input.gd" id="2_6ltf4"]
+[ext_resource type="PackedScene" uid="uid://yuoydsqi0qyg" path="res://assets/3d/skeleton-wings/source/wings.blend" id="3_2gl8a"]
+[ext_resource type="Script" path="res://src/player/wings.gd" id="4_huxau"]
 [ext_resource type="Script" path="res://src/player/weapon.gd" id="4_x4gqo"]
 [ext_resource type="Shader" path="res://assets/shaders/pp_outline.gdshader" id="5_7vn4u"]
 
@@ -125,6 +127,37 @@ libraries = {
 "": SubResource("AnimationLibrary_shbt6")
 }
 
+[node name="wings" parent="PlayerPivot" instance=ExtResource("3_2gl8a")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.23349e-08, -1.75977, 0.369868)
+script = ExtResource("4_huxau")
+
+[node name="Skeleton3D" parent="PlayerPivot/wings/concertina" index="0"]
+bones/0/rotation = Quaternion(-0.291717, 0.136614, -0.386469, 0.864222)
+bones/1/rotation = Quaternion(0.416832, -0.0920163, 0.489284, 0.760516)
+bones/2/rotation = Quaternion(-0.11653, 0.02292, -0.961603, 0.247418)
+bones/3/rotation = Quaternion(0.0768739, 0.0874412, -0.283952, 0.951744)
+bones/4/rotation = Quaternion(0.107975, 0.0238025, -0.251236, 0.96159)
+bones/6/rotation = Quaternion(-0.220637, 0.0698673, -0.863323, 0.448454)
+bones/7/rotation = Quaternion(0.14369, 0.0990621, -0.280512, 0.94385)
+bones/8/rotation = Quaternion(0.015371, 0.0414548, -0.251403, 0.966872)
+bones/9/rotation = Quaternion(-0.213276, -0.0339652, -0.73043, 0.647945)
+bones/10/rotation = Quaternion(-0.028442, 0.0839767, -0.302011, 0.949172)
+bones/11/rotation = Quaternion(0.0479106, 0.0639206, -0.265631, 0.96076)
+bones/12/rotation = Quaternion(-0.289889, -0.141267, 0.39699, 0.859306)
+bones/14/rotation = Quaternion(-0.113793, -0.0231386, 0.962637, 0.244635)
+bones/15/rotation = Quaternion(0.0767224, -0.0881888, 0.285648, 0.951179)
+bones/16/rotation = Quaternion(0.109438, -0.0231172, 0.242611, 0.963654)
+bones/17/rotation = Quaternion(-0.217698, -0.0684292, 0.864581, 0.447688)
+bones/18/rotation = Quaternion(0.141993, -0.0986724, 0.2805, 0.944151)
+bones/19/rotation = Quaternion(0.0155947, -0.0425938, 0.257033, 0.965338)
+bones/20/rotation = Quaternion(-0.21208, 0.0338704, 0.729882, 0.648959)
+bones/21/rotation = Quaternion(-0.0298936, -0.0851661, 0.304205, 0.948321)
+bones/22/rotation = Quaternion(0.0510258, -0.0646534, 0.267511, 0.960028)
+bones/23/rotation = Quaternion(-0.137723, 0.0750045, 0.368513, 0.9163)
+
+[node name="AnimationPlayer" parent="PlayerPivot/wings" index="1"]
+speed_scale = 64.0
+
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("5")
 
@@ -149,4 +182,9 @@ transform = Transform3D(1, 0, 0, 0, 0.952167, 0.305579, 0, -0.305579, 0.952167, 
 mesh = SubResource("QuadMesh_3dh2o")
 surface_material_override/0 = SubResource("ShaderMaterial_p1url")
 
+[node name="Skeleton3D" type="Skeleton3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.86776e-08, 0.565481, 0.556807)
+
 [connection signal="timeout" from="LastPositionTimer" to="." method="_on_LastPositionTimer_timeout"]
+
+[editable path="PlayerPivot/wings"]

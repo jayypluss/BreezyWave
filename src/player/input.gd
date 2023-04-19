@@ -4,14 +4,13 @@ extends Node
 @export var run_speed := 50.0
 
 @export var jump_impulse := 25.0
-@export var fall_acceleration := 75.0
+@export var fall_acceleration := 95.0
 
-@export var glide_velocity_multiplier := 0.25
+@export var glide_velocity_multiplier := 0.15
 
-#var is_double_jumping := false
+var has_double_jumped := false
 var paused := false
 var is_jumping := false
-var has_jumped_sprinting := false
 
 var is_gliding := false
 
@@ -48,46 +47,28 @@ func _physics_process(delta: float) -> void:
 		
 		if Input.is_action_pressed("sprint"): # Running.
 			speed = run_speed
-#			if is_jumping:
-#				if has_jumped_sprinting:
-#					speed = run_speed
-#				else:
-#					speed = walk_speed
 		else: # Walking.
 			speed = walk_speed
-#			if is_jumping:
-#				if has_jumped_sprinting:
-#					speed = run_speed
-#				else:
-#					speed = walk_speed
-
 	
 	if not is_jumping and Input.is_action_pressed("jump"): # Single jump.
 		player.velocity.y = jump_impulse
 		is_jumping = true
 		last_direction = direction
-		if Input.is_action_pressed("sprint"):
-			has_jumped_sprinting = true
 	elif player.is_on_floor() and player.get_slide_collision_count() > 0: # Reset both jumps.
 		is_jumping = false
-		has_jumped_sprinting = false
 	
 	if (Input.is_action_pressed("jump") && player.velocity.y < 0): # Glide
 		is_gliding = true
+		has_double_jumped = true
 		player.velocity.y -= fall_acceleration * glide_velocity_multiplier * delta
 		player.velocity.x = direction.x * speed
 		player.velocity.z = direction.z * speed
 	else:
 		is_gliding = false
 		player.velocity.y -= fall_acceleration * delta
-
-#	if is_jumping and not is_gliding:
-#		player.velocity.x = last_direction.x * speed
-#		player.velocity.z = last_direction.z * speed
-#	else:
 		player.velocity.x = direction.x * speed
 		player.velocity.z = direction.z * speed
-	
+		
 	# Assign move_and_slide to velocity prevents the velocity from accumulating.
 	player.set_velocity(player.velocity)
 	player.set_up_direction(Vector3.UP)

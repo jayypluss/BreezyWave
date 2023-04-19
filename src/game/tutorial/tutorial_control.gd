@@ -11,20 +11,20 @@ var tutorial_texts = [
 	"Hold SPACE for \nHigher Jumps"
 ]
 
-
-func _unhandled_input(event):
+func _input(event):
 	if event.is_action_pressed("interact") && GameState.is_showing_tutorial_step:
+		print('interacted: ')
 		hide_popup()
-
-func show_next_step(tutorial_text_index: int):
-	step_label.text = tutorial_texts[tutorial_text_index]
+		
+func show_step(text_index: int):
+	step_label.text = tutorial_texts[text_index]
 	step.popup()
 	GameState.is_showing_tutorial_step = true
 
 func _on_Player_entered_area(_player: Player, area: Area3D):
-	var tutorial_text_index: int = int(area.name.substr(4, 5))
-	show_next_step(tutorial_text_index)
-	GameState.tutorial_steps.append(tutorial_text_index)
+	var text_index: int = int(area.name.substr(4, 5))
+	show_step(text_index)
+	GameState.tutorial_steps.append(text_index)
 
 func _on_Player_exited_area(_player: Player, _area: Area3D):
 	hide_popup()

@@ -2,7 +2,7 @@ extends Node3D
 
 const ZOOM_STEP := 0.5
 var min_zoom := 9
-var max_zoom := 18
+var max_zoom := 21
 
 var horizontal: float = 0
 var vertical: float = 0
@@ -34,6 +34,7 @@ func _input(event: InputEvent) -> void:
 		horizontal -= event.relative.x * 0.5
 		vertical -= event.relative.y * 0.5
 	elif event.is_action_pressed("zoom_in") and zoom > min_zoom:
+		get_node("%Camera3D").position.z -= ZOOM_STEP
 		ConfigsState.camera_distance = get_node("%Camera3D").position.z
 	elif event.is_action_pressed("zoom_out") and zoom < max_zoom:
 		get_node("%Camera3D").position.z += ZOOM_STEP
