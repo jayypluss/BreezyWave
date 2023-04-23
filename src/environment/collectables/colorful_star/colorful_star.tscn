@@ -1,40 +1,40 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://vo7iv0nu1qqy"]
 
-[ext_resource path="res://assets/sprites/colorful_star.png" type="Texture2D" id=1]
-[ext_resource path="res://src/environment/collectables/colorful_star/colorful_star.gd" type="Script" id=2]
-[ext_resource path="res://assets/sounds/effects/sparkle/sparkle_01.ogg" type="AudioStream" id=3]
+[ext_resource type="Texture2D" uid="uid://ci3sr0wk58j1t" path="res://assets/sprites/colorful_star.png" id="1"]
+[ext_resource type="Script" path="res://src/environment/collectables/colorful_star/colorful_star.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://5o15eo28gvmh" path="res://assets/sounds/effects/sparkle/sparkle_01.ogg" id="3"]
 
-[sub_resource type="StandardMaterial3D" id=14]
-params_billboard_mode = 1
-params_use_alpha_scissor = true
-params_alpha_scissor_threshold = 0.98
-albedo_texture = ExtResource( 1 )
+[sub_resource type="StandardMaterial3D" id="14"]
+transparency = 2
+alpha_scissor_threshold = 0.98
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1")
+billboard_mode = 1
 
-[sub_resource type="QuadMesh" id=13]
+[sub_resource type="QuadMesh" id="13"]
 resource_local_to_scene = true
-material = SubResource( 14 )
-size = Vector2( 2, 2 )
+material = SubResource("14")
+size = Vector2(2, 2)
 
-[sub_resource type="SphereShape3D" id=10]
+[sub_resource type="SphereShape3D" id="10"]
 radius = 2.0
 
 [node name="ColorfulStar" type="Area3D"]
 collision_layer = 2
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource( 13 )
+mesh = SubResource("13")
 skeleton = NodePath("")
-material/0 = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource( 10 )
+shape = SubResource("10")
 
 [node name="SparkleSoundEffect" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
+stream = ExtResource("3")
 volume_db = -15.0
 mix_target = 1
-bus = "Sound Effects"
+bus = &"Sound Effects"
 
 [node name="DeleteAfterCollectTimer" type="Timer" parent="."]
 wait_time = 2.0

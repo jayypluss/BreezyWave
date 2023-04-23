@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cr58hgugjg0k5" path="res://src/game/tutorial/tutorial_control.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://sqlonw8gtwb0" path="res://src/environment/spring/spring.tscn" id="12"]
 [ext_resource type="AudioStream" uid="uid://d4aj57xuv7pic" path="res://assets/music/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg" id="13"]
-[ext_resource type="PackedScene" path="res://src/environment/collectables/colorful_star/colorful_star.tscn" id="14"]
+[ext_resource type="PackedScene" uid="uid://vo7iv0nu1qqy" path="res://src/environment/collectables/colorful_star/colorful_star.tscn" id="14"]
 [ext_resource type="PackedScene" uid="uid://dfv27hlsva5c1" path="res://src/game/tutorial/triggers/tutorial_trigger.tscn" id="15"]
 [ext_resource type="PackedScene" uid="uid://qat4x6q0ehfq" path="res://src/environment/pedestal_button/pedestal_button.tscn" id="16"]
 [ext_resource type="PackedScene" path="res://src/environment/secret_passage_platform/secret_passage_platform.tscn" id="17"]
@@ -81,7 +81,8 @@ volume_db = -20.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8201, 2.12989, -28.3489)
 
 [node name="MovingPlatform1" parent="Interactables" instance=ExtResource("4")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 34.5807, 0.950626, -23.9323)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5807, 0.950626, -23.9323)
+move_z = -95.473
 
 [node name="SecretePassage1Button" parent="Interactables" instance=ExtResource("16")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.15, 2.12989, -95.3299)
