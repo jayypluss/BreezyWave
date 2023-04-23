@@ -2,10 +2,13 @@ extends Node3D
 
 
 @onready var player : Player = $Player
+
+# TODO should be refactored
 @onready var moving_platform_1 = $Interactables/MovingPlatform1
 @onready var secrete_passage_1_button = $Interactables/SecretePassage1Button
 @onready var secret_passage_platform_1 = $Interactables/SecretPassagePlatform1
 
+# TODO should be refactored
 var has_activate_secret_passage_1 = false
 
 func _ready():
@@ -29,12 +32,14 @@ func _on_DyingTrigger_body_entered(body: Player):
 	body.die()
 #	game_over_screen.show()
 
+# TODO should be refactored
 func _on_MovingPlatform1_button_pressed(activate: bool):
 	if activate:
 		moving_platform_1.start_moving()
 	else:
 		moving_platform_1.stop_moving()
 
+# TODO should be refactored
 func _on_SecretePassage1Button_on_button_pressed(activate: bool):
 	if activate && !has_activate_secret_passage_1:
 		secret_passage_platform_1.start_cinematics()
