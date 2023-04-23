@@ -2,17 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://src/gui/global_levels_screens/global_levels_screens.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://dx1ind0cyeb0t" path="res://src/gui/global_levels_screens/global_levels_screens.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://c8mmmyxugnefa" path="res://src/environment/moving_platform/moving_platform.tscn" id="4"]
 [ext_resource type="Environment" uid="uid://dei285upuk8bp" path="res://src/levels/level_1/level_1_env.tres" id="4_smvl8"]
 [ext_resource type="PackedScene" path="res://src/environment/static_platform/static_platform.tscn" id="6"]
 [ext_resource type="Script" path="res://src/levels/level_1/level_1.gd" id="8"]
-[ext_resource type="PackedScene" path="res://src/gui/global_levels_hud/global_levels_hud.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://gmwmxtts47rk" path="res://src/gui/global_levels_hud/global_levels_hud.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://cr58hgugjg0k5" path="res://src/game/tutorial/tutorial_control.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://sqlonw8gtwb0" path="res://src/environment/spring/spring.tscn" id="12"]
 [ext_resource type="AudioStream" uid="uid://d4aj57xuv7pic" path="res://assets/music/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg" id="13"]
 [ext_resource type="PackedScene" path="res://src/environment/collectables/colorful_star/colorful_star.tscn" id="14"]
-[ext_resource type="PackedScene" path="res://src/game/tutorial/triggers/tutorial_trigger.tscn" id="15"]
+[ext_resource type="PackedScene" uid="uid://dfv27hlsva5c1" path="res://src/game/tutorial/triggers/tutorial_trigger.tscn" id="15"]
 [ext_resource type="PackedScene" uid="uid://qat4x6q0ehfq" path="res://src/environment/pedestal_button/pedestal_button.tscn" id="16"]
 [ext_resource type="PackedScene" path="res://src/environment/secret_passage_platform/secret_passage_platform.tscn" id="17"]
 
@@ -692,50 +692,66 @@ mesh = SubResource("BoxMesh_a7nm4")
 transform = Transform3D(1.75, 0, 0, 0, 1.0001, 0, 0, 0, 1.75, -174.895, 0, -200.139)
 mesh = SubResource("BoxMesh_a7nm4")
 
-[node name="GlobalLevelsScreens" parent="." instance=ExtResource("3")]
-
-[node name="GlobalLevelsHud" parent="." instance=ExtResource("9")]
+[node name="Control" type="Control" parent="."]
+z_index = 4
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+
+[node name="GlobalLevelsHud" parent="Control" instance=ExtResource("9")]
+z_index = 3
+layout_mode = 1
 anchors_preset = 15
 anchor_bottom = 1.0
 offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TutorialControl" parent="." instance=ExtResource("10")]
-anchor_right = 0.164
-offset_right = 3.07199
 mouse_filter = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" parent="TutorialControl/Step" index="0"]
-offset_top = 0.0
-offset_bottom = 151.0
-grow_horizontal = 2
+[node name="TutorialControl" parent="Control" instance=ExtResource("10")]
+z_index = 1
+layout_mode = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="Button" parent="TutorialControl/Step" index="1"]
+[node name="Step" parent="Control/TutorialControl" index="0"]
+visible = false
+
+[node name="Button" parent="Control/TutorialControl/Step" index="3"]
 anchors_preset = 7
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -55.0
-offset_bottom = 0.0
+offset_top = -147.0
+offset_bottom = -41.0
 grow_vertical = 0
 size_flags_horizontal = 1
 
-[node name="Step0" parent="TutorialControl/Triggers" index="0" instance=ExtResource("15")]
+[node name="Step0" parent="Control/TutorialControl/Triggers" index="0" instance=ExtResource("15")]
 transform = Transform3D(0.6645, 0, 0.747288, 0, 1, 0, -0.747288, 0, 0.6645, -3.75387, 2.33517, -8.31338)
 
-[node name="Step1" parent="TutorialControl/Triggers" index="1" instance=ExtResource("15")]
+[node name="Step1" parent="Control/TutorialControl/Triggers" index="1" instance=ExtResource("15")]
 transform = Transform3D(0.762318, 0, 0.647202, 0, 1, 0, -0.647202, 0, 0.762318, 18.2948, 2.09418, -26.9939)
 
-[node name="Step2" parent="TutorialControl/Triggers" index="2" instance=ExtResource("15")]
+[node name="Step2" parent="Control/TutorialControl/Triggers" index="2" instance=ExtResource("15")]
 transform = Transform3D(0.0711149, 0, 0.997468, 0, 1, 0, -0.997468, 0, 0.0711149, -23.8925, -12.7491, -135.661)
 
-[node name="Step3" parent="TutorialControl/Triggers" index="3" instance=ExtResource("15")]
+[node name="Step3" parent="Control/TutorialControl/Triggers" index="3" instance=ExtResource("15")]
 transform = Transform3D(0.997468, 0, -0.0711149, 0, 1, 0, 0.0711149, 0, 0.997468, -108.179, 2.20235, -148.14)
+
+[node name="GlobalLevelsScreens" parent="Control" instance=ExtResource("3")]
+z_index = 2
+layout_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]
 [connection signal="body_entered" from="PortalTrigger" to="." method="_on_PortalTrigger_body_entered"]
 [connection signal="on_button_pressed" from="Interactables/MovingPlatform1Button" to="." method="_on_MovingPlatform1_button_pressed"]
 [connection signal="on_button_pressed" from="Interactables/SecretePassage1Button" to="." method="_on_SecretePassage1Button_on_button_pressed"]
 
-[editable path="TutorialControl"]
+[editable path="Control/TutorialControl"]

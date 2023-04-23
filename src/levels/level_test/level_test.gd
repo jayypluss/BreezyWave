@@ -38,7 +38,7 @@ func _input(event: InputEvent) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		get_viewport().set_input_as_handled()
+#		get_viewport().set_input_as_handled()
 
 
 func _on_dying_trigger_body_entered(body: Player):

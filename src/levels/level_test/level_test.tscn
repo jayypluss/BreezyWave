@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b638w4o4nmlo4"]
+[gd_scene load_steps=11 format=3 uid="uid://b638w4o4nmlo4"]
 
 [ext_resource type="Script" path="res://src/levels/level_test/level_test.gd" id="1_tn8lh"]
 [ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2_osuac"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="4_dk115"]
 [ext_resource type="PackedScene" uid="uid://bm04qxj87wk4j" path="res://src/utils/color_palette/color_palette.tscn" id="5_8b8gd"]
 [ext_resource type="PackedScene" uid="uid://sqlonw8gtwb0" path="res://src/environment/spring/spring.tscn" id="6_x3g7k"]
+[ext_resource type="Script" path="res://src/levels/level_test/accept_dialog.gd" id="7_xxf10"]
+[ext_resource type="PackedScene" uid="uid://dx1ind0cyeb0t" path="res://src/gui/global_levels_screens/global_levels_screens.tscn" id="8_ivr4u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uq4v4"]
 albedo_color = Color(0.235294, 0.141176, 0.611765, 1)
@@ -80,5 +82,14 @@ collision_layer = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DyingTrigger"]
 transform = Transform3D(896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.372)
 shape = SubResource("BoxShape3D_ehkjh")
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+initial_position = 1
+title = "TEST"
+visible = true
+mouse_passthrough = true
+script = ExtResource("7_xxf10")
+
+[node name="GlobalLevelsScreens" parent="." instance=ExtResource("8_ivr4u")]
 
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_dying_trigger_body_entered"]

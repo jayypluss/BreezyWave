@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://db51ncs4eb7e0" path="res://assets/ui-theme.tres" id="2"]
 [ext_resource type="Script" path="res://src/gui/menu/menu.gd" id="3"]
-[ext_resource type="PackedScene" path="res://src/gui/credits_screen/credits_screen.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://cswv5xwg7kq0t" path="res://src/gui/credits_screen/credits_screen.tscn" id="5"]
 [ext_resource type="AudioStream" uid="uid://deqfgbwvacuil" path="res://assets/music/Super_Game_Music_-_Strange_Green_Planet_(Loop).ogg" id="6"]
 [ext_resource type="PackedScene" path="res://src/gui/configs_screen/configs_screen.tscn" id="7"]
 [ext_resource type="Script" path="res://src/gui/configs_screen/configs_screen.gd" id="8"]
@@ -61,6 +61,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme = ExtResource("2")
 script = ExtResource("3")
 
@@ -185,8 +186,10 @@ layout_mode = 2
 text = "Developer 2"
 
 [node name="CreditsScreen" parent="." instance=ExtResource("5")]
+layer = 5
 
 [node name="ConfigsScreen" parent="." instance=ExtResource("7")]
+layer = 5
 script = ExtResource("8")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]

@@ -1,8 +1,7 @@
 extends Control
 
 
-@onready var step: Popup = $Step
-@onready var step_label: Label = $Step/Label
+@onready var step: AcceptDialog = $Step
 
 var tutorial_texts = [
 	"W, A, S, D: Walking \nSPACE: Jumping \nSHIFT: Sprinting", 
@@ -13,13 +12,15 @@ var tutorial_texts = [
 
 func _input(event):
 	if event.is_action_pressed("interact") && GameState.is_showing_tutorial_step:
-		print('interacted: ')
 		hide_popup()
 		
 func show_step(text_index: int):
-	step_label.text = tutorial_texts[text_index]
+	step.dialog_text = tutorial_texts[text_index]
 	step.popup()
 	GameState.is_showing_tutorial_step = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().paused = true
+	step.popup_centered()
 
 func _on_Player_entered_area(_player: Player, area: Area3D):
 	var text_index: int = int(area.name.substr(4, 5))
@@ -32,4 +33,8 @@ func _on_Player_exited_area(_player: Player, _area: Area3D):
 func hide_popup():
 	step.hide()
 	GameState.is_showing_tutorial_step = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	get_tree().paused = false
 
+func _on_step_confirmed():
+	hide_popup()

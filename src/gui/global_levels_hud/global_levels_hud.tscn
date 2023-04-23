@@ -1,10 +1,15 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://gmwmxtts47rk"]
 
-[ext_resource path="res://src/gui/collected_stars_info/collected_stars_info.tscn" type="PackedScene" id=2]
+[ext_resource type="PackedScene" path="res://src/gui/collected_stars_info/collected_stars_info.tscn" id="2"]
 
 [node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 119.0
 mouse_filter = 2
 
-[node name="CollectedStarsInfo" parent="." instance=ExtResource( 2 )]
+[node name="CollectedStarsInfo" parent="." instance=ExtResource("2")]
+anchors_preset = 0
+offset_left = 821.0
+offset_right = 1021.0

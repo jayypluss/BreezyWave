@@ -5,46 +5,37 @@
 
 [node name="TutorialControl" type="Control"]
 layout_mode = 3
-anchor_top = 0.28
-anchor_right = 0.357
-anchor_bottom = 0.761
-offset_top = -2.44
-offset_right = 1.73596
-offset_bottom = 4.87198
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-mouse_filter = 2
+mouse_filter = 1
 script = ExtResource("2")
 
-[node name="Step" type="Popup" parent="."]
-size = Vector2i(375, 252)
+[node name="Step" type="AcceptDialog" parent="."]
+process_mode = 2
+initial_position = 1
+title = ""
+size = Vector2i(216, 155)
 mouse_passthrough = true
 theme = ExtResource("1")
 
-[node name="Label" type="Label" parent="Step"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -112.0
-offset_top = 27.0
-offset_right = 112.0
-offset_bottom = 178.0
-size_flags_vertical = 1
-autowrap_mode = 2
-
 [node name="Button" type="Button" parent="Step"]
 process_mode = 2
+visible = false
 custom_minimum_size = Vector2(85, 55)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -42.5
-offset_top = -27.5
-offset_right = 42.5
-offset_bottom = 27.5
+offset_left = -100.0
+offset_top = -69.5
+offset_right = 100.0
+offset_bottom = 36.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -53,3 +44,5 @@ focus_mode = 0
 text = "Ok (E)"
 
 [node name="Triggers" type="Node3D" parent="."]
+
+[connection signal="confirmed" from="Step" to="." method="_on_step_confirmed"]
