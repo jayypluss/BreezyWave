@@ -720,9 +720,6 @@ z_index = 1
 layout_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Step" parent="Control/TutorialControl" index="0"]
-visible = false
-
 [node name="Button" parent="Control/TutorialControl/Step" index="3"]
 anchors_preset = 7
 anchor_top = 1.0
