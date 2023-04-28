@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://081auaywl3t8"]
+[gd_scene load_steps=23 format=3 uid="uid://note0l10rf7x"]
 
 [ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://sqlonw8gtwb0" path="res://src/environment/spring/spring.tscn" id="12"]
 [ext_resource type="AudioStream" uid="uid://d4aj57xuv7pic" path="res://assets/music/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg" id="13"]
 [ext_resource type="PackedScene" uid="uid://vo7iv0nu1qqy" path="res://src/environment/collectables/colorful_star/colorful_star.tscn" id="14"]
-[ext_resource type="PackedScene" uid="uid://dfv27hlsva5c1" path="res://src/game/tutorial/triggers/tutorial_trigger.tscn" id="15"]
+[ext_resource type="PackedScene" uid="uid://b3ua4gxcip1as" path="res://src/environment/pedestal/pedestal.tscn" id="14_rtsv6"]
 [ext_resource type="PackedScene" uid="uid://qat4x6q0ehfq" path="res://src/environment/pedestal_button/pedestal_button.tscn" id="16"]
 [ext_resource type="PackedScene" path="res://src/environment/secret_passage_platform/secret_passage_platform.tscn" id="17"]
 
@@ -730,17 +730,21 @@ offset_bottom = -41.0
 grow_vertical = 0
 size_flags_horizontal = 1
 
-[node name="Step0" parent="Control/TutorialControl/Triggers" index="0" instance=ExtResource("15")]
-transform = Transform3D(0.6645, 0, 0.747288, 0, 1, 0, -0.747288, 0, 0.6645, -3.75387, 2.33517, -8.31338)
+[node name="Step0" parent="Control/TutorialControl/Triggers" index="0" node_paths=PackedStringArray("control") instance=ExtResource("14_rtsv6")]
+transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, -0.965785, 2.38136, -8.20768)
+control = NodePath("../..")
 
-[node name="Step1" parent="Control/TutorialControl/Triggers" index="1" instance=ExtResource("15")]
-transform = Transform3D(0.762318, 0, 0.647202, 0, 1, 0, -0.647202, 0, 0.762318, 18.2948, 2.09418, -26.9939)
+[node name="Step1" parent="Control/TutorialControl/Triggers" index="1" node_paths=PackedStringArray("control") instance=ExtResource("14_rtsv6")]
+transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, 16.7448, 2.38136, -22.8391)
+control = NodePath("../..")
 
-[node name="Step2" parent="Control/TutorialControl/Triggers" index="2" instance=ExtResource("15")]
-transform = Transform3D(0.0711149, 0, 0.997468, 0, 1, 0, -0.997468, 0, 0.0711149, -23.8925, -12.7491, -135.661)
+[node name="Step2" parent="Control/TutorialControl/Triggers" index="2" node_paths=PackedStringArray("control") instance=ExtResource("14_rtsv6")]
+transform = Transform3D(-0.388754, 0, 0.921342, 0, 1, 0, -0.921342, 0, -0.388754, -15.5381, -12.7101, -138.674)
+control = NodePath("../..")
 
-[node name="Step3" parent="Control/TutorialControl/Triggers" index="3" instance=ExtResource("15")]
-transform = Transform3D(0.997468, 0, -0.0711149, 0, 1, 0, 0.0711149, 0, 0.997468, -108.179, 2.20235, -148.14)
+[node name="Step3" parent="Control/TutorialControl/Triggers" index="3" node_paths=PackedStringArray("control") instance=ExtResource("14_rtsv6")]
+transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, -102.802, 2.38136, -151.381)
+control = NodePath("../..")
 
 [node name="GlobalLevelsScreens" parent="Control" instance=ExtResource("3")]
 z_index = 2
