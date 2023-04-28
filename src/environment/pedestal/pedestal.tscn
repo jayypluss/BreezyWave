@@ -43,12 +43,12 @@ mesh = SubResource("5")
 shape = SubResource("4")
 
 [node name="Label3D" type="Label3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.27889, 0)
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 2.27889, 0)
 pixel_size = 0.001
 billboard = 2
 text = "!"
-font_size = 1
-outline_size = 1
+font_size = 1500
+outline_size = 24
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
