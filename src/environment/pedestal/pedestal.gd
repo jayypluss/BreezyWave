@@ -31,6 +31,7 @@ func _on_body_exited(body):
 	GameState.hud.action_indicator_control.hide()
 	
 func expand():
+	label.show()
 	go_up_tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT).set_parallel(true)
 	go_up_tween.tween_property(label, "position:y", (label_initial_y + label_move_length_y), label_tween_duration_y)
 	go_up_tween.tween_property(label, "scale", Vector3(1, 1, 1), label_tween_duration_y)
@@ -41,6 +42,6 @@ func collapse():
 	go_down_tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT).set_parallel(true)
 	go_down_tween.tween_property(label, "position:y", label_initial_y, label_tween_duration_y)
 	go_down_tween.tween_property(label, "scale", initial_label_scale, label_tween_duration_y)
-	go_up_tween.tween_callback(func(): label.hide())
+	go_down_tween.chain().tween_callback(func(): label.hide())
 
 
