@@ -2,12 +2,13 @@ extends Area3D
 
 @export var control: Node
 @onready var label: Label3D = $StaticBody3D/Label3D
+
 var go_up_tween: Tween
 var go_down_tween: Tween
 var label_initial_y: float
 var initial_label_scale: Vector3
 var label_move_length_y: float = 1
-var label_tween_duration_y: float = 0.5
+var label_tween_duration_y: float = 0.2
 
 func _ready():
 	label_initial_y = label.position.y
@@ -21,22 +22,25 @@ func _ready():
 
 
 func _on_body_entered(body):
-#	label.show()
-	start_moving()
+	expand()
+	GameState.hud.action_indicator_control.show()
 
 
 func _on_body_exited(body):
-#	label.hide()
-	stop_moving()
+	collapse()
+	GameState.hud.action_indicator_control.hide()
 	
-func start_moving():
+func expand():
 	go_up_tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT).set_parallel(true)
 	go_up_tween.tween_property(label, "position:y", (label_initial_y + label_move_length_y), label_tween_duration_y)
 	go_up_tween.tween_property(label, "scale", Vector3(1, 1, 1), label_tween_duration_y)
+	go_up_tween.tween_callback(func(): label.show())
+	
 
-func stop_moving():
+func collapse():
 	go_down_tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT).set_parallel(true)
 	go_down_tween.tween_property(label, "position:y", label_initial_y, label_tween_duration_y)
 	go_down_tween.tween_property(label, "scale", initial_label_scale, label_tween_duration_y)
+	go_up_tween.tween_callback(func(): label.hide())
 
 

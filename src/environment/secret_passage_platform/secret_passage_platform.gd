@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var fade_in_animation_player: AnimationPlayer = $FadeInAnimationPlayer
 @onready var animation_player2: AnimationPlayer = $AnimationPlayer2
 @onready var cinematic_animation_player: AnimationPlayer = $CinematicAnimation
 @onready var cinematic_camera: Camera3D = $Cinematic
@@ -15,7 +15,8 @@ func start_cinematics():
 
 func fade_in():
 	if !is_showing:
-		animation_player.play("fade_in")
+		# TODO use tween
+		fade_in_animation_player.play("fade_in")
 		is_showing = true
 		for child in get_children():
 			if child is ColorfulStar:
@@ -23,6 +24,7 @@ func fade_in():
 
 func move_away():
 	main_camera.make_current()
+	# TODO use tween
 	#animation_player.play("move_away")
 	animation_player2.play("change_colors")
 

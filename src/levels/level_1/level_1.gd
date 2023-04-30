@@ -7,13 +7,15 @@ extends Node3D
 @onready var moving_platform_1 = $Interactables/MovingPlatform1
 @onready var secrete_passage_1_button = $Interactables/SecretePassage1Button
 @onready var secret_passage_platform_1 = $Interactables/SecretPassagePlatform1
+@onready var hud = $Control/HUD
 
 # TODO should be refactored
 var has_activate_secret_passage_1 = false
 
 func _ready():
+	GameState.hud = hud
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	player.transform.origin = Vector3(0,3,0)
+#	player.transform.origin = Vector3(0,3,0)
 	if !OS.has_feature("standalone"):
 		print('Opened level_test from editor')
 

@@ -22,6 +22,7 @@ config/version="0.1.01"
 
 GameState="*res://src/game/state/game/game_state.gd"
 ConfigsState="*res://src/game/state/configs/configs_state.gd"
+WindowManager="*res://src/game/window_manager/window_manager.gd"
 
 [category]
 

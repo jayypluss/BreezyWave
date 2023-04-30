@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://cue07yxp483n4"]
+
+[ext_resource type="Script" path="res://src/gui/global_levels_hud/hud.gd" id="1_64x2v"]
+[ext_resource type="PackedScene" uid="uid://c5avtepgucbu0" path="res://src/gui/collected_stars_info/collected_stars_info.tscn" id="2"]
+[ext_resource type="Script" path="res://src/gui/global_levels_hud/action_indicator_control.gd" id="2_h435r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_544hd"]
+bg_color = Color(0, 0, 0, 0.203922)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_64x2v")
+
+[node name="CollectedStarsInfo" parent="." instance=ExtResource("2")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 821.0
+offset_right = 1021.0
+grow_horizontal = 1
+
+[node name="ActionIndicatorControl" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_h435r")
+
+[node name="ActionIndicator" type="PanelContainer" parent="ActionIndicatorControl"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.059
+anchor_top = 0.752
+anchor_right = 0.207
+anchor_bottom = 0.813
+offset_left = 0.0319977
+offset_top = -0.296021
+offset_right = -0.46402
+offset_bottom = 0.175964
+theme_override_styles/panel = SubResource("StyleBoxFlat_544hd")
+
+[node name="ActionIndicatorLabel" type="Label" parent="ActionIndicatorControl/ActionIndicator"]
+layout_mode = 2
+text = "E to interact"
+horizontal_alignment = 1
+vertical_alignment = 1

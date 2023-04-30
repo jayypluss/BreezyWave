@@ -1,7 +1,7 @@
 extends AnimatableBody3D
 class_name MovingPlatform
 
-@export var duration: float = 7
+@export var duration: float = 4
 @export var move_z: float = -1
 
 var initial_z: float

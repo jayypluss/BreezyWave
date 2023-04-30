@@ -3,7 +3,7 @@ extends Node
 @export var walk_speed := 14.0
 @export var run_speed := 50.0
 
-@export var jump_impulse := 25.0
+@export var jump_impulse := 45.0
 @export var fall_acceleration := 95.0
 
 @export var glide_velocity_multiplier := 0.15
