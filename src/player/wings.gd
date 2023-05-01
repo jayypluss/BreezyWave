@@ -13,7 +13,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed('jump'):
 		animation_player.play('concertinaAction')
 #		animation_player.get_animation('concertinaAction').loop_mode = Animation.LOOP_PINGPONG

@@ -1,11 +1,12 @@
-[gd_scene load_steps=23 format=3 uid="uid://nmvv48rtw87h"]
+[gd_scene load_steps=26 format=3 uid="uid://nmvv48rtw87h"]
 
 [ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://dx1ind0cyeb0t" path="res://src/gui/global_levels_screens/global_levels_screens.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://c8mmmyxugnefa" path="res://src/environment/moving_platform/moving_platform.tscn" id="4"]
+[ext_resource type="Shader" path="res://assets/shaders/random_glitches.gdshader" id="4_khut3"]
 [ext_resource type="Environment" uid="uid://dei285upuk8bp" path="res://src/levels/level_1/level_1_env.tres" id="4_smvl8"]
-[ext_resource type="PackedScene" path="res://src/environment/static_platform/static_platform.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://7c6tyte2j0mh" path="res://src/environment/static_platform/static_platform.tscn" id="6"]
 [ext_resource type="Script" path="res://src/levels/level_1/level_1.gd" id="8"]
 [ext_resource type="PackedScene" uid="uid://cue07yxp483n4" path="res://src/gui/global_levels_hud/hud.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://cr58hgugjg0k5" path="res://src/game/tutorial/tutorial_control.tscn" id="10"]
@@ -23,8 +24,20 @@ size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="PrismMesh" id="6"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_svmrm"]
+render_priority = 0
+shader = ExtResource("4_khut3")
+shader_parameter/speed = 0.6
+shader_parameter/ring_scale = 4.4
+shader_parameter/wave_scale = 8.454
+shader_parameter/random_scale = 4.6
+shader_parameter/noise_scale = 0.03
+
 [sub_resource type="BoxMesh" id="11"]
 size = Vector3(5, 5, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i8in6"]
+albedo_color = Color(0.407843, 0.192157, 0.752941, 1)
 
 [sub_resource type="BoxShape3D" id="13"]
 size = Vector3(5, 5, 0.2)
@@ -40,7 +53,7 @@ size = Vector3(35, 1, 35)
 script = ExtResource("8")
 
 [node name="Player" parent="." instance=ExtResource("2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.366, 3, -105.831)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.514732, 5.13396, 0.981552)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_smvl8")
@@ -70,6 +83,7 @@ shape = SubResource("5")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PortalTrigger"]
 transform = Transform3D(5.4, 0, 0, 0, 4.32, 0, 0, 0, 0.3, 0, 0, 0)
 mesh = SubResource("6")
+surface_material_override/0 = SubResource("ShaderMaterial_svmrm")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13")
@@ -78,14 +92,14 @@ volume_db = -20.0
 [node name="Interactables" type="Node3D" parent="."]
 
 [node name="MovingPlatform1Button" parent="Interactables" instance=ExtResource("16")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8201, 2.12989, -28.3489)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8201, 1.90573, -28.3489)
 
 [node name="MovingPlatform1" parent="Interactables" instance=ExtResource("4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5807, 0.950626, -23.9323)
 move_z = -95.473
 
 [node name="SecretePassage1Button" parent="Interactables" instance=ExtResource("16")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.15, 2.12989, -95.3299)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.15, 1.82993, -95.3299)
 can_deactivate = false
 
 [node name="SecretPassagePlatform1" parent="Interactables" instance=ExtResource("17")]
@@ -226,7 +240,7 @@ collision_layer = 2
 [node name="Mesh" type="MeshInstance3D" parent="StaticPlatforms/Platform8"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.3027e-15, -2.4869e-14, 1.3027e-15, 1, 0, 0, 0)
 mesh = SubResource("11")
-skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_i8in6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticPlatforms/Platform8"]
 shape = SubResource("13")
@@ -239,6 +253,7 @@ collision_layer = 2
 transform = Transform3D(1, 0, 3.56454e-14, 0, 1, 0, -3.56148e-14, 0, 1, 0, 0, 0)
 mesh = SubResource("11")
 skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_i8in6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticPlatforms/Platform9"]
 transform = Transform3D(1, 0, 4.27508e-14, 0, 1, 0, -4.27202e-14, 0, 1, 0, 0, 0)

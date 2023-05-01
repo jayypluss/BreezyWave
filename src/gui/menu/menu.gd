@@ -25,7 +25,7 @@ func _ready():
 
 
 func _on_PlayButton_pressed() -> void:
-	get_tree().change_scene_to_file("res://src/levels/level_test/level_test.tscn")
+	get_tree().change_scene_to_file("res://src/levels/level_1/level_1.tscn")
 
 
 func _on_ExitButton_pressed() -> void:

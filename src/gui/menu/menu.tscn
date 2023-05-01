@@ -105,9 +105,10 @@ layout_mode = 2
 focus_neighbor_bottom = NodePath("../CreditsButton")
 focus_next = NodePath("../CreditsButton")
 focus_previous = NodePath("../ExitButton")
-text = "Start (Test Level)"
+text = "Start"
 
 [node name="Level1Button" type="Button" parent="ButtonsContainer"]
+visible = false
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../CreditsButton")
@@ -116,6 +117,7 @@ focus_previous = NodePath("../ExitButton")
 text = "Level 1"
 
 [node name="Level2Button" type="Button" parent="ButtonsContainer"]
+visible = false
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../CreditsButton")

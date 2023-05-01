@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://src/environment/pedestal_button/pedestal_button.gd" id="1"]
 
 [sub_resource type="StandardMaterial3D" id="11"]
+albedo_color = Color(0.482353, 0.482353, 0.482353, 1)
 
 [sub_resource type="CylinderMesh" id="1"]
 material = SubResource("11")

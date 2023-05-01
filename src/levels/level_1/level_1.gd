@@ -2,6 +2,7 @@ extends Node3D
 
 
 @onready var player : Player = $Player
+@onready var win_game_screen : CanvasLayer = $Control/GlobalLevelsScreens/WinGameScreen
 
 # TODO should be refactored
 @onready var moving_platform_1 = $Interactables/MovingPlatform1
@@ -15,7 +16,7 @@ var has_activate_secret_passage_1 = false
 func _ready():
 	GameState.hud = hud
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	player.transform.origin = Vector3(0,3,0)
+#	player.transform.origin = Vector3(0,3,0)
 	if !OS.has_feature("standalone"):
 		print('Opened level_test from editor')
 
@@ -47,3 +48,8 @@ func _on_SecretePassage1Button_on_button_pressed(activate: bool):
 		secret_passage_platform_1.start_cinematics()
 		has_activate_secret_passage_1 = true
 		
+
+
+func _on_PortalTrigger_body_entered(_body: CharacterBody3D):
+	GameState.persist()
+	win_game_screen._show()

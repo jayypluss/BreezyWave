@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3ua4gxcip1as"]
+[gd_scene load_steps=8 format=3 uid="uid://b3ua4gxcip1as"]
 
 [ext_resource type="Script" path="res://src/environment/pedestal/pedestal.gd" id="1_o5vfj"]
 
@@ -7,6 +7,7 @@ height = 6.0
 radius = 7.0
 
 [sub_resource type="StandardMaterial3D" id="2"]
+albedo_color = Color(0.482353, 0.482353, 0.482353, 1)
 
 [sub_resource type="CylinderMesh" id="3"]
 material = SubResource("2")
@@ -14,7 +15,11 @@ top_radius = 0.15
 bottom_radius = 0.15
 height = 1.25
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cawln"]
+albedo_color = Color(0.823529, 0.823529, 0.823529, 1)
+
 [sub_resource type="BoxMesh" id="5"]
+material = SubResource("StandardMaterial3D_cawln")
 size = Vector3(0.65, 0.1, 0.65)
 
 [sub_resource type="CylinderShape3D" id="4"]

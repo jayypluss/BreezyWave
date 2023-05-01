@@ -19,14 +19,11 @@ func _ready():
 		if control.has_method('_on_Player_exited_area'):
 			var _bex = self.connect("body_exited", Callable(control,"_on_Player_exited_area").bind(self))
 
-
-
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	expand()
 	GameState.hud.action_indicator_control.show()
 
-
-func _on_body_exited(body):
+func _on_body_exited(_body):
 	collapse()
 	GameState.hud.action_indicator_control.hide()
 	
