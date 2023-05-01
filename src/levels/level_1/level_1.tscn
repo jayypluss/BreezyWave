@@ -723,19 +723,19 @@ grow_vertical = 0
 size_flags_horizontal = 1
 
 [node name="Step0" parent="Control/TutorialControl/Triggers" index="0" node_paths=PackedStringArray("control") instance=ExtResource("14_rtsv6")]
-transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, -0.965785, 2.38136, -8.20768)
+transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, -0.965785, 1.78516, -8.20768)
 control = NodePath("../..")
 
 [node name="Step1" parent="Control/TutorialControl/Triggers" index="1" node_paths=PackedStringArray("control") instance=ExtResource("14_rtsv6")]
-transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, 16.7448, 2.38136, -22.8391)
+transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, 16.7448, 1.78516, -22.8391)
 control = NodePath("../..")
 
 [node name="Step2" parent="Control/TutorialControl/Triggers" index="2" node_paths=PackedStringArray("control") instance=ExtResource("14_rtsv6")]
-transform = Transform3D(-0.388754, 0, 0.921342, 0, 1, 0, -0.921342, 0, -0.388754, -15.5381, -12.7101, -138.674)
+transform = Transform3D(-0.388754, 0, 0.921342, 0, 1, 0, -0.921342, 0, -0.388754, -15.5381, -13.3063, -138.674)
 control = NodePath("../..")
 
 [node name="Step3" parent="Control/TutorialControl/Triggers" index="3" node_paths=PackedStringArray("control") instance=ExtResource("14_rtsv6")]
-transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, -102.802, 2.38136, -151.381)
+transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, -102.802, 1.78516, -151.381)
 control = NodePath("../..")
 
 [node name="GlobalLevelsScreens" parent="Control" instance=ExtResource("3")]

@@ -176,7 +176,7 @@ script = ExtResource("2_1lrpx")
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/Horizontal/Vertical"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.952167, 0.305579, 0, -0.305579, 0.952167, 0, 2.25302, 6.79271)
+transform = Transform3D(1, 0, 0, 0, 0.952167, 0.305579, 0, -0.305579, 0.952167, 2.88049e-07, 2.11248, 3.49781)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraPivot/Horizontal/Vertical/Camera3D"]
 mesh = SubResource("QuadMesh_3dh2o")

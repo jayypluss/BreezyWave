@@ -2,7 +2,7 @@ extends Node3D
 
 const ZOOM_STEP := 0.5
 var min_zoom := 9
-var max_zoom := 21
+var max_zoom := 22
 
 var horizontal: float = 0
 var vertical: float = 0

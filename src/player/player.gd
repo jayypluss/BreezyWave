@@ -32,7 +32,7 @@ func die():
 
 func _on_LastPositionTimer_timeout():
 	if is_on_floor() && get_last_slide_collision().get_collider(0) is CSGMesh3D:
-			last_floor_position = position
+		last_floor_position = position
 
 	last_position_timer.start()	
 
