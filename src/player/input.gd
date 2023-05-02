@@ -70,6 +70,9 @@ func _physics_process(delta: float) -> void:
 				dash_timer.start()
 	
 	if Input.is_action_just_pressed("jump"):
+		if num_of_jumps == 1 and !player.is_on_floor() and player.get_slide_collision_count() == 0:
+			available_jumps = 0
+			
 		if available_jumps > 0:
 			available_jumps -= 1
 			player.velocity.y = jump_impulse
