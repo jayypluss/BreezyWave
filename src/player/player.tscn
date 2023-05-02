@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c8aem4qjchnrf"]
+[gd_scene load_steps=23 format=3 uid="uid://c8aem4qjchnrf"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1"]
 [ext_resource type="Script" path="res://src/player/camera.gd" id="2_1lrpx"]
@@ -62,6 +62,17 @@ _data = {
 "RESET": SubResource("Animation_cwyvw"),
 "bat_hit": SubResource("Animation_ojo4n")
 }
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dr2kn"]
+lifetime_randomness = 0.23
+emission_shape = 1
+emission_sphere_radius = 1.8
+direction = Vector3(0, 0, -1)
+spread = 10.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8shkb"]
+size = Vector2(0.01, 2)
 
 [sub_resource type="CapsuleShape3D" id="5"]
 
@@ -158,6 +169,21 @@ bones/23/rotation = Quaternion(-0.137723, 0.0750045, 0.368513, 0.9163)
 [node name="AnimationPlayer" parent="PlayerPivot/wings" index="1"]
 speed_scale = 64.0
 
+[node name="Effects" type="Node3D" parent="PlayerPivot"]
+
+[node name="DashEffect" type="GPUParticles3D" parent="PlayerPivot/Effects"]
+transform = Transform3D(0.328963, 0, -3.55271e-15, 0, 0.691601, 0, 1.77636e-15, 0, 0.219049, -1.33865e-07, 0, 1.53124)
+emitting = false
+lifetime = 0.06
+one_shot = true
+explosiveness = 0.5
+randomness = 1.0
+visibility_aabb = AABB(-4, -1.81022, -4, 8, 3.62044, 8)
+process_material = SubResource("ParticleProcessMaterial_dr2kn")
+draw_pass_1 = SubResource("PlaneMesh_8shkb")
+
+[node name="DashTimer" type="Timer" parent="PlayerPivot/Effects"]
+
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("5")
 
@@ -185,6 +211,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_p1url")
 [node name="Skeleton3D" type="Skeleton3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.86776e-08, 0.565481, 0.556807)
 
+[connection signal="timeout" from="PlayerPivot/Effects/DashTimer" to="Input" method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="LastPositionTimer" to="." method="_on_LastPositionTimer_timeout"]
 
 [editable path="PlayerPivot/wings"]

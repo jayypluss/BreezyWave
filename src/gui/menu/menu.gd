@@ -39,8 +39,8 @@ func _on_CreditsButton_pressed():
 func _on_test_level_pressed():
 	get_tree().change_scene_to_file("res://src/levels/level_test/level_test.tscn")
 	
-func _on_level1_pressed():
-	get_tree().change_scene_to_file("res://src/levels/level_1/level_1.tscn")
+func _on_level_test_pressed():
+	get_tree().change_scene_to_file("res://src/levels/level_test/level_test.tscn")
 
 func _on_level2_pressed():
 	get_tree().change_scene_to_file("res://src/levels/level_2/level_2.tscn")

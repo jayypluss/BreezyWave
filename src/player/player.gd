@@ -27,7 +27,7 @@ func _get_configuration_warnings() -> PackedStringArray:
 		return []
 
 func die():
-	if position:
+	if last_floor_position:
 		position = last_floor_position
 
 func _on_LastPositionTimer_timeout():
