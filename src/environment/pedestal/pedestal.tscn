@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3ua4gxcip1as"]
+
+[ext_resource type="Script" path="res://src/environment/pedestal/pedestal.gd" id="1_o5vfj"]
+
+[sub_resource type="CylinderShape3D" id="1"]
+height = 6.0
+radius = 7.0
+
+[sub_resource type="StandardMaterial3D" id="2"]
+albedo_color = Color(0.482353, 0.482353, 0.482353, 1)
+
+[sub_resource type="CylinderMesh" id="3"]
+material = SubResource("2")
+top_radius = 0.15
+bottom_radius = 0.15
+height = 1.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cawln"]
+albedo_color = Color(0.823529, 0.823529, 0.823529, 1)
+
+[sub_resource type="BoxMesh" id="5"]
+material = SubResource("StandardMaterial3D_cawln")
+size = Vector3(0.65, 0.1, 0.65)
+
+[sub_resource type="CylinderShape3D" id="4"]
+height = 1.5
+radius = 0.2
+
+[node name="Pedestal" type="Area3D"]
+collision_layer = 2
+script = ExtResource("1_o5vfj")
+
+[node name="AreaCollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.96664, 0)
+shape = SubResource("1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+
+[node name="BaseMesh" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("3")
+
+[node name="TopMesh" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(-3.35152e-08, -2.80609e-08, -1, -0.641958, 0.76674, 0, 0.76674, 0.641958, -4.37114e-08, 0, 0.69063, 0)
+mesh = SubResource("5")
+
+[node name="MeshCollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("4")
+
+[node name="Label3D" type="Label3D" parent="StaticBody3D"]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 1.16208, 0)
+pixel_size = 0.025
+billboard = 2
+modulate = Color(1, 0.713726, 0.470588, 1)
+text = "!"
+font_size = 36
+outline_size = 10
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

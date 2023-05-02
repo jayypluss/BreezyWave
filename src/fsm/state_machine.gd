@@ -5,18 +5,18 @@ class_name StateMachine
 
 signal transitioned(state_path)
 
-export var initial_state := NodePath()
+@export var initial_state := NodePath()
 
-onready var state: State = get_node(initial_state) setget set_state
-onready var _state_name := state.name
+@onready var state: State = get_node(initial_state) : set = set_state
+@onready var _state_name := state.name
 
 
-func _init() -> void:
+func _init():
 	add_to_group("state_machine")
 
 
 func _ready() -> void:
-	yield(owner, "ready")
+	await owner.ready
 	state.enter()
 
 

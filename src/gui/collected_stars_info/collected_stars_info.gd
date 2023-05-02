@@ -1,10 +1,9 @@
 extends Control
 
 
-onready var stars_collected = GameState.colorful_stars_collected.size()
-onready var counter_label : Label = $HBoxContainer/Counter
-onready var animation_player : AnimationPlayer = $AnimationPlayer
-onready var timer : Timer = $Timer
+@onready var stars_collected = GameState.colorful_stars_collected.size()
+@onready var counter_label : Label = $HBoxContainer/Counter
+@onready var timer : Timer = $Timer
 
 var is_star_counter_showing : bool = false
 
@@ -17,7 +16,8 @@ func on_star_collected():
 
 func update_label():
 	if !is_star_counter_showing:
-		animation_player.play("show")
+		var tween: Tween = create_tween().set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self, "position:y", position.y + 80, 0.5)
 		is_star_counter_showing = true
 		
 	timer.start()
@@ -26,5 +26,6 @@ func update_label():
 
 func _on_Timer_timeout():
 	if is_star_counter_showing:
-		animation_player.play("hide")
+		var tween: Tween = create_tween().set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(self, "position:y", position.y - 80, 0.5)
 		is_star_counter_showing = false

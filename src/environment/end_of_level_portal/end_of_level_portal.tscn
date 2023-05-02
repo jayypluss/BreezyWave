@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/shaders/random_glitches.shader" type="Shader" id=2]
+[ext_resource path="res://assets/shaders/random_glitches.gdshader" type="Shader" id=2]
 
 [sub_resource type="GDScript" id=1]
-script/source = "extends StaticBody
+script/source = "extends StaticBody3D
 
 
 "
@@ -18,16 +18,16 @@ shader_param/wave_scale = 8.454
 shader_param/random_scale = 4.6
 shader_param/noise_scale = 0.03
 
-[sub_resource type="ConvexPolygonShape" id=4]
+[sub_resource type="ConvexPolygonShape3D" id=4]
 
-[node name="EndOfLevelPortal" type="StaticBody"]
-transform = Transform( 5.4, 0, 0, 0, 4.32, 0, 0, 0, 0.3, 0, 0, 0 )
+[node name="EndOfLevelPortal" type="StaticBody3D"]
+transform = Transform3D( 5.4, 0, 0, 0, 4.32, 0, 0, 0, 0.3, 0, 0, 0 )
 script = SubResource( 1 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 4.6, 0, 0, 0, 4.6, 0, 0, 0, 4.6, 0, 0, 0 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D( 4.6, 0, 0, 0, 4.6, 0, 0, 0, 4.6, 0, 0, 0 )
 shape = SubResource( 4 )

@@ -1,81 +1,75 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://dg8w57xss5kw7"]
 
-[ext_resource path="res://src/gui/global_levels_screens/pause_layer/pause_layer.gd" type="Script" id=2]
-[ext_resource path="res://assets/ui-theme.tres" type="Theme" id=3]
-[ext_resource path="res://assets/pause_button.png" type="Texture" id=4]
+[ext_resource type="Script" path="res://src/gui/global_levels_screens/pause_layer/pause_layer.gd" id="2"]
+[ext_resource type="Theme" uid="uid://db51ncs4eb7e0" path="res://assets/ui-theme.tres" id="3"]
+[ext_resource type="Texture2D" uid="uid://cgxpnne4dc1e2" path="res://assets/pause_button.png" id="4"]
 
 [node name="PauseScreen" type="CanvasLayer"]
-pause_mode = 2
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="Hidable" type="Control" parent="."]
 visible = false
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 3 )
+theme = ExtResource("3")
 
 [node name="Background" type="ColorRect" parent="Hidable"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.25098, 0.0901961, 0.494118, 0.717647 )
+color = Color(0.25098, 0.0901961, 0.494118, 0.717647)
 
 [node name="VBoxOptions" type="VBoxContainer" parent="Hidable"]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -132.0
-margin_top = -118.0
-margin_right = 132.0
-margin_bottom = 118.0
-custom_constants/separation = 20
+offset_left = -132.0
+offset_top = -118.0
+offset_right = 132.0
+offset_bottom = 118.0
 alignment = 1
 
 [node name="ResumeButton" type="Button" parent="Hidable/VBoxOptions"]
-pause_mode = 2
-margin_top = 74.0
-margin_right = 264.0
-margin_bottom = 108.0
-focus_neighbour_top = NodePath("../MainMenuButton")
-focus_neighbour_bottom = NodePath("../MainMenuButton")
+process_mode = 2
+layout_mode = 2
+focus_neighbor_top = NodePath("../MainMenuButton")
+focus_neighbor_bottom = NodePath("../MainMenuButton")
 focus_next = NodePath("../MainMenuButton")
 focus_previous = NodePath("../MainMenuButton")
 text = "Resume"
 
 [node name="MainMenuButton" type="Button" parent="Hidable/VBoxOptions"]
-pause_mode = 2
-margin_top = 128.0
-margin_right = 264.0
-margin_bottom = 162.0
-focus_neighbour_top = NodePath("../ResumeButton")
-focus_neighbour_bottom = NodePath("../ResumeButton")
+process_mode = 2
+layout_mode = 2
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../ResumeButton")
 focus_next = NodePath("../ResumeButton")
 focus_previous = NodePath("../ResumeButton")
 text = "Main Menu"
 
 [node name="InfoLabel" type="Label" parent="Hidable"]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -142.0
-margin_top = 93.0
-margin_right = 142.0
-margin_bottom = 169.0
-theme = ExtResource( 3 )
-custom_colors/font_color = Color( 0.788235, 0.788235, 0.788235, 1 )
+offset_left = -142.0
+offset_top = 93.0
+offset_right = 142.0
+offset_bottom = 169.0
+theme = ExtResource("3")
 text = "Game Paused"
-align = 1
-valign = 1
 
 [node name="PauseButton" type="TextureButton" parent="Hidable"]
 visible = false
-margin_left = 16.0
-margin_top = 16.0
-margin_right = 78.0
-margin_bottom = 78.0
-texture_normal = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 78.0
+offset_bottom = 78.0
+texture_normal = ExtResource("4")
 
 [connection signal="pressed" from="Hidable/VBoxOptions/ResumeButton" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="Hidable/VBoxOptions/MainMenuButton" to="." method="_on_Main_Menu_pressed"]

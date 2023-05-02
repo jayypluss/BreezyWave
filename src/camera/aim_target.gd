@@ -1,12 +1,12 @@
 extends Sprite3D
-# Visual target shape that gets projected on the environment, to help the player aim.
+# Visual target shape that gets projected checked the environment, to help the player aim.
 
 
 func _ready() -> void:
-	set_as_toplevel(true)
+	set_as_top_level(true)
 
 
-func update(ray: RayCast) -> void:
+func update(ray: RayCast3D) -> void:
 	ray.force_raycast_update()
 	var is_colliding := ray.is_colliding()
 	visible = is_colliding

@@ -1,11 +1,10 @@
 extends CanvasLayer
 
-onready var hidable := $Hidable
+@onready var hidable := $Hidable
 
 
-func togle_visible(visible: bool = !hidable.visible):
-    hidable.visible = visible
-
+func togle_visible(toggleValue: bool = !hidable.visible):
+	hidable.visible = toggleValue
 
 func _on_MainMenu_pressed():
-    togle_visible(false)
+	togle_visible(false)

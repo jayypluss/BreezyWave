@@ -1,12 +1,14 @@
 extends Node
 
+
+var camera_distance = 9
+var camera_far = 500
 var audio_configs : Dictionary = {
 	"master_volume": 100
 }
 
 func _ready():
 	restore()
-
 
 func persist():
 	# Create new ConfigFile object.

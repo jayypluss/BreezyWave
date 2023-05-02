@@ -1,101 +1,24 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://c8mmmyxugnefa"]
 
-[ext_resource path="res://src/environment/moving_platform/moving_platform.gd" type="Script" id=2]
+[ext_resource type="Script" path="res://src/environment/moving_platform/moving_platform.gd" id="2"]
 
-[sub_resource type="CubeMesh" id=8]
-size = Vector3( 10, 0.2, 10 )
+[sub_resource type="BoxMesh" id="8"]
+size = Vector3(10, 0.2, 10)
 
-[sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.619608, 0.368627, 0.168627, 1 )
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0tqda"]
+albedo_color = Color(0.588235, 0.192157, 0.752941, 1)
 
-[sub_resource type="BoxShape" id=3]
-extents = Vector3( 5, 0.1, 5 )
+[sub_resource type="BoxShape3D" id="3"]
+size = Vector3(10, 0.2, 10)
 
-[sub_resource type="Curve3D" id=5]
-_data = {
-"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -0.00133783, -0.000876665, -1.55024e-12, 0, 0, 0, 0, 0, 0, -0.00133783, -0.000876665, -1.55024e-12, 0, 0, 0, 0, 0, 0, -88, -3.8466e-06, -2.6226e-06, 0, 0, 0, 0, 0, 0, -0.00133783, -0.000876665, -1.55024e-12 ),
-"tilts": PoolRealArray( 0, 0, 0, 0 )
-}
-
-[sub_resource type="Animation" id=4]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("PathFollow:unit_offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-
-[sub_resource type="Animation" id=9]
-length = 7.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("PathFollow:unit_offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 3, 3.5, 6.5, 7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0, 0.5, 0.5, 0.0, 0.0 ]
-}
-
-[sub_resource type="Animation" id=10]
-resource_name = "move_up"
-length = 7.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("PathFollow:unit_offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 3, 3.5, 6.5, 7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 0.0, 0.5, 0.5, 0.0, 0.0 ]
-}
-
-[node name="MovingPlatform" type="Spatial"]
-script = ExtResource( 2 )
-
-[node name="KinematicBody" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 1.3027e-15, 0, 1.3027e-15, 1, -0.00133783, -0.000876665, -1.55024e-12 )
+[node name="AnimatableBody3D" type="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00264847, -0.000876705, 1.17252e-10)
 collision_layer = 2
+script = ExtResource("2")
 
-[node name="Mesh" type="MeshInstance" parent="KinematicBody"]
-mesh = SubResource( 8 )
-skeleton = NodePath("../../..")
-material/0 = SubResource( 2 )
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("8")
+surface_material_override/0 = SubResource("StandardMaterial3D_0tqda")
 
-[node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
-shape = SubResource( 3 )
-
-[node name="Path" type="Path" parent="."]
-curve = SubResource( 5 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="PathFollow" type="PathFollow" parent="Path"]
-transform = Transform( 1, 0, 0, 0, 1, 1.3027e-15, 0, 1.3027e-15, 1, -0.00133783, -0.000876665, -1.55024e-12 )
-
-[node name="RemoteTransform" type="RemoteTransform" parent="Path/PathFollow"]
-remote_path = NodePath("../../../KinematicBody")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Path")
-playback_process_mode = 0
-playback_speed = 0.5
-anims/RESET = SubResource( 4 )
-anims/move = SubResource( 9 )
-anims/move_up = SubResource( 10 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("3")
