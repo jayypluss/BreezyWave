@@ -22,12 +22,7 @@ mouse_filter = 2
 script = ExtResource("1_64x2v")
 
 [node name="CollectedStarsInfo" parent="." instance=ExtResource("2")]
-anchors_preset = 0
-anchor_left = 0.0
-anchor_right = 0.0
-offset_left = 821.0
-offset_right = 1021.0
-grow_horizontal = 1
+layout_mode = 1
 
 [node name="ActionIndicatorControl" type="Control" parent="."]
 visible = false
