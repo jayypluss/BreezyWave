@@ -108,6 +108,7 @@ focus_previous = NodePath("../ExitButton")
 text = "Start"
 
 [node name="LevelTestButton" type="Button" parent="ButtonsContainer"]
+visible = false
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../CreditsButton")

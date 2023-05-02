@@ -7,7 +7,7 @@ extends CharacterBody3D
 @onready var camera: Camera3D = %Camera3D
 @onready var last_position_timer = $LastPositionTimer
 
-var last_floor_position: Vector3
+var last_floor_position: Vector3 = Vector3(0, 3, 0)
 
 func _ready():
 	GameState.player = self
@@ -27,8 +27,7 @@ func _get_configuration_warnings() -> PackedStringArray:
 		return []
 
 func die():
-	if last_floor_position:
-		position = last_floor_position
+	position = last_floor_position
 
 func _on_LastPositionTimer_timeout():
 	if is_on_floor() && get_last_slide_collision().get_collider(0) is CSGMesh3D:

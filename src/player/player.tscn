@@ -140,6 +140,7 @@ libraries = {
 
 [node name="wings" parent="PlayerPivot" instance=ExtResource("3_2gl8a")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.23349e-08, -1.75977, 0.369868)
+visible = false
 script = ExtResource("4_huxau")
 
 [node name="Skeleton3D" parent="PlayerPivot/wings/concertina" index="0"]
