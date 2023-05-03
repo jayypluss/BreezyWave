@@ -1,4 +1,4 @@
 extends Control
+class_name HUD
 
-@onready var action_indicator_control = $ActionIndicatorControl
-
+@onready var panel_control: PanelControl = $PanelControl

@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://b05tohqmg7ys0"]
+
+[ext_resource type="Script" path="res://src/gui/simple_info_box/simple_info_box.gd" id="1_g3t7a"]
+[ext_resource type="Theme" uid="uid://db51ncs4eb7e0" path="res://assets/ui-theme.tres" id="2_s3dyt"]
+[ext_resource type="StyleBox" uid="uid://b12y5bj546ehf" path="res://src/gui/simple_panel/light_simple_panel_stylebox.tres" id="3_rf44h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_onxov"]
+
+[node name="SimpleInfoBox" type="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(170, 170)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_s3dyt")
+script = ExtResource("1_g3t7a")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_onxov")
+
+[node name="Panel" type="Panel" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_rf44h")
+
+[node name="Box" type="VBoxContainer" parent="MarginContainer/PanelContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_s3dyt")
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer/Panel/Box"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/Panel/Box/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/Panel/Box"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+focus_mode = 0
+flat = true

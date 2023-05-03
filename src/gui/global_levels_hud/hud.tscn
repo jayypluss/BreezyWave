@@ -1,15 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cue07yxp483n4"]
+[gd_scene load_steps=9 format=3 uid="uid://cue07yxp483n4"]
 
 [ext_resource type="Script" path="res://src/gui/global_levels_hud/hud.gd" id="1_64x2v"]
 [ext_resource type="PackedScene" uid="uid://c5avtepgucbu0" path="res://src/gui/collected_stars_info/collected_stars_info.tscn" id="2"]
 [ext_resource type="Script" path="res://src/gui/global_levels_hud/action_indicator_control.gd" id="2_h435r"]
+[ext_resource type="Script" path="res://src/gui/global_levels_hud/panel_control.gd" id="3_peuhs"]
+[ext_resource type="StyleBox" uid="uid://b12y5bj546ehf" path="res://src/gui/simple_panel/light_simple_panel_stylebox.tres" id="4_k8e74"]
+[ext_resource type="PackedScene" uid="uid://b05tohqmg7ys0" path="res://src/gui/simple_info_box/simple_info_box.tscn" id="4_liieu"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_544hd"]
-bg_color = Color(0, 0, 0, 0.203922)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ktfum"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b651g"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -24,31 +24,146 @@ script = ExtResource("1_64x2v")
 [node name="CollectedStarsInfo" parent="." instance=ExtResource("2")]
 layout_mode = 1
 
-[node name="ActionIndicatorControl" type="Control" parent="."]
-visible = false
+[node name="PanelControl" type="Control" parent="."]
+layout_mode = 1
+anchor_right = 0.141
+anchor_bottom = 1.0
+offset_right = -0.480011
+script = ExtResource("3_peuhs")
+
+[node name="Panel" type="MarginContainer" parent="PanelControl"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelControl/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Top" type="MarginContainer" parent="PanelControl/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelControl/Panel/VBoxContainer/Top"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ktfum")
+
+[node name="Middle" type="MarginContainer" parent="PanelControl/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelControl/Panel/VBoxContainer/Middle"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ktfum")
+
+[node name="SimpleInfoBoxControl" parent="PanelControl/Panel/VBoxContainer/Middle/PanelContainer" instance=ExtResource("4_liieu")]
+visible = false
+layout_mode = 2
+
+[node name="Bottom" type="MarginContainer" parent="PanelControl/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelControl/Panel/VBoxContainer/Bottom"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="PanelContainer" type="MarginContainer" parent="PanelControl/Panel/VBoxContainer/Bottom/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ActionIndicatorControl" type="Control" parent="PanelControl/Panel/VBoxContainer/Bottom/VBoxContainer/PanelContainer"]
+visible = false
+layout_mode = 2
 script = ExtResource("2_h435r")
 
-[node name="ActionIndicator" type="PanelContainer" parent="ActionIndicatorControl"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelControl/Panel/VBoxContainer/Bottom/VBoxContainer/PanelContainer/ActionIndicatorControl"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.059
-anchor_top = 0.752
-anchor_right = 0.207
-anchor_bottom = 0.813
-offset_left = 0.0319977
-offset_top = -0.296021
-offset_right = -0.46402
-offset_bottom = 0.175964
-theme_override_styles/panel = SubResource("StyleBoxFlat_544hd")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="ActionIndicatorLabel" type="Label" parent="ActionIndicatorControl/ActionIndicator"]
+[node name="ActionIndicator" type="PanelContainer" parent="PanelControl/Panel/VBoxContainer/Bottom/VBoxContainer/PanelContainer/ActionIndicatorControl/MarginContainer"]
 layout_mode = 2
-text = "E to interact"
+theme_override_styles/panel = SubResource("StyleBoxEmpty_b651g")
+
+[node name="Panel" type="Panel" parent="PanelControl/Panel/VBoxContainer/Bottom/VBoxContainer/PanelContainer/ActionIndicatorControl/MarginContainer/ActionIndicator"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_k8e74")
+
+[node name="ActionIndicatorLabel" type="Label" parent="PanelControl/Panel/VBoxContainer/Bottom/VBoxContainer/PanelContainer/ActionIndicatorControl/MarginContainer/ActionIndicator/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PanelContainer2" type="MarginContainer" parent="PanelControl/Panel/VBoxContainer/Bottom/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ActionIndicatorControl" type="Control" parent="PanelControl/Panel/VBoxContainer/Bottom/VBoxContainer/PanelContainer2"]
+visible = false
+layout_mode = 2
+script = ExtResource("2_h435r")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelControl/Panel/VBoxContainer/Bottom/VBoxContainer/PanelContainer2/ActionIndicatorControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ActionIndicator" type="PanelContainer" parent="PanelControl/Panel/VBoxContainer/Bottom/VBoxContainer/PanelContainer2/ActionIndicatorControl/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_b651g")
+
+[node name="Panel" type="Panel" parent="PanelControl/Panel/VBoxContainer/Bottom/VBoxContainer/PanelContainer2/ActionIndicatorControl/MarginContainer/ActionIndicator"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_k8e74")
+
+[node name="ActionIndicatorLabel" type="Label" parent="PanelControl/Panel/VBoxContainer/Bottom/VBoxContainer/PanelContainer2/ActionIndicatorControl/MarginContainer/ActionIndicator/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelControl/Panel/VBoxContainer/Bottom/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ktfum")

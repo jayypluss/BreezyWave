@@ -17,10 +17,6 @@ func _on_NextLevel_pressed():
 	get_tree().paused = false
 	var root = get_tree().root
 	var next_level: String = GameState.get_next_level(root.name)
-	print(root)
-	print(root.name)
-	print(root.name)
-	print(next_level)
 	togle_visible(false)
 #	Game.restart_scene()
 #	Game.change_scene_to_file(next_level, {

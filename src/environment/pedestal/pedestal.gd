@@ -21,11 +21,11 @@ func _ready():
 
 func _on_body_entered(_body):
 	expand()
-	GameState.hud.action_indicator_control.show()
+	GameState.hud.panel_control.action_indicator_control.show_with_text('E to interact')
 
 func _on_body_exited(_body):
 	collapse()
-	GameState.hud.action_indicator_control.hide()
+	GameState.hud.panel_control.action_indicator_control.hide_and_clear()
 	
 func expand():
 	label.show()

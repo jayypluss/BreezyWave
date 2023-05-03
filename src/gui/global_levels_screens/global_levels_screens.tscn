@@ -21,5 +21,4 @@ process_mode = 0
 layer = 3
 
 [node name="WinGameScreen" parent="." instance=ExtResource("4")]
-process_mode = 0
 layer = 3

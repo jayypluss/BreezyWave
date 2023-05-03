@@ -1,0 +1,152 @@
+[gd_scene load_steps=18 format=3 uid="uid://sn0v6psa3o3h"]
+
+[ext_resource type="Script" path="res://src/levels/level_2/level_2.gd" id="1_rngde"]
+[ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2_occsa"]
+[ext_resource type="Environment" uid="uid://bdm4h3rb3p8rb" path="res://src/levels/level_2/level_2_env.tres" id="3_2x0t7"]
+[ext_resource type="Shader" path="res://assets/shaders/random_glitches.gdshader" id="4_gblwe"]
+[ext_resource type="AudioStream" uid="uid://d4aj57xuv7pic" path="res://assets/music/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg" id="5_nkwwp"]
+[ext_resource type="PackedScene" uid="uid://7c6tyte2j0mh" path="res://src/environment/static_platform/static_platform.tscn" id="10_2o4q7"]
+[ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="12_y32f1"]
+[ext_resource type="PackedScene" uid="uid://cue07yxp483n4" path="res://src/gui/global_levels_hud/hud.tscn" id="13_umq1f"]
+[ext_resource type="PackedScene" uid="uid://cr58hgugjg0k5" path="res://src/game/tutorial/tutorial_control.tscn" id="14_qqrc4"]
+[ext_resource type="PackedScene" uid="uid://b3ua4gxcip1as" path="res://src/environment/pedestal/pedestal.tscn" id="15_uknrk"]
+[ext_resource type="PackedScene" uid="uid://dx1ind0cyeb0t" path="res://src/gui/global_levels_screens/global_levels_screens.tscn" id="16_8fsyh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_llkap"]
+
+[sub_resource type="BoxShape3D" id="5"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="PrismMesh" id="6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_svmrm"]
+render_priority = 0
+shader = ExtResource("4_gblwe")
+shader_parameter/speed = 0.6
+shader_parameter/ring_scale = 4.4
+shader_parameter/wave_scale = 8.454
+shader_parameter/random_scale = 4.6
+shader_parameter/noise_scale = 0.03
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vst65"]
+albedo_color = Color(0.301961, 0.192157, 0.752941, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a7nm4"]
+material = SubResource("StandardMaterial3D_vst65")
+size = Vector3(15, 1, 15)
+
+[node name="Level2" type="Node3D"]
+script = ExtResource("1_rngde")
+
+[node name="Player" parent="." instance=ExtResource("2_occsa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.514732, 5.13396, 0.981552)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_2x0t7")
+
+[node name="GlobalLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 102.381, -110.774)
+light_energy = 0.9
+shadow_enabled = true
+directional_shadow_max_distance = 300.0
+
+[node name="DyingTrigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30069, -205.875)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DyingTrigger"]
+transform = Transform3D(896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.372)
+shape = SubResource("BoxShape3D_llkap")
+
+[node name="PortalTrigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344, 2.32673, -279.182)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PortalTrigger"]
+transform = Transform3D(22.5913, 0, 0, 0, 18.0731, 0, 0, 0, 1.25507, 0, 0, 0)
+shape = SubResource("5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PortalTrigger"]
+transform = Transform3D(5.4, 0, 0, 0, 4.32, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("6")
+surface_material_override/0 = SubResource("ShaderMaterial_svmrm")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nkwwp")
+volume_db = -20.0
+
+[node name="StaticPlatforms" type="Node3D" parent="."]
+
+[node name="Platform" parent="StaticPlatforms" instance=ExtResource("10_2o4q7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0170984, 0.0191092, -23.311)
+
+[node name="Platform2" parent="StaticPlatforms" instance=ExtResource("10_2o4q7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0170984, 0.0191092, -38.2783)
+
+[node name="Platform3" parent="StaticPlatforms" instance=ExtResource("10_2o4q7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0170984, 0.0191092, -54.4471)
+
+[node name="Platform4" parent="StaticPlatforms" instance=ExtResource("10_2o4q7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0170984, 0.0191092, -70.9057)
+
+[node name="Platform5" parent="StaticPlatforms" instance=ExtResource("10_2o4q7")]
+transform = Transform3D(1.844, 0, 0, 0, 1, 0, 0, 0, 1.723, -0.0170984, 0.0191092, -92.1015)
+
+[node name="Platform6" parent="StaticPlatforms" instance=ExtResource("10_2o4q7")]
+transform = Transform3D(1.844, 0, 0, 0, 1, 0, 0, 0, 1.723, -0.0170984, 0.0191092, -129.542)
+
+[node name="Platform7" parent="StaticPlatforms" instance=ExtResource("10_2o4q7")]
+transform = Transform3D(1.844, 0, 0, 0, 1, 0, 0, 0, 1.723, -0.0170984, 0.0191092, -176.7)
+
+[node name="Platform8" parent="StaticPlatforms" instance=ExtResource("10_2o4q7")]
+transform = Transform3D(1.844, 0, 0, 0, 1, 0, 0, 0, 1.723, -0.0170984, 0.0191092, -228.241)
+
+[node name="Platform9" parent="StaticPlatforms" instance=ExtResource("10_2o4q7")]
+transform = Transform3D(1.844, 0, 0, 0, 1, 0, 0, 0, 1.723, -0.0170984, 0.0191092, -270.874)
+
+[node name="Grounds" type="Node3D" parent="."]
+
+[node name="Ground" parent="Grounds" instance=ExtResource("12_y32f1")]
+transform = Transform3D(1.75, 0, 0, 0, 1, 0, 0, 0, 1.75, -1.10378, 0.662905, 0)
+mesh = SubResource("BoxMesh_a7nm4")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+
+[node name="HUD" parent="Control" instance=ExtResource("13_umq1f")]
+layout_mode = 1
+mouse_filter = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TutorialControl" parent="Control" instance=ExtResource("14_qqrc4")]
+layout_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Step0" parent="Control/TutorialControl/Triggers" index="0" node_paths=PackedStringArray("control") instance=ExtResource("15_uknrk")]
+transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, -8.19716, 1.78516, -8.20768)
+control = NodePath("../..")
+
+[node name="Step1" parent="Control/TutorialControl/Triggers" index="1" node_paths=PackedStringArray("control") instance=ExtResource("15_uknrk")]
+transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, -4.69805, 0.685748, -96.5089)
+control = NodePath("../..")
+
+[node name="Step2" parent="Control/TutorialControl/Triggers" index="2" node_paths=PackedStringArray("control") instance=ExtResource("15_uknrk")]
+transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, -4.69805, 0.685748, -271.905)
+control = NodePath("../..")
+
+[node name="GlobalLevelsScreens" parent="Control" instance=ExtResource("16_8fsyh")]
+layout_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]
+[connection signal="body_entered" from="PortalTrigger" to="." method="_on_PortalTrigger_body_entered"]
+
+[editable path="Control/TutorialControl"]

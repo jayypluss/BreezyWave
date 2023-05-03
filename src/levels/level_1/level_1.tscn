@@ -53,7 +53,7 @@ size = Vector3(35, 1, 35)
 script = ExtResource("8")
 
 [node name="Player" parent="." instance=ExtResource("2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.514732, 5.13396, 0.981552)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.514732, 5.13396, -302.749)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_smvl8")
@@ -727,15 +727,6 @@ metadata/_edit_use_anchors_ = true
 [node name="TutorialControl" parent="Control" instance=ExtResource("10")]
 layout_mode = 1
 metadata/_edit_use_anchors_ = true
-
-[node name="Button" parent="Control/TutorialControl/Step" index="3"]
-anchors_preset = 7
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -147.0
-offset_bottom = -41.0
-grow_vertical = 0
-size_flags_horizontal = 1
 
 [node name="Step0" parent="Control/TutorialControl/Triggers" index="0" node_paths=PackedStringArray("control") instance=ExtResource("14_rtsv6")]
 transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, -0.965785, 1.78516, -8.20768)
