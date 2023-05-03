@@ -5,9 +5,9 @@ extends Node3D
 @onready var win_game_screen : CanvasLayer = $Control/GlobalLevelsScreens/WinGameScreen
 
 # TODO should be refactored
-@onready var moving_platform_1 = $Interactables/MovingPlatform1
-@onready var secrete_passage_1_button = $Interactables/SecretePassage1Button
-@onready var secret_passage_platform_1 = $Interactables/SecretPassagePlatform1
+#@onready var moving_platform_1 = $Interactables/MovingPlatform1
+#@onready var secrete_passage_1_button = $Interactables/SecretePassage1Button
+#@onready var secret_passage_platform_1 = $Interactables/SecretPassagePlatform1
 @onready var hud = $Control/HUD
 
 # TODO should be refactored
@@ -36,17 +36,17 @@ func _on_DyingTrigger_body_entered(body: Player):
 #	game_over_screen.show()
 
 # TODO should be refactored
-func _on_MovingPlatform1_button_pressed(activate: bool):
-	if activate:
-		moving_platform_1.start_moving()
-	else:
-		moving_platform_1.stop_moving()
-
-# TODO should be refactored
-func _on_SecretePassage1Button_on_button_pressed(activate: bool):
-	if activate && !has_activate_secret_passage_1:
-		secret_passage_platform_1.start_cinematics()
-		has_activate_secret_passage_1 = true
+#func _on_MovingPlatform1_button_pressed(activate: bool):
+#	if activate:
+#		moving_platform_1.start_moving()
+#	else:
+#		moving_platform_1.stop_moving()
+#
+## TODO should be refactored
+#func _on_SecretePassage1Button_on_button_pressed(activate: bool):
+#	if activate && !has_activate_secret_passage_1:
+#		secret_passage_platform_1.start_cinematics()
+#		has_activate_secret_passage_1 = true
 		
 
 

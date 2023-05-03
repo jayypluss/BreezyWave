@@ -1,10 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://b638w4o4nmlo4"]
+[gd_scene load_steps=26 format=3 uid="uid://ceofaq5t6jqbf"]
 
 [ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="1"]
 [ext_resource type="Script" path="res://src/levels/level_test/level_test.gd" id="1_tvl7c"]
 [ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://dx1ind0cyeb0t" path="res://src/gui/global_levels_screens/global_levels_screens.tscn" id="3"]
-[ext_resource type="Environment" uid="uid://qjqp526l40fc" path="res://src/levels/level_test/level_test_env.tres" id="3_doicm"]
+[ext_resource type="Environment" uid="uid://dei285upuk8bp" path="res://src/levels/level_test/level_test_env.tres" id="3_doicm"]
 [ext_resource type="PackedScene" uid="uid://c8mmmyxugnefa" path="res://src/environment/moving_platform/moving_platform.tscn" id="4"]
 [ext_resource type="Shader" path="res://assets/shaders/random_glitches.gdshader" id="4_khut3"]
 [ext_resource type="PackedScene" uid="uid://7c6tyte2j0mh" path="res://src/environment/static_platform/static_platform.tscn" id="6"]
@@ -727,15 +727,6 @@ metadata/_edit_use_anchors_ = true
 [node name="TutorialControl" parent="Control" instance=ExtResource("10")]
 layout_mode = 1
 metadata/_edit_use_anchors_ = true
-
-[node name="Button" parent="Control/TutorialControl/Step" index="3"]
-anchors_preset = 7
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -147.0
-offset_bottom = -41.0
-grow_vertical = 0
-size_flags_horizontal = 1
 
 [node name="Step0" parent="Control/TutorialControl/Triggers" index="0" node_paths=PackedStringArray("control") instance=ExtResource("14_rtsv6")]
 transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, -0.965785, 1.78516, -8.20768)

@@ -22,26 +22,17 @@ func _ready():
 #		await get_tree().create_timer(0.5).timeout
 #		get_tree().change_scene_to_file("res://src/levels/level_test/level_test.tscn")
 
-
-
 func _on_PlayButton_pressed() -> void:
-	get_tree().change_scene_to_file("res://src/levels/level_2/level_2.tscn")
-
+	get_tree().change_scene_to_file("res://src/levels/level_1/level_1.tscn")
 
 func _on_ExitButton_pressed() -> void:
 	get_tree().quit()
 
-
 func _on_CreditsButton_pressed():
 	$CreditsScreen.togle_visible(true)
 
-
 func _on_test_level_pressed():
-	get_tree().change_scene_to_file("res://src/levels/level_test/level_test.tscn")
-	
-func _on_level_test_pressed():
 	get_tree().change_scene_to_file("res://src/levels/level_test/level_test.tscn")
 
 func _on_level2_pressed():
 	get_tree().change_scene_to_file("res://src/levels/level_2/level_2.tscn")
-	
