@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlsqaaifvy0tr"]
+
+[ext_resource type="Script" path="res://src/camera/motion_blur/motion_blur.gd" id="1_k8w8h"]
+[ext_resource type="Shader" path="res://src/camera/motion_blur/moblur_shader.gdshader" id="1_w60a5"]
+
+[sub_resource type="QuadMesh" id="1"]
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h45ax"]
+render_priority = -1
+shader = ExtResource("1_w60a5")
+shader_parameter/linear_velocity = Vector3(0, 0, 0)
+shader_parameter/angular_velocity = Vector3(0, 0, 0)
+shader_parameter/iteration_count = 25
+shader_parameter/intensity = 0.4
+shader_parameter/startRadius = 400.0
+
+[node name="motion_blur" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2)
+cast_shadow = 0
+mesh = SubResource("1")
+surface_material_override/0 = SubResource("ShaderMaterial_h45ax")
+script = ExtResource("1_k8w8h")
