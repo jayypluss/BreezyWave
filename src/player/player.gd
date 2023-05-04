@@ -6,6 +6,7 @@ extends CharacterBody3D
 
 @onready var camera: Camera3D = %Camera3D
 @onready var last_position_timer = $LastPositionTimer
+@onready var player_pivot = %PlayerPivot
 
 var last_floor_position: Vector3 = Vector3(0, 3, 0)
 
@@ -30,8 +31,13 @@ func die():
 	position = last_floor_position
 
 func _on_LastPositionTimer_timeout():
-	if is_on_floor() && get_last_slide_collision().get_collider(0) is CSGMesh3D:
+	if (is_on_floor() && get_last_slide_collision() != null 
+		&& get_last_slide_collision().get_collider(0) is CSGMesh3D):
 		last_floor_position = position
 
 	last_position_timer.start()	
 
+func lock_movement(lock: bool = true):
+	set_axis_lock(PhysicsServer3D.BODY_AXIS_LINEAR_X, lock)
+	set_axis_lock(PhysicsServer3D.BODY_AXIS_LINEAR_Y, lock)
+	set_axis_lock(PhysicsServer3D.BODY_AXIS_LINEAR_Z, lock)

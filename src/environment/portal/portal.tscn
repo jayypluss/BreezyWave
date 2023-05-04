@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://p3hk7kg0ry5k"]
+
+[ext_resource type="Shader" path="res://assets/shaders/random_glitches.gdshader" id="1_8sgub"]
+[ext_resource type="Script" path="res://src/environment/portal/portal.gd" id="1_8tuhl"]
+
+[sub_resource type="BoxShape3D" id="5"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="PrismMesh" id="6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_svmrm"]
+render_priority = 0
+shader = ExtResource("1_8sgub")
+shader_parameter/speed = 0.6
+shader_parameter/ring_scale = 2.0
+shader_parameter/wave_scale = 1.65
+shader_parameter/random_scale = 6.9
+shader_parameter/noise_scale = 0.0
+
+[node name="Portal" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344, 2.32673, -279.182)
+collision_layer = 2
+script = ExtResource("1_8tuhl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(22.5913, 0, 0, 0, 18.0731, 0, 0, 0, 1.25507, 0, 0, 0)
+shape = SubResource("5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(18.4638, 0, 0, 0, 14.771, 0, 0, 0, 0.3, 0, 5.95404, 0)
+mesh = SubResource("6")
+surface_material_override/0 = SubResource("ShaderMaterial_svmrm")
+
+[node name="EnterAnimPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.92001, 2.87625)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

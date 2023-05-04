@@ -50,6 +50,7 @@ func _on_DyingTrigger_body_entered(body: Player):
 		
 
 
-func _on_PortalTrigger_body_entered(_body: CharacterBody3D):
+func _on_PortalTrigger_body_entered():
 	GameState.persist()
 	win_game_screen._show()
+#	player.lock_movement(false)

@@ -1,9 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://cqxjw46ag7oni"]
+[gd_scene load_steps=15 format=3 uid="uid://cqxjw46ag7oni"]
 
 [ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://dx1ind0cyeb0t" path="res://src/gui/global_levels_screens/global_levels_screens.tscn" id="3"]
-[ext_resource type="Shader" path="res://assets/shaders/random_glitches.gdshader" id="4_khut3"]
+[ext_resource type="PackedScene" uid="uid://p3hk7kg0ry5k" path="res://src/environment/portal/portal.tscn" id="4_pv12b"]
 [ext_resource type="Environment" uid="uid://bdm4h3rb3p8rb" path="res://src/levels/level_1/level_1_env.tres" id="4_smvl8"]
 [ext_resource type="PackedScene" uid="uid://7c6tyte2j0mh" path="res://src/environment/static_platform/static_platform.tscn" id="6"]
 [ext_resource type="Script" path="res://src/levels/level_1/level_1.gd" id="8"]
@@ -13,20 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://b3ua4gxcip1as" path="res://src/environment/pedestal/pedestal.tscn" id="14_rtsv6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_llkap"]
-
-[sub_resource type="BoxShape3D" id="5"]
-size = Vector3(0.5, 0.5, 0.5)
-
-[sub_resource type="PrismMesh" id="6"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_svmrm"]
-render_priority = 0
-shader = ExtResource("4_khut3")
-shader_parameter/speed = 0.6
-shader_parameter/ring_scale = 2.0
-shader_parameter/wave_scale = 1.65
-shader_parameter/random_scale = 6.9
-shader_parameter/noise_scale = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vst65"]
 albedo_color = Color(0.301961, 0.192157, 0.752941, 1)
@@ -39,7 +25,7 @@ size = Vector3(15, 1, 15)
 script = ExtResource("8")
 
 [node name="Player" parent="." instance=ExtResource("2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.514732, 5.13396, 0.981552)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.514732, 5.13396, -267.35)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_smvl8")
@@ -58,18 +44,7 @@ collision_layer = 2
 transform = Transform3D(896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.372)
 shape = SubResource("BoxShape3D_llkap")
 
-[node name="PortalTrigger" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344, 2.32673, -279.182)
-collision_layer = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PortalTrigger"]
-transform = Transform3D(22.5913, 0, 0, 0, 18.0731, 0, 0, 0, 1.25507, 0, 0, 0)
-shape = SubResource("5")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PortalTrigger"]
-transform = Transform3D(18.4638, 0, 0, 0, 14.771, 0, 0, 0, 0.3, 0, 5.95404, 0)
-mesh = SubResource("6")
-surface_material_override/0 = SubResource("ShaderMaterial_svmrm")
+[node name="Portal" parent="." instance=ExtResource("4_pv12b")]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13")
@@ -147,6 +122,6 @@ layout_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]
-[connection signal="body_entered" from="PortalTrigger" to="." method="_on_PortalTrigger_body_entered"]
+[connection signal="on_finish_animation" from="Portal" to="." method="_on_PortalTrigger_body_entered"]
 
 [editable path="Control/TutorialControl"]

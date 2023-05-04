@@ -10,10 +10,11 @@ var v_min: float = -70 # Looking up
 var v_max: float = 12 # Look down
 var h_acceleration := 10
 var v_acceleration := 10
+var last_source := 'joystick'
 
 #var default_camera_zoom := 10
 
-func _ready() -> void:
+func _ready() -> void:	
 	if (ConfigsState.camera_distance):
 		get_node("%Camera3D").position.z = ConfigsState.camera_distance
 		
@@ -21,18 +22,19 @@ func _ready() -> void:
 # 	Prevent camera from colliding with player.
 # 	$Horizontal/Vertical/Camera3D.add_exception(get_parent())
 # 	Fetch draw distance from configuration file.
-
 	$Horizontal/Vertical/Camera3D.far = ConfigsState.camera_far
 
 func _input(event: InputEvent) -> void:
 #  if get_parent().paused: # Used to prevent camera movement when returning from a cutscene.
 #    return
 
+#	print('sensitivity: ', sensitivity)
+
 	var zoom = get_node("%Camera3D").position.z
 	
 	if event is InputEventMouseMotion:
-		horizontal -= event.relative.x * 0.5
-		vertical -= event.relative.y * 0.5
+		horizontal -= event.relative.x * Settings.get_value("controls", "mouse_sensitivity")
+		vertical -= event.relative.y * Settings.get_value("controls", "mouse_sensitivity")
 	elif event.is_action_pressed("zoom_in") and zoom > min_zoom:
 		get_node("%Camera3D").position.z -= ZOOM_STEP
 		ConfigsState.camera_distance = get_node("%Camera3D").position.z
