@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://djy4qoo4aycom" path="res://src/gui/configs_screen/configs_screen.tscn" id="7"]
 [ext_resource type="Script" path="res://src/gui/configs_screen/configs_screen.gd" id="8"]
 
-[sub_resource type="Shader" id="1"]
+[sub_resource type="Shader" id="Shader_e1uwh"]
 code = "// From https://godotshaders.com/shader/vaporwave-grid/
 
 shader_type canvas_item;
@@ -40,7 +40,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id="2"]
-shader = SubResource("1")
+shader = SubResource("Shader_e1uwh")
 shader_parameter/battery = 1.0
 shader_parameter/anchor = -0.5
 shader_parameter/speed_scale = 1.0
