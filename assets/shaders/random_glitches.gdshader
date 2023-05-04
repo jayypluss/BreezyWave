@@ -8,23 +8,16 @@ shader_type spatial;
 // render_mode;
 
 uniform float speed = 0.6;
-uniform float ring_scale = 4.4;
-uniform float wave_scale = 8.454;
-uniform float random_scale = 4.6;
-uniform float noise_scale = 0.03;
+uniform float ring_scale = 2.0;
+uniform float wave_scale = 1.65;
+uniform float random_scale = 6.9;
+uniform float noise_scale = 0.0;
 
 
 vec3 hsv2rgb( float h, float s, float v )
 {
 	return (
-		(
-			clamp(
-				abs( fract( h + vec3( 0.0, 2.0, 1.0 ) / 3.0 ) * 6.0 - 3.0 ) - 1.0
-			,	0.0
-			,	1.0
-			) - 1.0
-		) * s + 1.0
-	) * v;
+		(clamp(abs(fract(h + vec3( 0.0, 2.0, 1.0 ) / 3.0 ) * 6.0 - 3.0 ) - 1.0,	0.0, 1.6) - 1.0) * s + 1.0) * s;
 }
 
 vec2 random( vec2 pos )
@@ -63,4 +56,12 @@ void fragment( )
 	float f = mod( x * ring_scale + random( UV ).x * noise_scale, 1.0 );
 
 	ALBEDO = hsv2rgb( f, 1.0, 1.0 );
+	EMISSION = vec3(0.0, 0.0, 0.0);
+}
+
+void light() {
+    DIFFUSE_LIGHT = vec3(0.25, 0.25, 0.25);
+	// Remove specular light for rainbow RGB
+    SPECULAR_LIGHT = vec3(0.1, 0.1, 1.0);
+//    SPECULAR_LIGHT = vec3(0.0, 0.0, 0.0);
 }
