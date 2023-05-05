@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cha5glu2f05ci"]
+[gd_scene load_steps=11 format=3 uid="uid://cha5glu2f05ci"]
 
 [ext_resource type="Theme" uid="uid://db51ncs4eb7e0" path="res://assets/ui-theme.tres" id="2"]
 [ext_resource type="Script" path="res://src/gui/menu/menu.gd" id="3"]
@@ -48,6 +48,11 @@ shader_parameter/fov = 0.2
 shader_parameter/background_color = Color(0, 0.1, 0.2, 1)
 shader_parameter/grid_color = Color(1, 0.5, 1, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_4eoio"]
+font_size = 100
+outline_size = 12
+outline_color = Color(1, 1, 1, 0.129412)
+
 [sub_resource type="GDScript" id="4"]
 script/source = "extends Label
 
@@ -79,24 +84,31 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -1.0
 offset_right = -1.0
-offset_bottom = -339.0
+offset_bottom = -366.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Title" type="Label" parent="Header"]
 layout_mode = 2
 text = "Breezy Wave"
+label_settings = SubResource("LabelSettings_4eoio")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ButtonsContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.572
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -69.0
-offset_right = 100.0
-offset_bottom = 173.0
+anchor_bottom = 0.572
+offset_left = -143.0
+offset_top = -120.84
+offset_right = 143.0
+offset_bottom = 121.16
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
 alignment = 1
 
 [node name="StartButton" type="Button" parent="ButtonsContainer"]
