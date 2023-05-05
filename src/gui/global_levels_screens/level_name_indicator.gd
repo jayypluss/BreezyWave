@@ -3,7 +3,9 @@ class_name LevelNameIndicator
 
 @export var level_name: String
 
-@onready var label = $CenterContainer/Label
+@onready var color_rect = $ColorRect
+@onready var label = $ColorRect/CenterContainer/Label
+
 
 func _ready():
 	label.text = GameState.get_current_level_name()
@@ -21,6 +23,7 @@ func present_level_name():
 			GameState.player.lock_rotation(false)
 	)
 	tween.tween_property(label, "modulate", Color(1, 1, 1, 1), 1.5)
-	tween.tween_interval(3)
+	tween.tween_property(color_rect, "color", Color(0, 0, 0, 0), 1.5)
+	tween.tween_interval(2)
 	tween.tween_property(label, "modulate", Color(1, 1, 1, 0), 1.5)
 	
