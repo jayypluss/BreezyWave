@@ -1,3 +1,14 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://db7symrorhbe4"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://db7symrorhbe4"]
+
+[ext_resource type="Shader" uid="uid://dw2pphbat5bal" path="res://assets/shaders/spatial/wobble.tres" id="1_jcnfm"]
 
 [resource]
+render_priority = 0
+shader = ExtResource("1_jcnfm")
+shader_parameter/out_color = Color(0.87, 0.35, 1, 1)
+shader_parameter/amount = 0.001
+shader_parameter/speed = 0.1
+shader_parameter/beer_factor = 0.0
+shader_parameter/metallic = 0.0
+shader_parameter/specular = 0.0
+shader_parameter/roughness = 0.2

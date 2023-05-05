@@ -7,9 +7,10 @@ extends Node3D
 func _ready():
 	GameState.hud = hud
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	player.transform.origin = Vector3(0,3,0)
+#	player.transform.origin = Vector3(0,3,0)
 	if !OS.has_feature("standalone"):
 		print('Opened level_test from editor')
+	GameState.hud.collected_stars_info.hide()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):
