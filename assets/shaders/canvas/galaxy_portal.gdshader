@@ -8,18 +8,18 @@ uniform float round_variant_2: hint_range(0.0, 1000.0, 0.5) = 14.5;
 uniform float time_color_1: hint_range(0.0, 1000.0, 0.1) = 0.2;
 uniform float time_color_2: hint_range(0.0, 1000.0, 0.1) = 0.3;
 
-uniform float detail: hint_range(0.0, 1.5, 0.001) = 0.659;
+uniform float detail: hint_range(0.0, 1.5, 0.001) = 0.585;
 
-uniform float g: hint_range(0.0, 1.5, 0.001) = 0.7;
-uniform float b: hint_range(0.0, 1.5, 0.001) = 0.5;
-uniform float r: hint_range(0.0, 1.5, 0.001) = 0.9;
+uniform float g: hint_range(0.0, 1.5, 0.001) = 0.;
+uniform float b: hint_range(0.0, 1.5, 0.001) = 0.39;
+uniform float r: hint_range(0.0, 1.5, 0.001) = 0.241;
 
-uniform float center_size: hint_range(0.0, 10.0, 0.001) = 0.85;
-uniform float spectrum_variant: hint_range(0.0, 8.0, 0.001) = 1.5;
-uniform float from_middle_color_range: hint_range(0.0, 1.2, 0.001) = 0.2;
-uniform float radius_color_range_ratio: hint_range(-0.5, 1.2, 0.001) = 0.0;
+uniform float center_size: hint_range(0.0, 10.0, 0.001) = 0.948;
+uniform float spectrum_variant: hint_range(0.0, 8.0, 0.001) = 4.873;
+uniform float from_middle_color_range: hint_range(0.0, 1.2, 0.001) = 0.882;
+uniform float radius_color_range_ratio: hint_range(-0.5, 1.2, 0.001) = 0.65;
 
-uniform float transparency: hint_range(0.0, 1.0, 0.01) = 0.08;
+uniform float transparency: hint_range(0.0, 1.0, 0.01) = 0.01;
 
 void fragment() {
 	vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
