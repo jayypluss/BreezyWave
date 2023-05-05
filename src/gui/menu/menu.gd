@@ -1,11 +1,10 @@
 extends Control
 
-#export (PackedScene) var new_game_scene
 
-onready var buttons_container := $ButtonsContainer
-onready var start_button := $ButtonsContainer/StartButton
-onready var credits_button := $ButtonsContainer/CreditsButton
-onready var exit_button := $ButtonsContainer/ExitButton
+@onready var buttons_container := $ButtonsContainer
+@onready var start_button := $ButtonsContainer/StartButton
+@onready var credits_button := $ButtonsContainer/CreditsButton
+@onready var exit_button := $ButtonsContainer/ExitButton
 
 
 func _ready():
@@ -19,45 +18,21 @@ func _ready():
 	if OS.has_feature("standalone"):
 		$Music.play()
 		
-	if !OS.has_feature("standalone"):
-		print('entering !standalone if on menu.gd s _ready()')
-#		yield(get_tree().create_timer(0.5), "timeout")
-#		Game.change_scene("res://src/levels/level_1/level_1.tscn", { show_progress_bar = true })
-
-
+#	if !OS.has_feature("standalone"):
+#		await get_tree().create_timer(0.5).timeout
+#		get_tree().change_scene_to_file("res://src/levels/level_test/level_test.tscn")
 
 func _on_PlayButton_pressed() -> void:
-	var params = {
-		show_progress_bar = true,
-		"a_number": 10,
-		"a_string": "Ciao mamma!",
-		"an_array": [1, 2, 3, 4],
-		"a_dict": {
-			"name": "test",
-			"val": 15
-		},
-	}
-#	if OS.has_feature('HTML5'):
-	Game.change_scene("res://src/levels/level_1/level_1.tscn", params)
-#	else:
-#		Game.change_scene(new_game_scene.get_path(), params)
-
+	get_tree().change_scene_to_file("res://src/levels/level_1/level_1.tscn")
 
 func _on_ExitButton_pressed() -> void:
-	# gently shutdown the game
-	var transitions = get_node_or_null("/root/Transitions")
-	if transitions:
-		transitions.fade_in({
-			'show_progress_bar': false
-		})
-		yield(transitions.anim, "animation_finished")
-		yield(get_tree().create_timer(0.3), "timeout")
 	get_tree().quit()
 
-
-func _on_SettingsButton_pressed():
-	$SettingsScreen.toggle_visible(true)
-
-
 func _on_CreditsButton_pressed():
-	$CreditsScreen.toggle_visible(true)
+	$CreditsScreen.togle_visible(true)
+
+func _on_test_level_pressed():
+	get_tree().change_scene_to_file("res://src/levels/level_test/level_test.tscn")
+
+func _on_level2_pressed():
+	get_tree().change_scene_to_file("res://src/levels/level_2/level_2.tscn")

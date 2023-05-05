@@ -1,153 +1,60 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://c5avtepgucbu0"]
 
-[ext_resource path="res://assets/sprites/colorful_star.png" type="Texture" id=1]
-[ext_resource path="res://src/gui/hud/global_levels_hud/collected_stars_info/collected_stars_info.gd" type="Script" id=2]
-[ext_resource path="res://assets/fonts/open-sans/open-sans-bold.ttf" type="DynamicFontData" id=3]
-
-[sub_resource type="DynamicFont" id=8]
-size = 26
-use_filter = true
-font_data = ExtResource( 3 )
-
-[sub_resource type="Animation" id=10]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("CollectedStarsInfo:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 821, -80 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollectedStarsInfo:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=11]
-resource_name = "hide"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("CollectedStarsInfo:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 821, 0 ), Vector2( 821, -80 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollectedStarsInfo:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=9]
-resource_name = "show"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("CollectedStarsInfo:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 821, -80 ), Vector2( 821, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CollectedStarsInfo:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
+[ext_resource type="Texture2D" uid="uid://ci3sr0wk58j1t" path="res://assets/sprites/colorful_star.png" id="1"]
+[ext_resource type="Script" path="res://src/gui/collected_stars_info/collected_stars_info.gd" id="2"]
 
 [node name="CollectedStarsInfo" type="Control" groups=["update_on_star_collect"]]
-visible = false
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 3
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -203.0
-margin_top = -80.0
-margin_right = -3.0
+offset_left = -200.0
+offset_top = -80.0
 grow_horizontal = 0
-rect_min_size = Vector2( 200, 80 )
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_left = -108.0
+offset_bottom = 80.0
+grow_horizontal = 0
 alignment = 2
 
 [node name="Control" type="Control" parent="HBoxContainer"]
-margin_right = 98.0
-margin_bottom = 80.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -32.0
-margin_top = -16.0
-margin_bottom = 16.0
+offset_left = -32.0
+offset_top = -16.0
+offset_bottom = 16.0
 grow_horizontal = 0
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource( 1 )
-expand = true
+texture = ExtResource("1")
+expand_mode = 1
 stretch_mode = 5
 
 [node name="Counter" type="Label" parent="HBoxContainer"]
-margin_left = 102.0
-margin_right = 200.0
-margin_bottom = 80.0
-grow_horizontal = 0
-grow_vertical = 2
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 8 )
 text = "0"
-valign = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../..")
-anims/RESET = SubResource( 10 )
-anims/hide = SubResource( 11 )
-anims/show = SubResource( 9 )
+vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 3.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

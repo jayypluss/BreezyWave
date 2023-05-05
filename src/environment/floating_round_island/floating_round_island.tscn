@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwpuckodvirju"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0rhru"]
+top_radius = 30.0
+bottom_radius = 1.0
+height = 10.0
+
+[node name="FloatingRoundIsland" type="CSGMesh3D"]
+use_collision = true
+collision_layer = 2
+mesh = SubResource("CylinderMesh_0rhru")

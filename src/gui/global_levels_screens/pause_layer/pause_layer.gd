@@ -1,20 +1,21 @@
 extends CanvasLayer
+class_name PauseLayer
 
-onready var hidable := $Hidable
-onready var pause_button := $Hidable/PauseButton
-onready var resume_option := $Hidable/VBoxOptions/ResumeButton
-onready var main_menu_option := $Hidable/VBoxOptions/MainMenuButton
-onready var label := $Hidable/InfoLabel
+@onready var hidable := $Hidable
+@onready var pause_button := $Hidable/PauseButton
+@onready var resume_option := $Hidable/VBoxOptions/ResumeButton
+@onready var main_menu_option := $Hidable/VBoxOptions/MainMenuButton
+@onready var label := $Hidable/InfoLabel
 
 
 func _ready():
 	hidable.visible = false
-	if OS.has_touchscreen_ui_hint():
-		label.visible = false
-	else:
-		# to hide the pause_button on desktop: un-comment the next line
-		# pause_button.hide()
-		pass
+#	if OS.has_touchscreen_ui_hint():
+#		label.visible = false
+#	else:
+#		# to hide the pause_button checked desktop: un-comment the next line
+#		# pause_button.hide()
+#		pass
 
 
 # when the node is removed from the tree (mostly because of a scene change)
@@ -29,7 +30,7 @@ func _unhandled_input(event):
 			resume()
 		elif !is_paused():
 			pause_game()
-		get_tree().set_input_as_handled()
+		get_viewport().set_input_as_handled()
 
 
 func resume():
@@ -59,9 +60,10 @@ func _on_Resume_pressed():
 
 
 func _on_Main_Menu_pressed():
-	Game.change_scene("res://src/gui/menu/menu.tscn", {
-		'show_progress_bar': false
-	})
+#	Game.change_scene_to_file("res://src/gui/menu/menu.tscn", {
+#		'show_progress_bar': false
+#	})
+	get_tree().change_scene_to_file("res://src/gui/menu/menu.tscn")
 
 
 func _on_PauseButton_pressed():

@@ -1,249 +1,97 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=15 format=3 uid="uid://ba66r2td112am"]
 
-[ext_resource path="res://src/environment/ground/ground.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/gui/global_levels_screens/global_levels_screens.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/environment/moving_platform/moving_platform.tscn" type="PackedScene" id=4]
-[ext_resource path="res://addons/jm_pp_outlines/jm_pp_outlines_camera.gd" type="Script" id=5]
-[ext_resource path="res://src/environment/static_platform/static_platform.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/shaders/random_glitches.shader" type="Shader" id=7]
-[ext_resource path="res://src/levels/level_2/level_2.gd" type="Script" id=8]
-[ext_resource path="res://src/gui/hud/global_levels_hud/global_levels_hud.tscn" type="PackedScene" id=9]
-[ext_resource path="res://src/levels/level_2/level_2.tres" type="Environment" id=10]
-[ext_resource path="res://src/environment/spring/spring.tscn" type="PackedScene" id=12]
-[ext_resource path="res://assets/music/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg" type="AudioStream" id=13]
-[ext_resource path="res://src/environment/collectables/colorful_star/colorful_star.tscn" type="PackedScene" id=14]
-[ext_resource path="res://src/environment/pedestal_button/pedestal_button.tscn" type="PackedScene" id=16]
-[ext_resource path="res://src/environment/secret_passage_platform/secret_passage_platform.tscn" type="PackedScene" id=17]
+[ext_resource type="Script" path="res://src/levels/level_2/level_2.gd" id="1_yfnrp"]
+[ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2_k5d8q"]
+[ext_resource type="Environment" uid="uid://b41dqk76jhoit" path="res://src/levels/common/level_world_environment.tres" id="3_8rs3q"]
+[ext_resource type="PackedScene" uid="uid://p3hk7kg0ry5k" path="res://src/environment/portal/portal.tscn" id="4_hwcgq"]
+[ext_resource type="AudioStream" uid="uid://d4aj57xuv7pic" path="res://assets/music/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg" id="5_yoxwr"]
+[ext_resource type="PackedScene" uid="uid://7c6tyte2j0mh" path="res://src/environment/static_platform/static_platform.tscn" id="6_j3hwb"]
+[ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="7_0ng7w"]
+[ext_resource type="PackedScene" uid="uid://cue07yxp483n4" path="res://src/gui/global_levels_hud/hud.tscn" id="8_2wkdx"]
+[ext_resource type="PackedScene" uid="uid://cr58hgugjg0k5" path="res://src/game/tutorial/tutorial_control.tscn" id="9_uh8o5"]
+[ext_resource type="PackedScene" uid="uid://b3ua4gxcip1as" path="res://src/environment/pedestal/pedestal.tscn" id="10_vylvb"]
+[ext_resource type="PackedScene" uid="uid://dx1ind0cyeb0t" path="res://src/gui/global_levels_screens/global_levels_screens.tscn" id="11_ye3vb"]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="BoxShape3D" id="BoxShape3D_llkap"]
 
-[sub_resource type="BoxShape" id=5]
-extents = Vector3( 0.25, 0.25, 0.25 )
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vst65"]
+albedo_color = Color(0.301961, 0.192157, 0.752941, 1)
 
-[sub_resource type="PrismMesh" id=6]
+[sub_resource type="BoxMesh" id="BoxMesh_a7nm4"]
+material = SubResource("StandardMaterial3D_vst65")
+size = Vector3(15, 1, 15)
 
-[sub_resource type="ShaderMaterial" id=7]
-shader = ExtResource( 7 )
-shader_param/speed = 0.6
-shader_param/ring_scale = 4.4
-shader_param/wave_scale = 8.454
-shader_param/random_scale = 4.6
-shader_param/noise_scale = 0.03
+[node name="Level2" type="Node3D"]
+script = ExtResource("1_yfnrp")
 
-[sub_resource type="CubeMesh" id=2]
-size = Vector3( 5, 5, 0.2 )
-
-[sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0, 0.509804, 0.956863, 1 )
-
-[sub_resource type="BoxShape" id=4]
-extents = Vector3( 2.5, 2.5, 0.1 )
-
-[node name="Level2" type="Spatial"]
-script = ExtResource( 8 )
-
-[node name="Player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
-
-[node name="PPOutlinesCamera" type="Camera" parent="Player"]
-transform = Transform( 0.686231, -0.243767, 0.685321, -0.437283, 0.614654, 0.656494, -0.581267, -0.750186, 0.315199, 4.54974, 15.9972, 9.50401 )
-cull_mask = 524287
-script = ExtResource( 5 )
-depth_threshold = 1.0
-edge_threshold = 0.2
-edge_alpha_multiplier = 10.0
-depth_use_laplace = false
+[node name="Player" parent="." instance=ExtResource("2_k5d8q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource( 10 )
+environment = ExtResource("3_8rs3q")
 
-[node name="GlobalLight" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 102.381, -110.774 )
+[node name="GlobalLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 102.381, -110.774)
 light_energy = 0.9
 shadow_enabled = true
-directional_shadow_bias_split_scale = 0.0
 directional_shadow_max_distance = 300.0
 
-[node name="DyingTrigger" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30069, -205.875 )
+[node name="DyingTrigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30069, -205.875)
 collision_layer = 2
 
-[node name="CollisionShape" type="CollisionShape" parent="DyingTrigger"]
-transform = Transform( 896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.372 )
-shape = SubResource( 1 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DyingTrigger"]
+transform = Transform3D(896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.372)
+shape = SubResource("BoxShape3D_llkap")
 
-[node name="PortalTrigger" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344, 5.39477, -306.761 )
-collision_layer = 2
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape" type="CollisionShape" parent="PortalTrigger"]
-transform = Transform( 22.5913, 0, 0, 0, 18.0731, 0, 0, 0, 1.25507, 0, 0, 0 )
-shape = SubResource( 5 )
-
-[node name="MeshInstance" type="MeshInstance" parent="PortalTrigger"]
-transform = Transform( 5.4, 0, 0, 0, 4.32, 0, 0, 0, 0.3, 0, 0, 0 )
-mesh = SubResource( 6 )
-material/0 = SubResource( 7 )
+[node name="Portal" parent="." instance=ExtResource("4_hwcgq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344, 2.32673, -282.05)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 13 )
+stream = ExtResource("5_yoxwr")
 volume_db = -20.0
 
-[node name="Interactables" type="Spatial" parent="."]
+[node name="StaticPlatforms" type="Node3D" parent="."]
 
-[node name="MovingPlatform1Button" parent="Interactables" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8201, 2.12989, -28.3489 )
+[node name="Platform" parent="StaticPlatforms" instance=ExtResource("6_j3hwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0170984, 0.0191092, -23.311)
 
-[node name="MovingPlatform1" parent="Interactables" instance=ExtResource( 4 )]
-transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 34.5807, 0.950626, -23.9323 )
+[node name="Grounds" type="Node3D" parent="."]
 
-[node name="SecretePassage1Button" parent="Interactables" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -123.15, 2.12989, -95.3299 )
-can_deactivate = false
+[node name="Ground" parent="Grounds" instance=ExtResource("7_0ng7w")]
+transform = Transform3D(1.75, 0, 0, 0, 1, 0, 0, 0, 1.75, -1.10378, 0.662905, 0)
+mesh = SubResource("BoxMesh_a7nm4")
 
-[node name="SecretPassagePlatform1" parent="Interactables" instance=ExtResource( 17 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -120.32, 1.0095, -89.0329 )
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
 
-[node name="ColorfulStar84" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -7.60777 )
-visible = false
+[node name="HUD" parent="Control" instance=ExtResource("8_2wkdx")]
+layout_mode = 1
+mouse_filter = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="ColorfulStar85" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -7.60777 )
-visible = false
+[node name="TutorialControl" parent="Control" instance=ExtResource("9_uh8o5")]
+layout_mode = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="ColorfulStar86" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -7.60777 )
-visible = false
+[node name="Step3" parent="Control/TutorialControl/Triggers" index="0" node_paths=PackedStringArray("control") instance=ExtResource("10_vylvb")]
+transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, -8.19716, 1.78516, -8.20768)
+control = NodePath("../..")
 
-[node name="ColorfulStar87" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -7.60777 )
-visible = false
-
-[node name="ColorfulStar88" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -4.60777 )
-visible = false
-
-[node name="ColorfulStar89" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -4.60777 )
-visible = false
-
-[node name="ColorfulStar90" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -4.60777 )
-visible = false
-
-[node name="ColorfulStar91" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -4.60777 )
-visible = false
-
-[node name="ColorfulStar92" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -1.60777 )
-visible = false
-
-[node name="ColorfulStar93" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -1.60777 )
-visible = false
-
-[node name="ColorfulStar94" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -1.60777 )
-visible = false
-
-[node name="ColorfulStar95" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -1.60777 )
-visible = false
-
-[node name="ColorfulStar96" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 1.39223 )
-visible = false
-
-[node name="ColorfulStar97" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 1.39223 )
-visible = false
-
-[node name="ColorfulStar98" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 1.39223 )
-visible = false
-
-[node name="ColorfulStar99" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 1.39223 )
-visible = false
-
-[node name="ColorfulStar100" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 4.39223 )
-visible = false
-
-[node name="ColorfulStar101" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 4.39223 )
-visible = false
-
-[node name="ColorfulStar102" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 4.39223 )
-visible = false
-
-[node name="ColorfulStar103" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 4.39223 )
-visible = false
-
-[node name="ColorfulStar104" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 7.39223 )
-visible = false
-
-[node name="ColorfulStar105" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 7.39223 )
-visible = false
-
-[node name="ColorfulStar106" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 7.39223 )
-visible = false
-
-[node name="ColorfulStar107" parent="Interactables/SecretPassagePlatform1" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 7.39223 )
-visible = false
-
-[node name="StaticPlatforms" type="Spatial" parent="."]
-
-[node name="Platform" parent="StaticPlatforms" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.9754, -25.6723, -287.732 )
-
-[node name="Platform8" type="KinematicBody" parent="StaticPlatforms"]
-transform = Transform( -2.36042e-07, 5.4, -2.36042e-07, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 15.6883, 0.766208, -282.425 )
-collision_layer = 2
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Mesh" type="MeshInstance" parent="StaticPlatforms/Platform8"]
-transform = Transform( 1, 0, 0, 0, 1, 1.3027e-15, -2.4869e-14, 1.3027e-15, 1, 0, 0, 0 )
-mesh = SubResource( 2 )
-skeleton = NodePath("../../../..")
-material/0 = SubResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticPlatforms/Platform8"]
-shape = SubResource( 4 )
-
-[node name="Springs" type="Spatial" parent="."]
-
-[node name="Spring2" parent="Springs" instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0297318, -27.7477, -224.964 )
-
-[node name="Collectables" type="Spatial" parent="."]
-
-[node name="ColorfulStar" parent="Collectables" instance=ExtResource( 14 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.5214, -11.306, -130.314 )
-
-[node name="Grounds" type="Spatial" parent="."]
-
-[node name="Ground" parent="Grounds" instance=ExtResource( 1 )]
-
-[node name="GlobalLevelsScreens" parent="." instance=ExtResource( 3 )]
-
-[node name="GlobalLevelsHud" parent="." instance=ExtResource( 9 )]
+[node name="GlobalLevelsScreens" parent="Control" instance=ExtResource("11_ye3vb")]
+layout_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]
-[connection signal="body_entered" from="PortalTrigger" to="." method="_on_PortalTrigger_body_entered"]
-[connection signal="on_button_pressed" from="Interactables/MovingPlatform1Button" to="." method="_on_MovingPlatform1_button_pressed"]
-[connection signal="on_button_pressed" from="Interactables/SecretePassage1Button" to="." method="_on_SecretePassage1Button_on_button_pressed"]
+[connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
+[connection signal="on_finish_animation" from="Portal" to="." method="_on_portal_enter_animation_ended"]
+
+[editable path="Control/TutorialControl"]

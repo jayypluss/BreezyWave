@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://p3hk7kg0ry5k"]
+
+[ext_resource type="Shader" path="res://assets/shaders/random_glitches.gdshader" id="1_8sgub"]
+[ext_resource type="Script" path="res://src/environment/portal/portal.gd" id="1_8tuhl"]
+[ext_resource type="Shader" path="res://assets/shaders/canvas/galaxy_portal.gdshader" id="4_flkam"]
+
+[sub_resource type="BoxShape3D" id="5"]
+size = Vector3(1.25, 0.6, 14)
+
+[sub_resource type="PrismMesh" id="6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_svmrm"]
+render_priority = 0
+shader = ExtResource("1_8sgub")
+shader_parameter/speed = 0.6
+shader_parameter/ring_scale = 2.0
+shader_parameter/wave_scale = 1.65
+shader_parameter/random_scale = 6.9
+shader_parameter/noise_scale = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bsgka"]
+size = Vector3(22, 20, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v2a4q"]
+shader = ExtResource("4_flkam")
+shader_parameter/round_variant_1 = 13.0
+shader_parameter/round_variant_2 = 14.5
+shader_parameter/time_color_1 = 0.2
+shader_parameter/time_color_2 = 0.3
+shader_parameter/detail = 0.585
+shader_parameter/g = 0.0
+shader_parameter/b = 0.39
+shader_parameter/r = 0.241
+shader_parameter/center_size = 0.948
+shader_parameter/spectrum_variant = 4.873
+shader_parameter/from_middle_color_range = 0.882
+shader_parameter/radius_color_range_ratio = 0.65
+shader_parameter/transparency = 0.01
+
+[node name="Portal" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344, 2.32673, -279.182)
+collision_layer = 2
+script = ExtResource("1_8tuhl")
+
+[node name="InteractionAreaCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(22.5913, 0, 0, 0, 18.0731, 0, 0, 0, 1.25507, 0, 2.47144, 1.94556)
+shape = SubResource("5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(18.4638, 0, 0, 0, 14.771, 0, 0, 0, 0.3, 0, 5.95404, 0)
+mesh = SubResource("6")
+surface_material_override/0 = SubResource("ShaderMaterial_svmrm")
+
+[node name="PortalCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.01609, 0.917358)
+shape = SubResource("BoxShape3D_bsgka")
+
+[node name="EnterAnimPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.92001, 2.87625)
+
+[node name="Portal2DShaderControl" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Portal2DShader" type="ColorRect" parent="Portal2DShaderControl"]
+material = SubResource("ShaderMaterial_v2a4q")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.427451)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

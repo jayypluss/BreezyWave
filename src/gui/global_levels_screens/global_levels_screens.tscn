@@ -1,16 +1,57 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://dx1ind0cyeb0t"]
 
-[ext_resource path="res://src/gui/global_levels_screens/win_game_layer/win_game_layer.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/gui/global_levels_screens/pause_layer/pause_layer.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/gui/global_levels_screens/game_over_screen/game_over_screen.tscn" type="PackedScene" id=6]
+[ext_resource type="Script" path="res://src/gui/global_levels_screens/global_levels_screens.gd" id="1_y6he7"]
+[ext_resource type="PackedScene" uid="uid://cbu21il3emqxn" path="res://src/gui/global_levels_screens/win_game_layer/win_game_layer.tscn" id="4"]
+[ext_resource type="Script" path="res://src/gui/global_levels_screens/level_name_indicator.gd" id="4_fe7sm"]
+[ext_resource type="PackedScene" uid="uid://dg8w57xss5kw7" path="res://src/gui/global_levels_screens/pause_layer/pause_layer.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://src/gui/global_levels_screens/game_over_screen/game_over_screen.tscn" id="6"]
 
-[node name="GlobalLevelsScreens" type="Node"]
+[sub_resource type="LabelSettings" id="LabelSettings_f52w8"]
+font_size = 48
 
-[node name="PauseScreen" parent="." instance=ExtResource( 5 )]
+[node name="GlobalLevelsScreens" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_y6he7")
+
+[node name="PauseScreen" parent="." instance=ExtResource("5")]
 layer = 2
 
-[node name="GameOverScreen" parent="." instance=ExtResource( 6 )]
+[node name="GameOverScreen" parent="." instance=ExtResource("6")]
+process_mode = 0
 layer = 3
 
-[node name="WinGameScreen" parent="." instance=ExtResource( 4 )]
+[node name="WinGameScreen" parent="." instance=ExtResource("4")]
 layer = 3
+
+[node name="LevelNameIndicator" type="CanvasLayer" parent="."]
+script = ExtResource("4_fe7sm")
+
+[node name="ColorRect" type="ColorRect" parent="LevelNameIndicator"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelNameIndicator/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="LevelNameIndicator/ColorRect/CenterContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_f52w8")
+horizontal_alignment = 1
+vertical_alignment = 1

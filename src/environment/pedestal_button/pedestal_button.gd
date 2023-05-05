@@ -1,9 +1,9 @@
-extends Area
+extends Area3D
 
-onready var interactable_area: CollisionShape = $InteractableArea
-onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var interactable_area: CollisionShape3D = $InteractableArea
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-export var can_deactivate: bool = false
+@export var can_deactivate: bool = false
 
 var player: Player
 var is_active = false
@@ -30,6 +30,8 @@ func _physics_process(_delta):
 
 func _on_PedestalButton_body_entered(body: Player):
 	player = body
+	GameState.hud.panel_control.action_indicator_control.show_with_text('E to interact')
 
 func _on_PedestalButton_body_exited(_body):
 	player = null
+	GameState.hud.panel_control.action_indicator_control.hide_and_clear()

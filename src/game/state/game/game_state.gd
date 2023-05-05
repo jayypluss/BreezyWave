@@ -1,35 +1,64 @@
 extends Node
 
+
 var tutorial_steps: Array = []
 var is_showing_tutorial_step: bool = false
 var colorful_stars_collected: Dictionary = {}
 var remaining_lives: int = 0
-var levels: Array = []
-var current_level_name: String = ""
+var player: Player
+var hud: HUD
+var global_levels_screens: GlobalLevelsScreens
+var curent_level_node_name: String
+
+var levels: Dictionary = {
+	"Level1": {
+		"name": "the starting path",
+		"path": "res://src/levels/level_1/level_1.tscn",
+		"last_level": "",
+		"next_level": "Level2"
+	},
+	"Level2": {
+		"name": "Level 2",
+		"path": "res://src/levels/level_2/level_2.tscn",
+		"last_level": "Level1",
+		"next_level": ""
+	}
+}
+
 
 func _ready():
 	restore()
 
-func get_next_level(_last_level: String):
-	return "res://src/levels/level_2/level_2.tscn"
+func go_to_level(_level_node_name: String):
+	get_tree().change_scene_to_file(levels[_level_node_name].path)
 
+func go_to_next_level():
+	get_tree().change_scene_to_file(levels[get_current_level_data().next_level].path)
+
+func get_current_level_data():
+	return levels[get_current_level_node_name()]
+	
+func get_current_level_name():
+	return levels[get_current_level_node_name()].name
+	
+func get_current_level_node_name():
+	return get_tree().get_current_scene().name
 
 func persist():
-	var save_game = File.new()
-	save_game.open("user://savegame.save", File.WRITE)
-	save_game.store_line(to_json(colorful_stars_collected))
+	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	save_game.store_line(JSON.stringify(colorful_stars_collected))
 	save_game.close()
 
 func restore():
-	var save_game = File.new()
-	if not save_game.file_exists("user://savegame.save"):
+	var save_game = FileAccess.open("user://savegame.save", FileAccess.READ)
+	if not save_game:
 		return # Error! We don't have a save to load.
 	
-	save_game.open("user://savegame.save", File.READ)
-	
-	while save_game.get_position() < save_game.get_len():
+	while save_game.get_position() < save_game.get_length():
 		# Get the saved dictionary from the next line in the save file
-		var node_data = parse_json(save_game.get_line())
+		var test_json_conv = JSON.new()
+		test_json_conv.parse(save_game.get_line())
+		var node_data = test_json_conv.get_data()
 
 		# Now we set the remaining variables.
 		for key in node_data.keys():

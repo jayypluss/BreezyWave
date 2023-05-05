@@ -1,6 +1,6 @@
 extends PlayerState
 # Hookshot style state for the player - gets a destination from an outside
-# piece of logic (in this case, the Camera's aim state firing with a raycast)
+# piece of logic (in this case, the Camera3D's aim state firing with a raycast)
 # and flies through the air to reach it.
 
 
@@ -20,7 +20,7 @@ func physics_process(delta: float) -> void:
 	_parent.velocity = direction * speed
 	_parent.physics_process(delta)
 
-	if player.get_slide_count() > 0:
+	if player.get_slide_collision_count() > 0:
 		if Input.is_action_pressed("interact"):
 			_parent.velocity = Vector3.ZERO
 			_state_machine.transition_to("Move/Hang")
