@@ -1,10 +1,6 @@
-extends CanvasLayer
+extends Control
 
-@onready var hidable := $Hidable
-
-
-func togle_visible(toggleValue: bool = !hidable.visible):
-	hidable.visible = toggleValue
-
-func _on_MainMenu_pressed():
-	togle_visible(false)
+func _on_main_menu_button_toggled(_button_pressed):
+	print(get_tree().root)
+	hide()
+	get_tree().root.hide()

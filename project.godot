@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Breezy Wave"
-run/main_scene="res://src/gui/menu/menu.tscn"
+run/main_scene="res://src/gui/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.0")
 boot_splash/bg_color=Color(0.0862745, 0.0862745, 0.0862745, 1)
 boot_splash/image="res://assets/splash.png"
