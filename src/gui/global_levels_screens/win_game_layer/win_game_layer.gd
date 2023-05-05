@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name WinGameScreen
 
 @onready var hidable := $Hidable
 @onready var next_level_button := $Hidable/VBoxOptions/NextLevel
@@ -15,14 +16,12 @@ func _exit_tree() -> void:
 
 func _on_NextLevel_pressed():
 	get_tree().paused = false
-	var root = get_tree().root
-	var next_level: String = GameState.get_next_level(root.name)
 	togle_visible(false)
 #	Game.restart_scene()
 #	Game.change_scene_to_file(next_level, {
 #		'show_progress_bar': false
 #	})
-	get_tree().change_scene_to_file(next_level)
+	GameState.go_to_next_level()
 
 func _on_MainMenu_pressed():
 	toggle_paused(false)

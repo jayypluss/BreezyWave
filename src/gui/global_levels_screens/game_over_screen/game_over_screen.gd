@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name GameOverScreen
 
 @onready var hidable := $Hidable
 @onready var next_level_button := $Hidable/VBoxOptions/RestartLevel

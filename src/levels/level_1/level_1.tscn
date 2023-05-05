@@ -45,6 +45,7 @@ transform = Transform3D(896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.
 shape = SubResource("BoxShape3D_llkap")
 
 [node name="Portal" parent="." instance=ExtResource("4_pv12b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344, 2.32673, -282.05)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13")
@@ -114,7 +115,7 @@ transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, 
 control = NodePath("../..")
 
 [node name="Step2" parent="Control/TutorialControl/Triggers" index="2" node_paths=PackedStringArray("control") instance=ExtResource("14_rtsv6")]
-transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, -4.69805, 0.685748, -271.905)
+transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, -4.69805, 0.685748, -246.031)
 control = NodePath("../..")
 
 [node name="GlobalLevelsScreens" parent="Control" instance=ExtResource("3")]
@@ -122,6 +123,7 @@ layout_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]
-[connection signal="on_finish_animation" from="Portal" to="." method="_on_PortalTrigger_body_entered"]
+[connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
+[connection signal="on_finish_animation" from="Portal" to="." method="_on_portal_enter_animation_ended"]
 
 [editable path="Control/TutorialControl"]

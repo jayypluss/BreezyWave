@@ -5,16 +5,44 @@ var tutorial_steps: Array = []
 var is_showing_tutorial_step: bool = false
 var colorful_stars_collected: Dictionary = {}
 var remaining_lives: int = 0
-var levels: Array = []
-var current_level_name: String = ""
-var player
+var player: Player
 var hud: HUD
+var global_levels_screens: GlobalLevelsScreens
+var curent_level_node_name: String
+
+var levels: Dictionary = {
+	"Level1": {
+		"name": "the starting path",
+		"path": "res://src/levels/level_1/level_1.tscn",
+		"last_level": "",
+		"next_level": "Level2"
+	},
+	"Level2": {
+		"name": "Level 2",
+		"path": "res://src/levels/level_2/level_2.tscn",
+		"last_level": "Level1",
+		"next_level": ""
+	}
+}
+
 
 func _ready():
 	restore()
 
-func get_next_level(_last_level: String):
-	return "res://src/levels/level_2/level_2.tscn"
+func go_to_level(_level_node_name: String):
+	get_tree().change_scene_to_file(levels[_level_node_name].path)
+
+func go_to_next_level():
+	get_tree().change_scene_to_file(levels[get_current_level_data().next_level].path)
+
+func get_current_level_data():
+	return levels[get_current_level_node_name()]
+	
+func get_current_level_name():
+	return levels[get_current_level_node_name()].name
+	
+func get_current_level_node_name():
+	return get_tree().get_current_scene().name
 
 func persist():
 	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)

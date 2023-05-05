@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name PauseLayer
 
 @onready var hidable := $Hidable
 @onready var pause_button := $Hidable/PauseButton

@@ -1,0 +1,76 @@
+[gd_resource type="Shader" format=3 uid="uid://c68vxmqsjojby"]
+
+[resource]
+code = "shader_type spatial;
+
+uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_linear_mipmap;
+
+//render_mode alpha_to_coverage_and_one;
+
+// Water color
+uniform vec4 out_color: source_color = vec4(0.87, 0.35, 1.0, 1.0);
+uniform vec4 outline_color: source_color = vec4(1.0, 1.0, 1.0, 1.0);
+// Amount of height for each triangle
+uniform float amount: hint_range(0.001, 2.0, 0.001) = 0.001;
+// The speed of the trangles height change
+uniform float speed: hint_range(0.1, 5.0, 0.1) = 0.1;
+// Beer factor (used to calculate how transparent the water is going to be) if equals to 0.0 then the alpha is going to be the out_color's alpha
+uniform float beer_factor = 0.0;
+uniform float metallic = 0.0;
+uniform float specular = 0.0;
+uniform float roughness = 0.2;
+
+float generateOffset(float x, float z, float val1, float val2, float time) {
+	float radiansX = ((mod(x + z * x * val1, amount) / amount) + (time * speed) * mod(x * 0.8 + z, 1.5)) * 2.0 * 3.14;
+	float radiansZ = ((mod(val2 * (z * x + x * z), amount) / amount) + (time * speed) * 2.0 * mod(x, 2.0)) * 2.0 * 3.14;
+	
+	float variation = (sin(radiansZ) * cos(radiansX));
+	
+	return 0.001 + amount * variation;
+}
+
+vec3 applyDistortion(vec3 vertex, float time) {
+	float xd = generateOffset(-vertex.x, vertex.z, 0.2, 0.1, time);
+	float yd = generateOffset(-vertex.x, -vertex.z, 0.1, 0.3, time);
+	float zd = generateOffset(vertex.x, -vertex.z, 0.15, 0.2, time);
+	
+	return vertex + vec3(xd, yd, zd);
+}
+
+void vertex() {
+	vec4 clip_position = PROJECTION_MATRIX * (MODELVIEW_MATRIX * vec4(VERTEX, 1.0));
+	vec3 clip_normal = mat3(PROJECTION_MATRIX) * (mat3(MODELVIEW_MATRIX) * NORMAL);
+	
+	vec2 offset = normalize(clip_normal.xy) / VIEWPORT_SIZE * clip_position.w * 1.0 * 2.0;
+	
+	clip_position.xy += offset;
+	
+	POSITION = clip_position;
+	VERTEX = applyDistortion(VERTEX, TIME * 0.1);
+}
+
+void fragment() {
+	NORMAL = normalize(cross(dFdx(VERTEX), dFdy(VERTEX)));
+	METALLIC = metallic;
+	SPECULAR = specular;
+	ROUGHNESS = roughness;
+	ALBEDO = out_color.rgb;
+	
+	
+	if (beer_factor != 0.0) {
+		float depth = texture(DEPTH_TEXTURE, SCREEN_UV).r;
+
+		depth = depth * 2.0 - 1.0;
+		depth = PROJECTION_MATRIX[3][2] / (depth + PROJECTION_MATRIX[2][2]);
+		depth = depth + VERTEX.z;
+
+		depth = exp(-depth * beer_factor);
+		ALPHA = clamp(1.0 - depth, 0.0, 1.0);
+	} else {
+		ALPHA = out_color.a;
+	}
+	ALBEDO = outline_color.rgb;
+	if(outline_color.a < 1.0) {
+		ALPHA = outline_color.a;
+	}
+}"

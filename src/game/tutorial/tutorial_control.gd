@@ -6,7 +6,7 @@ var tutorial_texts = [
 	"W, A, S, D: Walking \nSPACE: Jumping",
 	"SHIFT: Sprinting",
 	"Enter the portal to finish the level",
-	"E: Interact",
+	"Buttons can trigger different actions",
 	"This is a jumping \nspring, jump checked it!",
 	"Hold SPACE for \nHigher Jumps"
 ]

@@ -7,6 +7,10 @@ extends CharacterBody3D
 @onready var camera: Camera3D = %Camera3D
 @onready var last_position_timer = $LastPositionTimer
 @onready var player_pivot = %PlayerPivot
+@onready var player_mesh = %PlayerPivot/PlayerMesh
+@onready var left_eyeball = $PlayerPivot/LeftEyeball
+@onready var right_eyeball = $PlayerPivot/RightEyeball
+
 
 var last_floor_position: Vector3 = Vector3(0, 3, 0)
 
@@ -28,6 +32,7 @@ func _get_configuration_warnings() -> PackedStringArray:
 		return []
 
 func die():
+#	position = Vector3(-0.515, 5.134, -267.35)
 	position = last_floor_position
 
 func _on_LastPositionTimer_timeout():
@@ -37,7 +42,14 @@ func _on_LastPositionTimer_timeout():
 
 	last_position_timer.start()	
 
-func lock_movement(lock: bool = true):
+func lock_movement(lock: bool = true, except_y: bool = false):
 	set_axis_lock(PhysicsServer3D.BODY_AXIS_LINEAR_X, lock)
-	set_axis_lock(PhysicsServer3D.BODY_AXIS_LINEAR_Y, lock)
+	if !except_y:
+		set_axis_lock(PhysicsServer3D.BODY_AXIS_LINEAR_Y, lock)
 	set_axis_lock(PhysicsServer3D.BODY_AXIS_LINEAR_Z, lock)
+
+func lock_rotation(lock: bool = true, except_y: bool = false):
+	set_axis_lock(PhysicsServer3D.BODY_AXIS_ANGULAR_X, lock)
+	if !except_y:
+		set_axis_lock(PhysicsServer3D.BODY_AXIS_ANGULAR_Y, lock)
+	set_axis_lock(PhysicsServer3D.BODY_AXIS_ANGULAR_Z, lock)
