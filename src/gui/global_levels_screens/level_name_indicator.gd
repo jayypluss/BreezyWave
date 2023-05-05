@@ -14,11 +14,11 @@ func present_level_name():
 	show()
 	GameState.player.lock_movement(true, true)
 	GameState.player.lock_rotation()
-	
+
 	var tween: Tween = create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_IN)
 	tween.tween_interval(1)
 	tween.chain().tween_callback(
-		func(): 
+		func():
 			GameState.player.lock_movement(false)
 			GameState.player.lock_rotation(false)
 	)
@@ -26,4 +26,8 @@ func present_level_name():
 	tween.tween_property(color_rect, "color", Color(0, 0, 0, 0), 1.5)
 	tween.tween_interval(2)
 	tween.tween_property(label, "modulate", Color(1, 1, 1, 0), 1.5)
-	
+	tween.chain().tween_callback(
+		func():
+			color_rect.hide()
+	)
+
