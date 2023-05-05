@@ -49,8 +49,8 @@ shader_parameter/background_color = Color(0, 0.1, 0.2, 1)
 shader_parameter/grid_color = Color(1, 0.5, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4eoio"]
-font_size = 100
-outline_size = 12
+font_size = 148
+outline_size = 18
 outline_color = Color(1, 1, 1, 0.129412)
 
 [sub_resource type="GDScript" id="4"]
@@ -72,40 +72,47 @@ script = ExtResource("3")
 
 [node name="Background" type="ColorRect" parent="."]
 material = SubResource("2")
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color(0.447059, 0.219608, 0.501961, 1)
-
-[node name="Header" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1.0
-offset_right = -1.0
-offset_bottom = -366.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.447059, 0.219608, 0.501961, 1)
+
+[node name="Header" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.501
+anchor_right = 0.5
+anchor_bottom = 0.501
+offset_left = -7.0
+offset_top = -360.72
+offset_right = 586.0
+offset_bottom = 326.28
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Title" type="Label" parent="Header"]
 layout_mode = 2
-text = "Breezy Wave"
+text = "Breezy
+Wave"
 label_settings = SubResource("LabelSettings_4eoio")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ButtonsContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 0.572
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.572
-offset_left = -143.0
-offset_top = -120.84
-offset_right = 143.0
-offset_bottom = 121.16
+anchor_bottom = 0.5
+offset_left = -419.0
+offset_top = -121.0
+offset_right = -133.0
+offset_bottom = 121.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 24
