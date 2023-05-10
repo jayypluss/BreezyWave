@@ -7,6 +7,8 @@ extends Control
 @onready var exit_button := $ButtonsContainer/ExitButton
 @onready var menu_pages: MenuPages = $MenuPages
 
+var current_level: int = 2
+
 
 func _ready():
 	$Version/GameVersion.text = ProjectSettings.get_setting("application/config/version")
@@ -24,7 +26,7 @@ func _ready():
 #		get_tree().change_scene_to_file("res://src/levels/level_test/level_test.tscn")
 
 func _on_PlayButton_pressed() -> void:
-	get_tree().change_scene_to_file("res://src/levels/level_1/level_1.tscn")
+	get_tree().change_scene_to_file("res://src/levels/level_" + str(current_level) + "/level_" + str(current_level) + ".tscn")
 
 func _on_ExitButton_pressed() -> void:
 	get_tree().quit()
