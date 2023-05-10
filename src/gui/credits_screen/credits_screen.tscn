@@ -1,45 +1,69 @@
-[gd_scene load_steps=3 format=3 uid="uid://cswv5xwg7kq0t"]
+[gd_scene load_steps=8 format=3 uid="uid://cswv5xwg7kq0t"]
 
 [ext_resource type="Theme" uid="uid://db51ncs4eb7e0" path="res://assets/ui-theme.tres" id="1"]
 [ext_resource type="Script" path="res://src/gui/credits_screen/credits_screen.gd" id="2"]
 
-[node name="CreditsScreen" type="CanvasLayer"]
-script = ExtResource("2")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a27ok"]
 
-[node name="Hidable" type="Control" parent="."]
-visible = false
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7jyxr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bs2xq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l7dhq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wv8fb"]
+
+[node name="CreditsScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("2")
 
-[node name="ColorRect" type="ColorRect" parent="Hidable"]
-layout_mode = 0
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.243137, 0.211765, 0.290196, 0.831373)
 
-[node name="MainMenuButton" type="Button" parent="Hidable"]
-layout_mode = 0
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -105.0
-offset_top = 45.0
-offset_right = -57.0
-offset_bottom = 90.0
-theme = ExtResource("1")
-text = "X"
-
-[node name="Credits" type="Label" parent="Hidable"]
-layout_mode = 0
+[node name="MainMenuButton" type="Button" parent="."]
+layout_mode = 2
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -384.0
-offset_top = -247.0
-offset_right = 382.0
-offset_bottom = 249.0
+offset_left = 266.0
+offset_top = -253.0
+offset_right = 318.0
+offset_bottom = -193.0
+grow_horizontal = 0
+theme = ExtResource("1")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_a27ok")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7jyxr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bs2xq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_l7dhq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wv8fb")
+text = "X"
+
+[node name="Credits" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.5
+offset_top = -149.0
+offset_right = 207.5
+offset_bottom = 149.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1")
 text = "Music
 
@@ -58,4 +82,4 @@ Onscreen Controls by Kenney Vleugels (www.kenney.nl)
 
 "
 
-[connection signal="pressed" from="Hidable/MainMenuButton" to="." method="_on_MainMenu_pressed"]
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]

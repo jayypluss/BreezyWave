@@ -2,24 +2,23 @@ extends AnimatableBody3D
 class_name MovingPlatform
 
 @export var duration: float = 4
-@export var move_z: float = -1
+@export var movement_vector: Vector3 = Vector3.ZERO
 
-var initial_z: float
-var final_z: float
+var initial_position: Vector3
+var final_position: Vector3
 var tween: Tween
 var going_back: bool = false
 
 func _ready() -> void:
-	initial_z = position.z
-	final_z = position.z + move_z
-  
+	initial_position = global_position
+	final_position = initial_position + movement_vector
 
 func start_moving():
 	tween = create_tween().set_loops().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	if not going_back:
-		tween.tween_property(self, "position:z", final_z, duration)
+		tween.tween_property(self, "global_position", final_position, duration)
 		tween.chain().tween_callback(func(): print('going_back = true'); going_back = true)
-	tween.tween_property(self, "position:z", initial_z, duration)
+	tween.tween_property(self, "global_position", final_position, duration)
 	tween.chain().tween_callback(func(): print('going_back = false'); going_back = false)
 
 func stop_moving():

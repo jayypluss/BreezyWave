@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://28geq6gh4kgo"]
+
+[ext_resource type="PackedScene" uid="uid://cswv5xwg7kq0t" path="res://src/gui/credits_screen/credits_screen.tscn" id="1_0kfkp"]
+[ext_resource type="Script" path="res://src/gui/menu_pages/menu_pages.gd" id="1_raeka"]
+[ext_resource type="PackedScene" uid="uid://djy4qoo4aycom" path="res://src/gui/configs_screen/settings_page.tscn" id="2_kb7j8"]
+
+[node name="MenuPages" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_raeka")
+
+[node name="CreditsScreen" parent="." instance=ExtResource("1_0kfkp")]
+visible = false
+layout_mode = 1
+
+[node name="SettingsPage" parent="." instance=ExtResource("2_kb7j8")]
+layout_mode = 1
+mouse_filter = 1

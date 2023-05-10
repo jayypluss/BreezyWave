@@ -1,11 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://ba66r2td112am"]
+[gd_scene load_steps=17 format=3 uid="uid://cnr8btk1avrpq"]
 
 [ext_resource type="Script" path="res://src/levels/level_2/level_2.gd" id="1_yfnrp"]
 [ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2_k5d8q"]
 [ext_resource type="Environment" uid="uid://b41dqk76jhoit" path="res://src/levels/common/level_world_environment.tres" id="3_8rs3q"]
 [ext_resource type="PackedScene" uid="uid://p3hk7kg0ry5k" path="res://src/environment/portal/portal.tscn" id="4_hwcgq"]
 [ext_resource type="AudioStream" uid="uid://d4aj57xuv7pic" path="res://assets/music/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg" id="5_yoxwr"]
-[ext_resource type="PackedScene" uid="uid://7c6tyte2j0mh" path="res://src/environment/static_platform/static_platform.tscn" id="6_j3hwb"]
+[ext_resource type="PackedScene" uid="uid://7c6tyte2j0mh" path="res://src/environment/static_small_platform/static_small_platform.tscn" id="6_j3hwb"]
+[ext_resource type="PackedScene" uid="uid://dimex4uwsxh1" path="res://src/environment/moving_small_platform/moving_small_platform.tscn" id="6_k2vyw"]
+[ext_resource type="PackedScene" uid="uid://qat4x6q0ehfq" path="res://src/environment/pedestal_button/pedestal_button.tscn" id="6_wsowc"]
 [ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="7_0ng7w"]
 [ext_resource type="PackedScene" uid="uid://cue07yxp483n4" path="res://src/gui/global_levels_hud/hud.tscn" id="8_2wkdx"]
 [ext_resource type="PackedScene" uid="uid://cr58hgugjg0k5" path="res://src/game/tutorial/tutorial_control.tscn" id="9_uh8o5"]
@@ -19,7 +21,7 @@ albedo_color = Color(0.301961, 0.192157, 0.752941, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_a7nm4"]
 material = SubResource("StandardMaterial3D_vst65")
-size = Vector3(15, 1, 15)
+size = Vector3(50, 1, 15)
 
 [node name="Level2" type="Node3D"]
 script = ExtResource("1_yfnrp")
@@ -51,15 +53,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344, 2.32673, -282.05)
 stream = ExtResource("5_yoxwr")
 volume_db = -20.0
 
-[node name="StaticPlatforms" type="Node3D" parent="."]
-
-[node name="Platform" parent="StaticPlatforms" instance=ExtResource("6_j3hwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0170984, 0.0191092, -23.311)
-
 [node name="Grounds" type="Node3D" parent="."]
 
-[node name="Ground" parent="Grounds" instance=ExtResource("7_0ng7w")]
-transform = Transform3D(1.75, 0, 0, 0, 1, 0, 0, 0, 1.75, -1.10378, 0.662905, 0)
+[node name="MovingSmallPlatforms" type="Node3D" parent="Grounds"]
+
+[node name="MovingSmallPlatform1" parent="Grounds/MovingSmallPlatforms" instance=ExtResource("6_k2vyw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.267, 0.019, 0.023)
+movement_vector = Vector3(-159.388, 0, 0)
+
+[node name="PedestalButton" parent="Grounds/MovingSmallPlatforms" node_paths=PackedStringArray("movable_object") instance=ExtResource("6_wsowc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.4421, 1.8734, 4.48941)
+movable_object = NodePath("../MovingSmallPlatform1")
+
+[node name="StaticSmallPlatforms" type="Node3D" parent="Grounds"]
+
+[node name="StaticSmallPlatform1" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -251.755, 0.0191092, 0.0227551)
+
+[node name="BigPlatforms" type="Node3D" parent="Grounds"]
+
+[node name="BigPlatform1" parent="Grounds/BigPlatforms" instance=ExtResource("7_0ng7w")]
+transform = Transform3D(1.75, 0, 0, 0, 1, 0, 0, 0, 1.75, -33.1389, 0.662905, 0)
 mesh = SubResource("BoxMesh_a7nm4")
 
 [node name="Control" type="Control" parent="."]
