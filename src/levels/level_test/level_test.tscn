@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ceofaq5t6jqbf"]
+[gd_scene load_steps=26 format=3]
 
 [ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="1"]
 [ext_resource type="Script" path="res://src/levels/level_test/level_test.gd" id="1_tvl7c"]
@@ -7,7 +7,7 @@
 [ext_resource type="Environment" uid="uid://dei285upuk8bp" path="res://src/levels/level_test/level_test_env.tres" id="3_doicm"]
 [ext_resource type="PackedScene" uid="uid://c8mmmyxugnefa" path="res://src/environment/moving_platform/moving_platform.tscn" id="4"]
 [ext_resource type="Shader" path="res://assets/shaders/random_glitches.gdshader" id="4_khut3"]
-[ext_resource type="PackedScene" uid="uid://7c6tyte2j0mh" path="res://src/environment/static_platform/static_platform.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://7c6tyte2j0mh" path="res://src/environment/static_small_platform/static_small_platform.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://cue07yxp483n4" path="res://src/gui/global_levels_hud/hud.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://cr58hgugjg0k5" path="res://src/game/tutorial/tutorial_control.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://sqlonw8gtwb0" path="res://src/environment/spring/spring.tscn" id="12"]

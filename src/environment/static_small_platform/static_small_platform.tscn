@@ -9,7 +9,7 @@ albedo_color = Color(0.407843, 0.192157, 0.752941, 1)
 [sub_resource type="BoxShape3D" id="3"]
 size = Vector3(10, 0.2, 10)
 
-[node name="Platform" type="CharacterBody3D"]
+[node name="StaticSmallPlatform" type="StaticBody3D"]
 collision_layer = 2
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
