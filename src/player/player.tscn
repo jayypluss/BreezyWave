@@ -203,6 +203,7 @@ script = ExtResource("2_1lrpx")
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/Horizontal/Vertical"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.952167, 0.305579, 0, -0.305579, 0.952167, 2.88049e-07, 2.11248, 3.49781)
+current = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraPivot/Horizontal/Vertical/Camera3D"]
 transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -214,6 +215,7 @@ transform = Transform3D(1, 0, -4.26326e-14, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.86776e-08, 0.565481, 0.556807)
+visible = false
 
 [connection signal="timeout" from="PlayerPivot/Effects/DashTimer" to="Input" method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="LastPositionTimer" to="." method="_on_LastPositionTimer_timeout"]

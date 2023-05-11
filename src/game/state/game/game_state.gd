@@ -18,7 +18,7 @@ var levels: Dictionary = {
 		"next_level": "Level2"
 	},
 	"Level2": {
-		"name": "Level 2",
+		"name": "ups and downs",
 		"path": "res://src/levels/level_2/level_2.tscn",
 		"last_level": "Level1",
 		"next_level": ""

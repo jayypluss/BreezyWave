@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://chfy3cyt83i6a"]
+
+[ext_resource type="Script" path="res://src/environment/props/spot_light/spot_light.gd" id="1_dcno3"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3b4oc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vg5w2"]
+size = Vector3(20, 10, 20)
+
+[node name="SpotLight" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.1342, 12.2026, 0)
+script = ExtResource("1_dcno3")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.613624, -1.56181e-08, -0.789598, -0.789598, 7.7366e-09, 0.613624, -3.47485e-09, 1, -1.70794e-08, 1.5204, -1.23591, 0)
+light_color = Color(0.917647, 0, 0.427451, 1)
+light_energy = 16.0
+light_specular = 8.0
+shadow_enabled = true
+spot_range = 42.086
+spot_angle = 65.43
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.87462, 0.48481, 0, -0.48481, 0.87462, 0, 0, 0, 1, 0.568577, 0.155166, 0)
+mesh = SubResource("CylinderMesh_3b4oc")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.447868, 0.8941, 0, -0.8941, -0.447868, 0, 0, 0, 1, 0.568577, -0.76372, 0)
+mesh = SubResource("CylinderMesh_3b4oc")
+
+[node name="InteractionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4352, 0, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.2932, 0)
+shape = SubResource("BoxShape3D_vg5w2")
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
