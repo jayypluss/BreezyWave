@@ -26,6 +26,8 @@ var has_dash: bool = false
 var has_glide: bool = false
 var num_of_jumps: int = 1
 
+var lock_movement := false
+
 func _ready():
 	player = self.owner
 	available_jumps = num_of_jumps
@@ -42,6 +44,9 @@ func _physics_process(delta: float) -> void:
 		0,
 		Input.get_action_strength("move_back") - Input.get_action_strength("move_front")
 	)
+	
+	if lock_movement:
+		direction = Vector3.ZERO
 	
 #	# Rotate direction based checked camera.
 	var horizontal_rotation = %CameraPivot/Horizontal.global_transform.basis.get_euler().y

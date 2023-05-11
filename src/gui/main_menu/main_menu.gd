@@ -7,7 +7,7 @@ extends Control
 @onready var exit_button := $ButtonsContainer/ExitButton
 @onready var menu_pages: MenuPages = $MenuPages
 
-var current_level: int = 2
+var current_level: int = 1
 
 
 func _ready():

@@ -10,6 +10,7 @@ extends CharacterBody3D
 @onready var player_mesh = %PlayerPivot/PlayerMesh
 @onready var left_eyeball = $PlayerPivot/LeftEyeball
 @onready var right_eyeball = $PlayerPivot/RightEyeball
+@onready var input = $Input
 
 
 var last_floor_position: Vector3 = Vector3(0, 3, 0)
@@ -41,6 +42,9 @@ func _on_LastPositionTimer_timeout():
 		last_floor_position = position
 
 	last_position_timer.start()	
+
+func lock_trough_input(lock: bool = true):
+	input.lock_movement = lock
 
 func lock_movement(lock: bool = true, except_y: bool = false):
 	set_axis_lock(PhysicsServer3D.BODY_AXIS_LINEAR_X, lock)
