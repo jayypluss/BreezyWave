@@ -3,7 +3,6 @@ extends Node3D
 
 @onready var player : Player = $Player
 @onready var win_game_screen : CanvasLayer = $Control/GlobalLevelsScreens/WinGameScreen
-
 @onready var hud = $Control/HUD
 
 

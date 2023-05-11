@@ -25,7 +25,7 @@ bottom_radius = 0.2
 height = 0.2
 
 [sub_resource type="BoxShape3D" id="5"]
-size = Vector3(6, 2.2, 6)
+size = Vector3(7.5, 2.2, 7.5)
 
 [sub_resource type="Animation" id="10"]
 length = 0.001

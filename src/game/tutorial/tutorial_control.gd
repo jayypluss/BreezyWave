@@ -7,8 +7,8 @@ var tutorial_texts = [
 	"SHIFT: Sprinting",
 	"Enter the portal to finish the level",
 	"Buttons can trigger different actions, hop on the platform and try it out!",
-	"You can slide down through ropes",
-	"This is a jumping \nspring, jump checked it!",
+	"Interact with the hanging rope to slide down",
+	"This is a jumping spring, jump on it and checked it!",
 	"Hold SPACE for \nHigher Jumps"
 ]
 

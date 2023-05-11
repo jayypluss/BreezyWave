@@ -12,12 +12,12 @@ bottom_radius = 2.5
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CylinderShape3D" id="9"]
-height = 1.0
+height = 0.25
 radius = 2.5
 
 [sub_resource type="CylinderShape3D" id="1"]
 height = 0.5
-radius = 2.5
+radius = 2.85
 
 [sub_resource type="BoxShape3D" id="4"]
 size = Vector3(10, 5, 10)
@@ -119,7 +119,7 @@ mesh = SubResource("12")
 surface_material_override/0 = SubResource("StandardMaterial3D_n82fi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.503008, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.609879, 0)
 shape = SubResource("9")
 
 [node name="SpringTrigger" type="Area3D" parent="."]

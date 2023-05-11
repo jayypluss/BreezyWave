@@ -21,6 +21,12 @@ var levels: Dictionary = {
 		"name": "ups and downs",
 		"path": "res://src/levels/level_2/level_2.tscn",
 		"last_level": "Level1",
+		"next_level": "Level3"
+	},
+	"Level3": {
+		"name": "touch the skies",
+		"path": "res://src/levels/level_3/level_3.tscn",
+		"last_level": "Level2",
 		"next_level": ""
 	}
 }
