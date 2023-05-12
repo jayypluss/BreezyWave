@@ -25,10 +25,10 @@ func _on_RestartLevel_pressed():
 func _on_MainMenu_pressed():
 	toggle_paused(false)
 	togle_visible(false)
-#	Game.change_scene_to_file("res://src/gui/menu/menu.tscn", {
+#	Game.change_scene_to_file("res://src/gui/main_menu/main_menu.tscn", {
 #		'show_progress_bar': false
 #	})
-	get_tree().change_scene_to_file("res://src/gui/menu/menu.tscn")
+	get_tree().change_scene_to_file("res://src/gui/main_menu/main_menu.tscn")
 
 func _show():
 	togle_visible(true)

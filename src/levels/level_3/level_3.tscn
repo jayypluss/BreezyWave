@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://b5x1ekani3gnp"]
+[gd_scene load_steps=30 format=3 uid="uid://b5x1ekani3gnp"]
 
 [ext_resource type="Script" path="res://src/levels/level_3/level_3.gd" id="1_7icvl"]
 [ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2_aqvay"]
 [ext_resource type="Environment" uid="uid://b41dqk76jhoit" path="res://src/levels/common/level_world_environment.tres" id="3_e5hxo"]
 [ext_resource type="PackedScene" uid="uid://p3hk7kg0ry5k" path="res://src/environment/portal/portal.tscn" id="4_vour7"]
 [ext_resource type="AudioStream" uid="uid://d4aj57xuv7pic" path="res://assets/music/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg" id="5_d7sk8"]
+[ext_resource type="PackedScene" uid="uid://grgj5wuhyy0d" path="res://src/environment/props/checkpoint/checkpoint.tscn" id="7_3oku7"]
 [ext_resource type="PackedScene" uid="uid://dimex4uwsxh1" path="res://src/environment/moving_small_platform/moving_small_platform.tscn" id="8_0i4y4"]
 [ext_resource type="PackedScene" uid="uid://qat4x6q0ehfq" path="res://src/environment/pedestal_button/pedestal_button.tscn" id="9_ms3om"]
 [ext_resource type="PackedScene" uid="uid://7c6tyte2j0mh" path="res://src/environment/static_small_platform/static_small_platform.tscn" id="10_w0byc"]
@@ -14,32 +15,51 @@
 [ext_resource type="PackedScene" uid="uid://b3ua4gxcip1as" path="res://src/environment/pedestal/pedestal.tscn" id="14_6nam4"]
 [ext_resource type="PackedScene" uid="uid://sqlonw8gtwb0" path="res://src/environment/spring/spring.tscn" id="14_dsvtk"]
 [ext_resource type="PackedScene" uid="uid://dx1ind0cyeb0t" path="res://src/gui/global_levels_screens/global_levels_screens.tscn" id="15_8e62s"]
+[ext_resource type="Script" path="res://src/levels/level_3/pyramid_like_piled_platforms.gd" id="15_084ve"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_llkap"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_faibq"]
-size = Vector3(85, 1, 85)
+[sub_resource type="BoxMesh" id="BoxMesh_emoci"]
+size = Vector3(40, 1, 50)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vst65"]
 albedo_color = Color(0.301961, 0.192157, 0.752941, 1)
 
+[sub_resource type="BoxMesh" id="BoxMesh_1feiq"]
+size = Vector3(30, 1, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_faibq"]
+size = Vector3(85, 1, 85)
+
 [sub_resource type="BoxMesh" id="BoxMesh_dg6dq"]
 size = Vector3(75, 0.25, 75)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uhdb0"]
+albedo_color = Color(0.301961, 0.192157, 0.752941, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8tajm"]
 size = Vector3(50, 0.25, 50)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vcwcn"]
+albedo_color = Color(0.301961, 0.192157, 0.752941, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_j2g4k"]
 size = Vector3(25, 0.25, 25)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kggag"]
+albedo_color = Color(0.301961, 0.192157, 0.752941, 1)
+
 [sub_resource type="BoxMesh" id="BoxMesh_1fmdr"]
-size = Vector3(15, 39.197, 15)
+size = Vector3(15, 30.044, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7oqv3"]
+size = Vector3(15, 0.1, 15)
 
 [node name="Level3" type="Node3D"]
 script = ExtResource("1_7icvl")
 
 [node name="Player" parent="." instance=ExtResource("2_aqvay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.5886, 64.0173, -186.288)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.96954, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("3_e5hxo")
@@ -59,7 +79,7 @@ transform = Transform3D(896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.
 shape = SubResource("BoxShape3D_llkap")
 
 [node name="Portal" parent="." instance=ExtResource("4_vour7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8904, 97.3267, -356.208)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8904, 272.031, -356.208)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_d7sk8")
@@ -68,90 +88,190 @@ volume_db = -20.0
 [node name="Props" type="Node3D" parent="."]
 
 [node name="Spring" parent="Props" instance=ExtResource("14_dsvtk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.4406, 1.65763, -39.7749)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.0067, 1.65763, -35.1827)
 
 [node name="Spring2" parent="Props" instance=ExtResource("14_dsvtk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.441, 20.8552, -68.7749)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -140.104, 19.4562, -61.8952)
 
 [node name="Spring3" parent="Props" instance=ExtResource("14_dsvtk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.441, 35.8552, -79.7749)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.441, 34.875, -91.4058)
+
+[node name="Spring4" parent="Props" instance=ExtResource("14_dsvtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.441, 56.8973, -129.775)
+
+[node name="Spring5" parent="Props" instance=ExtResource("14_dsvtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.441, 81.7098, -181.775)
+
+[node name="Spring6" parent="Props" instance=ExtResource("14_dsvtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.441, 104.572, -236.775)
+
+[node name="Spring7" parent="Props" instance=ExtResource("14_dsvtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.2683, 123.156, -282.985)
+
+[node name="Spring8" parent="Props" instance=ExtResource("14_dsvtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3814, 157.555, -339.177)
+
+[node name="Spring9" parent="Props" instance=ExtResource("14_dsvtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.28757, 174.872, -323.436)
+
+[node name="Spring10" parent="Props" instance=ExtResource("14_dsvtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.304, 194.625, -290.803)
+
+[node name="Spring11" parent="Props" instance=ExtResource("14_dsvtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.5264, 212.162, -274.618)
+
+[node name="Checkpoint" parent="Props" instance=ExtResource("7_3oku7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.509, 123.167, -284.325)
 
 [node name="Grounds" type="Node3D" parent="."]
 
 [node name="MovingSmallPlatforms" type="Node3D" parent="Grounds"]
 
-[node name="PedestalButton" parent="Grounds/MovingSmallPlatforms" node_paths=PackedStringArray("movable_object") instance=ExtResource("9_ms3om")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.6411, 56.7471, -187.816)
-movable_object = NodePath("../MovingSmallPlatform1")
-
-[node name="MovingSmallPlatform1" parent="Grounds/MovingSmallPlatforms" instance=ExtResource("8_0i4y4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.361, 55.888, -183.5)
-movement_vector = Vector3(127, 0, -117.194)
-
 [node name="PedestalButton2" parent="Grounds/MovingSmallPlatforms" node_paths=PackedStringArray("movable_object") instance=ExtResource("9_ms3om")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.3589, 56.7471, -342.815)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.3589, 231.451, -342.815)
 movable_object = NodePath("../MovingSmallPlatform2")
 
 [node name="MovingSmallPlatform2" parent="Grounds/MovingSmallPlatforms" instance=ExtResource("8_0i4y4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.639, 56.1622, -338.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.639, 230.68, -338.5)
 movement_vector = Vector3(0, 39, 0)
 
 [node name="StaticSmallPlatforms" type="Node3D" parent="Grounds"]
 
 [node name="StaticSmallPlatform1" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("10_w0byc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.7289, 12.9062, -68.7147)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.9908, 10.3159, -51.6876)
+
+[node name="StaticSmallPlatform7" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("10_w0byc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.9382, 4.70606, -35.2143)
+
+[node name="StaticSmallPlatform9" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("10_w0byc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.9382, 6.87922, -51.2831)
 
 [node name="StaticSmallPlatform2" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("10_w0byc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.171, 12.9062, -68.7147)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.6172, 12.9062, -51.6876)
 
 [node name="StaticSmallPlatform3" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("10_w0byc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.171, 15.9062, -68.7147)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.4306, 15.9062, -51.6876)
 
 [node name="StaticSmallPlatform4" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("10_w0byc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.171, 19.9062, -68.7147)
-
-[node name="StaticSmallPlatform5" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("10_w0byc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.171, 34.9062, -68.7147)
-
-[node name="StaticSmallPlatform6" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("10_w0byc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.171, 34.9062, -79.7495)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.393, 18.4407, -51.6876)
 
 [node name="BigPlatforms" type="Node3D" parent="Grounds"]
 
 [node name="BigPlatform1" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.1389, 0.662905, 0)
-mesh = SubResource("BoxMesh_faibq")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.802, 0.662905, -19)
+mesh = SubResource("BoxMesh_emoci")
+material = SubResource("StandardMaterial3D_vst65")
 
 [node name="BigPlatform2" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.487, 55.4995, -146)
-mesh = SubResource("BoxMesh_faibq")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.79, 55.4995, -121.754)
+mesh = SubResource("BoxMesh_1feiq")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform9" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.79, 33.4995, -82.7545)
+mesh = SubResource("BoxMesh_1feiq")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform10" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131.364, 18.0722, -52.7545)
+mesh = SubResource("BoxMesh_1feiq")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform4" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.79, 80.2599, -173.754)
+mesh = SubResource("BoxMesh_1feiq")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform5" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.79, 103.123, -228.754)
+mesh = SubResource("BoxMesh_1feiq")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform6" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.618, 121.706, -275.964)
+mesh = SubResource("BoxMesh_1feiq")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="Spring12" parent="Grounds/BigPlatforms" instance=ExtResource("14_dsvtk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.3521, 138.989, -319.838)
+
+[node name="BigPlatform7" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.7012, 137.54, -312.818)
+mesh = SubResource("BoxMesh_1feiq")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform8" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.6248, 156.105, -341.762)
+mesh = SubResource("BoxMesh_1feiq")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform11" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.68361, 173.422, -325.754)
+mesh = SubResource("BoxMesh_1feiq")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform13" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2098, 193.175, -296.598)
+mesh = SubResource("BoxMesh_1feiq")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform14" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.8326, 210.713, -269.594)
+mesh = SubResource("BoxMesh_1feiq")
+material = SubResource("StandardMaterial3D_vst65")
 
 [node name="BigPlatform3" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8553, 55.4995, -338.241)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8553, 230.203, -338.241)
 mesh = SubResource("BoxMesh_faibq")
 material = SubResource("StandardMaterial3D_vst65")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+[node name="PyramidLikePiledPlatforms" type="Node3D" parent="."]
+script = ExtResource("15_084ve")
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8553, 68.6143, -338.241)
+[node name="Combiner" type="CSGCombiner3D" parent="PyramidLikePiledPlatforms"]
+use_collision = true
+collision_layer = 2
+
+[node name="FirstFloorMesh" type="CSGMesh3D" parent="PyramidLikePiledPlatforms/Combiner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8553, 243.318, -338.241)
 mesh = SubResource("BoxMesh_dg6dq")
-material = SubResource("StandardMaterial3D_vst65")
+material = SubResource("StandardMaterial3D_uhdb0")
 
-[node name="CSGMesh3D2" type="CSGMesh3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8553, 81.6143, -338.241)
+[node name="SecondFloorMesh" type="CSGMesh3D" parent="PyramidLikePiledPlatforms/Combiner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8553, 256.318, -338.241)
 mesh = SubResource("BoxMesh_8tajm")
-material = SubResource("StandardMaterial3D_vst65")
+material = SubResource("StandardMaterial3D_vcwcn")
 
-[node name="CSGMesh3D3" type="CSGMesh3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8553, 94.6143, -338.241)
+[node name="ThirdFloorMesh" type="CSGMesh3D" parent="PyramidLikePiledPlatforms/Combiner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8553, 269.318, -338.241)
 mesh = SubResource("BoxMesh_j2g4k")
-material = SubResource("StandardMaterial3D_vst65")
+material = SubResource("StandardMaterial3D_kggag")
 
-[node name="CSGMesh3D4" type="CSGMesh3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8553, 75.9595, -338.241)
+[node name="HoleMesh" type="CSGMesh3D" parent="PyramidLikePiledPlatforms/Combiner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.855, 255.819, -338.241)
 operation = 2
 mesh = SubResource("BoxMesh_1fmdr")
+
+[node name="FirstFloorEnter" type="Area3D" parent="PyramidLikePiledPlatforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8553, 68.6143, -338.241)
+
+[node name="Collision" type="CollisionShape3D" parent="PyramidLikePiledPlatforms/FirstFloorEnter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 174.704, 0)
+shape = SubResource("BoxShape3D_7oqv3")
+
+[node name="SecondFloorEnter2" type="Area3D" parent="PyramidLikePiledPlatforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8553, 81.6143, -338.241)
+
+[node name="Collision" type="CollisionShape3D" parent="PyramidLikePiledPlatforms/SecondFloorEnter2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 174.704, 0)
+shape = SubResource("BoxShape3D_7oqv3")
+
+[node name="ThirdFloorEnter3" type="Area3D" parent="PyramidLikePiledPlatforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8553, 94.6143, -338.241)
+
+[node name="Collision" type="CollisionShape3D" parent="PyramidLikePiledPlatforms/ThirdFloorEnter3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 174.704, 0)
+shape = SubResource("BoxShape3D_7oqv3")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -173,8 +293,12 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Step5" parent="Control/TutorialControl/Triggers" index="0" node_paths=PackedStringArray("control") instance=ExtResource("14_6nam4")]
-transform = Transform3D(0.875363, 0, 0.483466, 0.00371272, 0.99997, -0.00672224, -0.483452, 0.00767937, 0.875337, -40.43, 1.78516, -32.5699)
+[node name="Step6" parent="Control/TutorialControl/Triggers" index="0" node_paths=PackedStringArray("control") instance=ExtResource("14_6nam4")]
+transform = Transform3D(-0.457146, 0.00767596, 0.889358, 0.00371272, 0.99997, -0.00672224, -0.889384, 0.00022889, -0.457161, -26.233, 1.78516, -19.8921)
+control = NodePath("../..")
+
+[node name="Step7" parent="Control/TutorialControl/Triggers" index="1" node_paths=PackedStringArray("control") instance=ExtResource("14_6nam4")]
+transform = Transform3D(-0.528454, 0.00766892, 0.848927, 0.00371272, 0.99997, -0.00672224, -0.848954, -0.000400569, -0.528467, -125.996, 19.1813, -49.2092)
 control = NodePath("../..")
 
 [node name="GlobalLevelsScreens" parent="Control" instance=ExtResource("15_8e62s")]
@@ -184,6 +308,9 @@ metadata/_edit_use_anchors_ = true
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="on_finish_animation" from="Portal" to="." method="_on_portal_enter_animation_ended"]
+[connection signal="body_entered" from="PyramidLikePiledPlatforms/FirstFloorEnter" to="PyramidLikePiledPlatforms" method="_on_first_floor_enter_body_entered"]
+[connection signal="body_entered" from="PyramidLikePiledPlatforms/SecondFloorEnter2" to="PyramidLikePiledPlatforms" method="_on_second_floor_enter_2_body_entered"]
+[connection signal="body_entered" from="PyramidLikePiledPlatforms/ThirdFloorEnter3" to="PyramidLikePiledPlatforms" method="_on_third_floor_enter_3_body_entered"]
 
 [editable path="Grounds/BigPlatforms/BigPlatform3"]
 [editable path="Control/TutorialControl"]

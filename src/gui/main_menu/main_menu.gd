@@ -7,7 +7,7 @@ extends Control
 @onready var exit_button := $ButtonsContainer/ExitButton
 @onready var menu_pages: MenuPages = $MenuPages
 
-var current_level: int = 3
+var current_level: int = 1
 
 
 func _ready():
@@ -17,11 +17,16 @@ func _ready():
 	start_button.grab_focus()
 	if OS.has_feature('HTML5'):
 		exit_button.queue_free()
-			
-	if OS.has_feature("standalone"):
-		$Music.play()
 		
-#	if !OS.has_feature("standalone"):
+	if OS.has_feature("editor"):
+		print('Opened menu from editor')
+		current_level = 4
+	else:
+		$Music.play()
+		current_level = 1
+		
+		
+#	if OS.has_feature("editor"):
 #		await get_tree().create_timer(0.5).timeout
 #		get_tree().change_scene_to_file("res://src/levels/level_test/level_test.tscn")
 

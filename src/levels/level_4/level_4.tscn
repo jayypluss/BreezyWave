@@ -1,0 +1,399 @@
+[gd_scene load_steps=43 format=3 uid="uid://bp7q3y1q0pmki"]
+
+[ext_resource type="Script" path="res://src/levels/level_4/level_4.gd" id="1_n16v1"]
+[ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2_bqhkp"]
+[ext_resource type="Environment" uid="uid://b41dqk76jhoit" path="res://src/levels/common/level_world_environment.tres" id="3_tr3fx"]
+[ext_resource type="PackedScene" uid="uid://p3hk7kg0ry5k" path="res://src/environment/portal/portal.tscn" id="4_5hgu4"]
+[ext_resource type="AudioStream" uid="uid://d4aj57xuv7pic" path="res://assets/music/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg" id="5_ne2tk"]
+[ext_resource type="PackedScene" uid="uid://sqlonw8gtwb0" path="res://src/environment/spring/spring.tscn" id="6_w7vyk"]
+[ext_resource type="PackedScene" uid="uid://grgj5wuhyy0d" path="res://src/environment/props/checkpoint/checkpoint.tscn" id="7_srsps"]
+[ext_resource type="PackedScene" uid="uid://qat4x6q0ehfq" path="res://src/environment/pedestal_button/pedestal_button.tscn" id="8_8g2v3"]
+[ext_resource type="PackedScene" uid="uid://dimex4uwsxh1" path="res://src/environment/moving_small_platform/moving_small_platform.tscn" id="9_rx0ev"]
+[ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="11_44ckh"]
+[ext_resource type="Texture2D" uid="uid://dv4k21a720ki6" path="res://assets/pictures/3x4/Breezy4.png" id="11_imta0"]
+[ext_resource type="Texture2D" uid="uid://b6305sgp6r4bp" path="res://assets/pictures/3x4/Breezy2.png" id="12_602cj"]
+[ext_resource type="PackedScene" uid="uid://cue07yxp483n4" path="res://src/gui/global_levels_hud/hud.tscn" id="13_87gpq"]
+[ext_resource type="Texture2D" uid="uid://dtfhe544164kp" path="res://assets/pictures/3x4/Breezy3.png" id="13_iejxs"]
+[ext_resource type="PackedScene" uid="uid://cr58hgugjg0k5" path="res://src/game/tutorial/tutorial_control.tscn" id="14_4ksiu"]
+[ext_resource type="Texture2D" uid="uid://7cx1o0oemqbp" path="res://assets/pictures/3x4/Breezy5.png" id="14_wdn7m"]
+[ext_resource type="Texture2D" uid="uid://chho4eojq3lc3" path="res://assets/pictures/3x4/Breezy6.png" id="15_al7io"]
+[ext_resource type="PackedScene" uid="uid://b3ua4gxcip1as" path="res://src/environment/pedestal/pedestal.tscn" id="15_ng08w"]
+[ext_resource type="Texture2D" uid="uid://cfqpxh7ylqflv" path="res://assets/pictures/3x4/Breezy7.png" id="16_6i18a"]
+[ext_resource type="PackedScene" uid="uid://dx1ind0cyeb0t" path="res://src/gui/global_levels_screens/global_levels_screens.tscn" id="16_7v0ww"]
+[ext_resource type="Texture2D" uid="uid://d0441ewrcxvbx" path="res://assets/pictures/3x4/Breezy8.png" id="17_ohd0i"]
+[ext_resource type="Texture2D" uid="uid://kil4px1imiao" path="res://assets/pictures/3x4/Breezy9.png" id="18_ygt2w"]
+[ext_resource type="Texture2D" uid="uid://wtu0xomuj5sd" path="res://assets/pictures/3x4/Breezy10.png" id="19_k3t5d"]
+[ext_resource type="Texture2D" uid="uid://dqhdgglmypir5" path="res://assets/pictures/3x4/Breezy11.png" id="20_nf5u6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_llkap"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lq055"]
+size = Vector3(60, 1, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vst65"]
+albedo_color = Color(0.301961, 0.192157, 0.752941, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8m2ch"]
+size = Vector3(15, 1, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_appu1"]
+transparency = 1
+albedo_color = Color(0.301961, 0.192157, 0.752941, 0.113725)
+emission_enabled = true
+emission_energy_multiplier = 0.36
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ukvj"]
+size = Vector3(16.75, 1, 15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0grco"]
+lightmap_size_hint = Vector2i(34, 116)
+size = Vector3(0.1, 8, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7sbhd"]
+albedo_texture = ExtResource("11_imta0")
+normal_enabled = true
+rim_enabled = true
+rim = 0.42
+refraction_enabled = true
+uv1_scale = Vector3(3, 1.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxxvl"]
+albedo_texture = ExtResource("12_602cj")
+normal_enabled = true
+rim_enabled = true
+rim = 0.42
+refraction_enabled = true
+uv1_scale = Vector3(3, 1.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jl61b"]
+albedo_texture = ExtResource("13_iejxs")
+normal_enabled = true
+rim_enabled = true
+rim = 0.42
+refraction_enabled = true
+uv1_scale = Vector3(3, 1.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_84rre"]
+albedo_texture = ExtResource("14_wdn7m")
+normal_enabled = true
+rim_enabled = true
+rim = 0.42
+refraction_enabled = true
+uv1_scale = Vector3(3, 1.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ull2r"]
+albedo_texture = ExtResource("15_al7io")
+normal_enabled = true
+rim_enabled = true
+rim = 0.42
+refraction_enabled = true
+uv1_scale = Vector3(3, 1.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwffh"]
+albedo_texture = ExtResource("16_6i18a")
+normal_enabled = true
+rim_enabled = true
+rim = 0.42
+refraction_enabled = true
+uv1_scale = Vector3(3, 1.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pwjqg"]
+albedo_texture = ExtResource("17_ohd0i")
+normal_enabled = true
+rim_enabled = true
+rim = 0.42
+refraction_enabled = true
+uv1_scale = Vector3(3, 1.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abmah"]
+albedo_texture = ExtResource("18_ygt2w")
+normal_enabled = true
+rim_enabled = true
+rim = 0.42
+refraction_enabled = true
+uv1_scale = Vector3(3, 1.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8uxv"]
+albedo_texture = ExtResource("19_k3t5d")
+normal_enabled = true
+rim_enabled = true
+rim = 0.42
+refraction_enabled = true
+uv1_scale = Vector3(3, 1.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s6cwf"]
+albedo_texture = ExtResource("20_nf5u6")
+normal_enabled = true
+rim_enabled = true
+rim = 0.42
+refraction_enabled = true
+uv1_scale = Vector3(3, 1.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d5i5j"]
+
+[node name="Level4" type="Node3D"]
+script = ExtResource("1_n16v1")
+
+[node name="Player" parent="." instance=ExtResource("2_bqhkp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.649, 8.2246, -6.46799)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_tr3fx")
+
+[node name="GlobalLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 102.381, -110.774)
+light_energy = 0.9
+shadow_enabled = true
+directional_shadow_max_distance = 300.0
+
+[node name="DyingTrigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30069, -205.875)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DyingTrigger"]
+transform = Transform3D(896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.372)
+shape = SubResource("BoxShape3D_llkap")
+
+[node name="Portal" parent="." instance=ExtResource("4_5hgu4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8904, 272.031, -356.208)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ne2tk")
+volume_db = -20.0
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="Spring" parent="Props" instance=ExtResource("6_w7vyk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -195.587, 1.65763, -5.68357)
+
+[node name="Checkpoint" parent="Props" instance=ExtResource("7_srsps")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200.909, 4.24002, -3.00012)
+
+[node name="Grounds" type="Node3D" parent="."]
+
+[node name="MovingSmallPlatforms" type="Node3D" parent="Grounds"]
+
+[node name="PedestalButton2" parent="Grounds/MovingSmallPlatforms" node_paths=PackedStringArray("movable_object") instance=ExtResource("8_8g2v3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -199.909, 1.24002, -3.35176)
+movable_object = NodePath("../MovingSmallPlatform2")
+
+[node name="MovingSmallPlatform2" parent="Grounds/MovingSmallPlatforms" instance=ExtResource("9_rx0ev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -197.909, 0.24002, -0.168922)
+movement_vector = Vector3(0, 39, 0)
+
+[node name="StaticSmallPlatforms" type="Node3D" parent="Grounds"]
+
+[node name="BigPlatforms" type="Node3D" parent="Grounds"]
+
+[node name="BigPlatform1" parent="Grounds/BigPlatforms" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1087, 0, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform6" parent="Grounds/BigPlatforms" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121, 0, 0)
+mesh = SubResource("BoxMesh_8m2ch")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform7" parent="Grounds/BigPlatforms" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121, 16, 0)
+mesh = SubResource("BoxMesh_8m2ch")
+material = SubResource("StandardMaterial3D_appu1")
+
+[node name="TunnelSection" type="Node3D" parent="Grounds/BigPlatforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 0, 0)
+metadata/_edit_group_ = true
+
+[node name="BigPlatform2" parent="Grounds/BigPlatforms/TunnelSection" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000390612, 0, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform3" parent="Grounds/BigPlatforms/TunnelSection" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000389099, 15.8647, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform4" parent="Grounds/BigPlatforms/TunnelSection" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000390612, 7.98287, 7)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform5" parent="Grounds/BigPlatforms/TunnelSection" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000390612, 7.98287, -7)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="TunnelSection4" type="Node3D" parent="Grounds/BigPlatforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -158, 0, 0)
+metadata/_edit_group_ = true
+
+[node name="BigPlatform2" parent="Grounds/BigPlatforms/TunnelSection4" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000390612, 0, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform3" parent="Grounds/BigPlatforms/TunnelSection4" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000389099, 15.8647, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform4" parent="Grounds/BigPlatforms/TunnelSection4" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000390612, 7.98287, 7)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform5" parent="Grounds/BigPlatforms/TunnelSection4" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000390612, 7.98287, -7)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform8" parent="Grounds/BigPlatforms/TunnelSection4" instance=ExtResource("11_44ckh")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -30.0481, 8, 0)
+mesh = SubResource("BoxMesh_7ukvj")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="TunnelSection2" type="Node3D" parent="Grounds/BigPlatforms"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -121, 0, 37)
+metadata/_edit_group_ = true
+
+[node name="BigPlatform2" parent="Grounds/BigPlatforms/TunnelSection2" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000390612, 0, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform3" parent="Grounds/BigPlatforms/TunnelSection2" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000390612, 15.8647, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform4" parent="Grounds/BigPlatforms/TunnelSection2" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000390612, 7.98287, 7)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform5" parent="Grounds/BigPlatforms/TunnelSection2" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000390612, 7.98287, -7)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="TunnelSection3" type="Node3D" parent="Grounds/BigPlatforms"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -121, 0, -37)
+metadata/_edit_group_ = true
+
+[node name="BigPlatform2" parent="Grounds/BigPlatforms/TunnelSection3" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000390612, 0, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform3" parent="Grounds/BigPlatforms/TunnelSection3" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000390612, 15.8647, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform4" parent="Grounds/BigPlatforms/TunnelSection3" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000390612, 7.98287, 7)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="BigPlatform5" parent="Grounds/BigPlatforms/TunnelSection3" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000390612, 7.98287, -7)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="Paitings" type="Node3D" parent="Grounds/BigPlatforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.715, 4.49688, 0)
+
+[node name="Paiting1" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
+transform = Transform3D(0.999936, 0, 5.96008e-08, 0, 0.999936, 0, -5.96008e-08, 0, 0.999936, -6.73404, 3.98068, 16.3104)
+mesh = SubResource("BoxMesh_0grco")
+surface_material_override/0 = SubResource("StandardMaterial3D_7sbhd")
+
+[node name="Paiting2" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
+transform = Transform3D(0.999936, 0, 5.96008e-08, 0, 0.999936, 0, -5.96008e-08, 0, 0.999936, -6.73404, 3.98068, 29.3104)
+mesh = SubResource("BoxMesh_0grco")
+surface_material_override/0 = SubResource("StandardMaterial3D_rxxvl")
+
+[node name="Paiting3" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
+transform = Transform3D(0.999936, 0, 5.96008e-08, 0, 0.999936, 0, -5.96008e-08, 0, 0.999936, -6.73404, 3.98068, 43.3104)
+mesh = SubResource("BoxMesh_0grco")
+surface_material_override/0 = SubResource("StandardMaterial3D_jl61b")
+
+[node name="Paiting4" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
+transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, 3.98068, 42.977)
+mesh = SubResource("BoxMesh_0grco")
+surface_material_override/0 = SubResource("StandardMaterial3D_7sbhd")
+
+[node name="Paiting5" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
+transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, 3.98068, 29.977)
+mesh = SubResource("BoxMesh_0grco")
+surface_material_override/0 = SubResource("StandardMaterial3D_84rre")
+
+[node name="Paiting6" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
+transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, 3.98068, 15.977)
+mesh = SubResource("BoxMesh_0grco")
+surface_material_override/0 = SubResource("StandardMaterial3D_ull2r")
+
+[node name="Paiting7" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
+transform = Transform3D(0.999936, 0, 5.96008e-08, 0, 0.999936, 0, -5.96008e-08, 0, 0.999936, -6.73404, 3.98068, -25.6896)
+mesh = SubResource("BoxMesh_0grco")
+surface_material_override/0 = SubResource("StandardMaterial3D_kwffh")
+
+[node name="Paiting8" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
+transform = Transform3D(0.999936, 0, 5.96008e-08, 0, 0.999936, 0, -5.96008e-08, 0, 0.999936, -6.73404, 3.98068, -39.6896)
+mesh = SubResource("BoxMesh_0grco")
+surface_material_override/0 = SubResource("StandardMaterial3D_pwjqg")
+
+[node name="Paiting9" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
+transform = Transform3D(0.999936, 0, 5.96008e-08, 0, 0.999936, 0, -5.96008e-08, 0, 0.999936, -6.73404, 3.98068, -52.6896)
+mesh = SubResource("BoxMesh_0grco")
+surface_material_override/0 = SubResource("StandardMaterial3D_abmah")
+
+[node name="Paiting10" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
+transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, 3.98068, -53.023)
+mesh = SubResource("BoxMesh_0grco")
+surface_material_override/0 = SubResource("StandardMaterial3D_r8uxv")
+
+[node name="Paiting11" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
+transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, 3.98068, -39.023)
+mesh = SubResource("BoxMesh_0grco")
+surface_material_override/0 = SubResource("StandardMaterial3D_s6cwf")
+
+[node name="Paiting12" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
+transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, 3.98068, -26.023)
+mesh = SubResource("BoxMesh_0grco")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5i5j")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+
+[node name="HUD" parent="Control" instance=ExtResource("13_87gpq")]
+layout_mode = 1
+mouse_filter = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TutorialControl" parent="Control" instance=ExtResource("14_4ksiu")]
+layout_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Step7" parent="Control/TutorialControl/Triggers" index="0" node_paths=PackedStringArray("control") instance=ExtResource("15_ng08w")]
+transform = Transform3D(0.875363, 0, 0.483466, 0.00371272, 0.99997, -0.00672224, -0.483452, 0.00767937, 0.875337, -197.576, 1.78516, 1.52142)
+control = NodePath("../..")
+
+[node name="GlobalLevelsScreens" parent="Control" instance=ExtResource("16_7v0ww")]
+layout_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]
+[connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
+[connection signal="on_finish_animation" from="Portal" to="." method="_on_portal_enter_animation_ended"]
+
+[editable path="Control/TutorialControl"]

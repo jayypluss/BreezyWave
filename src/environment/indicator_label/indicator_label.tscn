@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b72gbk40c37jy"]
+
+[ext_resource type="Script" path="res://src/environment/indicator_label/indicator_label.gd" id="1_v0wh0"]
+
+[node name="Label3D" type="Label3D"]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 1.16208, 0)
+pixel_size = 0.025
+billboard = 2
+modulate = Color(1, 0.713726, 0.470588, 1)
+text = "!"
+font_size = 36
+outline_size = 10
+script = ExtResource("1_v0wh0")

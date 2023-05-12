@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cnr8btk1avrpq"]
+[gd_scene load_steps=24 format=3 uid="uid://cnr8btk1avrpq"]
 
 [ext_resource type="Script" path="res://src/levels/level_2/level_2.gd" id="1_yfnrp"]
 [ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2_k5d8q"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="7_0ng7w"]
 [ext_resource type="PackedScene" uid="uid://chfy3cyt83i6a" path="res://src/environment/props/spot_light/spot_light.tscn" id="7_nbfru"]
 [ext_resource type="PackedScene" uid="uid://cue07yxp483n4" path="res://src/gui/global_levels_hud/hud.tscn" id="8_2wkdx"]
+[ext_resource type="PackedScene" uid="uid://grgj5wuhyy0d" path="res://src/environment/props/checkpoint/checkpoint.tscn" id="8_w07cy"]
 [ext_resource type="PackedScene" uid="uid://cr58hgugjg0k5" path="res://src/game/tutorial/tutorial_control.tscn" id="9_uh8o5"]
 [ext_resource type="PackedScene" uid="uid://b3ua4gxcip1as" path="res://src/environment/pedestal/pedestal.tscn" id="10_vylvb"]
 [ext_resource type="PackedScene" uid="uid://dx1ind0cyeb0t" path="res://src/gui/global_levels_screens/global_levels_screens.tscn" id="11_ye3vb"]
@@ -32,15 +33,19 @@ size = Vector3(20, 1, 15)
 [sub_resource type="PrismMesh" id="PrismMesh_wvhwl"]
 size = Vector3(8.129, 33.389, 0.1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_21ktj"]
+[sub_resource type="BoxMesh" id="BoxMesh_d7luh"]
 material = SubResource("StandardMaterial3D_vst65")
-size = Vector3(50, 1, 50)
+size = Vector3(10, 1, 15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gwt54"]
+material = SubResource("StandardMaterial3D_vst65")
+size = Vector3(30, 1, 15)
 
 [node name="Level2" type="Node3D"]
 script = ExtResource("1_yfnrp")
 
 [node name="Player" parent="." instance=ExtResource("2_k5d8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -231.033, 59.2388, -252.236)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -278.595, 128.143, -317.123)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("3_8rs3q")
@@ -60,7 +65,7 @@ transform = Transform3D(896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.
 shape = SubResource("BoxShape3D_llkap")
 
 [node name="Portal" parent="." instance=ExtResource("4_hwcgq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344, 2.32673, -282.05)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 145.684, -15.2181, -270.641)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_yoxwr")
@@ -68,11 +73,23 @@ volume_db = -20.0
 
 [node name="Props" type="Node3D" parent="."]
 
-[node name="Rope" parent="Props" instance=ExtResource("14_bn6pm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -171.723, 52.5529, -220.732)
+[node name="SpotLight" parent="Props" instance=ExtResource("7_nbfru")]
+transform = Transform3D(-3.78552e-08, 0.5, -0.866025, 2.18557e-08, 0.866025, 0.5, 1, 1.77636e-15, -4.37114e-08, -50.6739, 12.3793, 0)
+
+[node name="Checkpoint" parent="Props" instance=ExtResource("8_w07cy")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -253.646, 97.1244, -258.231)
+
+[node name="Rope2" parent="Props" instance=ExtResource("14_bn6pm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.612, 156.178, -316.633)
 rope = 50
 
-[node name="SpotLight" parent="Props" instance=ExtResource("7_nbfru")]
+[node name="Rope3" parent="Props" instance=ExtResource("14_bn6pm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -120.638, 101.178, -270.805)
+rope = 50
+
+[node name="Rope4" parent="Props" instance=ExtResource("14_bn6pm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.807, 45.1776, -269.805)
+rope = 50
 
 [node name="Grounds" type="Node3D" parent="."]
 
@@ -94,32 +111,31 @@ movement_vector = Vector3(0, 30, -80)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -255.958, 1.8734, -4.26972)
 movable_object = NodePath("../MovingSmallPlatform2")
 
-[node name="MovingSmallPlatform3" parent="Grounds/MovingSmallPlatforms" instance=ExtResource("6_k2vyw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -251.773, 1.014, -190.588)
-duration = 5.0
-movement_vector = Vector3(0, 50, 0)
-
-[node name="PedestalButton3" parent="Grounds/MovingSmallPlatforms" node_paths=PackedStringArray("movable_object") instance=ExtResource("6_wsowc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -255.958, 1.8734, -184.68)
-movable_object = NodePath("../MovingSmallPlatform3")
-
 [node name="MovingSmallPlatform5" parent="Grounds/MovingSmallPlatforms" instance=ExtResource("6_k2vyw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -251.773, 31.0151, -111.273)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -251.773, 31.015, -111.273)
 duration = 5.0
-movement_vector = Vector3(0, -30, -58.964)
+movement_vector = Vector3(0, 65.017, -117.594)
 
 [node name="PedestalButton5" parent="Grounds/MovingSmallPlatforms" node_paths=PackedStringArray("movable_object") instance=ExtResource("6_wsowc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -255.958, 31.8745, -105.365)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -247.958, 31.8745, -105.365)
 movable_object = NodePath("../MovingSmallPlatform5")
 
 [node name="MovingSmallPlatform4" parent="Grounds/MovingSmallPlatforms" instance=ExtResource("6_k2vyw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -183.789, 24.7698, -255.106)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -279.822, 113.058, -316.655)
+movement_vector = Vector3(99.826, 41, 0)
+
+[node name="PedestalButton4" parent="Grounds/MovingSmallPlatforms" node_paths=PackedStringArray("movable_object") instance=ExtResource("6_wsowc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -286.019, 113.917, -320.389)
+movable_object = NodePath("../MovingSmallPlatform4")
+
+[node name="MovingSmallPlatform6" parent="Grounds/MovingSmallPlatforms" instance=ExtResource("6_k2vyw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.299, 43.058, -267.081)
 duration = 6.0
 movement_vector = Vector3(210, 0, 0)
 
-[node name="PedestalButton4" parent="Grounds/MovingSmallPlatforms" node_paths=PackedStringArray("movable_object") instance=ExtResource("6_wsowc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -189.986, 25.6292, -258.84)
-movable_object = NodePath("../MovingSmallPlatform4")
+[node name="PedestalButton6" parent="Grounds/MovingSmallPlatforms" node_paths=PackedStringArray("movable_object") instance=ExtResource("6_wsowc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.496, 43.9173, -270.815)
+movable_object = NodePath("../MovingSmallPlatform6")
 
 [node name="StaticSmallPlatforms" type="Node3D" parent="Grounds"]
 
@@ -129,41 +145,41 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -251.755, 1.014, 0.0227551)
 [node name="StaticSmallPlatform15" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -251.773, 31.014, -101.144)
 
-[node name="StaticSmallPlatform2" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -251.755, 1.014, -180.364)
-
 [node name="StaticSmallPlatform3" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -171.077, -2.22663, -218.178)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -267.11, 96.0116, -279.727)
 
 [node name="StaticSmallPlatform5" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -171.077, -2.22663, -218.178)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -267.11, 96.0116, -279.727)
 
 [node name="StaticSmallPlatform4" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -183.077, 0.77337, -207.178)
-
-[node name="StaticSmallPlatform6" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -194.077, 3.77337, -218.178)
-
-[node name="StaticSmallPlatform7" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -206.077, 6.77337, -230.178)
-
-[node name="StaticSmallPlatform8" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -216.077, 9.77337, -218.178)
-
-[node name="StaticSmallPlatform9" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -205.077, 12.7734, -207.178)
-
-[node name="StaticSmallPlatform10" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -194.077, 15.7734, -219.178)
-
-[node name="StaticSmallPlatform11" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -194.077, 18.7734, -231.178)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -279.11, 99.0116, -268.727)
 
 [node name="StaticSmallPlatform12" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -194.077, 21.7734, -243.178)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.704, 43.0116, -267.071)
+
+[node name="StaticSmallPlatform14" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.58, -16.4807, -269.644)
+
+[node name="StaticSmallPlatform6" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -290.11, 102.012, -279.727)
+
+[node name="StaticSmallPlatform7" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -302.11, 105.012, -291.727)
+
+[node name="StaticSmallPlatform8" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -312.11, 108.012, -279.727)
+
+[node name="StaticSmallPlatform9" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -301.11, 111.012, -268.727)
+
+[node name="StaticSmallPlatform10" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -290.11, 114.012, -280.727)
+
+[node name="StaticSmallPlatform11" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -290.11, 117.012, -292.727)
 
 [node name="StaticSmallPlatform13" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("6_j3hwb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -194.077, 24.7734, -255.178)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -290.11, 113.062, -316.727)
 
 [node name="BigPlatforms" type="Node3D" parent="Grounds"]
 
@@ -186,12 +202,20 @@ mesh = SubResource("PrismMesh_wvhwl")
 material = SubResource("StandardMaterial3D_vst65")
 
 [node name="BigPlatform3" parent="Grounds/BigPlatforms" instance=ExtResource("7_0ng7w")]
-transform = Transform3D(1.75, 0, 0, 0, 1, 0, 0, 0, 1.75, 2.82064, 0.662905, -267.786)
-mesh = SubResource("BoxMesh_faibq")
+transform = Transform3D(-7.64949e-08, 0, -1.75, 0, 1, 0, 1.75, 0, -7.64949e-08, 118.256, 42.6104, -270.213)
+mesh = SubResource("BoxMesh_d7luh")
 
 [node name="BigPlatform2" parent="Grounds/BigPlatforms" instance=ExtResource("7_0ng7w")]
-transform = Transform3D(1.75, 0, 0, 0, 1, 0, 0, 0, 1.75, -213.794, 50.0208, -239.782)
-mesh = SubResource("BoxMesh_21ktj")
+transform = Transform3D(-7.64949e-08, 0, 1.75, 0, 1, 0, -1.75, 0, -7.64949e-08, -248.52, 95.6455, -260.335)
+mesh = SubResource("BoxMesh_gwt54")
+
+[node name="BigPlatform8" parent="Grounds/BigPlatforms" instance=ExtResource("7_0ng7w")]
+transform = Transform3D(1.75, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1.75, -148.465, 153.645, -315.83)
+mesh = SubResource("BoxMesh_gwt54")
+
+[node name="BigPlatform9" parent="Grounds/BigPlatforms" instance=ExtResource("7_0ng7w")]
+transform = Transform3D(-7.64949e-08, 0, -1.75, 0, 1, 0, 1.75, 0, -7.64949e-08, -121.44, 98.6455, -295.658)
+mesh = SubResource("BoxMesh_gwt54")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -218,7 +242,11 @@ transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, 
 control = NodePath("../..")
 
 [node name="Step4" parent="Control/TutorialControl/Triggers" index="1" node_paths=PackedStringArray("control") instance=ExtResource("10_vylvb")]
-transform = Transform3D(-0.652747, 0, -0.757577, 0, 1, 0, 0.757577, 0, -0.652747, -174.252, 51.14, -210.787)
+transform = Transform3D(0.999053, 0, -0.0435143, 0, 1, 0, 0.0435143, 0, 0.999053, -244.638, 96.7301, -243.824)
+control = NodePath("../..")
+
+[node name="Step5" parent="Control/TutorialControl/Triggers" index="2" node_paths=PackedStringArray("control") instance=ExtResource("10_vylvb")]
+transform = Transform3D(-0.652747, 0, -0.757577, 0, 1, 0, 0.757577, 0, -0.652747, -126.141, 154.765, -306.688)
 control = NodePath("../..")
 
 [node name="GlobalLevelsScreens" parent="Control" instance=ExtResource("11_ye3vb")]

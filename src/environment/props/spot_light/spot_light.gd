@@ -9,7 +9,7 @@ var initial_color: Color
 func _ready():
 	initial_color = spot_light_3d.light_color
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if player_inside:			
 		if Input.is_action_just_pressed('interact'):
 			create_light_color_change_tween()

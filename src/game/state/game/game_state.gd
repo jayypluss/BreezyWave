@@ -15,19 +15,29 @@ var levels: Dictionary = {
 		"name": "the starting path",
 		"path": "res://src/levels/level_1/level_1.tscn",
 		"last_level": "",
-		"next_level": "Level2"
+		"next_level": "Level2",
+		"last_checkpoint": Vector3(0, 3, 0)
 	},
 	"Level2": {
 		"name": "ups and downs",
 		"path": "res://src/levels/level_2/level_2.tscn",
 		"last_level": "Level1",
-		"next_level": "Level3"
+		"next_level": "Level3",
+		"last_checkpoint": Vector3(0, 3, 0)
 	},
 	"Level3": {
 		"name": "touch the skies",
 		"path": "res://src/levels/level_3/level_3.tscn",
 		"last_level": "Level2",
-		"next_level": ""
+		"next_level": "Level4",
+		"last_checkpoint": Vector3(0, 3, 0)
+	},
+	"Level4": {
+		"name": "introspection",
+		"path": "res://src/levels/level_4/level_4.tscn",
+		"last_level": "Level3",
+		"next_level": "",
+		"last_checkpoint": Vector3(0, 3, 0)
 	}
 }
 
@@ -35,11 +45,21 @@ var levels: Dictionary = {
 func _ready():
 	restore()
 
+func save_checkpoint(_position: Vector3):
+	get_current_level_data().last_checkpoint = _position
+	
+func get_last_checkpoint():
+	return get_current_level_data().last_checkpoint
+
 func go_to_level(_level_node_name: String):
 	get_tree().change_scene_to_file(levels[_level_node_name].path)
 
+func has_next_level():
+	return !(get_current_level_data().next_level as String).is_empty()
+		
 func go_to_next_level():
-	get_tree().change_scene_to_file(levels[get_current_level_data().next_level].path)
+	if get_current_level_data().next_level:
+		get_tree().change_scene_to_file(levels[get_current_level_data().next_level].path)
 
 func get_current_level_data():
 	return levels[get_current_level_node_name()]
