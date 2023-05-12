@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bp7q3y1q0pmki"]
+[gd_scene load_steps=44 format=3 uid="uid://bp7q3y1q0pmki"]
 
 [ext_resource type="Script" path="res://src/levels/level_4/level_4.gd" id="1_n16v1"]
 [ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2_bqhkp"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dimex4uwsxh1" path="res://src/environment/moving_small_platform/moving_small_platform.tscn" id="9_rx0ev"]
 [ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="11_44ckh"]
 [ext_resource type="Texture2D" uid="uid://dv4k21a720ki6" path="res://assets/pictures/3x4/Breezy4.png" id="11_imta0"]
+[ext_resource type="PackedScene" uid="uid://chfy3cyt83i6a" path="res://src/environment/props/spot_light/spot_light.tscn" id="11_phxex"]
 [ext_resource type="Texture2D" uid="uid://b6305sgp6r4bp" path="res://assets/pictures/3x4/Breezy2.png" id="12_602cj"]
 [ext_resource type="PackedScene" uid="uid://cue07yxp483n4" path="res://src/gui/global_levels_hud/hud.tscn" id="13_87gpq"]
 [ext_resource type="Texture2D" uid="uid://dtfhe544164kp" path="res://assets/pictures/3x4/Breezy3.png" id="13_iejxs"]
@@ -47,7 +48,7 @@ size = Vector3(16.75, 1, 15)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0grco"]
 lightmap_size_hint = Vector2i(34, 116)
-size = Vector3(0.1, 8, 6)
+size = Vector3(0.1, 4, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7sbhd"]
 albedo_texture = ExtResource("11_imta0")
@@ -224,6 +225,20 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0003
 mesh = SubResource("BoxMesh_lq055")
 material = SubResource("StandardMaterial3D_vst65")
 
+[node name="SpotLight" parent="Grounds/BigPlatforms/TunnelSection" instance=ExtResource("11_phxex")]
+transform = Transform3D(0.771025, 0.318403, -0.55149, 0, 0.866025, 0.5, 0.636805, -0.385512, 0.667727, -0.0463257, 13.6592, 0.78339)
+light_energy = 9.444
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
+[node name="SpotLight2" parent="Grounds/BigPlatforms/TunnelSection" instance=ExtResource("11_phxex")]
+transform = Transform3D(-0.771025, -0.318403, 0.55149, 2.29783e-08, 0.866025, 0.5, -0.636805, 0.385512, -0.667727, -2.04633, 13.6592, 0.78339)
+light_energy = 9.444
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
 [node name="TunnelSection4" type="Node3D" parent="Grounds/BigPlatforms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -158, 0, 0)
 metadata/_edit_group_ = true
@@ -253,6 +268,20 @@ transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -30.04
 mesh = SubResource("BoxMesh_7ukvj")
 material = SubResource("StandardMaterial3D_vst65")
 
+[node name="SpotLight" parent="Grounds/BigPlatforms/TunnelSection4" instance=ExtResource("11_phxex")]
+transform = Transform3D(0.771025, 0.318403, -0.55149, 0, 0.866025, 0.5, 0.636805, -0.385512, 0.667727, -0.0463257, 13.6592, 0.78339)
+light_energy = 9.444
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
+[node name="SpotLight2" parent="Grounds/BigPlatforms/TunnelSection4" instance=ExtResource("11_phxex")]
+transform = Transform3D(-0.771025, -0.318403, 0.55149, 2.29783e-08, 0.866025, 0.5, -0.636805, 0.385512, -0.667727, -2.04633, 13.6592, 0.78339)
+light_energy = 9.444
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
 [node name="TunnelSection2" type="Node3D" parent="Grounds/BigPlatforms"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -121, 0, 37)
 metadata/_edit_group_ = true
@@ -276,6 +305,20 @@ material = SubResource("StandardMaterial3D_vst65")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000390612, 7.98287, -7)
 mesh = SubResource("BoxMesh_lq055")
 material = SubResource("StandardMaterial3D_vst65")
+
+[node name="SpotLight" parent="Grounds/BigPlatforms/TunnelSection2" instance=ExtResource("11_phxex")]
+transform = Transform3D(0.771025, 0.318403, -0.55149, 0, 0.866025, 0.5, 0.636805, -0.385512, 0.667727, -0.0463257, 13.6592, 0.78339)
+light_energy = 9.444
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
+[node name="SpotLight2" parent="Grounds/BigPlatforms/TunnelSection2" instance=ExtResource("11_phxex")]
+transform = Transform3D(-0.771025, -0.318403, 0.55149, 2.29783e-08, 0.866025, 0.5, -0.636805, 0.385512, -0.667727, -2.04633, 13.6592, 0.78339)
+light_energy = 9.444
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
 
 [node name="TunnelSection3" type="Node3D" parent="Grounds/BigPlatforms"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -121, 0, -37)
@@ -301,66 +344,80 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0003
 mesh = SubResource("BoxMesh_lq055")
 material = SubResource("StandardMaterial3D_vst65")
 
+[node name="SpotLight" parent="Grounds/BigPlatforms/TunnelSection3" instance=ExtResource("11_phxex")]
+transform = Transform3D(0.771025, 0.318403, -0.55149, 0, 0.866025, 0.5, 0.636805, -0.385512, 0.667727, -0.0463257, 13.6592, 0.78339)
+light_energy = 9.444
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
+[node name="SpotLight2" parent="Grounds/BigPlatforms/TunnelSection3" instance=ExtResource("11_phxex")]
+transform = Transform3D(-0.771025, -0.318403, 0.55149, 2.29783e-08, 0.866025, 0.5, -0.636805, 0.385512, -0.667727, -2.04633, 13.6592, 0.78339)
+light_energy = 9.444
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
 [node name="Paitings" type="Node3D" parent="Grounds/BigPlatforms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.715, 4.49688, 0)
 
 [node name="Paiting1" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
-transform = Transform3D(0.999936, 0, 5.96008e-08, 0, 0.999936, 0, -5.96008e-08, 0, 0.999936, -6.73404, 3.98068, 16.3104)
+transform = Transform3D(0.999936, 0, 5.96008e-08, 0, 0.999936, 0, -5.96008e-08, 0, 0.999936, -6.73404, -1.01932, 16.3104)
 mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_7sbhd")
 
 [node name="Paiting2" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
-transform = Transform3D(0.999936, 0, 5.96008e-08, 0, 0.999936, 0, -5.96008e-08, 0, 0.999936, -6.73404, 3.98068, 29.3104)
+transform = Transform3D(0.999936, 0, 5.96008e-08, 0, 0.999936, 0, -5.96008e-08, 0, 0.999936, -6.73404, -1.01932, 29.3104)
 mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_rxxvl")
 
 [node name="Paiting3" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
-transform = Transform3D(0.999936, 0, 5.96008e-08, 0, 0.999936, 0, -5.96008e-08, 0, 0.999936, -6.73404, 3.98068, 43.3104)
+transform = Transform3D(0.999936, 0, 5.96008e-08, 0, 0.999936, 0, -5.96008e-08, 0, 0.999936, -6.73404, -1.01932, 43.3104)
 mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_jl61b")
 
 [node name="Paiting4" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
-transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, 3.98068, 42.977)
+transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, -1.01932, 42.977)
 mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_7sbhd")
 
 [node name="Paiting5" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
-transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, 3.98068, 29.977)
+transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, -1.01932, 29.977)
 mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_84rre")
 
 [node name="Paiting6" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
-transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, 3.98068, 15.977)
+transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, -1.01932, 15.977)
 mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_ull2r")
 
 [node name="Paiting7" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
-transform = Transform3D(0.999936, 0, 5.96008e-08, 0, 0.999936, 0, -5.96008e-08, 0, 0.999936, -6.73404, 3.98068, -25.6896)
+transform = Transform3D(0.999936, 0, 5.96008e-08, 0, 0.999936, 0, -5.96008e-08, 0, 0.999936, -6.73404, -1.01932, -25.6896)
 mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_kwffh")
 
 [node name="Paiting8" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
-transform = Transform3D(0.999936, 0, 5.96008e-08, 0, 0.999936, 0, -5.96008e-08, 0, 0.999936, -6.73404, 3.98068, -39.6896)
+transform = Transform3D(0.999936, 0, 5.96008e-08, 0, 0.999936, 0, -5.96008e-08, 0, 0.999936, -6.73404, -1.01932, -39.6896)
 mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_pwjqg")
 
 [node name="Paiting9" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
-transform = Transform3D(0.999936, 0, 5.96008e-08, 0, 0.999936, 0, -5.96008e-08, 0, 0.999936, -6.73404, 3.98068, -52.6896)
+transform = Transform3D(0.999936, 0, 5.96008e-08, 0, 0.999936, 0, -5.96008e-08, 0, 0.999936, -6.73404, -1.01932, -52.6896)
 mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_abmah")
 
 [node name="Paiting10" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
-transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, 3.98068, -53.023)
+transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, -1.01932, -53.023)
 mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_r8uxv")
 
 [node name="Paiting11" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
-transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, 3.98068, -39.023)
+transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, -1.01932, -39.023)
 mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_s6cwf")
 
 [node name="Paiting12" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
-transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, 3.98068, -26.023)
+transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, -1.01932, -26.023)
 mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_d5i5j")
 

@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" path="res://src/environment/props/spot_light/spot_light.gd" id="1_dcno3"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_vg5w2"]
+size = Vector3(25, 20, 25)
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_3b4oc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tgrtn"]
@@ -13,35 +16,14 @@ top_radius = 0.3
 bottom_radius = 0.3
 height = 0.2
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vg5w2"]
-size = Vector3(25, 20, 25)
-
-[node name="SpotLight" type="StaticBody3D"]
-script = ExtResource("1_dcno3")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0200502, -0.34142, -1.45496)
+[node name="SpotLight" type="SpotLight3D"]
 light_color = Color(0.917647, 0, 0.427451, 1)
 light_energy = 16.0
 light_specular = 8.0
 shadow_enabled = true
 spot_range = 42.086
 spot_angle = 65.43
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CylinderMesh_3b4oc")
-surface_material_override/0 = SubResource("StandardMaterial3D_tgrtn")
-
-[node name="MeshInstance3D2" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.341913, -0.581435)
-mesh = SubResource("CylinderMesh_3b4oc")
-material = SubResource("StandardMaterial3D_tgrtn")
-
-[node name="MeshInstance3D3" type="CSGMesh3D" parent="MeshInstance3D2"]
-transform = Transform3D(1, -2.13163e-14, 0, 2.13163e-14, 1, 0, 0, 0, 1, 0.0193825, -0.921563, 0)
-operation = 2
-mesh = SubResource("CylinderMesh_p11ee")
+script = ExtResource("1_dcno3")
 
 [node name="InteractionArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.76377, 0)
@@ -51,5 +33,20 @@ collision_layer = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.51025, -14.5827)
 shape = SubResource("BoxShape3D_vg5w2")
 
-[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
-[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
+[node name="Mesh" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0194346, 0.341101, 1.63233)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
+mesh = SubResource("CylinderMesh_3b4oc")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_tgrtn")
+
+[node name="MeshInstance3D2" type="CSGMesh3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.341913, -0.581435)
+mesh = SubResource("CylinderMesh_3b4oc")
+material = SubResource("StandardMaterial3D_tgrtn")
+
+[node name="MeshInstance3D3" type="CSGMesh3D" parent="Mesh/MeshInstance3D2"]
+transform = Transform3D(1, -2.13163e-14, 0, 2.13163e-14, 1, 0, 0, 0, 1, 0.0193825, -0.921563, 0)
+operation = 2
+mesh = SubResource("CylinderMesh_p11ee")

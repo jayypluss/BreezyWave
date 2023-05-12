@@ -1,13 +1,13 @@
-extends StaticBody3D
+extends SpotLight3D
 
 @onready var spot_light_3d = $SpotLight3D
 
+var initial_color: Color
 var player_inside: Player
 var tween: Tween
-var initial_color: Color
 
 func _ready():
-	initial_color = spot_light_3d.light_color
+	initial_color = light_color
 
 func _physics_process(_delta):
 	if player_inside:			
