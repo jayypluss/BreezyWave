@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c8aem4qjchnrf"]
+[gd_scene load_steps=24 format=3 uid="uid://c8aem4qjchnrf"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1"]
 [ext_resource type="Script" path="res://src/player/camera.gd" id="2_1lrpx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://src/player/wings.gd" id="4_huxau"]
 [ext_resource type="Script" path="res://src/player/weapon.gd" id="4_x4gqo"]
 [ext_resource type="Shader" path="res://assets/shaders/pp_outline.gdshader" id="5_7vn4u"]
+[ext_resource type="Script" path="res://src/player/third_person_camera.gd" id="5_fffmt"]
 [ext_resource type="PackedScene" uid="uid://dlsqaaifvy0tr" path="res://src/camera/motion_blur/motion_blur.tscn" id="8_a28n3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_haaje"]
@@ -73,8 +74,6 @@ gravity = Vector3(0, 0, 0)
 [sub_resource type="PlaneMesh" id="PlaneMesh_8shkb"]
 size = Vector2(0.01, 2)
 
-[sub_resource type="CapsuleShape3D" id="5"]
-
 [sub_resource type="QuadMesh" id="QuadMesh_3dh2o"]
 lightmap_size_hint = Vector2i(12, 12)
 flip_faces = true
@@ -95,6 +94,8 @@ shader_parameter/depth_use_laplace = true
 shader_parameter/color_use_laplace = false
 shader_parameter/use_bg_texture = false
 
+[sub_resource type="CapsuleShape3D" id="5"]
+
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 collision_mask = 2
@@ -102,7 +103,6 @@ script = ExtResource("1")
 
 [node name="PlayerPivot" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="PlayerPivot"]
 sorting_offset = 100.0
@@ -183,6 +183,19 @@ process_material = SubResource("ParticleProcessMaterial_dr2kn")
 draw_pass_1 = SubResource("PlaneMesh_8shkb")
 
 [node name="DashTimer" type="Timer" parent="PlayerPivot/Effects"]
+
+[node name="FirstPersonCamera" type="Camera3D" parent="PlayerPivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.83706e-08, 0.546199, -0.562614)
+script = ExtResource("5_fffmt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerPivot/FirstPersonCamera"]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("QuadMesh_3dh2o")
+surface_material_override/0 = SubResource("ShaderMaterial_p1url")
+
+[node name="motion_blur" parent="PlayerPivot/FirstPersonCamera" instance=ExtResource("8_a28n3")]
+transform = Transform3D(1, 0, -4.26326e-14, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("5")

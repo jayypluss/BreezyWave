@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bp7q3y1q0pmki"]
+[gd_scene load_steps=46 format=3 uid="uid://bp7q3y1q0pmki"]
 
 [ext_resource type="Script" path="res://src/levels/level_4/level_4.gd" id="1_n16v1"]
 [ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2_bqhkp"]
@@ -28,11 +28,8 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_llkap"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_lq055"]
-size = Vector3(60, 1, 15)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vst65"]
-albedo_color = Color(0.301961, 0.192157, 0.752941, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_qkk1h"]
+size = Vector3(0.1, 10, 13)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8m2ch"]
 size = Vector3(15, 1, 15)
@@ -43,8 +40,17 @@ albedo_color = Color(0.301961, 0.192157, 0.752941, 0.113725)
 emission_enabled = true
 emission_energy_multiplier = 0.36
 
+[sub_resource type="BoxMesh" id="BoxMesh_lq055"]
+size = Vector3(60, 1, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vst65"]
+albedo_color = Color(0.301961, 0.192157, 0.752941, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lifxr"]
+size = Vector3(60, 1, 10)
+
 [sub_resource type="BoxMesh" id="BoxMesh_7ukvj"]
-size = Vector3(16.75, 1, 15)
+size = Vector3(12, 1, 15)
 
 [sub_resource type="BoxMesh" id="BoxMesh_0grco"]
 lightmap_size_hint = Vector2i(34, 116)
@@ -136,7 +142,7 @@ uv1_scale = Vector3(3, 1.5, 1)
 script = ExtResource("1_n16v1")
 
 [node name="Player" parent="." instance=ExtResource("2_bqhkp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.649, 8.2246, -6.46799)
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 4.63799, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("3_tr3fx")
@@ -162,6 +168,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8904, 272.031, -356.208)
 stream = ExtResource("5_ne2tk")
 volume_db = -20.0
 
+[node name="CorridorEnter" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 5.45884, 0)
+collision_layer = 2
+
+[node name="Collision" type="CollisionShape3D" parent="CorridorEnter"]
+shape = SubResource("BoxShape3D_qkk1h")
+
 [node name="Props" type="Node3D" parent="."]
 
 [node name="Spring" parent="Props" instance=ExtResource("6_w7vyk")]
@@ -169,6 +182,170 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -195.587, 1.65763, -5.68357)
 
 [node name="Checkpoint" parent="Props" instance=ExtResource("7_srsps")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200.909, 4.24002, -3.00012)
+
+[node name="Tunnels" type="Node3D" parent="."]
+
+[node name="MiddleCeeling" parent="Tunnels" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121, 6.04299, 0)
+mesh = SubResource("BoxMesh_8m2ch")
+material = SubResource("StandardMaterial3D_appu1")
+
+[node name="TunnelSection" type="Node3D" parent="Tunnels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 0, 0)
+metadata/_edit_group_ = true
+
+[node name="Floor" parent="Tunnels/TunnelSection" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000389099, 0, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="Ceeling" parent="Tunnels/TunnelSection" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000389099, 10.8713, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="WallLeft" parent="Tunnels/TunnelSection" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000389099, 5.43787, 7)
+mesh = SubResource("BoxMesh_lifxr")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="WallRight" parent="Tunnels/TunnelSection" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000389099, 5.43787, -7)
+mesh = SubResource("BoxMesh_lifxr")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="SpotLight" parent="Tunnels/TunnelSection" instance=ExtResource("11_phxex")]
+transform = Transform3D(0.771025, 0.318403, -0.551489, 0, 0.866025, 0.5, 0.636805, -0.385513, 0.667727, -0.0463257, 8.66585, 0.78339)
+light_energy = 9.444
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
+[node name="SpotLight2" parent="Tunnels/TunnelSection" instance=ExtResource("11_phxex")]
+transform = Transform3D(-0.771025, -0.318403, 0.551489, 2.29783e-08, 0.866025, 0.5, -0.636805, 0.385513, -0.667727, -2.04633, 8.66585, 0.78339)
+light_energy = 9.444
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
+[node name="TunnelSection4" type="Node3D" parent="Tunnels"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -158, 0, 0)
+metadata/_edit_group_ = true
+
+[node name="Floor" parent="Tunnels/TunnelSection4" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000396729, 0, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="Ceeling" parent="Tunnels/TunnelSection4" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00038147, 10.8713, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="WallLeft" parent="Tunnels/TunnelSection4" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000396729, 5.43787, 7)
+mesh = SubResource("BoxMesh_lifxr")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="WallRight" parent="Tunnels/TunnelSection4" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000396729, 5.43787, -7)
+mesh = SubResource("BoxMesh_lifxr")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="Wall" parent="Tunnels/TunnelSection4" instance=ExtResource("11_44ckh")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -30.0481, 5.36275, 0)
+mesh = SubResource("BoxMesh_7ukvj")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="SpotLight" parent="Tunnels/TunnelSection4" instance=ExtResource("11_phxex")]
+transform = Transform3D(0.771025, 0.318403, -0.551489, 0, 0.866025, 0.5, 0.636805, -0.385513, 0.667727, -0.0463257, 8.66585, 0.78339)
+light_energy = 9.444
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
+[node name="SpotLight2" parent="Tunnels/TunnelSection4" instance=ExtResource("11_phxex")]
+transform = Transform3D(-0.771025, -0.318403, 0.551489, 2.29783e-08, 0.866025, 0.5, -0.636805, 0.385513, -0.667727, -2.04633, 8.66585, 0.78339)
+light_energy = 9.444
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
+[node name="TunnelSection2" type="Node3D" parent="Tunnels"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -121, 0, 37)
+metadata/_edit_group_ = true
+
+[node name="Floor" parent="Tunnels/TunnelSection2" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000389099, 0, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="Ceeling" parent="Tunnels/TunnelSection2" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000389099, 10.8713, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="WallLeft" parent="Tunnels/TunnelSection2" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000389099, 5.43787, 7)
+mesh = SubResource("BoxMesh_lifxr")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="WallRight" parent="Tunnels/TunnelSection2" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000389099, 5.43787, -7)
+mesh = SubResource("BoxMesh_lifxr")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="SpotLight" parent="Tunnels/TunnelSection2" instance=ExtResource("11_phxex")]
+transform = Transform3D(0.771025, 0.318403, -0.551489, 0, 0.866025, 0.5, 0.636805, -0.385513, 0.667727, -0.0463257, 8.66585, 0.783386)
+light_energy = 9.444
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
+[node name="SpotLight2" parent="Tunnels/TunnelSection2" instance=ExtResource("11_phxex")]
+transform = Transform3D(-0.771025, -0.318403, 0.551489, 2.29783e-08, 0.866025, 0.5, -0.636805, 0.385513, -0.667727, -2.04633, 8.66585, 0.783394)
+light_energy = 9.444
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
+[node name="TunnelSection3" type="Node3D" parent="Tunnels"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -121, 0, -37)
+metadata/_edit_group_ = true
+
+[node name="Floor" parent="Tunnels/TunnelSection3" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000389099, 0, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="Ceeling" parent="Tunnels/TunnelSection3" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000389099, 10.8713, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="WallRight" parent="Tunnels/TunnelSection3" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000389099, 5.43787, 7)
+mesh = SubResource("BoxMesh_lifxr")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="WallLeft" parent="Tunnels/TunnelSection3" instance=ExtResource("11_44ckh")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000389099, 5.43787, -7)
+mesh = SubResource("BoxMesh_lifxr")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="SpotLight" parent="Tunnels/TunnelSection3" instance=ExtResource("11_phxex")]
+transform = Transform3D(0.771025, 0.318403, -0.551489, 0, 0.866025, 0.5, 0.636805, -0.385513, 0.667727, -0.0463257, 8.66585, 0.783386)
+light_energy = 9.444
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
+[node name="SpotLight2" parent="Tunnels/TunnelSection3" instance=ExtResource("11_phxex")]
+transform = Transform3D(-0.771025, -0.318403, 0.551489, 2.29783e-08, 0.866025, 0.5, -0.636805, 0.385513, -0.667727, -2.04633, 8.66585, 0.783394)
+light_energy = 9.444
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
 
 [node name="Grounds" type="Node3D" parent="."]
 
@@ -196,170 +373,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121, 0, 0)
 mesh = SubResource("BoxMesh_8m2ch")
 material = SubResource("StandardMaterial3D_vst65")
 
-[node name="BigPlatform7" parent="Grounds/BigPlatforms" instance=ExtResource("11_44ckh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121, 16, 0)
-mesh = SubResource("BoxMesh_8m2ch")
-material = SubResource("StandardMaterial3D_appu1")
-
-[node name="TunnelSection" type="Node3D" parent="Grounds/BigPlatforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84, 0, 0)
-metadata/_edit_group_ = true
-
-[node name="BigPlatform2" parent="Grounds/BigPlatforms/TunnelSection" instance=ExtResource("11_44ckh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000390612, 0, 0)
-mesh = SubResource("BoxMesh_lq055")
-material = SubResource("StandardMaterial3D_vst65")
-
-[node name="BigPlatform3" parent="Grounds/BigPlatforms/TunnelSection" instance=ExtResource("11_44ckh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000389099, 15.8647, 0)
-mesh = SubResource("BoxMesh_lq055")
-material = SubResource("StandardMaterial3D_vst65")
-
-[node name="BigPlatform4" parent="Grounds/BigPlatforms/TunnelSection" instance=ExtResource("11_44ckh")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000390612, 7.98287, 7)
-mesh = SubResource("BoxMesh_lq055")
-material = SubResource("StandardMaterial3D_vst65")
-
-[node name="BigPlatform5" parent="Grounds/BigPlatforms/TunnelSection" instance=ExtResource("11_44ckh")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000390612, 7.98287, -7)
-mesh = SubResource("BoxMesh_lq055")
-material = SubResource("StandardMaterial3D_vst65")
-
-[node name="SpotLight" parent="Grounds/BigPlatforms/TunnelSection" instance=ExtResource("11_phxex")]
-transform = Transform3D(0.771025, 0.318403, -0.55149, 0, 0.866025, 0.5, 0.636805, -0.385512, 0.667727, -0.0463257, 13.6592, 0.78339)
-light_energy = 9.444
-light_specular = 5.211
-spot_range = 50.0
-spot_angle = 81.43
-
-[node name="SpotLight2" parent="Grounds/BigPlatforms/TunnelSection" instance=ExtResource("11_phxex")]
-transform = Transform3D(-0.771025, -0.318403, 0.55149, 2.29783e-08, 0.866025, 0.5, -0.636805, 0.385512, -0.667727, -2.04633, 13.6592, 0.78339)
-light_energy = 9.444
-light_specular = 5.211
-spot_range = 50.0
-spot_angle = 81.43
-
-[node name="TunnelSection4" type="Node3D" parent="Grounds/BigPlatforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -158, 0, 0)
-metadata/_edit_group_ = true
-
-[node name="BigPlatform2" parent="Grounds/BigPlatforms/TunnelSection4" instance=ExtResource("11_44ckh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000390612, 0, 0)
-mesh = SubResource("BoxMesh_lq055")
-material = SubResource("StandardMaterial3D_vst65")
-
-[node name="BigPlatform3" parent="Grounds/BigPlatforms/TunnelSection4" instance=ExtResource("11_44ckh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000389099, 15.8647, 0)
-mesh = SubResource("BoxMesh_lq055")
-material = SubResource("StandardMaterial3D_vst65")
-
-[node name="BigPlatform4" parent="Grounds/BigPlatforms/TunnelSection4" instance=ExtResource("11_44ckh")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000390612, 7.98287, 7)
-mesh = SubResource("BoxMesh_lq055")
-material = SubResource("StandardMaterial3D_vst65")
-
-[node name="BigPlatform5" parent="Grounds/BigPlatforms/TunnelSection4" instance=ExtResource("11_44ckh")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000390612, 7.98287, -7)
-mesh = SubResource("BoxMesh_lq055")
-material = SubResource("StandardMaterial3D_vst65")
-
-[node name="BigPlatform8" parent="Grounds/BigPlatforms/TunnelSection4" instance=ExtResource("11_44ckh")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -30.0481, 8, 0)
-mesh = SubResource("BoxMesh_7ukvj")
-material = SubResource("StandardMaterial3D_vst65")
-
-[node name="SpotLight" parent="Grounds/BigPlatforms/TunnelSection4" instance=ExtResource("11_phxex")]
-transform = Transform3D(0.771025, 0.318403, -0.55149, 0, 0.866025, 0.5, 0.636805, -0.385512, 0.667727, -0.0463257, 13.6592, 0.78339)
-light_energy = 9.444
-light_specular = 5.211
-spot_range = 50.0
-spot_angle = 81.43
-
-[node name="SpotLight2" parent="Grounds/BigPlatforms/TunnelSection4" instance=ExtResource("11_phxex")]
-transform = Transform3D(-0.771025, -0.318403, 0.55149, 2.29783e-08, 0.866025, 0.5, -0.636805, 0.385512, -0.667727, -2.04633, 13.6592, 0.78339)
-light_energy = 9.444
-light_specular = 5.211
-spot_range = 50.0
-spot_angle = 81.43
-
-[node name="TunnelSection2" type="Node3D" parent="Grounds/BigPlatforms"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -121, 0, 37)
-metadata/_edit_group_ = true
-
-[node name="BigPlatform2" parent="Grounds/BigPlatforms/TunnelSection2" instance=ExtResource("11_44ckh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000390612, 0, 0)
-mesh = SubResource("BoxMesh_lq055")
-material = SubResource("StandardMaterial3D_vst65")
-
-[node name="BigPlatform3" parent="Grounds/BigPlatforms/TunnelSection2" instance=ExtResource("11_44ckh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000390612, 15.8647, 0)
-mesh = SubResource("BoxMesh_lq055")
-material = SubResource("StandardMaterial3D_vst65")
-
-[node name="BigPlatform4" parent="Grounds/BigPlatforms/TunnelSection2" instance=ExtResource("11_44ckh")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000390612, 7.98287, 7)
-mesh = SubResource("BoxMesh_lq055")
-material = SubResource("StandardMaterial3D_vst65")
-
-[node name="BigPlatform5" parent="Grounds/BigPlatforms/TunnelSection2" instance=ExtResource("11_44ckh")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000390612, 7.98287, -7)
-mesh = SubResource("BoxMesh_lq055")
-material = SubResource("StandardMaterial3D_vst65")
-
-[node name="SpotLight" parent="Grounds/BigPlatforms/TunnelSection2" instance=ExtResource("11_phxex")]
-transform = Transform3D(0.771025, 0.318403, -0.55149, 0, 0.866025, 0.5, 0.636805, -0.385512, 0.667727, -0.0463257, 13.6592, 0.78339)
-light_energy = 9.444
-light_specular = 5.211
-spot_range = 50.0
-spot_angle = 81.43
-
-[node name="SpotLight2" parent="Grounds/BigPlatforms/TunnelSection2" instance=ExtResource("11_phxex")]
-transform = Transform3D(-0.771025, -0.318403, 0.55149, 2.29783e-08, 0.866025, 0.5, -0.636805, 0.385512, -0.667727, -2.04633, 13.6592, 0.78339)
-light_energy = 9.444
-light_specular = 5.211
-spot_range = 50.0
-spot_angle = 81.43
-
-[node name="TunnelSection3" type="Node3D" parent="Grounds/BigPlatforms"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -121, 0, -37)
-metadata/_edit_group_ = true
-
-[node name="BigPlatform2" parent="Grounds/BigPlatforms/TunnelSection3" instance=ExtResource("11_44ckh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000390612, 0, 0)
-mesh = SubResource("BoxMesh_lq055")
-material = SubResource("StandardMaterial3D_vst65")
-
-[node name="BigPlatform3" parent="Grounds/BigPlatforms/TunnelSection3" instance=ExtResource("11_44ckh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000390612, 15.8647, 0)
-mesh = SubResource("BoxMesh_lq055")
-material = SubResource("StandardMaterial3D_vst65")
-
-[node name="BigPlatform4" parent="Grounds/BigPlatforms/TunnelSection3" instance=ExtResource("11_44ckh")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000390612, 7.98287, 7)
-mesh = SubResource("BoxMesh_lq055")
-material = SubResource("StandardMaterial3D_vst65")
-
-[node name="BigPlatform5" parent="Grounds/BigPlatforms/TunnelSection3" instance=ExtResource("11_44ckh")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000390612, 7.98287, -7)
-mesh = SubResource("BoxMesh_lq055")
-material = SubResource("StandardMaterial3D_vst65")
-
-[node name="SpotLight" parent="Grounds/BigPlatforms/TunnelSection3" instance=ExtResource("11_phxex")]
-transform = Transform3D(0.771025, 0.318403, -0.55149, 0, 0.866025, 0.5, 0.636805, -0.385512, 0.667727, -0.0463257, 13.6592, 0.78339)
-light_energy = 9.444
-light_specular = 5.211
-spot_range = 50.0
-spot_angle = 81.43
-
-[node name="SpotLight2" parent="Grounds/BigPlatforms/TunnelSection3" instance=ExtResource("11_phxex")]
-transform = Transform3D(-0.771025, -0.318403, 0.55149, 2.29783e-08, 0.866025, 0.5, -0.636805, 0.385512, -0.667727, -2.04633, 13.6592, 0.78339)
-light_energy = 9.444
-light_specular = 5.211
-spot_range = 50.0
-spot_angle = 81.43
-
 [node name="Paitings" type="Node3D" parent="Grounds/BigPlatforms"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.715, 4.49688, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.715, 5.20098, 0)
 
 [node name="Paiting1" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
 transform = Transform3D(0.999936, 0, 5.96008e-08, 0, 0.999936, 0, -5.96008e-08, 0, 0.999936, -6.73404, -1.01932, 16.3104)
@@ -377,17 +392,17 @@ mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_jl61b")
 
 [node name="Paiting4" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
-transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, -1.01932, 42.977)
+transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 6.15961, -1.01932, 42.977)
 mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_7sbhd")
 
 [node name="Paiting5" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
-transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, -1.01932, 29.977)
+transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 6.15961, -1.01932, 29.977)
 mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_84rre")
 
 [node name="Paiting6" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
-transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, -1.01932, 15.977)
+transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 6.15961, -1.01932, 15.977)
 mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_ull2r")
 
@@ -407,17 +422,17 @@ mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_abmah")
 
 [node name="Paiting10" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
-transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, -1.01932, -53.023)
+transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 6.15961, -1.01932, -53.023)
 mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_r8uxv")
 
 [node name="Paiting11" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
-transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, -1.01932, -39.023)
+transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 6.15961, -1.01932, -39.023)
 mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_s6cwf")
 
 [node name="Paiting12" type="MeshInstance3D" parent="Grounds/BigPlatforms/Paitings"]
-transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 5.26596, -1.01932, -26.023)
+transform = Transform3D(-0.999936, 0, -1.47018e-07, 0, 0.999936, 0, 1.47018e-07, 0, -0.999936, 6.15961, -1.01932, -26.023)
 mesh = SubResource("BoxMesh_0grco")
 surface_material_override/0 = SubResource("StandardMaterial3D_d5i5j")
 
@@ -452,5 +467,6 @@ metadata/_edit_use_anchors_ = true
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
 [connection signal="on_finish_animation" from="Portal" to="." method="_on_portal_enter_animation_ended"]
+[connection signal="body_entered" from="CorridorEnter" to="Player" method="_on_toggle_camera"]
 
 [editable path="Control/TutorialControl"]

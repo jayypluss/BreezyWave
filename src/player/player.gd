@@ -12,12 +12,13 @@ extends CharacterBody3D
 @onready var right_eyeball = $PlayerPivot/RightEyeball
 @onready var input = $Input
 
-
 var last_floor_position: Vector3 = Vector3(0, 3, 0)
+
 
 func _ready():
 	GameState.player = self
 	last_position_timer.start()
+	GameState.player.set_meshes_visibility(%Camera3D.current)
 	check_everything_is_not_null()
 
 func check_everything_is_not_null():
@@ -57,3 +58,11 @@ func lock_rotation(lock: bool = true, except_y: bool = false):
 	if !except_y:
 		set_axis_lock(PhysicsServer3D.BODY_AXIS_ANGULAR_Y, lock)
 	set_axis_lock(PhysicsServer3D.BODY_AXIS_ANGULAR_Z, lock)
+	
+func set_meshes_visibility(_visible: bool):
+	player_mesh.visible = _visible
+	left_eyeball.visible = _visible
+	right_eyeball.visible = _visible
+
+func _on_toggle_camera(_body):
+	Input.action_press('toggle_camera')
