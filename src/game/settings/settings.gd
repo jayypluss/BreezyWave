@@ -12,7 +12,8 @@ var defaults: Dictionary = {
 		"sound_volume": 80
 	},
 	"controls": {
-		"mouse_sensitivity": 0.5
+		"fp_mouse_sensitivity": 0.095,
+		"tp_mouse_sensitivity": 0.3
 	},
 	"graphics": {
 		"fullscreen": false,
@@ -28,7 +29,8 @@ var defaults: Dictionary = {
 
 func _ready() -> void:
 	if OS.get_name() == "Windows" or OS.get_name() == "UWP":
-		defaults.controls.mouse_sensitivity = 0.3
+		defaults.controls.fp_mouse_sensitivity = 0.095
+		defaults.controls.tp_mouse_sensitivity = 0.3
 
 	var load_file = config.load(file_path)
 
