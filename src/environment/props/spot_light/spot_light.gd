@@ -1,7 +1,5 @@
 extends SpotLight3D
 
-@onready var spot_light_3d = $SpotLight3D
-
 var initial_color: Color
 var player_inside: Player
 var tween: Tween
@@ -33,10 +31,10 @@ func _on_interaction_area_body_exited(_body):
 
 func create_light_color_change_tween():
 	tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(spot_light_3d, "light_color", Color.RED, 0.5)
-	tween.tween_property(spot_light_3d, "light_color", Color.GREEN, 0.5)
-	tween.tween_property(spot_light_3d, "light_color", Color.BLUE, 0.5)
-	tween.tween_property(spot_light_3d, "light_color", initial_color, 0.5)
+	tween.tween_property(self, "light_color", Color.RED, 0.5)
+	tween.tween_property(self, "light_color", Color.GREEN, 0.5)
+	tween.tween_property(self, "light_color", Color.BLUE, 0.5)
+	tween.tween_property(self, "light_color", initial_color, 0.5)
 	tween.tween_callback(
 		func(): 
 			if Input.is_action_pressed("interact") and player_inside:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cs8s668yng5yt"]
+[gd_scene load_steps=25 format=3 uid="uid://cs8s668yng5yt"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1"]
 [ext_resource type="Script" path="res://src/player/camera.gd" id="2_1lrpx"]
@@ -96,6 +96,9 @@ shader_parameter/use_bg_texture = false
 
 [sub_resource type="CapsuleShape3D" id="5"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_kbgwx"]
+radius = 0.4
+
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 collision_mask = 2
@@ -105,12 +108,6 @@ script = ExtResource("1")
 unique_name_in_owner = true
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="PlayerPivot"]
-sorting_offset = 100.0
-mesh = SubResource("1")
-
-[node name="PlayerMesh2" type="MeshInstance3D" parent="PlayerPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44261e-07, 0, -3.93789)
-visible = false
 sorting_offset = 100.0
 mesh = SubResource("1")
 
@@ -193,7 +190,6 @@ draw_pass_1 = SubResource("PlaneMesh_8shkb")
 [node name="FirstPersonCamera" type="Camera3D" parent="PlayerPivot"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.83706e-08, 0.546199, -0.562614)
-fov = 100.0
 script = ExtResource("5_vqa1e")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerPivot/FirstPersonCamera"]
@@ -233,11 +229,18 @@ surface_material_override/0 = SubResource("ShaderMaterial_p1url")
 [node name="motion_blur" parent="CameraPivot/Horizontal/Vertical/Camera3D" instance=ExtResource("8_a28n3")]
 transform = Transform3D(1, 0, -4.26326e-14, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
+[node name="Area3D" type="Area3D" parent="CameraPivot/Horizontal/Vertical/Camera3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraPivot/Horizontal/Vertical/Camera3D/Area3D"]
+shape = SubResource("SphereShape3D_kbgwx")
+
 [node name="Skeleton3D" type="Skeleton3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.86776e-08, 0.565481, 0.556807)
 visible = false
 
 [connection signal="timeout" from="PlayerPivot/Effects/DashTimer" to="Input" method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="LastPositionTimer" to="." method="_on_LastPositionTimer_timeout"]
+[connection signal="toggle_camera" from="Input" to="Input" method="_on_toggle_camera"]
+[connection signal="body_entered" from="CameraPivot/Horizontal/Vertical/Camera3D/Area3D" to="Input" method="_on_tp_camera_enter_player"]
 
 [editable path="PlayerPivot/wings"]

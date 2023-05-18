@@ -2,6 +2,7 @@ extends AnimatableBody3D
 class_name MovingSmallPlatform
 
 @export var duration: float = 4
+@export var loop: bool = true
 @export var movement_vector: Vector3 = Vector3.ZERO
 
 var initial_position: Vector3
@@ -20,9 +21,13 @@ func start_moving():
 	var partial_time = calculate_distance(final_position)
 	if !partial_time:
 		partial_time = duration
-	tween = create_tween().set_loops().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	if loop:
+		tween = create_tween().set_loops().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	else:
+		tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, "position", final_position, partial_time)
-	tween.tween_property(self, "position", initial_position, partial_time)
+	if loop:
+		tween.tween_property(self, "position", initial_position, partial_time)
 #	tween.chain().tween_callback(func(): print('going_back = false'); pressed = false)
 
 func stop_moving():
@@ -30,7 +35,10 @@ func stop_moving():
 	var partial_time = calculate_distance(initial_position)
 	if !partial_time:
 		partial_time = duration
-	tween = create_tween().set_loops().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	if loop:
+		tween = create_tween().set_loops().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	else:
+		tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, "position", initial_position, partial_time)
 #	tween.chain().tween_callback(func(): print('going_back = false'); pressed = false)
 

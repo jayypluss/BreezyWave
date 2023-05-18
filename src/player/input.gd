@@ -1,4 +1,7 @@
 extends Node
+class_name PlayerInput
+
+signal toggle_camera(options)
 
 @onready var player: Player
 @onready var dash_effect: GPUParticles3D = $"../PlayerPivot/Effects/DashEffect"
@@ -36,6 +39,38 @@ func _ready():
 	available_jumps = num_of_jumps
 	last_direction = Vector3.FORWARD.rotated(Vector3.UP,
 		%CameraPivot/Horizontal.global_transform.basis.get_euler().y).normalized()
+
+func _on_toggle_camera(options):
+	var anim_duration:= 0.1
+	if options and options.anim_duration:
+		anim_duration = options.anim_duration
+	var tween: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	if %Camera3D.current:
+		# Will become FIRST person
+		tween.tween_property(%Camera3D, "position", %FirstPersonCamera.position, anim_duration)
+		tween.tween_callback(
+			func(): 
+				%FirstPersonCamera.set_initial_position()			
+				first_person = true
+				%FirstPersonCamera.make_current()
+				GameState.player.set_meshes_visibility(false)
+				print(options)
+				if options and options.after_anim_action:
+					options.after_anim_action.call()
+		)
+	else:
+		# Will become THIRD person
+		tween.tween_property(%FirstPersonCamera, "position", %Camera3D.position, anim_duration)
+		tween.tween_callback(
+			func(): 
+				%CameraPivot.set_initial_position()
+				first_person = false
+				%Camera3D.make_current()
+				GameState.player.set_meshes_visibility(true)
+				print(options)
+				if options and options.after_anim_action:
+					options.after_anim_action.call()
+		)
 
 func _physics_process(delta: float) -> void:
 	if paused: # Used to prevent movement during a cutscene.
@@ -85,32 +120,7 @@ func _physics_process(delta: float) -> void:
 		
 	
 	if Input.is_action_just_pressed('toggle_camera'):
-		var tween: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-		if %Camera3D.current:
-			# Will become FIRST person
-			tween.tween_property(%Camera3D, "position", %FirstPersonCamera.position, 0.1)
-			tween.tween_callback(
-				func(): 
-					%FirstPersonCamera.set_initial_position()
-					
-					
-					first_person = true
-					%FirstPersonCamera.make_current()
-					GameState.player.set_meshes_visibility(false)
-			)
-		else:
-			# Will become THIRD person
-			tween.tween_property(%FirstPersonCamera, "position", %Camera3D.position, 0.1)
-			tween.tween_callback(
-				func(): 
-					%CameraPivot.set_initial_position()
-					
-					
-					first_person = false
-					%Camera3D.make_current()
-					GameState.player.set_meshes_visibility(true)
-			)
-		
+		_on_toggle_camera(null)
 		
 	if has_dash:	
 		if Input.is_action_just_pressed('dash'):
@@ -160,3 +170,9 @@ func _physics_process(delta: float) -> void:
 
 func _on_dash_timer_timeout():
 	dash_available = true
+
+
+func _on_tp_camera_enter_player(_body):
+	if _body is Player:
+		player.hide_eyes()
+		

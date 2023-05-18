@@ -10,7 +10,7 @@ extends CharacterBody3D
 @onready var player_mesh = %PlayerPivot/PlayerMesh
 @onready var left_eyeball = $PlayerPivot/LeftEyeball
 @onready var right_eyeball = $PlayerPivot/RightEyeball
-@onready var input = $Input
+@onready var input: PlayerInput = $Input
 
 var last_floor_position: Vector3 = Vector3(0, 3, 0)
 
@@ -64,5 +64,14 @@ func set_meshes_visibility(_visible: bool):
 	left_eyeball.visible = _visible
 	right_eyeball.visible = _visible
 
-func _on_toggle_camera(_body):
-	Input.action_press('toggle_camera')
+func _on_toggle_camera(options):
+	input._on_toggle_camera(options)
+	show_eyes()
+	
+func hide_eyes():
+	left_eyeball.visible = false
+	right_eyeball.visible = false
+	
+func show_eyes():
+	left_eyeball.visible = true
+	right_eyeball.visible = true
