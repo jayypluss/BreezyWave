@@ -42,8 +42,8 @@ func _input(event: InputEvent) -> void:
 		var zoom = get_node("%Camera3D").position.z
 		
 		if event is InputEventMouseMotion:
-			horizontal -= event.relative.x * Settings.get_value("controls", "mouse_sensitivity")
-			vertical -= event.relative.y * Settings.get_value("controls", "mouse_sensitivity")
+			horizontal -= event.relative.x * Settings.get_value("controls", "tp_mouse_sensitivity")
+			vertical -= event.relative.y * Settings.get_value("controls", "tp_mouse_sensitivity")
 		elif event.is_action_pressed("zoom_in") and zoom > min_zoom:
 			get_node("%Camera3D").position.z -= ZOOM_STEP
 			ConfigsState.camera_distance = get_node("%Camera3D").position.z

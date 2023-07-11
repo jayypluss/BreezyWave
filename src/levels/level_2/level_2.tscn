@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cnr8btk1avrpq"]
+[gd_scene load_steps=26 format=3 uid="uid://cnr8btk1avrpq"]
 
 [ext_resource type="Script" path="res://src/levels/level_2/level_2.gd" id="1_yfnrp"]
 [ext_resource type="PackedScene" uid="uid://cs8s668yng5yt" path="res://src/player/player.tscn" id="2_k5d8q"]
@@ -16,8 +16,12 @@
 [ext_resource type="PackedScene" uid="uid://b3ua4gxcip1as" path="res://src/environment/pedestal/pedestal.tscn" id="10_vylvb"]
 [ext_resource type="PackedScene" uid="uid://dx1ind0cyeb0t" path="res://src/gui/global_levels_screens/global_levels_screens.tscn" id="11_ye3vb"]
 [ext_resource type="PackedScene" uid="uid://c8jbtivpnxjtc" path="res://src/environment/rope/rope.tscn" id="14_bn6pm"]
+[ext_resource type="PackedScene" uid="uid://vo7iv0nu1qqy" path="res://src/environment/collectables/colorful_star/colorful_star.tscn" id="17_derud"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_llkap"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_20s1r"]
+size = Vector3(25, 20, 25)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vst65"]
 albedo_color = Color(0.301961, 0.192157, 0.752941, 1)
@@ -45,7 +49,7 @@ size = Vector3(30, 1, 15)
 script = ExtResource("1_yfnrp")
 
 [node name="Player" parent="." instance=ExtResource("2_k5d8q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -278.595, 128.143, -317.123)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("3_8rs3q")
@@ -73,8 +77,17 @@ volume_db = -20.0
 
 [node name="Props" type="Node3D" parent="."]
 
-[node name="SpotLight" parent="Props" instance=ExtResource("7_nbfru")]
+[node name="SpotLight" parent="Props" node_paths=PackedStringArray("interaction_area") instance=ExtResource("7_nbfru")]
 transform = Transform3D(-3.78552e-08, 0.5, -0.866025, 2.18557e-08, 0.866025, 0.5, 1, 1.95399e-14, -4.37114e-08, -49.2412, 11.1572, 0)
+interaction_area = NodePath("InteractionArea")
+
+[node name="InteractionArea" type="Area3D" parent="Props/SpotLight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.76377, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Props/SpotLight/InteractionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.51025, -14.5827)
+shape = SubResource("BoxShape3D_20s1r")
 
 [node name="Checkpoint" parent="Props" instance=ExtResource("8_w07cy")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -253.646, 97.1244, -258.231)
@@ -252,6 +265,163 @@ control = NodePath("../..")
 [node name="GlobalLevelsScreens" parent="Control" instance=ExtResource("11_ye3vb")]
 layout_mode = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="ColorfulStarsGroup1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34, 11, 0)
+
+[node name="ColorfulStar1" parent="ColorfulStarsGroup1" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6168, -2, -5)
+
+[node name="ColorfulStar2" parent="ColorfulStarsGroup1" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6168, -2, 0)
+
+[node name="ColorfulStar3" parent="ColorfulStarsGroup1" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6168, -2, 5)
+
+[node name="ColorfulStar4" parent="ColorfulStarsGroup1" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.383202, 0, -5)
+
+[node name="ColorfulStar5" parent="ColorfulStarsGroup1" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.383202, 0, 0)
+
+[node name="ColorfulStar6" parent="ColorfulStarsGroup1" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.383202, 0, 5)
+
+[node name="ColorfulStar7" parent="ColorfulStarsGroup1" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3832, 2, -5)
+
+[node name="ColorfulStar8" parent="ColorfulStarsGroup1" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3832, 2, 0)
+
+[node name="ColorfulStar9" parent="ColorfulStarsGroup1" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3832, 2, 5)
+
+[node name="ColorfulStarsGroup2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -248, 102, -275)
+
+[node name="ColorfulStar1" parent="ColorfulStarsGroup2" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.33432, -3.23211, -3.27707)
+
+[node name="ColorfulStar2" parent="ColorfulStarsGroup2" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.33432, -3.23211, 1.72293)
+
+[node name="ColorfulStar3" parent="ColorfulStarsGroup2" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.33432, -3.23211, 6.72293)
+
+[node name="ColorfulStar4" parent="ColorfulStarsGroup2" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.66568, -3.23211, -3.27707)
+
+[node name="ColorfulStar5" parent="ColorfulStarsGroup2" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.66568, -3.23211, 1.72293)
+
+[node name="ColorfulStar6" parent="ColorfulStarsGroup2" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.66568, -3.23211, 6.72293)
+
+[node name="ColorfulStar7" parent="ColorfulStarsGroup2" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.66568, -3.23211, -3.27707)
+
+[node name="ColorfulStar8" parent="ColorfulStarsGroup2" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.66568, -3.23211, 1.72293)
+
+[node name="ColorfulStar9" parent="ColorfulStarsGroup2" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.66568, -3.23211, 6.72293)
+
+[node name="ColorfulStarsGroup3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149, 167, -318)
+
+[node name="ColorfulStar2" parent="ColorfulStarsGroup3" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.33432, -10.2321, 1.72293)
+
+[node name="ColorfulStar8" parent="ColorfulStarsGroup3" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.66568, -10.2321, 1.72293)
+
+[node name="ColorfulStar3" parent="ColorfulStarsGroup3" instance=ExtResource("17_derud")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2.86983, -10.2321, -1.81262)
+
+[node name="ColorfulStar9" parent="ColorfulStarsGroup3" instance=ExtResource("17_derud")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -4.20122, -10.2321, 5.25845)
+
+[node name="ColorfulStar4" parent="ColorfulStarsGroup3" instance=ExtResource("17_derud")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.86983, -10.2321, 5.25842)
+
+[node name="ColorfulStar10" parent="ColorfulStarsGroup3" instance=ExtResource("17_derud")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -4.20125, -10.2321, -1.81262)
+
+[node name="ColorfulStar10" parent="." instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -251.85, 4, -0.233196)
+
+[node name="ColorfulStar11" parent="." instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.15, 46, -270.233)
+
+[node name="ColorfulStarsGroup4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.957, 153.178, -316.633)
+
+[node name="ColorfulStar5" parent="ColorfulStarsGroup4" instance=ExtResource("17_derud")]
+
+[node name="ColorfulStar6" parent="ColorfulStarsGroup4" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+
+[node name="ColorfulStar7" parent="ColorfulStarsGroup4" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
+
+[node name="ColorfulStar8" parent="ColorfulStarsGroup4" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, 0)
+
+[node name="ColorfulStar9" parent="ColorfulStarsGroup4" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, 0)
+
+[node name="ColorfulStar10" parent="ColorfulStarsGroup4" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
+
+[node name="ColorfulStar11" parent="ColorfulStarsGroup4" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, 0)
+
+[node name="ColorfulStar12" parent="ColorfulStarsGroup4" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -28, 0)
+
+[node name="ColorfulStar13" parent="ColorfulStarsGroup4" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32, 0)
+
+[node name="ColorfulStar14" parent="ColorfulStarsGroup4" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -36, 0)
+
+[node name="ColorfulStar15" parent="ColorfulStarsGroup4" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40, 0)
+
+[node name="ColorfulStarsGroup5" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.957, 98.178, -265.996)
+
+[node name="ColorfulStar5" parent="ColorfulStarsGroup5" instance=ExtResource("17_derud")]
+
+[node name="ColorfulStar6" parent="ColorfulStarsGroup5" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+
+[node name="ColorfulStar7" parent="ColorfulStarsGroup5" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
+
+[node name="ColorfulStar8" parent="ColorfulStarsGroup5" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, 0)
+
+[node name="ColorfulStar9" parent="ColorfulStarsGroup5" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, 0)
+
+[node name="ColorfulStar10" parent="ColorfulStarsGroup5" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0)
+
+[node name="ColorfulStar11" parent="ColorfulStarsGroup5" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, 0)
+
+[node name="ColorfulStar12" parent="ColorfulStarsGroup5" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -28, 0)
+
+[node name="ColorfulStar13" parent="ColorfulStarsGroup5" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -32, 0)
+
+[node name="ColorfulStar14" parent="ColorfulStarsGroup5" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -36, 0)
+
+[node name="ColorfulStar15" parent="ColorfulStarsGroup5" instance=ExtResource("17_derud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40, 0)
 
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]

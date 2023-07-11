@@ -38,6 +38,13 @@ var levels: Dictionary = {
 		"last_level": "Level3",
 		"next_level": "",
 		"last_checkpoint": Vector3(0, 3, 0)
+	},
+	"Level5": {
+		"name": "reach for the stars",
+		"path": "res://src/levels/level_5/level_5.tscn",
+		"last_level": "Level4",
+		"next_level": "",
+		"last_checkpoint": Vector3(0, 3, 0)
 	}
 }
 

@@ -20,7 +20,7 @@ func _ready():
 		
 	if OS.has_feature("editor"):
 		print('Opened menu from editor')
-		current_level = 4
+		current_level = 3
 	else:
 		$Music.play()
 		current_level = 1

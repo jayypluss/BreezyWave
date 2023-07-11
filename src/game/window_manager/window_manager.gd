@@ -22,6 +22,6 @@ func _input(event: InputEvent):
 		img.save_png(screenshot_path)
 		
 	if event.is_action_pressed('toggle_debug_menu'):
-		print(event)
 		var debug_menu_node_instance = debug_menu_node.instantiate()
-		get_tree().root.add_child(debug_menu_node_instance)
+		print(get_tree().get_current_scene())
+		get_tree().get_current_scene().add_child(debug_menu_node_instance)

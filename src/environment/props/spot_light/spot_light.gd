@@ -1,11 +1,16 @@
 extends SpotLight3D
 
+@export var interaction_area: Area3D
+
 var initial_color: Color
 var player_inside: Player
 var tween: Tween
 
 func _ready():
 	initial_color = light_color
+	if interaction_area:
+		interaction_area.connect('body_entered', Callable(self, '_on_interaction_area_body_entered').bind(interaction_area))
+		interaction_area.connect('body_exited', Callable(self, '_on_interaction_area_body_exited').bind(interaction_area))
 
 func _physics_process(_delta):
 	if player_inside:			
@@ -14,17 +19,13 @@ func _physics_process(_delta):
 		if Input.is_action_just_released('interact'):
 			if tween:
 				tween.stop()
-		
-func _on_body_entered(_body: Node3D):
-	if _body is Player:
-		player_inside = _body
 
-func _on_interaction_area_body_entered(_body):
+func _on_interaction_area_body_entered(_body, _opts):
 	if _body is Player:
 		player_inside = _body
 		GameState.hud.panel_control.action_indicator_control.show_with_text('E to interact')
 
-func _on_interaction_area_body_exited(_body):
+func _on_interaction_area_body_exited(_body, _opts):
 	if _body is Player:
 		player_inside = null
 		GameState.hud.panel_control.action_indicator_control.hide_and_clear()

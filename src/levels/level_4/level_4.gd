@@ -10,7 +10,7 @@ func _ready():
 	GameState.hud = hud
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if OS.has_feature("editor"):
-		print('Opened level_3 from editor')
+		print('Opened level_4 from editor')
 #		player.transform.origin = GameState.get_last_checkpoint()
 #		$Music.play()
 	else:

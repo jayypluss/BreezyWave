@@ -1,7 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://b5x1ekani3gnp"]
+[gd_scene load_steps=31 format=3 uid="uid://b5x1ekani3gnp"]
 
 [ext_resource type="Script" path="res://src/levels/level_3/level_3.gd" id="1_7icvl"]
-[ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2_aqvay"]
+[ext_resource type="PackedScene" uid="uid://cs8s668yng5yt" path="res://src/player/player.tscn" id="2_aqvay"]
 [ext_resource type="Environment" uid="uid://b41dqk76jhoit" path="res://src/levels/common/level_world_environment.tres" id="3_e5hxo"]
 [ext_resource type="PackedScene" uid="uid://p3hk7kg0ry5k" path="res://src/environment/portal/portal.tscn" id="4_vour7"]
 [ext_resource type="AudioStream" uid="uid://d4aj57xuv7pic" path="res://assets/music/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg" id="5_d7sk8"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://sqlonw8gtwb0" path="res://src/environment/spring/spring.tscn" id="14_dsvtk"]
 [ext_resource type="PackedScene" uid="uid://dx1ind0cyeb0t" path="res://src/gui/global_levels_screens/global_levels_screens.tscn" id="15_8e62s"]
 [ext_resource type="Script" path="res://src/levels/level_3/pyramid_like_piled_platforms.gd" id="15_084ve"]
+[ext_resource type="PackedScene" uid="uid://vo7iv0nu1qqy" path="res://src/environment/collectables/colorful_star/colorful_star.tscn" id="17_j6xf5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_llkap"]
 
@@ -59,7 +60,7 @@ size = Vector3(15, 0.1, 15)
 script = ExtResource("1_7icvl")
 
 [node name="Player" parent="." instance=ExtResource("2_aqvay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.96954, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 236.97, -320)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("3_e5hxo")
@@ -144,7 +145,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.9908, 10.3159, -51.6876)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.9382, 4.70606, -35.2143)
 
 [node name="StaticSmallPlatform9" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("10_w0byc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.9382, 6.87922, -51.2831)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.9382, 6.87922, -51.6032)
 
 [node name="StaticSmallPlatform2" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("10_w0byc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.6172, 12.9062, -51.6876)
@@ -304,6 +305,155 @@ control = NodePath("../..")
 [node name="GlobalLevelsScreens" parent="Control" instance=ExtResource("15_8e62s")]
 layout_mode = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Stars" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 4, 0)
+
+[node name="ColorfulStar10" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 3, -36)
+
+[node name="ColorfulStar11" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 5, -51)
+
+[node name="ColorfulStar12" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 8.59352, -52)
+
+[node name="ColorfulStar13" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.6452, 11, -51.7516)
+
+[node name="ColorfulStar14" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.5624, 14, -51.7516)
+
+[node name="ColorfulStar15" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.5624, 16.6154, -51.7516)
+
+[node name="ColorfulStar16" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.113, 24.9452, -61.8526)
+
+[node name="ColorfulStar17" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.113, 33.9452, -61.8526)
+
+[node name="ColorfulStar18" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.113, 42.9452, -61.8526)
+
+[node name="ColorfulStar19" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.113, 58.9452, -101.853)
+
+[node name="ColorfulStar20" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.113, 80.9452, -157.853)
+
+[node name="ColorfulStar21" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.113, 104.945, -210.853)
+
+[node name="ColorfulStar22" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.113, 122.945, -257.853)
+
+[node name="ColorfulStar23" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.1126, 140.945, -292.853)
+
+[node name="ColorfulStar24" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.1126, 157.945, -326.853)
+
+[node name="ColorfulStar25" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112579, 172.945, -333.853)
+
+[node name="ColorfulStar26" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8874, 197.945, -312.853)
+
+[node name="ColorfulStar27" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.8874, 213.945, -287.853)
+
+[node name="ColorfulStar28" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.8874, 233.945, -304.853)
+
+[node name="ColorfulStar29" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.887, 235.554, -338.335)
+
+[node name="ColorfulStar30" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.887, 248.72, -338.335)
+
+[node name="ColorfulStar31" parent="Stars" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.887, 262.734, -338.335)
+
+[node name="StarsGroup1" type="Node3D" parent="Stars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -32)
+
+[node name="ColorfulStar" parent="Stars/StarsGroup1" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+
+[node name="ColorfulStar2" parent="Stars/StarsGroup1" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="ColorfulStar3" parent="Stars/StarsGroup1" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+
+[node name="ColorfulStar4" parent="Stars/StarsGroup1" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="ColorfulStar5" parent="Stars/StarsGroup1" instance=ExtResource("17_j6xf5")]
+
+[node name="ColorfulStar6" parent="Stars/StarsGroup1" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="ColorfulStar7" parent="Stars/StarsGroup1" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+
+[node name="ColorfulStar8" parent="Stars/StarsGroup1" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="ColorfulStar9" parent="Stars/StarsGroup1" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+
+[node name="StarsGroup2" type="Node3D" parent="Stars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.887, 268.734, -338.335)
+
+[node name="ColorfulStar32" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="ColorfulStar33" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 5)
+
+[node name="ColorfulStar34" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10)
+
+[node name="ColorfulStar35" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 10)
+
+[node name="ColorfulStar36" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="ColorfulStar37" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 10)
+
+[node name="ColorfulStar38" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
+
+[node name="ColorfulStar39" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 5)
+
+[node name="ColorfulStar40" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="ColorfulStar41" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -5)
+
+[node name="ColorfulStar42" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10)
+
+[node name="ColorfulStar43" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -10)
+
+[node name="ColorfulStar44" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="ColorfulStar45" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -10)
+
+[node name="ColorfulStar46" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10)
+
+[node name="ColorfulStar47" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -5)
 
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
