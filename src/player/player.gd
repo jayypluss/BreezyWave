@@ -14,7 +14,6 @@ extends CharacterBody3D
 
 var last_floor_position: Vector3 = Vector3(0, 3, 0)
 
-
 func _ready():
 	GameState.player = self
 	last_position_timer.start()

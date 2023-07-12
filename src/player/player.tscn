@@ -127,7 +127,7 @@ script = ExtResource("4_x4gqo")
 curve = SubResource("Curve3D_dls2p")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="PlayerPivot/Weapon/Path3D"]
-transform = Transform3D(-4.37113e-08, 0, 0.999999, 0, 0.999996, 0, -0.999997, 0, -4.37113e-08, 0.639625, 0.888855, 0.378629)
+transform = Transform3D(-4.37113e-08, 0, -0.999999, 0, 0.999996, 0, 0.999997, 0, -4.37113e-08, 0.639625, 0.888855, 0.378629)
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="PlayerPivot/Weapon/Path3D/PathFollow3D"]
 transform = Transform3D(0.00649187, -0.0313208, -0.999489, -0.202854, 0.978688, -0.0319865, 0.979188, 0.202959, -4.54639e-08, 0, 0, 0)
