@@ -32,10 +32,10 @@ var num_of_jumps: int = 1
 
 var lock_movement := false
 
-var higher_jumping := false
+var jump_multiplier := 1.0
 
-func override_jump():
-	higher_jumping = true
+func force_jump(multiplier: float = 1.0):
+	jump_multiplier = multiplier
 
 func _ready():
 	if %FirstPersonCamera.current:
@@ -138,22 +138,15 @@ func _physics_process(delta: float) -> void:
 					dash_effect.set_emitting(true)
 				dash_timer.start()
 	
-	if Input.is_action_pressed("jump"):
+	if Input.is_action_pressed("jump") or jump_multiplier > 1.0:
 		if num_of_jumps == 1 and !player.is_on_floor() and player.get_slide_collision_count() == 0:
 			available_jumps = 0
-			higher_jumping = false
+			jump_multiplier = 1.0
 			
 		if available_jumps > 0:
 			available_jumps -= 1
-			if higher_jumping:
-				player.velocity.y = jump_impulse*2.85
-			else:
-				player.velocity.y = jump_impulse
+			player.velocity.y = jump_impulse*jump_multiplier
 			last_direction = direction
-			
-	if higher_jumping and !Input.is_action_pressed("jump"):
-		player.velocity.y = jump_impulse*1.85
-		higher_jumping = false
 	
 	if has_glide:
 		if (Input.is_action_pressed("jump") && player.velocity.y < 0): # Glid
