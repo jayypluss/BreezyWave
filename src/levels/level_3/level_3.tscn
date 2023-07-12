@@ -60,7 +60,7 @@ size = Vector3(15, 0.1, 15)
 script = ExtResource("1_7icvl")
 
 [node name="Player" parent="." instance=ExtResource("2_aqvay")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 236.97, -320)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("3_e5hxo")
