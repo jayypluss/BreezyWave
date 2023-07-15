@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cs8s668yng5yt"]
+[gd_scene load_steps=27 format=3 uid="uid://cs8s668yng5yt"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1"]
 [ext_resource type="Script" path="res://src/player/camera.gd" id="2_1lrpx"]
@@ -65,14 +65,31 @@ _data = {
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dr2kn"]
 lifetime_randomness = 0.23
-emission_shape = 1
-emission_sphere_radius = 1.8
-direction = Vector3(0, 0, -1)
-spread = 10.0
-gravity = Vector3(0, 0, 0)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.5
+emission_ring_radius = 2.0
+emission_ring_inner_radius = 1.5
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+gravity = Vector3(5, -10, 5)
+radial_accel_min = -20.0
+tangential_accel_min = -4.71
+tangential_accel_max = 2.1
+scale_min = 0.25
+scale_max = 0.6
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8shkb"]
 size = Vector2(0.01, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bdbe2"]
+transparency = 1
+albedo_color = Color(0.537255, 0.537255, 0.537255, 0.466667)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0dsbb"]
+material = SubResource("StandardMaterial3D_bdbe2")
+radius = 0.25
+height = 0.5
 
 [sub_resource type="QuadMesh" id="QuadMesh_3dh2o"]
 lightmap_size_hint = Vector2i(12, 12)
@@ -184,6 +201,16 @@ randomness = 1.0
 visibility_aabb = AABB(-4, -1.81022, -4, 8, 3.62044, 8)
 process_material = SubResource("ParticleProcessMaterial_dr2kn")
 draw_pass_1 = SubResource("PlaneMesh_8shkb")
+
+[node name="JumpEffect" type="GPUParticles3D" parent="PlayerPivot/Effects"]
+transform = Transform3D(0.328963, 0, -3.55271e-15, 0, 0.691601, 0, 1.77636e-15, 0, 0.219049, 0, -1.03124, 0)
+emitting = false
+lifetime = 0.06
+one_shot = true
+randomness = 0.38
+visibility_aabb = AABB(-4, -0.894891, -4.89924, 8, 1.78978, 9.79849)
+process_material = SubResource("ParticleProcessMaterial_dr2kn")
+draw_pass_1 = SubResource("SphereMesh_0dsbb")
 
 [node name="DashTimer" type="Timer" parent="PlayerPivot/Effects"]
 
