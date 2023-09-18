@@ -1,5 +1,7 @@
 # <img src="assets/icon.png" width="40px" height="40px"/>  BreezyWave
 
+Third Person 3D Platformer made on Godot.
+
 ![image](https://github.com/jayypluss/BreezyWave/assets/17395606/cc6817f1-1180-4987-b985-f5f92c7dfc75)
 
 ![image](https://github.com/jayypluss/BreezyWave/assets/17395606/c6fa982b-db3a-40f6-a55a-ce3518c0075b)
