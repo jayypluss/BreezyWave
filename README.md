@@ -1,12 +1,12 @@
 # <img src="assets/icon.png" width="40px" height="40px"/>  BreezyWave
 
-![image](https://user-images.githubusercontent.com/17395606/170142274-79fc93cd-4e88-4511-a5f4-ac5ca1fab502.png)
+![image](https://github.com/jayypluss/BreezyWave/assets/17395606/cc6817f1-1180-4987-b985-f5f92c7dfc75)
 
+![image](https://github.com/jayypluss/BreezyWave/assets/17395606/c6fa982b-db3a-40f6-a55a-ce3518c0075b)
 
-![image](https://user-images.githubusercontent.com/17395606/170142192-1193f4cd-7895-4951-9ead-b42e157e1140.png)
+![image](https://github.com/jayypluss/BreezyWave/assets/17395606/058682f9-b91e-48e3-8b12-68a147bba557)
 
-![image](https://user-images.githubusercontent.com/17395606/170142533-7c06f260-6218-4770-84b7-cb3dcda10c97.png)
-
+![image](https://github.com/jayypluss/BreezyWave/assets/17395606/615eadf0-696a-49bc-b9a0-87eb8a74f7ac)
 
 
 Currently protype game made on [Godot Engine](https://github.com/godotengine/godot). 
