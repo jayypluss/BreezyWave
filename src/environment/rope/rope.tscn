@@ -1,0 +1,126 @@
+[gd_scene load_steps=17 format=3 uid="uid://c8jbtivpnxjtc"]
+
+[ext_resource type="Script" path="res://src/environment/rope/rope.gd" id="1_1leae"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rv544"]
+size = Vector3(3, 3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tp0gf"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e0dnu"]
+size = Vector3(0.5, 4, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8p2sk"]
+albedo_color = Color(0.352941, 0.352941, 0.352941, 1)
+metallic = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_40ytq"]
+size = Vector3(0.5, 4, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qux7h"]
+size = Vector3(0.35, 2.839, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_od4ru"]
+size = Vector3(0.35, 2.75, 0.35)
+
+[sub_resource type="BoxMesh" id="BoxMesh_inylb"]
+size = Vector3(0.1, 2, 0.1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1xt50"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_r8l8p"]
+top_radius = 0.025
+bottom_radius = 0.025
+height = 10.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lq11j"]
+seed = 38
+frequency = 0.042
+offset = Vector3(-53.16, 5.71429e+08, 46.43)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8b5jv"]
+noise = SubResource("FastNoiseLite_lq11j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sra8l"]
+albedo_color = Color(1, 0.764706, 0.270588, 1)
+roughness_texture = SubResource("NoiseTexture2D_8b5jv")
+clearcoat_enabled = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yp7uk"]
+top_radius = 0.025
+bottom_radius = 0.025
+height = 25.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_lsmei"]
+top_radius = 0.025
+bottom_radius = 0.025
+height = 50.0
+
+[node name="Rope" type="StaticBody3D"]
+collision_layer = 2
+script = ExtResource("1_1leae")
+
+[node name="InteractionArea" type="Area3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.375945, 0)
+shape = SubResource("BoxShape3D_rv544")
+
+[node name="EndOfRope" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.04511, -48.3159, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EndOfRope"]
+shape = SubResource("BoxShape3D_tp0gf")
+
+[node name="Base" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_e0dnu")
+surface_material_override/0 = SubResource("StandardMaterial3D_8p2sk")
+
+[node name="BaseCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_40ytq")
+
+[node name="BaseCollision2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.66714, 1.76051, 0)
+shape = SubResource("BoxShape3D_qux7h")
+
+[node name="Top" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.55313, 1.76108, 0)
+mesh = SubResource("BoxMesh_od4ru")
+surface_material_override/0 = SubResource("StandardMaterial3D_8p2sk")
+
+[node name="BaseToTopHolder" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.5, -0.866025, 0, 0.866025, -0.5, 0, 0, 0, 1, 0.763824, 1.26855, 0)
+mesh = SubResource("BoxMesh_inylb")
+surface_material_override/0 = SubResource("StandardMaterial3D_8p2sk")
+
+[node name="RopeHolder" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.04656, 1.77667, 0.00454164)
+mesh = SubResource("SphereMesh_1xt50")
+surface_material_override/0 = SubResource("StandardMaterial3D_8p2sk")
+
+[node name="RopeMesh10M" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.04611, -3.20794, 0)
+mesh = SubResource("CylinderMesh_r8l8p")
+surface_material_override/0 = SubResource("StandardMaterial3D_sra8l")
+
+[node name="RopeMesh25M" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.04611, -10.7069, 0)
+mesh = SubResource("CylinderMesh_yp7uk")
+surface_material_override/0 = SubResource("StandardMaterial3D_sra8l")
+
+[node name="RopeMesh50M" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.04611, -23.2079, 0)
+mesh = SubResource("CylinderMesh_lsmei")
+surface_material_override/0 = SubResource("StandardMaterial3D_sra8l")
+
+[node name="UpperStartingPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.78561, -0.178335, 0.364213)
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="EndOfRope" to="." method="_on_end_of_rope_body_entered"]

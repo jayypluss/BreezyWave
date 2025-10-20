@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c8aem4qjchnrf"]
+[gd_scene load_steps=27 format=3 uid="uid://cs8s668yng5yt"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1"]
 [ext_resource type="Script" path="res://src/player/camera.gd" id="2_1lrpx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://src/player/wings.gd" id="4_huxau"]
 [ext_resource type="Script" path="res://src/player/weapon.gd" id="4_x4gqo"]
 [ext_resource type="Shader" path="res://assets/shaders/pp_outline.gdshader" id="5_7vn4u"]
+[ext_resource type="Script" path="res://src/player/first_person_camera.gd" id="5_vqa1e"]
 [ext_resource type="PackedScene" uid="uid://dlsqaaifvy0tr" path="res://src/camera/motion_blur/motion_blur.tscn" id="8_a28n3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_haaje"]
@@ -64,16 +65,31 @@ _data = {
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dr2kn"]
 lifetime_randomness = 0.23
-emission_shape = 1
-emission_sphere_radius = 1.8
-direction = Vector3(0, 0, -1)
-spread = 10.0
-gravity = Vector3(0, 0, 0)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.5
+emission_ring_radius = 2.0
+emission_ring_inner_radius = 1.5
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+gravity = Vector3(5, -10, 5)
+radial_accel_min = -20.0
+tangential_accel_min = -4.71
+tangential_accel_max = 2.1
+scale_min = 0.25
+scale_max = 0.6
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8shkb"]
 size = Vector2(0.01, 2)
 
-[sub_resource type="CapsuleShape3D" id="5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bdbe2"]
+transparency = 1
+albedo_color = Color(0.537255, 0.537255, 0.537255, 0.466667)
+
+[sub_resource type="SphereMesh" id="SphereMesh_0dsbb"]
+material = SubResource("StandardMaterial3D_bdbe2")
+radius = 0.25
+height = 0.5
 
 [sub_resource type="QuadMesh" id="QuadMesh_3dh2o"]
 lightmap_size_hint = Vector2i(12, 12)
@@ -95,6 +111,11 @@ shader_parameter/depth_use_laplace = true
 shader_parameter/color_use_laplace = false
 shader_parameter/use_bg_texture = false
 
+[sub_resource type="CapsuleShape3D" id="5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kbgwx"]
+radius = 0.4
+
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 collision_mask = 2
@@ -102,7 +123,6 @@ script = ExtResource("1")
 
 [node name="PlayerPivot" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="PlayerPivot"]
 sorting_offset = 100.0
@@ -124,7 +144,7 @@ script = ExtResource("4_x4gqo")
 curve = SubResource("Curve3D_dls2p")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="PlayerPivot/Weapon/Path3D"]
-transform = Transform3D(-4.37113e-08, 0, 0.999999, 0, 0.999996, 0, -0.999997, 0, -4.37113e-08, 0.639625, 0.888855, 0.378629)
+transform = Transform3D(-4.37113e-08, 0, -0.999999, 0, 0.999996, 0, 0.999997, 0, -4.37113e-08, 0.639625, 0.888855, 0.378629)
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="PlayerPivot/Weapon/Path3D/PathFollow3D"]
 transform = Transform3D(0.00649187, -0.0313208, -0.999489, -0.202854, 0.978688, -0.0319865, 0.979188, 0.202959, -4.54639e-08, 0, 0, 0)
@@ -182,7 +202,30 @@ visibility_aabb = AABB(-4, -1.81022, -4, 8, 3.62044, 8)
 process_material = SubResource("ParticleProcessMaterial_dr2kn")
 draw_pass_1 = SubResource("PlaneMesh_8shkb")
 
+[node name="JumpEffect" type="GPUParticles3D" parent="PlayerPivot/Effects"]
+transform = Transform3D(0.328963, 0, -3.55271e-15, 0, 0.691601, 0, 1.77636e-15, 0, 0.219049, 0, -1.03124, 0)
+emitting = false
+lifetime = 0.06
+one_shot = true
+randomness = 0.38
+visibility_aabb = AABB(-4, -0.894891, -4.89924, 8, 1.78978, 9.79849)
+process_material = SubResource("ParticleProcessMaterial_dr2kn")
+draw_pass_1 = SubResource("SphereMesh_0dsbb")
+
 [node name="DashTimer" type="Timer" parent="PlayerPivot/Effects"]
+
+[node name="FirstPersonCamera" type="Camera3D" parent="PlayerPivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.83706e-08, 0.546199, -0.562614)
+script = ExtResource("5_vqa1e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerPivot/FirstPersonCamera"]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("QuadMesh_3dh2o")
+surface_material_override/0 = SubResource("ShaderMaterial_p1url")
+
+[node name="motion_blur" parent="PlayerPivot/FirstPersonCamera" instance=ExtResource("8_a28n3")]
+transform = Transform3D(1, 0, -4.26326e-14, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("5")
@@ -203,6 +246,7 @@ script = ExtResource("2_1lrpx")
 [node name="Camera3D" type="Camera3D" parent="CameraPivot/Horizontal/Vertical"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.952167, 0.305579, 0, -0.305579, 0.952167, 2.88049e-07, 2.11248, 3.49781)
+current = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CameraPivot/Horizontal/Vertical/Camera3D"]
 transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -212,10 +256,18 @@ surface_material_override/0 = SubResource("ShaderMaterial_p1url")
 [node name="motion_blur" parent="CameraPivot/Horizontal/Vertical/Camera3D" instance=ExtResource("8_a28n3")]
 transform = Transform3D(1, 0, -4.26326e-14, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
+[node name="Area3D" type="Area3D" parent="CameraPivot/Horizontal/Vertical/Camera3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraPivot/Horizontal/Vertical/Camera3D/Area3D"]
+shape = SubResource("SphereShape3D_kbgwx")
+
 [node name="Skeleton3D" type="Skeleton3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.86776e-08, 0.565481, 0.556807)
+visible = false
 
 [connection signal="timeout" from="PlayerPivot/Effects/DashTimer" to="Input" method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="LastPositionTimer" to="." method="_on_LastPositionTimer_timeout"]
+[connection signal="toggle_camera" from="Input" to="Input" method="_on_toggle_camera"]
+[connection signal="body_entered" from="CameraPivot/Horizontal/Vertical/Camera3D/Area3D" to="Input" method="_on_tp_camera_enter_player"]
 
 [editable path="PlayerPivot/wings"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://sqlonw8gtwb0"]
+[gd_scene load_steps=9 format=3 uid="uid://sqlonw8gtwb0"]
 
 [ext_resource type="Script" path="res://src/environment/spring/spring.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://thxbew43xeci" path="res://assets/sounds/effects/bounce/bounce_01.ogg" id="3"]
@@ -11,23 +11,16 @@ bottom_radius = 2.5
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n82fi"]
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="CylinderShape3D" id="9"]
-height = 1.0
-radius = 2.5
-
-[sub_resource type="CylinderShape3D" id="1"]
-height = 0.5
-radius = 2.5
-
-[sub_resource type="BoxShape3D" id="4"]
-size = Vector3(10, 5, 10)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_alyuv"]
+height = 3.064
+radius = 3.16
 
 [sub_resource type="Animation" id="11"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody3D/MeshInstance3D:mesh:top_radius")
+tracks/0/path = NodePath("MeshInstance3D:mesh:top_radius")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -39,7 +32,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterBody3D/MeshInstance3D:mesh:height")
+tracks/1/path = NodePath("MeshInstance3D:mesh:height")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -51,7 +44,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CharacterBody3D/MeshInstance3D:position")
+tracks/2/path = NodePath("MeshInstance3D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -67,7 +60,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody3D/MeshInstance3D:mesh:top_radius")
+tracks/0/path = NodePath("MeshInstance3D:mesh:top_radius")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -79,7 +72,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterBody3D/MeshInstance3D:mesh:height")
+tracks/1/path = NodePath("MeshInstance3D:mesh:height")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -91,7 +84,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CharacterBody3D/MeshInstance3D:position")
+tracks/2/path = NodePath("MeshInstance3D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -110,31 +103,16 @@ _data = {
 [node name="Spring" type="Node3D"]
 script = ExtResource("2")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.254197, 0)
-collision_layer = 2
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("12")
+skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_n82fi")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.503008, 0)
-shape = SubResource("9")
 
 [node name="SpringTrigger" type="Area3D" parent="."]
 collision_layer = 2
 
-[node name="SpringTriggerCollision" type="CollisionShape3D" parent="SpringTrigger"]
-transform = Transform3D(0.992537, 0, 0, 0, 0.992537, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("1")
-
-[node name="HigherJumpAvailabilityArea" type="Area3D" parent="."]
-collision_layer = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HigherJumpAvailabilityArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-shape = SubResource("4")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpringTrigger"]
+shape = SubResource("CylinderShape3D_alyuv")
 
 [node name="BounceSoundEffect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3")
@@ -145,6 +123,5 @@ libraries = {
 "": SubResource("AnimationLibrary_oayhg")
 }
 
-[connection signal="body_entered" from="SpringTrigger" to="." method="_on_Trigger_body_entered"]
-[connection signal="body_shape_entered" from="HigherJumpAvailabilityArea" to="." method="_on_HigherJumpAvailabilityArea_body_shape_entered"]
-[connection signal="body_shape_exited" from="HigherJumpAvailabilityArea" to="." method="_on_HigherJumpAvailabilityArea_body_shape_exited"]
+[connection signal="body_entered" from="SpringTrigger" to="." method="_on_spring_trigger_body_entered"]
+[connection signal="body_exited" from="SpringTrigger" to="." method="_on_spring_trigger_body_exited"]

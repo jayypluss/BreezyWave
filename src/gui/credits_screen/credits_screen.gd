@@ -1,10 +1,7 @@
-extends CanvasLayer
+extends Control
 
-@onready var hidable := $Hidable
+func _on_main_menu_button_pressed():
+	hide()
+	if get_parent() is MenuPages:
+		get_parent().hide()
 
-
-func togle_visible(toggleValue: bool = !hidable.visible):
-	hidable.visible = toggleValue
-
-func _on_MainMenu_pressed():
-	togle_visible(false)

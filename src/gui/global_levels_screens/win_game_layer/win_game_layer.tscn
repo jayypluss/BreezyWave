@@ -77,11 +77,6 @@ offset_right = 272.264
 offset_bottom = -82.544
 grow_horizontal = 2
 theme = ExtResource("3")
-text = "YOU WIN this level!
-Awesome!!
-But actually this is it (for now)
-Next Level is comming soon
-(beware of unfinished level ahead)"
 label_settings = SubResource("LabelSettings_bvw4n")
 horizontal_alignment = 1
 vertical_alignment = 1

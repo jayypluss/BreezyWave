@@ -59,10 +59,12 @@ layout_mode = 2
 size_flags_vertical = 3
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Button" type="Button" parent="MarginContainer/PanelContainer/Panel/Box"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.4
 focus_mode = 0
+theme_override_font_sizes/font_size = 14
 flat = true

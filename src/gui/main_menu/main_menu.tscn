@@ -1,48 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://cha5glu2f05ci"]
+[gd_scene load_steps=9 format=3 uid="uid://kaapyipq5vn5"]
 
-[ext_resource type="Theme" uid="uid://db51ncs4eb7e0" path="res://assets/ui-theme.tres" id="2"]
-[ext_resource type="Script" path="res://src/gui/menu/menu.gd" id="3"]
-[ext_resource type="PackedScene" uid="uid://cswv5xwg7kq0t" path="res://src/gui/credits_screen/credits_screen.tscn" id="5"]
-[ext_resource type="AudioStream" uid="uid://deqfgbwvacuil" path="res://assets/music/Super_Game_Music_-_Strange_Green_Planet_(Loop).ogg" id="6"]
-[ext_resource type="PackedScene" uid="uid://djy4qoo4aycom" path="res://src/gui/configs_screen/configs_screen.tscn" id="7"]
-[ext_resource type="Script" path="res://src/gui/configs_screen/configs_screen.gd" id="8"]
-
-[sub_resource type="Shader" id="Shader_e1uwh"]
-code = "// From https://godotshaders.com/shader/vaporwave-grid/
-
-shader_type canvas_item;
-
-uniform float battery : hint_range(0.0,1.0) = 1.0;
-uniform float anchor : hint_range(-1.0,1.0) = -0.5;
-uniform float speed_scale : hint_range(1.0, 10.0) = 1.0;
-uniform float fov : hint_range(0.01, 1.0) = 0.2;
-uniform vec4 background_color : source_color = vec4(0.0, 0.1, 0.2, 1.0);
-uniform vec4 grid_color : source_color = vec4(1.0, 0.5, 1.0, 1.0);
-
-float grid(vec2 uv, float batt, float time) {
-    vec2 size = vec2(uv.y, uv.y * uv.y * 0.2) * 0.01;
-    uv += vec2(0.0, time * speed_scale * (batt + 0.05));
-    uv = abs(fract(uv) - 0.5);
- 	vec2 lines = smoothstep(size, vec2(0.0), uv);
- 	lines += smoothstep(size * 5.0, vec2(0.0), uv) * 0.4 * batt;
-    return clamp(lines.x + lines.y, 0.0, 3.0);
-}
-
-void fragment() {
-	vec2 uv = UV;
-	vec4 col = background_color;
-    uv.y = 3.0 / (abs(uv.y + fov) + 0.05);
-	uv.x += anchor;
-    uv.x *= uv.y * 1.0;
-    float gridVal = grid(uv, battery, TIME);
-    col = mix(background_color, grid_color, gridVal);
-	COLOR = col;
-}"
+[ext_resource type="Theme" uid="uid://db51ncs4eb7e0" path="res://assets/ui-theme.tres" id="1_04nbc"]
+[ext_resource type="Script" path="res://src/gui/main_menu/main_menu.gd" id="2_kqxmq"]
+[ext_resource type="Shader" uid="uid://dcnxpcddd5v2o" path="res://assets/shaders/canvas/vaporwave_grid.tres" id="3_qg7vf"]
+[ext_resource type="PackedScene" uid="uid://28geq6gh4kgo" path="res://src/gui/menu_pages/menu_pages.tscn" id="4_g7xlw"]
+[ext_resource type="AudioStream" uid="uid://deqfgbwvacuil" path="res://assets/music/Super_Game_Music_-_Strange_Green_Planet_(Loop).ogg" id="6_5vf3c"]
 
 [sub_resource type="ShaderMaterial" id="2"]
-shader = SubResource("Shader_e1uwh")
-shader_parameter/battery = 1.0
-shader_parameter/anchor = -0.5
+shader = ExtResource("3_qg7vf")
+shader_parameter/battery = 0.1
+shader_parameter/anchor = -0.9
 shader_parameter/speed_scale = 1.0
 shader_parameter/fov = 0.2
 shader_parameter/background_color = Color(0, 0.1, 0.2, 1)
@@ -59,7 +26,7 @@ script/source = "extends Label
 
 "
 
-[node name="Menu" type="Control"]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,8 +34,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-theme = ExtResource("2")
-script = ExtResource("3")
+theme = ExtResource("1_04nbc")
+script = ExtResource("2_kqxmq")
 
 [node name="Background" type="ColorRect" parent="."]
 material = SubResource("2")
@@ -84,15 +51,16 @@ color = Color(0.447059, 0.219608, 0.501961, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.501
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.501
-offset_left = -7.0
-offset_top = -360.72
-offset_right = 586.0
-offset_bottom = 326.28
+anchor_bottom = 0.5
+offset_left = -546.0
+offset_top = -233.0
+offset_right = -80.0
+offset_bottom = 179.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_group_ = true
 
 [node name="Title" type="Label" parent="Header"]
 layout_mode = 2
@@ -109,9 +77,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -419.0
+offset_left = 194.0
 offset_top = -121.0
-offset_right = -133.0
+offset_right = 480.0
 offset_bottom = 121.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -124,6 +92,7 @@ layout_mode = 2
 focus_neighbor_bottom = NodePath("../CreditsButton")
 focus_next = NodePath("../CreditsButton")
 focus_previous = NodePath("../ExitButton")
+theme = ExtResource("1_04nbc")
 text = "Start"
 
 [node name="LevelTestButton" type="Button" parent="ButtonsContainer"]
@@ -133,8 +102,7 @@ layout_mode = 2
 focus_neighbor_bottom = NodePath("../CreditsButton")
 focus_next = NodePath("../CreditsButton")
 focus_previous = NodePath("../ExitButton")
-text = "Level Test
-"
+text = "TEST LEVEL"
 
 [node name="CreditsButton" type="Button" parent="ButtonsContainer"]
 custom_minimum_size = Vector2(50, 50)
@@ -172,14 +140,15 @@ text = "<GodotVersion>"
 script = SubResource("4")
 
 [node name="Authors" type="VBoxContainer" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -147.0
+offset_left = -87.0
 offset_top = -90.0
-offset_right = -16.0
+offset_right = -7.0
 offset_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -193,21 +162,12 @@ text = "Game by:"
 layout_mode = 2
 text = "jayypluss"
 
-[node name="Developer2" type="Label" parent="Authors"]
-visible = false
-layout_mode = 2
-text = "Developer 2"
-
-[node name="CreditsScreen" parent="." instance=ExtResource("5")]
-layer = 5
-
-[node name="ConfigsScreen" parent="." instance=ExtResource("7")]
-layer = 5
-script = ExtResource("8")
-
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6")
+stream = ExtResource("6_5vf3c")
 volume_db = -20.0
+
+[node name="MenuPages" parent="." instance=ExtResource("4_g7xlw")]
+layout_mode = 1
 
 [connection signal="pressed" from="ButtonsContainer/StartButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="ButtonsContainer/LevelTestButton" to="." method="_on_level_test_pressed"]

@@ -1,0 +1,2 @@
+- Adds input for showing collectables HUD
+- Adds collectables status to Pause Screen.

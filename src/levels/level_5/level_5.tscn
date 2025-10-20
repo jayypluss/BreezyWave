@@ -1,0 +1,408 @@
+[gd_scene load_steps=27 format=3 uid="uid://dwrllma8m0rhn"]
+
+[ext_resource type="Script" path="res://src/levels/level_5/level_5.gd" id="1_3n8w3"]
+[ext_resource type="PackedScene" uid="uid://cs8s668yng5yt" path="res://src/player/player.tscn" id="2_1cto1"]
+[ext_resource type="Environment" uid="uid://b41dqk76jhoit" path="res://src/levels/common/level_world_environment.tres" id="3_6l3au"]
+[ext_resource type="AudioStream" uid="uid://d4aj57xuv7pic" path="res://assets/music/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg" id="4_0is3e"]
+[ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="6_3g6q1"]
+[ext_resource type="PackedScene" uid="uid://chfy3cyt83i6a" path="res://src/environment/props/spot_light/spot_light.tscn" id="7_6whs8"]
+[ext_resource type="PackedScene" uid="uid://cue07yxp483n4" path="res://src/gui/global_levels_hud/hud.tscn" id="23_k4rmj"]
+[ext_resource type="PackedScene" uid="uid://dx1ind0cyeb0t" path="res://src/gui/global_levels_screens/global_levels_screens.tscn" id="24_kwvs2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_llkap"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lq055"]
+size = Vector3(60, 1, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vst65"]
+albedo_color = Color(0.301961, 0.192157, 0.752941, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lifxr"]
+size = Vector3(60, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_857p1"]
+size = Vector3(12, 1, 15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iphjy"]
+albedo_color = Color(0.301961, 0.192157, 0.752941, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_plri6"]
+size = Vector3(5, 1, 15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fhiiu"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kgj46"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nvg52"]
+size = Vector3(100, 1, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_eubk0"]
+size = Vector3(15, 2, 15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2lqmb"]
+size = Vector3(2000, 1, 2000)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_icvdj"]
+albedo_color = Color(0, 0.537255, 0.188235, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k28i3"]
+size = Vector3(160, 1, 350)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7dd1n"]
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2n6v"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_xn3am"]
+radius = 100.0
+height = 200.0
+radial_segments = 4
+rings = 12
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3t2cm"]
+albedo_color = Color(0.498039, 0.231373, 0.0666667, 1)
+
+[node name="Level5" type="Node3D"]
+script = ExtResource("1_3n8w3")
+
+[node name="Player" parent="." instance=ExtResource("2_1cto1")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -510, 110, -763)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_6l3au")
+
+[node name="GlobalLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 102.381, -271.585)
+light_energy = 0.9
+shadow_enabled = true
+directional_shadow_max_distance = 300.0
+
+[node name="DyingTrigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30069, -205.875)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DyingTrigger"]
+transform = Transform3D(896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.372)
+shape = SubResource("BoxShape3D_llkap")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0is3e")
+volume_db = -20.0
+
+[node name="Props" type="Node3D" parent="."]
+
+[node name="FirstFloor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 336)
+
+[node name="FirstTunnel" type="Node3D" parent="FirstFloor"]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, -26, 4, -336)
+metadata/_edit_group_ = true
+
+[node name="Floor" parent="FirstFloor/FirstTunnel" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000389099, 0, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="Ceeling" parent="FirstFloor/FirstTunnel" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000389099, 10.8713, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="WallLeft" parent="FirstFloor/FirstTunnel" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000389099, 5.43787, 7)
+mesh = SubResource("BoxMesh_lifxr")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="WallRight" parent="FirstFloor/FirstTunnel" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000389099, 5.43787, -7)
+mesh = SubResource("BoxMesh_lifxr")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="SpotLight" parent="FirstFloor/FirstTunnel" instance=ExtResource("7_6whs8")]
+transform = Transform3D(0.771025, 0.318403, -0.551489, 0, 0.866025, 0.5, 0.636805, -0.385513, 0.667727, -0.0463257, 8.66585, 0.78339)
+light_color = Color(0.584314, 0.321569, 1, 1)
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
+[node name="SpotLight2" parent="FirstFloor/FirstTunnel" instance=ExtResource("7_6whs8")]
+transform = Transform3D(-0.771025, -0.318403, 0.551489, 2.29783e-08, 0.866025, 0.5, -0.636805, 0.385513, -0.667727, -2.04633, 8.66585, 0.78339)
+light_color = Color(0.858824, 0, 0.615686, 1)
+light_energy = 13.533
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
+[node name="EndWall" parent="FirstFloor/FirstTunnel" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(-4.47035e-08, -1, 8.74228e-08, -1, 4.47035e-08, -5.32907e-15, 3.82137e-15, -8.74228e-08, -1, 29.2173, 5.36796, 0)
+mesh = SubResource("BoxMesh_857p1")
+material = SubResource("StandardMaterial3D_iphjy")
+
+[node name="FirstTunnel2" type="Node3D" parent="FirstFloor"]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, -83.1819, 19.2319, -336)
+metadata/_edit_group_ = true
+
+[node name="Floor" parent="FirstFloor/FirstTunnel2" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000389099, 0, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="Ceeling" parent="FirstFloor/FirstTunnel2" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000389099, 10.8713, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="WallLeft" parent="FirstFloor/FirstTunnel2" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000389099, 5.43787, 7)
+mesh = SubResource("BoxMesh_lifxr")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="WallRight" parent="FirstFloor/FirstTunnel2" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000389099, 5.43787, -7)
+mesh = SubResource("BoxMesh_lifxr")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="SpotLight" parent="FirstFloor/FirstTunnel2" instance=ExtResource("7_6whs8")]
+transform = Transform3D(0.771025, 0.318403, -0.551489, 0, 0.866025, 0.5, 0.636805, -0.385513, 0.667727, -0.0463257, 8.66585, 0.78339)
+light_color = Color(0.584314, 0.321569, 1, 1)
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
+[node name="SpotLight2" parent="FirstFloor/FirstTunnel2" instance=ExtResource("7_6whs8")]
+transform = Transform3D(-0.771025, -0.318403, 0.551489, 2.29783e-08, 0.866025, 0.5, -0.636805, 0.385513, -0.667727, -2.04633, 8.66585, 0.78339)
+light_color = Color(0.858824, 0, 0.615686, 1)
+light_energy = 13.533
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
+[node name="FirstTunnel3" type="Node3D" parent="FirstFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -141.898, 26.877, -336)
+metadata/_edit_group_ = true
+
+[node name="Floor" parent="FirstFloor/FirstTunnel3" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000389099, 0, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="Ceeling" parent="FirstFloor/FirstTunnel3" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00038147, 10.8713, 0)
+mesh = SubResource("BoxMesh_lq055")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="WallLeft" parent="FirstFloor/FirstTunnel3" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000389099, 5.43787, 7)
+mesh = SubResource("BoxMesh_lifxr")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="WallRight" parent="FirstFloor/FirstTunnel3" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.000389099, 5.43787, -7)
+mesh = SubResource("BoxMesh_lifxr")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="Ceeling2" parent="FirstFloor/FirstTunnel3" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(0.992474, 0.122458, 0, -0.122458, 0.992474, 0, 0, 0, 1, 30.4281, 10.8397, 0)
+mesh = SubResource("BoxMesh_plri6")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="WallLeft2" parent="FirstFloor/FirstTunnel3" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 30.0004, 4.43787, 7)
+mesh = SubResource("BoxMesh_plri6")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="WallRight2" parent="FirstFloor/FirstTunnel3" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 30.0004, 4.43787, -7)
+mesh = SubResource("BoxMesh_plri6")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="SpotLight" parent="FirstFloor/FirstTunnel3" instance=ExtResource("7_6whs8")]
+transform = Transform3D(0.771025, 0.318403, -0.551489, 0, 0.866025, 0.5, 0.636805, -0.385513, 0.667727, -0.0463257, 8.66585, 0.78339)
+light_color = Color(0.584314, 0.321569, 1, 1)
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
+[node name="SpotLight2" parent="FirstFloor/FirstTunnel3" instance=ExtResource("7_6whs8")]
+transform = Transform3D(-0.771025, -0.318403, 0.551489, 2.29783e-08, 0.866025, 0.5, -0.636805, 0.385513, -0.667727, -2.04633, 8.66585, 0.78339)
+light_color = Color(0.858824, 0, 0.615686, 1)
+light_energy = 13.533
+light_specular = 5.211
+spot_range = 50.0
+spot_angle = 81.43
+
+[node name="Room1" type="Node3D" parent="FirstFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -141.898, 26.877, -336)
+
+[node name="Ceeling3" parent="FirstFloor/Room1" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.1518, 29.8713, 0)
+mesh = SubResource("BoxMesh_fhiiu")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="Floor2" parent="FirstFloor/Room1" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.443, 0, 0)
+mesh = SubResource("BoxMesh_kgj46")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="WallLeft3" parent="FirstFloor/Room1" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -78.1518, 15.4379, 50)
+mesh = SubResource("BoxMesh_nvg52")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="WallRight3" parent="FirstFloor/Room1" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -78.1518, 15.4379, -50)
+mesh = SubResource("BoxMesh_nvg52")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="FirstFloor/Room1"]
+use_collision = true
+collision_layer = 2
+
+[node name="WallFront" parent="FirstFloor/Room1/CSGCombiner3D" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -29.9996, 15.4379, 1)
+mesh = SubResource("BoxMesh_nvg52")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="FrontDoorHole" parent="FirstFloor/Room1/CSGCombiner3D" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -29.9996, 3.78869, 0)
+operation = 2
+mesh = SubResource("BoxMesh_eubk0")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="FirstFloor/Room1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.5305, 0, 0)
+use_collision = true
+collision_layer = 2
+
+[node name="WallFront" parent="FirstFloor/Room1/CSGCombiner3D2" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -29.9996, 15.4379, 1)
+mesh = SubResource("BoxMesh_nvg52")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="FrontDoorHole" parent="FirstFloor/Room1/CSGCombiner3D2" instance=ExtResource("6_3g6q1")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -29.9996, 3.78869, 0)
+operation = 2
+mesh = SubResource("BoxMesh_eubk0")
+material = SubResource("StandardMaterial3D_vst65")
+
+[node name="GrassGround" parent="." instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1265.88, 26.877, 0)
+mesh = SubResource("BoxMesh_2lqmb")
+material = SubResource("StandardMaterial3D_icvdj")
+
+[node name="GrassGround2" parent="." instance=ExtResource("6_3g6q1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -191.885, 23.877, 14)
+mesh = SubResource("BoxMesh_k28i3")
+material = SubResource("StandardMaterial3D_icvdj")
+
+[node name="GrassGround3" parent="." instance=ExtResource("6_3g6q1")]
+transform = Transform3D(0.951358, 0.308087, 0, -0.308087, 0.951358, 0, 0, 0, 1, -36.7338, 0.610605, 14)
+mesh = SubResource("BoxMesh_k28i3")
+material = SubResource("StandardMaterial3D_icvdj")
+
+[node name="MovingSmallPlatforms" type="Node3D" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+
+[node name="HUD" parent="Control" instance=ExtResource("23_k4rmj")]
+layout_mode = 1
+mouse_filter = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="GlobalLevelsScreens" parent="Control" instance=ExtResource("24_kwvs2")]
+layout_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LimitingWall" type="CSGMesh3D" parent="."]
+transform = Transform3D(-2.71459e-07, -0.866025, 0.5, 7.171, -4.37114e-08, 0, 1.56727e-07, 0.5, 0.866025, -272, 32, -54)
+use_collision = true
+collision_layer = 2
+mesh = SubResource("PlaneMesh_7dd1n")
+material = SubResource("StandardMaterial3D_q2n6v")
+
+[node name="Mountains" type="Node3D" parent="."]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Mountains"]
+transform = Transform3D(-4.37114e-07, -10, 0, 10, -4.37114e-07, 0, 0, 0, 10, 380.636, -4.73785, -1462.99)
+use_collision = true
+collision_layer = 2
+mesh = SubResource("CapsuleMesh_xn3am")
+material = SubResource("StandardMaterial3D_3t2cm")
+
+[node name="CSGMesh3D4" type="CSGMesh3D" parent="Mountains"]
+transform = Transform3D(1.07227e-07, 2.45307, 9.69445, 10, -4.37114e-07, 0, 4.23758e-07, 9.69445, -2.45307, -3014.03, -4.73785, 401.01)
+use_collision = true
+collision_layer = 2
+mesh = SubResource("CapsuleMesh_xn3am")
+material = SubResource("StandardMaterial3D_3t2cm")
+
+[node name="CSGMesh3D9" type="CSGMesh3D" parent="Mountains"]
+transform = Transform3D(1.07227e-07, 2.45307, 9.69445, 10, -4.37114e-07, 0, 4.23758e-07, 9.69445, -2.45307, 573.971, -4.73785, 830.347)
+use_collision = true
+collision_layer = 2
+mesh = SubResource("CapsuleMesh_xn3am")
+material = SubResource("StandardMaterial3D_3t2cm")
+
+[node name="CSGMesh3D10" type="CSGMesh3D" parent="Mountains"]
+transform = Transform3D(1.07227e-07, 2.45307, 9.69445, 10, -4.37114e-07, 0, 4.23758e-07, 9.69445, -2.45307, 708.143, -4.73785, -714.138)
+use_collision = true
+collision_layer = 2
+mesh = SubResource("CapsuleMesh_xn3am")
+material = SubResource("StandardMaterial3D_3t2cm")
+
+[node name="CSGMesh3D5" type="CSGMesh3D" parent="Mountains"]
+transform = Transform3D(3.68058e-07, 10.601, 0.144372, 8.421, -4.63428e-07, -6.21433e-15, 5.13948e-09, 0.14803, -10.339, -1993.03, -4.73785, 1815.01)
+use_collision = true
+collision_layer = 2
+mesh = SubResource("CapsuleMesh_xn3am")
+material = SubResource("StandardMaterial3D_3t2cm")
+
+[node name="CSGMesh3D6" type="CSGMesh3D" parent="Mountains"]
+transform = Transform3D(4.99486e-07, 5.15442, 7.38765, 16.332, -3.22022e-07, 0, 5.10058e-07, 5.26352, -7.23452, -791.029, -4.73785, 1421.01)
+use_collision = true
+collision_layer = 2
+mesh = SubResource("CapsuleMesh_xn3am")
+material = SubResource("StandardMaterial3D_3t2cm")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="Mountains"]
+transform = Transform3D(-3.02133e-07, -18.317, 0, 6.912, -8.00661e-07, 0, 0, 0, 3.529, -1234.36, -4.73785, -1282.99)
+use_collision = true
+collision_layer = 2
+mesh = SubResource("CapsuleMesh_xn3am")
+material = SubResource("StandardMaterial3D_3t2cm")
+
+[node name="CSGMesh3D3" type="CSGMesh3D" parent="Mountains"]
+transform = Transform3D(-1.18578e-07, -6.6021, 5.44481, 4.994, -5.31268e-07, 1.00708e-21, 1.8328e-07, 10.2045, 3.52268, -2433.73, -4.73785, -937.634)
+use_collision = true
+collision_layer = 2
+mesh = SubResource("CapsuleMesh_xn3am")
+material = SubResource("StandardMaterial3D_3t2cm")
+
+[node name="CSGMesh3D7" type="CSGMesh3D" parent="Mountains"]
+transform = Transform3D(0.323102, -0.0846011, 2.55388, 6.61766, -1.12641, -0.125938, 0.911873, 8.20461, 0.00904411, -270.727, -92.317, 869.655)
+use_collision = true
+collision_layer = 2
+mesh = SubResource("CapsuleMesh_xn3am")
+material = SubResource("StandardMaterial3D_3t2cm")
+
+[node name="CSGMesh3D8" type="CSGMesh3D" parent="Mountains"]
+transform = Transform3D(-2.41653e-08, -1.11363, 1.7328, 2.223, -1.9574e-07, 0, 9.41176e-08, 4.33732, 0.444906, -157.206, 22.8687, -485.822)
+use_collision = true
+collision_layer = 2
+mesh = SubResource("CapsuleMesh_xn3am")
+material = SubResource("StandardMaterial3D_3t2cm")
+
+[connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]

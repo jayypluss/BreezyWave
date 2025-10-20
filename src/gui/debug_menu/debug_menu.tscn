@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://c47ijgy3yd6xe"]
+
+[ext_resource type="Script" path="res://src/gui/debug_menu/debug_menu.gd" id="1_my1w0"]
+
+[node name="DebugMenu" type="Control"]
+process_mode = 2
+z_index = 98
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_my1w0")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.635294)
+
+[node name="Label" type="Label" parent="BG"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.313
+anchor_top = 0.367
+anchor_right = 0.687
+anchor_bottom = 0.411
+offset_left = 171.36
+offset_top = -0.240021
+offset_right = -171.36
+offset_bottom = -5.92001
+grow_horizontal = 2
+grow_vertical = 2
+text = "Debug prompt"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="BG"]
+top_level = true
+z_index = 99
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -239.0
+offset_top = -64.0
+offset_right = 239.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/background_color = Color(0.662745, 0, 0.752941, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="gui_input" from="BG/TextEdit" to="." method="_on_text_edit_gui_input"]

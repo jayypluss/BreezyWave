@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://qat4x6q0ehfq"]
+[gd_scene load_steps=12 format=3 uid="uid://qat4x6q0ehfq"]
 
 [ext_resource type="Script" path="res://src/environment/pedestal_button/pedestal_button.gd" id="1"]
 
@@ -12,6 +12,7 @@ bottom_radius = 0.1
 height = 1.5
 
 [sub_resource type="CylinderShape3D" id="3"]
+height = 1.5
 radius = 0.4
 
 [sub_resource type="StandardMaterial3D" id="7"]
@@ -23,12 +24,8 @@ top_radius = 0.2
 bottom_radius = 0.2
 height = 0.2
 
-[sub_resource type="CylinderShape3D" id="4"]
-height = 0.6
-radius = 0.4
-
 [sub_resource type="BoxShape3D" id="5"]
-size = Vector3(6, 2.2, 6)
+size = Vector3(7.5, 2.2, 7.5)
 
 [sub_resource type="Animation" id="10"]
 length = 0.001
@@ -89,16 +86,17 @@ collision_layer = 2
 script = ExtResource("1")
 can_deactivate = true
 
-[node name="Pedestal" type="StaticBody3D" parent="."]
+[node name="Pedestal" type="AnimatableBody3D" parent="."]
 collision_layer = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Pedestal"]
 mesh = SubResource("1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pedestal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.102912, 0)
 shape = SubResource("3")
 
-[node name="Button" type="CharacterBody3D" parent="."]
+[node name="Button" type="AnimatableBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19972, 0)
 collision_layer = 2
 collision_mask = 0
@@ -106,9 +104,6 @@ collision_mask = 0
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Button"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.356671, 0)
 mesh = SubResource("6")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Button"]
-shape = SubResource("4")
 
 [node name="InteractableArea" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.35488, 0, 0, 0, 1, 0, 0.473902, 0)
@@ -121,3 +116,4 @@ libraries = {
 
 [connection signal="body_entered" from="." to="." method="_on_PedestalButton_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_PedestalButton_body_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

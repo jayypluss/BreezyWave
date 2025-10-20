@@ -1,14 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://cqxjw46ag7oni"]
+[gd_scene load_steps=16 format=3 uid="uid://dslwpmb3lifkr"]
 
 [ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="1"]
-[ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://cs8s668yng5yt" path="res://src/player/player.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://dx1ind0cyeb0t" path="res://src/gui/global_levels_screens/global_levels_screens.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://p3hk7kg0ry5k" path="res://src/environment/portal/portal.tscn" id="4_pv12b"]
 [ext_resource type="Environment" uid="uid://bdm4h3rb3p8rb" path="res://src/levels/level_1/level_1_env.tres" id="4_smvl8"]
-[ext_resource type="PackedScene" uid="uid://7c6tyte2j0mh" path="res://src/environment/static_platform/static_platform.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://7c6tyte2j0mh" path="res://src/environment/static_small_platform/static_small_platform.tscn" id="6"]
 [ext_resource type="Script" path="res://src/levels/level_1/level_1.gd" id="8"]
 [ext_resource type="PackedScene" uid="uid://cue07yxp483n4" path="res://src/gui/global_levels_hud/hud.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://cr58hgugjg0k5" path="res://src/game/tutorial/tutorial_control.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://vo7iv0nu1qqy" path="res://src/environment/collectables/colorful_star/colorful_star.tscn" id="12_oph6a"]
 [ext_resource type="AudioStream" uid="uid://d4aj57xuv7pic" path="res://assets/music/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg" id="13"]
 [ext_resource type="PackedScene" uid="uid://b3ua4gxcip1as" path="res://src/environment/pedestal/pedestal.tscn" id="14_rtsv6"]
 
@@ -25,7 +26,7 @@ size = Vector3(15, 1, 15)
 script = ExtResource("8")
 
 [node name="Player" parent="." instance=ExtResource("2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.514732, 5.13396, -267.35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_smvl8")
@@ -121,6 +122,60 @@ control = NodePath("../..")
 [node name="GlobalLevelsScreens" parent="Control" instance=ExtResource("3")]
 layout_mode = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="ColorfulStar" parent="." instance=ExtResource("12_oph6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -23.2691)
+
+[node name="ColorfulStar2" parent="." instance=ExtResource("12_oph6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -38.5736)
+
+[node name="ColorfulStar3" parent="." instance=ExtResource("12_oph6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -54.5466)
+
+[node name="ColorfulStar4" parent="." instance=ExtResource("12_oph6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -71.2231)
+
+[node name="StarsGroup1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -191)
+
+[node name="ColorfulStar1" parent="StarsGroup1" instance=ExtResource("12_oph6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, -4)
+
+[node name="ColorfulStar2" parent="StarsGroup1" instance=ExtResource("12_oph6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -4)
+
+[node name="ColorfulStar3" parent="StarsGroup1" instance=ExtResource("12_oph6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, -4)
+
+[node name="ColorfulStar4" parent="StarsGroup1" instance=ExtResource("12_oph6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 0)
+
+[node name="ColorfulStar5" parent="StarsGroup1" instance=ExtResource("12_oph6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="ColorfulStar6" parent="StarsGroup1" instance=ExtResource("12_oph6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 0)
+
+[node name="ColorfulStar7" parent="StarsGroup1" instance=ExtResource("12_oph6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 4)
+
+[node name="ColorfulStar8" parent="StarsGroup1" instance=ExtResource("12_oph6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
+
+[node name="ColorfulStar9" parent="StarsGroup1" instance=ExtResource("12_oph6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 4)
+
+[node name="StarsGroup2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -106)
+
+[node name="ColorfulStar1" parent="StarsGroup2" instance=ExtResource("12_oph6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, 0)
+
+[node name="ColorfulStar2" parent="StarsGroup2" instance=ExtResource("12_oph6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="ColorfulStar3" parent="StarsGroup2" instance=ExtResource("12_oph6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 0)
 
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]
 [connection signal="body_entered" from="Portal" to="." method="_on_portal_body_entered"]
