@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=3 uid="uid://b5x1ekani3gnp"]
 
-[ext_resource type="Script" path="res://src/levels/level_3/level_3.gd" id="1_7icvl"]
+[ext_resource type="Script" uid="uid://mt0fri66qd2a" path="res://src/levels/level_3/level_3.gd" id="1_7icvl"]
 [ext_resource type="PackedScene" uid="uid://cs8s668yng5yt" path="res://src/player/player.tscn" id="2_aqvay"]
 [ext_resource type="Environment" uid="uid://b41dqk76jhoit" path="res://src/levels/common/level_world_environment.tres" id="3_e5hxo"]
 [ext_resource type="PackedScene" uid="uid://p3hk7kg0ry5k" path="res://src/environment/portal/portal.tscn" id="4_vour7"]
@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b3ua4gxcip1as" path="res://src/environment/pedestal/pedestal.tscn" id="14_6nam4"]
 [ext_resource type="PackedScene" uid="uid://sqlonw8gtwb0" path="res://src/environment/spring/spring.tscn" id="14_dsvtk"]
 [ext_resource type="PackedScene" uid="uid://dx1ind0cyeb0t" path="res://src/gui/global_levels_screens/global_levels_screens.tscn" id="15_8e62s"]
-[ext_resource type="Script" path="res://src/levels/level_3/pyramid_like_piled_platforms.gd" id="15_084ve"]
+[ext_resource type="Script" uid="uid://y0swgud76ivg" path="res://src/levels/level_3/pyramid_like_piled_platforms.gd" id="15_084ve"]
 [ext_resource type="PackedScene" uid="uid://vo7iv0nu1qqy" path="res://src/environment/collectables/colorful_star/colorful_star.tscn" id="17_j6xf5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_llkap"]

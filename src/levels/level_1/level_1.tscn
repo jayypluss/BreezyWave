@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://p3hk7kg0ry5k" path="res://src/environment/portal/portal.tscn" id="4_pv12b"]
 [ext_resource type="Environment" uid="uid://bdm4h3rb3p8rb" path="res://src/levels/level_1/level_1_env.tres" id="4_smvl8"]
 [ext_resource type="PackedScene" uid="uid://7c6tyte2j0mh" path="res://src/environment/static_small_platform/static_small_platform.tscn" id="6"]
-[ext_resource type="Script" path="res://src/levels/level_1/level_1.gd" id="8"]
+[ext_resource type="Script" uid="uid://d27od6ocqjy7x" path="res://src/levels/level_1/level_1.gd" id="8"]
 [ext_resource type="PackedScene" uid="uid://cue07yxp483n4" path="res://src/gui/global_levels_hud/hud.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://cr58hgugjg0k5" path="res://src/game/tutorial/tutorial_control.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://vo7iv0nu1qqy" path="res://src/environment/collectables/colorful_star/colorful_star.tscn" id="12_oph6a"]

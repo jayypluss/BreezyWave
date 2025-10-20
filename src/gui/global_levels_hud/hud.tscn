@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://cue07yxp483n4"]
 
-[ext_resource type="Script" path="res://src/gui/global_levels_hud/hud.gd" id="1_64x2v"]
+[ext_resource type="Script" uid="uid://dxs3kh7i4jiwe" path="res://src/gui/global_levels_hud/hud.gd" id="1_64x2v"]
 [ext_resource type="PackedScene" uid="uid://c5avtepgucbu0" path="res://src/gui/hud/global_levels_hud/collected_stars_info/collected_stars_info.tscn" id="2"]
-[ext_resource type="Script" path="res://src/gui/global_levels_hud/action_indicator_control.gd" id="2_h435r"]
-[ext_resource type="Script" path="res://src/gui/global_levels_hud/panel_control.gd" id="3_peuhs"]
+[ext_resource type="Script" uid="uid://c2urou6vx4i2w" path="res://src/gui/global_levels_hud/action_indicator_control.gd" id="2_h435r"]
+[ext_resource type="Script" uid="uid://dl15llhepvid2" path="res://src/gui/global_levels_hud/panel_control.gd" id="3_peuhs"]
 [ext_resource type="StyleBox" uid="uid://b12y5bj546ehf" path="res://src/gui/simple_panel/light_simple_panel_stylebox.tres" id="4_k8e74"]
 [ext_resource type="PackedScene" uid="uid://b05tohqmg7ys0" path="res://src/gui/simple_info_box/simple_info_box.tscn" id="4_liieu"]
 

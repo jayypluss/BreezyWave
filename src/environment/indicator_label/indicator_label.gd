@@ -33,5 +33,3 @@ func collapse():
 		go_down_tween.tween_property(self, "position:y", initial_y, tween_duration_y)
 		go_down_tween.tween_property(self, "scale", initial_scale, tween_duration_y)
 		go_down_tween.chain().tween_callback(func(): hide())
-
-

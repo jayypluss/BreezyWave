@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlsqaaifvy0tr"]
 
-[ext_resource type="Script" path="res://src/camera/motion_blur/motion_blur.gd" id="1_k8w8h"]
-[ext_resource type="Shader" path="res://src/camera/motion_blur/moblur_shader.gdshader" id="1_w60a5"]
+[ext_resource type="Script" uid="uid://b60mu5jqpxxfy" path="res://src/camera/motion_blur/motion_blur.gd" id="1_k8w8h"]
+[ext_resource type="Shader" uid="uid://b0soq7ld8nle0" path="res://src/camera/motion_blur/moblur_shader.gdshader" id="1_w60a5"]
 
 [sub_resource type="QuadMesh" id="1"]
 size = Vector2(2, 2)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dimex4uwsxh1"]
 
-[ext_resource type="Script" path="res://src/environment/moving_small_platform/moving_small_platform.gd" id="1_07nml"]
+[ext_resource type="Script" uid="uid://12umk5suyie4" path="res://src/environment/moving_small_platform/moving_small_platform.gd" id="1_07nml"]
 
 [sub_resource type="BoxMesh" id="1"]
 size = Vector3(10, 0.2, 10)

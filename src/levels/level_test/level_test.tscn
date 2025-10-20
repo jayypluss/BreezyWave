@@ -1,12 +1,12 @@
-[gd_scene load_steps=26 format=3]
+[gd_scene load_steps=26 format=3 uid="uid://b7vtahc6q0b8m"]
 
 [ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="1"]
-[ext_resource type="Script" path="res://src/levels/level_test/level_test.gd" id="1_tvl7c"]
-[ext_resource type="PackedScene" uid="uid://c8aem4qjchnrf" path="res://src/player/player.tscn" id="2"]
+[ext_resource type="Script" uid="uid://2h26wpx26duo" path="res://src/levels/level_test/level_test.gd" id="1_tvl7c"]
+[ext_resource type="PackedScene" uid="uid://cs8s668yng5yt" path="res://src/player/player.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://dx1ind0cyeb0t" path="res://src/gui/global_levels_screens/global_levels_screens.tscn" id="3"]
 [ext_resource type="Environment" uid="uid://dei285upuk8bp" path="res://src/levels/level_test/level_test_env.tres" id="3_doicm"]
 [ext_resource type="PackedScene" uid="uid://c8mmmyxugnefa" path="res://src/environment/moving_platform/moving_platform.tscn" id="4"]
-[ext_resource type="Shader" path="res://assets/shaders/random_glitches.gdshader" id="4_khut3"]
+[ext_resource type="Shader" uid="uid://hd7mixwfmxgk" path="res://assets/shaders/random_glitches.gdshader" id="4_khut3"]
 [ext_resource type="PackedScene" uid="uid://7c6tyte2j0mh" path="res://src/environment/static_small_platform/static_small_platform.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://cue07yxp483n4" path="res://src/gui/global_levels_hud/hud.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://cr58hgugjg0k5" path="res://src/game/tutorial/tutorial_control.tscn" id="10"]
@@ -96,7 +96,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8201, 1.90573, -28.3489)
 
 [node name="MovingPlatform1" parent="Interactables" instance=ExtResource("4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5807, 0.950626, -23.9323)
-move_z = -95.473
 
 [node name="SecretePassage1Button" parent="Interactables" instance=ExtResource("16")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.15, 1.82993, -95.3299)

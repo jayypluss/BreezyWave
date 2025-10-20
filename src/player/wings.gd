@@ -19,4 +19,3 @@ func _process(_delta):
 #		animation_player.get_animation('concertinaAction').loop_mode = Animation.LOOP_PINGPONG
 	elif Input.is_action_just_released('jump'):
 		animation_player.stop()
-

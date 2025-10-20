@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bm04qxj87wk4j"]
 
-[ext_resource type="Script" path="res://src/utils/color_palette/color_palette.gd" id="1_yltv6"]
+[ext_resource type="Script" uid="uid://73tm70o2r15i" path="res://src/utils/color_palette/color_palette.gd" id="1_yltv6"]
 
 [node name="ColorPalette" type="Node"]
 script = ExtResource("1_yltv6")

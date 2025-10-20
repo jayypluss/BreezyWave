@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://sqlonw8gtwb0"]
 
-[ext_resource type="Script" path="res://src/environment/spring/spring.gd" id="2"]
+[ext_resource type="Script" uid="uid://utwfpjnrsosa" path="res://src/environment/spring/spring.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://thxbew43xeci" path="res://assets/sounds/effects/bounce/bounce_01.ogg" id="3"]
 
 [sub_resource type="CylinderMesh" id="12"]
@@ -96,8 +96,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oayhg"]
 _data = {
-"RESET": SubResource("11"),
-"shrink_and_expand": SubResource("10")
+&"RESET": SubResource("11"),
+&"shrink_and_expand": SubResource("10")
 }
 
 [node name="Spring" type="Node3D"]
@@ -120,7 +120,7 @@ volume_db = -25.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_oayhg")
+&"": SubResource("AnimationLibrary_oayhg")
 }
 
 [connection signal="body_entered" from="SpringTrigger" to="." method="_on_spring_trigger_body_entered"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://chfy3cyt83i6a"]
 
-[ext_resource type="Script" path="res://src/environment/props/spot_light/spot_light.gd" id="1_dcno3"]
+[ext_resource type="Script" uid="uid://bvsoyn4uvddw4" path="res://src/environment/props/spot_light/spot_light.gd" id="1_dcno3"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_3b4oc"]
 

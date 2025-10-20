@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://qat4x6q0ehfq"]
 
-[ext_resource type="Script" path="res://src/environment/pedestal_button/pedestal_button.gd" id="1"]
+[ext_resource type="Script" uid="uid://xwg1o8bp4u7t" path="res://src/environment/pedestal_button/pedestal_button.gd" id="1"]
 
 [sub_resource type="StandardMaterial3D" id="11"]
 albedo_color = Color(0.482353, 0.482353, 0.482353, 1)
@@ -76,9 +76,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rqu76"]
 _data = {
-"RESET": SubResource("10"),
-"activate_button": SubResource("8"),
-"unactivate_button": SubResource("9")
+&"RESET": SubResource("10"),
+&"activate_button": SubResource("8"),
+&"unactivate_button": SubResource("9")
 }
 
 [node name="PedestalButton" type="Area3D"]
@@ -111,7 +111,7 @@ shape = SubResource("5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_rqu76")
+&"": SubResource("AnimationLibrary_rqu76")
 }
 
 [connection signal="body_entered" from="." to="." method="_on_PedestalButton_body_entered"]

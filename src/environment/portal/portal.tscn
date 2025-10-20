@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://p3hk7kg0ry5k"]
 
-[ext_resource type="Shader" path="res://assets/shaders/random_glitches.gdshader" id="1_8sgub"]
-[ext_resource type="Script" path="res://src/environment/portal/portal.gd" id="1_8tuhl"]
-[ext_resource type="Shader" path="res://assets/shaders/canvas/galaxy_portal.gdshader" id="4_flkam"]
+[ext_resource type="Shader" uid="uid://hd7mixwfmxgk" path="res://assets/shaders/random_glitches.gdshader" id="1_8sgub"]
+[ext_resource type="Script" uid="uid://c0c2og7xnjouo" path="res://src/environment/portal/portal.gd" id="1_8tuhl"]
+[ext_resource type="Shader" uid="uid://nhlid5hg75hg" path="res://assets/shaders/canvas/galaxy_portal.gdshader" id="4_flkam"]
 
 [sub_resource type="BoxShape3D" id="5"]
 size = Vector3(1.25, 0.6, 14)

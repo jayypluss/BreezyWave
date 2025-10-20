@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://vo7iv0nu1qqy"]
 
 [ext_resource type="Texture2D" uid="uid://ci3sr0wk58j1t" path="res://assets/sprites/colorful_star.png" id="1"]
-[ext_resource type="Script" path="res://src/environment/collectables/colorful_star/colorful_star.gd" id="2"]
+[ext_resource type="Script" uid="uid://dmrimr72upt11" path="res://src/environment/collectables/colorful_star/colorful_star.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://5o15eo28gvmh" path="res://assets/sounds/effects/sparkle/sparkle_01.ogg" id="3"]
 
 [sub_resource type="StandardMaterial3D" id="14"]
@@ -34,7 +34,6 @@ shape = SubResource("10")
 stream = ExtResource("3")
 volume_db = -15.0
 mix_target = 1
-bus = &"Sound Effects"
 
 [node name="DeleteAfterCollectTimer" type="Timer" parent="."]
 wait_time = 2.0
