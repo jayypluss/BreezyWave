@@ -1,8 +1,8 @@
 extends CanvasLayer
 
-onready var hidable := $Hidable
+@onready var hidable := $Hidable
 
-onready var value_label := $Hidable/VBoxContainer/MusicVolumeContainer/MusicVolumeLabelsContainer/MusicVolumeValueLabel
+@onready var value_label := $Hidable/VBoxContainer/MusicVolumeContainer/MusicVolumeLabelsContainer/MusicVolumeValueLabel
 
 
 

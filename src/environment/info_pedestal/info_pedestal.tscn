@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bjvc5o1pod412"]
 
-[ext_resource type="Script" path="res://src/environment/info_pedestal/info_pedestal.gd" id="1_vbcmr"]
+[ext_resource type="Script" uid="uid://cbaj5sg1k54ol" path="res://src/environment/info_pedestal/info_pedestal.gd" id="1_vbcmr"]
 [ext_resource type="PackedScene" uid="uid://b72gbk40c37jy" path="res://src/environment/indicator_label/indicator_label.tscn" id="2_1rx6q"]
 
 [sub_resource type="StandardMaterial3D" id="2"]

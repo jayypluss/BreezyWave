@@ -1,13 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://dv432upup31h8"]
 
-[ext_resource path="res://assets/ui-theme.tres" type="Theme" id=1]
+[ext_resource type="Theme" uid="uid://db51ncs4eb7e0" path="res://assets/ui-theme.tres" id="1"]
 
 [node name="CancelButton" type="Button"]
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -105.0
-margin_top = 45.0
-margin_right = -57.0
-margin_bottom = 90.0
-theme = ExtResource( 1 )
+theme = ExtResource("1")
 text = "X"

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://grgj5wuhyy0d"]
 
-[ext_resource type="Script" path="res://src/environment/props/checkpoint/checkpoint.gd" id="1_nm56h"]
+[ext_resource type="Script" uid="uid://ba3np8k87musb" path="res://src/environment/props/checkpoint/checkpoint.gd" id="1_nm56h"]
 [ext_resource type="PackedScene" uid="uid://b72gbk40c37jy" path="res://src/environment/indicator_label/indicator_label.tscn" id="2_ijix8"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_f6urv"]

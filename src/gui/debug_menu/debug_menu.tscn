@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c47ijgy3yd6xe"]
 
-[ext_resource type="Script" path="res://src/gui/debug_menu/debug_menu.gd" id="1_my1w0"]
+[ext_resource type="Script" uid="uid://bbw1lp21hcxkq" path="res://src/gui/debug_menu/debug_menu.gd" id="1_my1w0"]
 
 [node name="DebugMenu" type="Control"]
 process_mode = 2
@@ -54,8 +54,8 @@ offset_right = 239.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/background_color = Color(0.662745, 0, 0.752941, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/background_color = Color(0.662745, 0, 0.752941, 1)
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

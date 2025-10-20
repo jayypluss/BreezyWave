@@ -36,4 +36,3 @@ func _on_Player_entered_area(_player: Player, area: Area3D):
 func _on_Player_exited_area(_player: Player, _area: Area3D):
 	area_player_is_inside = null
 	GameState.hud.panel_control.simple_info_box_control.hide_and_clear()
-

@@ -33,6 +33,7 @@ theme_override_constants/margin_bottom = 50
 [node name="TabContainer" type="TabContainer" parent="MarginContainer"]
 layout_mode = 2
 tab_alignment = 1
+current_tab = 0
 
 [node name="Graphics" type="MarginContainer" parent="MarginContainer/TabContainer"]
 layout_mode = 2
@@ -40,6 +41,7 @@ theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
+metadata/_tab_index = 0
 
 [node name="GraphicsTabContent" type="MarginContainer" parent="MarginContainer/TabContainer/Graphics"]
 layout_mode = 2
@@ -86,6 +88,7 @@ theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
+metadata/_tab_index = 1
 
 [node name="GraphicsTabContent" type="MarginContainer" parent="MarginContainer/TabContainer/Sound"]
 layout_mode = 2

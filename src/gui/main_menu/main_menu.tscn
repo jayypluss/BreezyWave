@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://kaapyipq5vn5"]
 
 [ext_resource type="Theme" uid="uid://db51ncs4eb7e0" path="res://assets/ui-theme.tres" id="1_04nbc"]
-[ext_resource type="Script" path="res://src/gui/main_menu/main_menu.gd" id="2_kqxmq"]
+[ext_resource type="Script" uid="uid://bt8sa4wvj5khq" path="res://src/gui/main_menu/main_menu.gd" id="2_kqxmq"]
 [ext_resource type="Shader" uid="uid://dcnxpcddd5v2o" path="res://assets/shaders/canvas/vaporwave_grid.tres" id="3_qg7vf"]
 [ext_resource type="PackedScene" uid="uid://28geq6gh4kgo" path="res://src/gui/menu_pages/menu_pages.tscn" id="4_g7xlw"]
 [ext_resource type="AudioStream" uid="uid://deqfgbwvacuil" path="res://assets/music/Super_Game_Music_-_Strange_Green_Planet_(Loop).ogg" id="6_5vf3c"]

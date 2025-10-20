@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://dwrllma8m0rhn"]
 
-[ext_resource type="Script" path="res://src/levels/level_5/level_5.gd" id="1_3n8w3"]
+[ext_resource type="Script" uid="uid://c4vojg3hnm4ph" path="res://src/levels/level_5/level_5.gd" id="1_3n8w3"]
 [ext_resource type="PackedScene" uid="uid://cs8s668yng5yt" path="res://src/player/player.tscn" id="2_1cto1"]
 [ext_resource type="Environment" uid="uid://b41dqk76jhoit" path="res://src/levels/common/level_world_environment.tres" id="3_6l3au"]
 [ext_resource type="AudioStream" uid="uid://d4aj57xuv7pic" path="res://assets/music/Super_Game_Music_-_A_Walk_in_the_Park_(Loop).ogg" id="4_0is3e"]

@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://c50uggvuegn1l"]
 
-[ext_resource type="Script" path="res://src/camera/camera_rig.gd" id="1"]
-[ext_resource type="Script" path="res://src/camera/aim_target.gd" id="2"]
-[ext_resource type="Script" path="res://src/camera/states/default.gd" id="3"]
-[ext_resource type="Script" path="res://src/fsm/state_machine.gd" id="4"]
+[ext_resource type="Script" uid="uid://csloratforoqy" path="res://src/camera/camera_rig.gd" id="1"]
+[ext_resource type="Script" uid="uid://fhpc6aycgcji" path="res://src/camera/aim_target.gd" id="2"]
+[ext_resource type="Script" uid="uid://cqiidha60kq8j" path="res://src/camera/states/default.gd" id="3"]
+[ext_resource type="Script" uid="uid://bikv2oymc7a1m" path="res://src/fsm/state_machine.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://bi3onlogto5lw" path="res://assets/2d/reticle.png" id="5"]
-[ext_resource type="Script" path="res://src/camera/states/camera.gd" id="6"]
-[ext_resource type="Script" path="res://src/camera/states/aim.gd" id="7"]
-[ext_resource type="Script" path="res://src/camera/spring_arm.gd" id="8"]
+[ext_resource type="Script" uid="uid://cwer6xep5gg4n" path="res://src/camera/states/camera.gd" id="6"]
+[ext_resource type="Script" uid="uid://ds1ngmfdtvlhd" path="res://src/camera/states/aim.gd" id="7"]
+[ext_resource type="Script" uid="uid://cmjxvu3oejkd0" path="res://src/camera/spring_arm.gd" id="8"]
 
 [sub_resource type="CapsuleShape3D" id="1"]
 radius = 0.25

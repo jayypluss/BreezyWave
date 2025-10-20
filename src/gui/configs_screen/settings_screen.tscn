@@ -1,66 +1,51 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://bvafimfvwvyqp"]
 
-[ext_resource path="res://src/gui/configs_screen/settings_screen.gd" type="Script" id=1]
-[ext_resource path="res://src/gui/components/cancel_button.tscn" type="PackedScene" id=2]
+[ext_resource type="Script" uid="uid://be1dp5xeptbxu" path="res://src/gui/configs_screen/settings_screen.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dv432upup31h8" path="res://src/gui/components/cancel_button.tscn" id="2"]
 
 [node name="SettingsScreen" type="CanvasLayer"]
-pause_mode = 2
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="Hidable" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ColorRect" type="ColorRect" parent="Hidable"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 1.0
-margin_bottom = 1.0
-color = Color( 0.243137, 0.211765, 0.290196, 0.717647 )
+color = Color(0.243137, 0.211765, 0.290196, 0.717647)
 
-[node name="CancelButton" parent="Hidable" instance=ExtResource( 2 )]
+[node name="CancelButton" parent="Hidable" instance=ExtResource("2")]
+layout_mode = 0
+anchors_preset = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Hidable"]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -203.0
-margin_top = -195.5
-margin_right = 203.0
-margin_bottom = 195.5
 
 [node name="MusicVolumeContainer" type="VBoxContainer" parent="Hidable/VBoxContainer"]
-margin_right = 406.0
-margin_bottom = 34.0
+layout_mode = 2
 
 [node name="MusicVolumeLabelsContainer" type="HSplitContainer" parent="Hidable/VBoxContainer/MusicVolumeContainer"]
-margin_right = 406.0
-margin_bottom = 14.0
-grow_horizontal = 2
+layout_mode = 2
 
 [node name="MusicVolumeLabel" type="Label" parent="Hidable/VBoxContainer/MusicVolumeContainer/MusicVolumeLabelsContainer"]
-margin_right = 91.0
-margin_bottom = 14.0
-grow_horizontal = 2
+layout_mode = 2
 text = "Music Volume"
 
 [node name="MusicVolumeValueLabel" type="Label" parent="Hidable/VBoxContainer/MusicVolumeContainer/MusicVolumeLabelsContainer"]
-margin_left = 103.0
-margin_right = 406.0
-margin_bottom = 14.0
+layout_mode = 2
 text = "50"
-align = 2
+horizontal_alignment = 2
 
 [node name="MusicVolumeSlider" type="HSlider" parent="Hidable/VBoxContainer/MusicVolumeContainer"]
-margin_top = 18.0
-margin_right = 406.0
-margin_bottom = 34.0
+layout_mode = 2
 value = 50.0
 
 [connection signal="pressed" from="Hidable/CancelButton" to="." method="_on_CancelButton_pressed"]

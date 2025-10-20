@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5avtepgucbu0"]
 
 [ext_resource type="Texture2D" uid="uid://ci3sr0wk58j1t" path="res://assets/sprites/colorful_star.png" id="1"]
-[ext_resource type="Script" path="res://src/gui/hud/global_levels_hud/collected_stars_info/collected_stars_info.gd" id="1_lh01t"]
+[ext_resource type="Script" uid="uid://dne3pw3tno2hj" path="res://src/gui/hud/global_levels_hud/collected_stars_info/collected_stars_info.gd" id="1_lh01t"]
 
 [node name="CollectedStarsInfo" type="Control" groups=["update_on_star_collect"]]
 custom_minimum_size = Vector2(200, 80)

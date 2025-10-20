@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbu21il3emqxn"]
 
-[ext_resource type="Script" path="res://src/gui/global_levels_screens/win_game_layer/win_game_layer.gd" id="1"]
+[ext_resource type="Script" uid="uid://bus1r7d3p28e8" path="res://src/gui/global_levels_screens/win_game_layer/win_game_layer.gd" id="1"]
 [ext_resource type="Theme" uid="uid://db51ncs4eb7e0" path="res://assets/ui-theme.tres" id="3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_bvw4n"]

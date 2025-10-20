@@ -30,4 +30,3 @@ func present_level_name():
 		func():
 			color_rect.hide()
 	)
-

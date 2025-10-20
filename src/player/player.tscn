@@ -1,13 +1,13 @@
 [gd_scene load_steps=27 format=3 uid="uid://cs8s668yng5yt"]
 
-[ext_resource type="Script" path="res://src/player/player.gd" id="1"]
-[ext_resource type="Script" path="res://src/player/camera.gd" id="2_1lrpx"]
-[ext_resource type="Script" path="res://src/player/input.gd" id="2_6ltf4"]
+[ext_resource type="Script" uid="uid://hwfvfwbj3xkc" path="res://src/player/player.gd" id="1"]
+[ext_resource type="Script" uid="uid://cf6l6x0gjmy" path="res://src/player/camera.gd" id="2_1lrpx"]
+[ext_resource type="Script" uid="uid://ye7ew3hlwb78" path="res://src/player/input.gd" id="2_6ltf4"]
 [ext_resource type="PackedScene" uid="uid://yuoydsqi0qyg" path="res://assets/3d/skeleton-wings/source/wings.blend" id="3_2gl8a"]
-[ext_resource type="Script" path="res://src/player/wings.gd" id="4_huxau"]
-[ext_resource type="Script" path="res://src/player/weapon.gd" id="4_x4gqo"]
-[ext_resource type="Shader" path="res://assets/shaders/pp_outline.gdshader" id="5_7vn4u"]
-[ext_resource type="Script" path="res://src/player/first_person_camera.gd" id="5_vqa1e"]
+[ext_resource type="Script" uid="uid://cydedduxkl8df" path="res://src/player/wings.gd" id="4_huxau"]
+[ext_resource type="Script" uid="uid://d1fqgnyycvy1y" path="res://src/player/weapon.gd" id="4_x4gqo"]
+[ext_resource type="Shader" uid="uid://b66vqtwbwcx6d" path="res://assets/shaders/pp_outline.gdshader" id="5_7vn4u"]
+[ext_resource type="Script" uid="uid://mxgiv3mwx7l8" path="res://src/player/first_person_camera.gd" id="5_vqa1e"]
 [ext_resource type="PackedScene" uid="uid://dlsqaaifvy0tr" path="res://src/camera/motion_blur/motion_blur.tscn" id="8_a28n3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_haaje"]
@@ -59,18 +59,19 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_shbt6"]
 _data = {
-"RESET": SubResource("Animation_cwyvw"),
-"bat_hit": SubResource("Animation_ojo4n")
+&"RESET": SubResource("Animation_cwyvw"),
+&"bat_hit": SubResource("Animation_ojo4n")
 }
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dr2kn"]
 lifetime_randomness = 0.23
+particle_flag_align_y = true
 emission_shape = 6
 emission_ring_axis = Vector3(0, 1, 0)
 emission_ring_height = 0.5
 emission_ring_radius = 2.0
 emission_ring_inner_radius = 1.5
-particle_flag_align_y = true
+emission_ring_cone_angle = 90.0
 direction = Vector3(0, 1, 0)
 gravity = Vector3(5, -10, 5)
 radial_accel_min = -20.0
@@ -144,7 +145,7 @@ script = ExtResource("4_x4gqo")
 curve = SubResource("Curve3D_dls2p")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="PlayerPivot/Weapon/Path3D"]
-transform = Transform3D(-4.37113e-08, 0, -0.999999, 0, 0.999996, 0, 0.999997, 0, -4.37113e-08, 0.639625, 0.888855, 0.378629)
+transform = Transform3D(-4.3711257e-08, 0, -0.999999, 0, 0.999996, 0, 0.999997, 0, -4.3711346e-08, 0.639625, 0.888855, 0.378629)
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="PlayerPivot/Weapon/Path3D/PathFollow3D"]
 transform = Transform3D(0.00649187, -0.0313208, -0.999489, -0.202854, 0.978688, -0.0319865, 0.979188, 0.202959, -4.54639e-08, 0, 0, 0)
@@ -152,10 +153,10 @@ mesh = SubResource("CylinderMesh_pxb6j")
 material = SubResource("StandardMaterial3D_hbwbk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerPivot/Weapon"]
-speed_scale = 2.0
 libraries = {
-"": SubResource("AnimationLibrary_shbt6")
+&"": SubResource("AnimationLibrary_shbt6")
 }
+speed_scale = 2.0
 
 [node name="wings" parent="PlayerPivot" instance=ExtResource("3_2gl8a")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.23349e-08, -1.75977, 0.369868)

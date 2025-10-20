@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://c8jbtivpnxjtc"]
 
-[ext_resource type="Script" path="res://src/environment/rope/rope.gd" id="1_1leae"]
+[ext_resource type="Script" uid="uid://bwr0gt1hjd2ko" path="res://src/environment/rope/rope.gd" id="1_1leae"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rv544"]
 size = Vector3(3, 3, 3)
@@ -39,7 +39,7 @@ height = 10.0
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_lq11j"]
 seed = 38
 frequency = 0.042
-offset = Vector3(-53.16, 5.71429e+08, 46.43)
+offset = Vector3(-53.16, 571429000, 46.43)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8b5jv"]
 noise = SubResource("FastNoiseLite_lq11j")

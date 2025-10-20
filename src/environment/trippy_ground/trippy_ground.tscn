@@ -1,105 +1,24 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://cnxbv6nwrh62p"]
 
-[ext_resource path="res://src/environment/trippy_ground/trippy_ground.gd" type="Script" id=1]
+[ext_resource type="Script" uid="uid://ch64cpk5vf771" path="res://src/environment/trippy_ground/trippy_ground.gd" id="1"]
 
+[sub_resource type="BoxShape3D" id="1"]
+size = Vector3(60, 2, 60)
 
-
-
-[sub_resource type="BoxShape3D" id=1]
-extents = Vector3( 30, 1, 30 )
-
-[sub_resource type="BoxMesh" id=2]
-size = Vector3( 60, 2, 60 )
+[sub_resource type="BoxMesh" id="2"]
+size = Vector3(60, 2, 60)
 subdivide_width = 32
 subdivide_depth = 32
 
-[sub_resource type="Shader" id=3]
-code = "/*
-	ゆらゆらシェーダー by あるる（きのもと 結衣）
-	Yurayura Shader by Yui Kinomoto @arlez80
-
-	MIT License
-*/
-shader_type spatial;
-// render_mode;
-
-uniform float speed = 0.6;
-uniform float ring_scale = 4.4;
-uniform float wave_scale = 8.454;
-uniform float random_scale = 4.6;
-uniform float noise_scale = 0.03;
-
-
-vec3 hsv2rgb( float h, float s, float v )
-{
-	return (
-		(
-			clamp(
-				abs( fract( h + vec3( 0.0, 2.0, 1.0 ) / 3.0 ) * 6.0 - 3.0 ) - 1.0
-			,	0.0
-			,	1.0
-			) - 1.0
-		) * s + 1.0
-	) * v;
-}
-
-vec2 random( vec2 pos )
-{
-	return fract(
-		sin(
-			vec2(
-				dot(pos, vec2(12.9898,78.233))
-			,	dot(pos, vec2(-148.998,-65.233))
-			)
-		) * 43758.5453
-	);
-}
-
-float value_noise( vec2 pos )
-{
-	vec2 p = floor( pos );
-	vec2 f = fract( pos );
-
-	float v00 = random( p + vec2( 0.0, 0.0 ) ).x;
-	float v10 = random( p + vec2( 1.0, 0.0 ) ).x;
-	float v01 = random( p + vec2( 0.0, 1.0 ) ).x;
-	float v11 = random( p + vec2( 1.0, 1.0 ) ).x;
-
-	vec2 u = f * f * ( 3.0 - 2.0 * f );
-
-	return mix( mix( v00, v10, u.x ), mix( v01, v11, u.x ), u.y );
-}
-
-void fragment( )
-{
-	vec2 shift_uv = UV;
-	shift_uv.x += value_noise( UV * random_scale + sin( TIME * speed ) );
-	shift_uv.y += sin( cos( TIME ) * speed );
-	float x = shift_uv.x + sin( shift_uv.y * wave_scale );
-	float f = mod( x * ring_scale + random( UV ).x * noise_scale, 1.0 );
-
-	ALBEDO = hsv2rgb( f, 1.0, 1.0 );
-}
-"
-
-[sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 3 )
-shader_param/speed = 0.005
-shader_param/ring_scale = 0.753
-shader_param/wave_scale = 5.63
-shader_param/random_scale = 19.056
-shader_param/noise_scale = 0.0
-
 [node name="TrippyGround" type="Node3D"]
-script = ExtResource( 1 )
+script = ExtResource("1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource( 1 )
+shape = SubResource("1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.648075, 0.107721, 1.03733 )
-mesh = SubResource( 2 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.648075, 0.107721, 1.03733)
+mesh = SubResource("2")
 skeleton = NodePath("../..")
-material/0 = SubResource( 4 )

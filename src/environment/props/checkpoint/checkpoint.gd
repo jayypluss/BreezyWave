@@ -34,4 +34,3 @@ func start_animation():
 	tween.tween_property(torus_mesh, "position:y", (initial_y + move_length_y), 1)
 #	tween.tween_property(torus_mesh, "scale", Vector3(1, 1, 1), tween_duration_y)
 	tween.tween_callback(func(): show())
-
