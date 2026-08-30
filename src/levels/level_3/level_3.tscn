@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b5x1ekani3gnp"]
+[gd_scene format=3 uid="uid://b5x1ekani3gnp"]
 
 [ext_resource type="Script" uid="uid://mt0fri66qd2a" path="res://src/levels/level_3/level_3.gd" id="1_7icvl"]
 [ext_resource type="PackedScene" uid="uid://cs8s668yng5yt" path="res://src/player/player.tscn" id="2_aqvay"]
@@ -56,225 +56,228 @@ size = Vector3(15, 30.044, 15)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7oqv3"]
 size = Vector3(15, 0.1, 15)
 
-[node name="Level3" type="Node3D"]
+[node name="Level3" type="Node3D" unique_id=737667873]
 script = ExtResource("1_7icvl")
 
-[node name="Player" parent="." instance=ExtResource("2_aqvay")]
+[node name="Player" parent="." unique_id=379139726 instance=ExtResource("2_aqvay")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1536976198]
 environment = ExtResource("3_e5hxo")
 
-[node name="GlobalLight" type="DirectionalLight3D" parent="."]
+[node name="GlobalLight" type="DirectionalLight3D" parent="." unique_id=2139718144]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 102.381, -110.774)
 light_energy = 0.9
 shadow_enabled = true
 directional_shadow_max_distance = 300.0
 
-[node name="DyingTrigger" type="Area3D" parent="."]
+[node name="DyingTrigger" type="Area3D" parent="." unique_id=1966084378]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30069, -205.875)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DyingTrigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DyingTrigger" unique_id=583606989]
 transform = Transform3D(896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.372)
 shape = SubResource("BoxShape3D_llkap")
 
-[node name="Portal" parent="." instance=ExtResource("4_vour7")]
+[node name="Portal" parent="." unique_id=939304775 instance=ExtResource("4_vour7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8904, 272.031, -356.208)
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1908655546]
 stream = ExtResource("5_d7sk8")
 volume_db = -20.0
 
-[node name="Props" type="Node3D" parent="."]
+[node name="Props" type="Node3D" parent="." unique_id=1999429286]
 
-[node name="Spring" parent="Props" instance=ExtResource("14_dsvtk")]
+[node name="Spring" parent="Props" unique_id=1392973530 instance=ExtResource("14_dsvtk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.0067, 1.65763, -35.1827)
 
-[node name="Spring2" parent="Props" instance=ExtResource("14_dsvtk")]
+[node name="Spring2" parent="Props" unique_id=77461487 instance=ExtResource("14_dsvtk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -140.104, 19.4562, -61.8952)
 
-[node name="Spring3" parent="Props" instance=ExtResource("14_dsvtk")]
+[node name="Spring3" parent="Props" unique_id=1869603050 instance=ExtResource("14_dsvtk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.441, 34.875, -91.4058)
 
-[node name="Spring4" parent="Props" instance=ExtResource("14_dsvtk")]
+[node name="Spring4" parent="Props" unique_id=60284374 instance=ExtResource("14_dsvtk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.441, 56.8973, -129.775)
 
-[node name="Spring5" parent="Props" instance=ExtResource("14_dsvtk")]
+[node name="Spring5" parent="Props" unique_id=1018706408 instance=ExtResource("14_dsvtk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.441, 81.7098, -181.775)
 
-[node name="Spring6" parent="Props" instance=ExtResource("14_dsvtk")]
+[node name="Spring6" parent="Props" unique_id=2138764387 instance=ExtResource("14_dsvtk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.441, 104.572, -236.775)
 
-[node name="Spring7" parent="Props" instance=ExtResource("14_dsvtk")]
+[node name="Spring7" parent="Props" unique_id=603612540 instance=ExtResource("14_dsvtk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.2683, 123.156, -282.985)
 
-[node name="Spring8" parent="Props" instance=ExtResource("14_dsvtk")]
+[node name="Spring8" parent="Props" unique_id=1479558015 instance=ExtResource("14_dsvtk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3814, 157.555, -339.177)
 
-[node name="Spring9" parent="Props" instance=ExtResource("14_dsvtk")]
+[node name="Spring9" parent="Props" unique_id=351098638 instance=ExtResource("14_dsvtk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.28757, 174.872, -323.436)
 
-[node name="Spring10" parent="Props" instance=ExtResource("14_dsvtk")]
+[node name="Spring10" parent="Props" unique_id=135658609 instance=ExtResource("14_dsvtk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.304, 194.625, -290.803)
 
-[node name="Spring11" parent="Props" instance=ExtResource("14_dsvtk")]
+[node name="Spring11" parent="Props" unique_id=873879199 instance=ExtResource("14_dsvtk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.5264, 212.162, -274.618)
 
-[node name="Checkpoint" parent="Props" instance=ExtResource("7_3oku7")]
+[node name="Checkpoint" parent="Props" unique_id=879428472 instance=ExtResource("7_3oku7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.509, 123.167, -284.325)
 
-[node name="Grounds" type="Node3D" parent="."]
+[node name="Checkpoint2" parent="Props" unique_id=1501107786 instance=ExtResource("7_3oku7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5983949, -9.723467)
 
-[node name="MovingSmallPlatforms" type="Node3D" parent="Grounds"]
+[node name="Grounds" type="Node3D" parent="." unique_id=282323742]
 
-[node name="PedestalButton2" parent="Grounds/MovingSmallPlatforms" node_paths=PackedStringArray("movable_object") instance=ExtResource("9_ms3om")]
+[node name="MovingSmallPlatforms" type="Node3D" parent="Grounds" unique_id=1793627101]
+
+[node name="PedestalButton2" parent="Grounds/MovingSmallPlatforms" unique_id=2016659773 node_paths=PackedStringArray("movable_object") instance=ExtResource("9_ms3om")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.3589, 231.451, -342.815)
 movable_object = NodePath("../MovingSmallPlatform2")
 
-[node name="MovingSmallPlatform2" parent="Grounds/MovingSmallPlatforms" instance=ExtResource("8_0i4y4")]
+[node name="MovingSmallPlatform2" parent="Grounds/MovingSmallPlatforms" unique_id=1801920918 instance=ExtResource("8_0i4y4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.639, 230.68, -338.5)
 movement_vector = Vector3(0, 39, 0)
 
-[node name="StaticSmallPlatforms" type="Node3D" parent="Grounds"]
+[node name="StaticSmallPlatforms" type="Node3D" parent="Grounds" unique_id=697131449]
 
-[node name="StaticSmallPlatform1" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("10_w0byc")]
+[node name="StaticSmallPlatform1" parent="Grounds/StaticSmallPlatforms" unique_id=34161568 instance=ExtResource("10_w0byc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.9908, 10.3159, -51.6876)
 
-[node name="StaticSmallPlatform7" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("10_w0byc")]
+[node name="StaticSmallPlatform7" parent="Grounds/StaticSmallPlatforms" unique_id=1082543775 instance=ExtResource("10_w0byc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.9382, 4.70606, -35.2143)
 
-[node name="StaticSmallPlatform9" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("10_w0byc")]
+[node name="StaticSmallPlatform9" parent="Grounds/StaticSmallPlatforms" unique_id=1163008379 instance=ExtResource("10_w0byc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.9382, 6.87922, -51.6032)
 
-[node name="StaticSmallPlatform2" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("10_w0byc")]
+[node name="StaticSmallPlatform2" parent="Grounds/StaticSmallPlatforms" unique_id=1611782579 instance=ExtResource("10_w0byc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.6172, 12.9062, -51.6876)
 
-[node name="StaticSmallPlatform3" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("10_w0byc")]
+[node name="StaticSmallPlatform3" parent="Grounds/StaticSmallPlatforms" unique_id=1255439954 instance=ExtResource("10_w0byc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.4306, 15.9062, -51.6876)
 
-[node name="StaticSmallPlatform4" parent="Grounds/StaticSmallPlatforms" instance=ExtResource("10_w0byc")]
+[node name="StaticSmallPlatform4" parent="Grounds/StaticSmallPlatforms" unique_id=967421945 instance=ExtResource("10_w0byc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.393, 18.4407, -51.6876)
 
-[node name="BigPlatforms" type="Node3D" parent="Grounds"]
+[node name="BigPlatforms" type="Node3D" parent="Grounds" unique_id=1680040816]
 
-[node name="BigPlatform1" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+[node name="BigPlatform1" parent="Grounds/BigPlatforms" unique_id=2052613413 instance=ExtResource("11_f043s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.802, 0.662905, -19)
 mesh = SubResource("BoxMesh_emoci")
 material = SubResource("StandardMaterial3D_vst65")
 
-[node name="BigPlatform2" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+[node name="BigPlatform2" parent="Grounds/BigPlatforms" unique_id=544444704 instance=ExtResource("11_f043s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.79, 55.4995, -121.754)
 mesh = SubResource("BoxMesh_1feiq")
 material = SubResource("StandardMaterial3D_vst65")
 
-[node name="BigPlatform9" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+[node name="BigPlatform9" parent="Grounds/BigPlatforms" unique_id=1608995389 instance=ExtResource("11_f043s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.79, 33.4995, -82.7545)
 mesh = SubResource("BoxMesh_1feiq")
 material = SubResource("StandardMaterial3D_vst65")
 
-[node name="BigPlatform10" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+[node name="BigPlatform10" parent="Grounds/BigPlatforms" unique_id=883687659 instance=ExtResource("11_f043s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131.364, 18.0722, -52.7545)
 mesh = SubResource("BoxMesh_1feiq")
 material = SubResource("StandardMaterial3D_vst65")
 
-[node name="BigPlatform4" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+[node name="BigPlatform4" parent="Grounds/BigPlatforms" unique_id=1573759644 instance=ExtResource("11_f043s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.79, 80.2599, -173.754)
 mesh = SubResource("BoxMesh_1feiq")
 material = SubResource("StandardMaterial3D_vst65")
 
-[node name="BigPlatform5" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+[node name="BigPlatform5" parent="Grounds/BigPlatforms" unique_id=1770073077 instance=ExtResource("11_f043s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.79, 103.123, -228.754)
 mesh = SubResource("BoxMesh_1feiq")
 material = SubResource("StandardMaterial3D_vst65")
 
-[node name="BigPlatform6" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+[node name="BigPlatform6" parent="Grounds/BigPlatforms" unique_id=421357358 instance=ExtResource("11_f043s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.618, 121.706, -275.964)
 mesh = SubResource("BoxMesh_1feiq")
 material = SubResource("StandardMaterial3D_vst65")
 
-[node name="Spring12" parent="Grounds/BigPlatforms" instance=ExtResource("14_dsvtk")]
+[node name="Spring12" parent="Grounds/BigPlatforms" unique_id=1049606723 instance=ExtResource("14_dsvtk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.3521, 138.989, -319.838)
 
-[node name="BigPlatform7" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+[node name="BigPlatform7" parent="Grounds/BigPlatforms" unique_id=1228174100 instance=ExtResource("11_f043s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.7012, 137.54, -312.818)
 mesh = SubResource("BoxMesh_1feiq")
 material = SubResource("StandardMaterial3D_vst65")
 
-[node name="BigPlatform8" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+[node name="BigPlatform8" parent="Grounds/BigPlatforms" unique_id=626225455 instance=ExtResource("11_f043s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.6248, 156.105, -341.762)
 mesh = SubResource("BoxMesh_1feiq")
 material = SubResource("StandardMaterial3D_vst65")
 
-[node name="BigPlatform11" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+[node name="BigPlatform11" parent="Grounds/BigPlatforms" unique_id=1539958097 instance=ExtResource("11_f043s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.68361, 173.422, -325.754)
 mesh = SubResource("BoxMesh_1feiq")
 material = SubResource("StandardMaterial3D_vst65")
 
-[node name="BigPlatform13" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+[node name="BigPlatform13" parent="Grounds/BigPlatforms" unique_id=883206070 instance=ExtResource("11_f043s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2098, 193.175, -296.598)
 mesh = SubResource("BoxMesh_1feiq")
 material = SubResource("StandardMaterial3D_vst65")
 
-[node name="BigPlatform14" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+[node name="BigPlatform14" parent="Grounds/BigPlatforms" unique_id=1303398599 instance=ExtResource("11_f043s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.8326, 210.713, -269.594)
 mesh = SubResource("BoxMesh_1feiq")
 material = SubResource("StandardMaterial3D_vst65")
 
-[node name="BigPlatform3" parent="Grounds/BigPlatforms" instance=ExtResource("11_f043s")]
+[node name="BigPlatform3" parent="Grounds/BigPlatforms" unique_id=1116803271 instance=ExtResource("11_f043s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8553, 230.203, -338.241)
 mesh = SubResource("BoxMesh_faibq")
 material = SubResource("StandardMaterial3D_vst65")
 
-[node name="PyramidLikePiledPlatforms" type="Node3D" parent="."]
+[node name="PyramidLikePiledPlatforms" type="Node3D" parent="." unique_id=888358361]
 script = ExtResource("15_084ve")
 
-[node name="Combiner" type="CSGCombiner3D" parent="PyramidLikePiledPlatforms"]
+[node name="Combiner" type="CSGCombiner3D" parent="PyramidLikePiledPlatforms" unique_id=1769231852]
 use_collision = true
 collision_layer = 2
 
-[node name="FirstFloorMesh" type="CSGMesh3D" parent="PyramidLikePiledPlatforms/Combiner"]
+[node name="FirstFloorMesh" type="CSGMesh3D" parent="PyramidLikePiledPlatforms/Combiner" unique_id=1917133412]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8553, 243.318, -338.241)
 mesh = SubResource("BoxMesh_dg6dq")
 material = SubResource("StandardMaterial3D_uhdb0")
 
-[node name="SecondFloorMesh" type="CSGMesh3D" parent="PyramidLikePiledPlatforms/Combiner"]
+[node name="SecondFloorMesh" type="CSGMesh3D" parent="PyramidLikePiledPlatforms/Combiner" unique_id=805764912]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8553, 256.318, -338.241)
 mesh = SubResource("BoxMesh_8tajm")
 material = SubResource("StandardMaterial3D_vcwcn")
 
-[node name="ThirdFloorMesh" type="CSGMesh3D" parent="PyramidLikePiledPlatforms/Combiner"]
+[node name="ThirdFloorMesh" type="CSGMesh3D" parent="PyramidLikePiledPlatforms/Combiner" unique_id=348223867]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8553, 269.318, -338.241)
 mesh = SubResource("BoxMesh_j2g4k")
 material = SubResource("StandardMaterial3D_kggag")
 
-[node name="HoleMesh" type="CSGMesh3D" parent="PyramidLikePiledPlatforms/Combiner"]
+[node name="HoleMesh" type="CSGMesh3D" parent="PyramidLikePiledPlatforms/Combiner" unique_id=1396833186]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.855, 255.819, -338.241)
 operation = 2
 mesh = SubResource("BoxMesh_1fmdr")
 
-[node name="FirstFloorEnter" type="Area3D" parent="PyramidLikePiledPlatforms"]
+[node name="FirstFloorEnter" type="Area3D" parent="PyramidLikePiledPlatforms" unique_id=1950020067]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8553, 68.6143, -338.241)
 
-[node name="Collision" type="CollisionShape3D" parent="PyramidLikePiledPlatforms/FirstFloorEnter"]
+[node name="Collision" type="CollisionShape3D" parent="PyramidLikePiledPlatforms/FirstFloorEnter" unique_id=239417002]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 174.704, 0)
 shape = SubResource("BoxShape3D_7oqv3")
 
-[node name="SecondFloorEnter2" type="Area3D" parent="PyramidLikePiledPlatforms"]
+[node name="SecondFloorEnter2" type="Area3D" parent="PyramidLikePiledPlatforms" unique_id=1014621369]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8553, 81.6143, -338.241)
 
-[node name="Collision" type="CollisionShape3D" parent="PyramidLikePiledPlatforms/SecondFloorEnter2"]
+[node name="Collision" type="CollisionShape3D" parent="PyramidLikePiledPlatforms/SecondFloorEnter2" unique_id=518946312]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 174.704, 0)
 shape = SubResource("BoxShape3D_7oqv3")
 
-[node name="ThirdFloorEnter3" type="Area3D" parent="PyramidLikePiledPlatforms"]
+[node name="ThirdFloorEnter3" type="Area3D" parent="PyramidLikePiledPlatforms" unique_id=1433936045]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.8553, 94.6143, -338.241)
 
-[node name="Collision" type="CollisionShape3D" parent="PyramidLikePiledPlatforms/ThirdFloorEnter3"]
+[node name="Collision" type="CollisionShape3D" parent="PyramidLikePiledPlatforms/ThirdFloorEnter3" unique_id=846940825]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 174.704, 0)
 shape = SubResource("BoxShape3D_7oqv3")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1739183353]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -285,174 +288,174 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 1
 
-[node name="HUD" parent="Control" instance=ExtResource("12_423b5")]
+[node name="HUD" parent="Control" unique_id=1514381180 instance=ExtResource("12_423b5")]
 layout_mode = 1
 mouse_filter = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="TutorialControl" parent="Control" instance=ExtResource("13_d0xey")]
+[node name="TutorialControl" parent="Control" unique_id=1935542552 instance=ExtResource("13_d0xey")]
 layout_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Step6" parent="Control/TutorialControl/Triggers" index="0" node_paths=PackedStringArray("control") instance=ExtResource("14_6nam4")]
+[node name="Step6" parent="Control/TutorialControl/Triggers" index="0" unique_id=543106474 node_paths=PackedStringArray("control") instance=ExtResource("14_6nam4")]
 transform = Transform3D(-0.457146, 0.00767596, 0.889358, 0.00371272, 0.99997, -0.00672224, -0.889384, 0.00022889, -0.457161, -26.233, 1.78516, -19.8921)
 control = NodePath("../..")
 
-[node name="Step7" parent="Control/TutorialControl/Triggers" index="1" node_paths=PackedStringArray("control") instance=ExtResource("14_6nam4")]
+[node name="Step7" parent="Control/TutorialControl/Triggers" index="1" unique_id=835559707 node_paths=PackedStringArray("control") instance=ExtResource("14_6nam4")]
 transform = Transform3D(-0.528454, 0.00766892, 0.848927, 0.00371272, 0.99997, -0.00672224, -0.848954, -0.000400569, -0.528467, -125.996, 19.1813, -49.2092)
 control = NodePath("../..")
 
-[node name="GlobalLevelsScreens" parent="Control" instance=ExtResource("15_8e62s")]
+[node name="GlobalLevelsScreens" parent="Control" unique_id=695924179 instance=ExtResource("15_8e62s")]
 layout_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Stars" type="Node3D" parent="."]
+[node name="Stars" type="Node3D" parent="." unique_id=157163128]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 4, 0)
 
-[node name="ColorfulStar10" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar10" parent="Stars" unique_id=472143110 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 3, -36)
 
-[node name="ColorfulStar11" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar11" parent="Stars" unique_id=1774480056 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 5, -51)
 
-[node name="ColorfulStar12" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar12" parent="Stars" unique_id=160227451 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55, 8.59352, -52)
 
-[node name="ColorfulStar13" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar13" parent="Stars" unique_id=283979119 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.6452, 11, -51.7516)
 
-[node name="ColorfulStar14" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar14" parent="Stars" unique_id=1564892754 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.5624, 14, -51.7516)
 
-[node name="ColorfulStar15" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar15" parent="Stars" unique_id=39194820 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.5624, 16.6154, -51.7516)
 
-[node name="ColorfulStar16" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar16" parent="Stars" unique_id=154878080 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.113, 24.9452, -61.8526)
 
-[node name="ColorfulStar17" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar17" parent="Stars" unique_id=1934729624 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.113, 33.9452, -61.8526)
 
-[node name="ColorfulStar18" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar18" parent="Stars" unique_id=1997052903 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.113, 42.9452, -61.8526)
 
-[node name="ColorfulStar19" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar19" parent="Stars" unique_id=158051276 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.113, 58.9452, -101.853)
 
-[node name="ColorfulStar20" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar20" parent="Stars" unique_id=651052448 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.113, 80.9452, -157.853)
 
-[node name="ColorfulStar21" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar21" parent="Stars" unique_id=1338155910 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.113, 104.945, -210.853)
 
-[node name="ColorfulStar22" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar22" parent="Stars" unique_id=1565154530 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.113, 122.945, -257.853)
 
-[node name="ColorfulStar23" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar23" parent="Stars" unique_id=1522645308 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.1126, 140.945, -292.853)
 
-[node name="ColorfulStar24" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar24" parent="Stars" unique_id=463862101 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.1126, 157.945, -326.853)
 
-[node name="ColorfulStar25" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar25" parent="Stars" unique_id=1484460119 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112579, 172.945, -333.853)
 
-[node name="ColorfulStar26" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar26" parent="Stars" unique_id=733537959 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8874, 197.945, -312.853)
 
-[node name="ColorfulStar27" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar27" parent="Stars" unique_id=1435271731 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.8874, 213.945, -287.853)
 
-[node name="ColorfulStar28" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar28" parent="Stars" unique_id=83210195 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.8874, 233.945, -304.853)
 
-[node name="ColorfulStar29" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar29" parent="Stars" unique_id=1277919330 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.887, 235.554, -338.335)
 
-[node name="ColorfulStar30" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar30" parent="Stars" unique_id=2142086606 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.887, 248.72, -338.335)
 
-[node name="ColorfulStar31" parent="Stars" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar31" parent="Stars" unique_id=1736855969 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.887, 262.734, -338.335)
 
-[node name="StarsGroup1" type="Node3D" parent="Stars"]
+[node name="StarsGroup1" type="Node3D" parent="Stars" unique_id=1564338092]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -32)
 
-[node name="ColorfulStar" parent="Stars/StarsGroup1" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar" parent="Stars/StarsGroup1" unique_id=1210125913 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
 
-[node name="ColorfulStar2" parent="Stars/StarsGroup1" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar2" parent="Stars/StarsGroup1" unique_id=2053009679 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 
-[node name="ColorfulStar3" parent="Stars/StarsGroup1" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar3" parent="Stars/StarsGroup1" unique_id=1293114597 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
 
-[node name="ColorfulStar4" parent="Stars/StarsGroup1" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar4" parent="Stars/StarsGroup1" unique_id=2019843048 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 
-[node name="ColorfulStar5" parent="Stars/StarsGroup1" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar5" parent="Stars/StarsGroup1" unique_id=1887080356 instance=ExtResource("17_j6xf5")]
 
-[node name="ColorfulStar6" parent="Stars/StarsGroup1" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar6" parent="Stars/StarsGroup1" unique_id=1579547071 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 
-[node name="ColorfulStar7" parent="Stars/StarsGroup1" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar7" parent="Stars/StarsGroup1" unique_id=1561022508 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
 
-[node name="ColorfulStar8" parent="Stars/StarsGroup1" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar8" parent="Stars/StarsGroup1" unique_id=1374005143 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 
-[node name="ColorfulStar9" parent="Stars/StarsGroup1" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar9" parent="Stars/StarsGroup1" unique_id=1124820675 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
 
-[node name="StarsGroup2" type="Node3D" parent="Stars"]
+[node name="StarsGroup2" type="Node3D" parent="Stars" unique_id=1143402536]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.887, 268.734, -338.335)
 
-[node name="ColorfulStar32" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar32" parent="Stars/StarsGroup2" unique_id=790880560 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 
-[node name="ColorfulStar33" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar33" parent="Stars/StarsGroup2" unique_id=1724522991 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 5)
 
-[node name="ColorfulStar34" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar34" parent="Stars/StarsGroup2" unique_id=1484385617 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10)
 
-[node name="ColorfulStar35" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar35" parent="Stars/StarsGroup2" unique_id=95203007 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 10)
 
-[node name="ColorfulStar36" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar36" parent="Stars/StarsGroup2" unique_id=1563608838 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 
-[node name="ColorfulStar37" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar37" parent="Stars/StarsGroup2" unique_id=2066977434 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 10)
 
-[node name="ColorfulStar38" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar38" parent="Stars/StarsGroup2" unique_id=859439311 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
 
-[node name="ColorfulStar39" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar39" parent="Stars/StarsGroup2" unique_id=303473437 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 5)
 
-[node name="ColorfulStar40" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar40" parent="Stars/StarsGroup2" unique_id=1997392762 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
 
-[node name="ColorfulStar41" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar41" parent="Stars/StarsGroup2" unique_id=1806511900 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -5)
 
-[node name="ColorfulStar42" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar42" parent="Stars/StarsGroup2" unique_id=1725358818 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10)
 
-[node name="ColorfulStar43" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar43" parent="Stars/StarsGroup2" unique_id=1296688145 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -10)
 
-[node name="ColorfulStar44" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar44" parent="Stars/StarsGroup2" unique_id=581250793 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 
-[node name="ColorfulStar45" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar45" parent="Stars/StarsGroup2" unique_id=1505464140 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -10)
 
-[node name="ColorfulStar46" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar46" parent="Stars/StarsGroup2" unique_id=738759157 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10)
 
-[node name="ColorfulStar47" parent="Stars/StarsGroup2" instance=ExtResource("17_j6xf5")]
+[node name="ColorfulStar47" parent="Stars/StarsGroup2" unique_id=1517312582 instance=ExtResource("17_j6xf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -5)
 
 [connection signal="body_entered" from="DyingTrigger" to="." method="_on_DyingTrigger_body_entered"]

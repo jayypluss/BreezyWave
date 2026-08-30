@@ -10,9 +10,9 @@ func _physics_process(_delta):
 		$BounceSoundEffect.play()
 		$AnimationPlayer.play("shrink_and_expand")
 		if Input.is_action_pressed("jump"):
-			player_inisde.input.force_jump(high_multiplier)
+			player_inisde.input.trigger_bounce(high_multiplier)
 		else:
-			player_inisde.input.force_jump(low_multiplier)
+			player_inisde.input.trigger_bounce(low_multiplier)
 
 func _on_spring_trigger_body_entered(player: Player):
 	player_inisde = player

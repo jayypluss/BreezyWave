@@ -9,16 +9,14 @@ signal toggle_camera(options)
 @onready var dash_timer = $"../PlayerPivot/Effects/DashTimer"
 
 @export var walk_speed := 14.0
-@export var run_speed := 50.0
+@export var run_speed := 30.0
 @export var jump_impulse := 30.0
 @export var dash_impulse := 800.0
 @export var fall_acceleration := 95.0
 @export var glide_velocity_multiplier := 0.15
 
 var first_person := false
-var is_double_jump_available := false
 var paused := false
-var available_jumps := 1
 var is_gliding := false
 var dash_available := true
 # Starts as "forward", might behave weird depending checked spawn direction.
@@ -29,20 +27,31 @@ var speed = 0
 # Power-ups
 var has_dash: bool = false
 var has_glide: bool = false
-var num_of_jumps: int = 1
 
 var lock_movement := false
 
+var default_jump_multiplier := 1.0
 var jump_multiplier := 1.0
 
-func force_jump(multiplier: float = 1.0):
+var total_num_of_jumps: int = 1
+var available_jumps := 1
+
+
+func trigger_bounce(multiplier: float = 1.0):
 	jump_multiplier = multiplier
+	
+func reset_jumps():
+	available_jumps = total_num_of_jumps
+	
+func reset_jump_multiplier():
+	jump_multiplier = default_jump_multiplier
 
 func _ready():
 	if %FirstPersonCamera.current:
 		first_person = true
 	player = self.owner
-	available_jumps = num_of_jumps
+	reset_jumps()
+	reset_jump_multiplier()
 	last_direction = Vector3.FORWARD.rotated(Vector3.UP,
 		%CameraPivot/Horizontal.global_transform.basis.get_euler().y).normalized()
 
@@ -138,18 +147,42 @@ func _physics_process(delta: float) -> void:
 				if dash_effect:
 					dash_effect.set_emitting(true)
 				dash_timer.start()
-	
-	if Input.is_action_pressed("jump") or jump_multiplier > 1.0:
-		if num_of_jumps == 1 and !player.is_on_floor() and player.get_slide_collision_count() == 0:
-			available_jumps = 0
-			jump_multiplier = 1.0
-			
+
+	print("available_jumps: ", available_jumps)
+	if Input.is_action_just_pressed("jump"):
 		if available_jumps > 0:
-			available_jumps -= 1
-			player.velocity.y = jump_impulse*jump_multiplier
+			available_jumps = available_jumps - 1
+			print("available_jumps: ", available_jumps)
+			player.velocity.y = jump_impulse * jump_multiplier
 			if jump_effect:
 				jump_effect.set_emitting(true)
 			last_direction = direction
+
+	elif jump_multiplier > 1.0:
+		if available_jumps > 0:
+			available_jumps = available_jumps - 1
+			player.velocity.y = jump_impulse * jump_multiplier
+			if jump_effect:
+				jump_effect.set_emitting(true)
+			last_direction = direction
+
+	if player.is_on_floor() and player.get_slide_collision_count() > 0:
+		print("resetting..................")
+		reset_jumps()
+		reset_jump_multiplier()
+		
+
+	#if Input.is_action_pressed("jump") or jump_multiplier > 1.0:
+		#if total_num_of_jumps == 1 and !player.is_on_floor() and player.get_slide_collision_count() == 0:
+			#available_jumps = 0
+			#jump_multiplier = 1.0
+			#
+		#if available_jumps > 0:
+			#available_jumps -= 1
+			#player.velocity.y = jump_impulse*jump_multiplier
+			#if jump_effect:
+				#jump_effect.set_emitting(true)
+			#last_direction = direction
 	
 	if has_glide:
 		if (Input.is_action_pressed("jump") && player.velocity.y < 0): # Glid
@@ -173,9 +206,6 @@ func _physics_process(delta: float) -> void:
 	player.set_up_direction(Vector3.UP)
 	player.move_and_slide()
 	player.velocity = player.velocity
-
-	if player.is_on_floor() and player.get_slide_collision_count() > 0: # Reset jumps.
-		available_jumps = num_of_jumps
 
 func _on_dash_timer_timeout():
 	dash_available = true

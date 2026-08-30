@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b7vtahc6q0b8m"]
+[gd_scene format=3 uid="uid://b7vtahc6q0b8m"]
 
 [ext_resource type="PackedScene" uid="uid://cwpuckodvirju" path="res://src/environment/floating_round_island/floating_round_island.tscn" id="1"]
 [ext_resource type="Script" uid="uid://2h26wpx26duo" path="res://src/levels/level_test/level_test.gd" id="1_tvl7c"]
@@ -49,665 +49,666 @@ albedo_color = Color(0.301961, 0.192157, 0.752941, 1)
 material = SubResource("StandardMaterial3D_vst65")
 size = Vector3(35, 1, 35)
 
-[node name="LevelTest" type="Node3D"]
+[node name="LevelTest" type="Node3D" unique_id=625891104]
 script = ExtResource("1_tvl7c")
 
-[node name="Player" parent="." instance=ExtResource("2")]
+[node name="Player" parent="." unique_id=1933804196 instance=ExtResource("2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.514732, 5.13396, 0.981552)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1929249691]
 environment = ExtResource("3_doicm")
 
-[node name="GlobalLight" type="DirectionalLight3D" parent="."]
+[node name="GlobalLight" type="DirectionalLight3D" parent="." unique_id=450246295]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 102.381, -110.774)
 light_energy = 0.9
 shadow_enabled = true
 directional_shadow_max_distance = 300.0
 
-[node name="DyingTrigger" type="Area3D" parent="."]
+[node name="DyingTrigger" type="Area3D" parent="." unique_id=1009466664]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30069, -205.875)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DyingTrigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DyingTrigger" unique_id=34143336]
 transform = Transform3D(896.266, 0, 0, 0, 1, 0, 0, 0, 896.266, 0, -57.0031, 110.372)
 shape = SubResource("BoxShape3D_llkap")
 
-[node name="PortalTrigger" type="Area3D" parent="."]
+[node name="PortalTrigger" type="Area3D" parent="." unique_id=1208417388]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344, 5.39477, -306.761)
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PortalTrigger"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PortalTrigger" unique_id=231237746]
 transform = Transform3D(22.5913, 0, 0, 0, 18.0731, 0, 0, 0, 1.25507, 0, 0, 0)
 shape = SubResource("5")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PortalTrigger"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PortalTrigger" unique_id=1490753370]
 transform = Transform3D(5.4, 0, 0, 0, 4.32, 0, 0, 0, 0.3, 0, 0, 0)
 mesh = SubResource("6")
 surface_material_override/0 = SubResource("ShaderMaterial_svmrm")
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1278833210]
 stream = ExtResource("13")
 volume_db = -20.0
 
-[node name="Interactables" type="Node3D" parent="."]
+[node name="Interactables" type="Node3D" parent="." unique_id=2044289436]
 
-[node name="MovingPlatform1Button" parent="Interactables" instance=ExtResource("16")]
+[node name="MovingPlatform1Button" parent="Interactables" unique_id=1364265131 instance=ExtResource("16")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8201, 1.90573, -28.3489)
 
-[node name="MovingPlatform1" parent="Interactables" instance=ExtResource("4")]
+[node name="MovingPlatform1" parent="Interactables" unique_id=1884796535 instance=ExtResource("4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5807, 0.950626, -23.9323)
 
-[node name="SecretePassage1Button" parent="Interactables" instance=ExtResource("16")]
+[node name="SecretePassage1Button" parent="Interactables" unique_id=593583026 instance=ExtResource("16")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.15, 1.82993, -95.3299)
 can_deactivate = false
 
-[node name="SecretPassagePlatform1" parent="Interactables" instance=ExtResource("17")]
+[node name="SecretPassagePlatform1" parent="Interactables" unique_id=1215482869 instance=ExtResource("17")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -120.32, 1.0095, -89.0329)
 
-[node name="ColorfulStar84" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar84" parent="Interactables/SecretPassagePlatform1" unique_id=106501219 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -7.60777)
 visible = false
 
-[node name="ColorfulStar85" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar85" parent="Interactables/SecretPassagePlatform1" unique_id=426883925 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -7.60777)
 visible = false
 
-[node name="ColorfulStar86" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar86" parent="Interactables/SecretPassagePlatform1" unique_id=750001719 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -7.60777)
 visible = false
 
-[node name="ColorfulStar87" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar87" parent="Interactables/SecretPassagePlatform1" unique_id=1887992217 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -7.60777)
 visible = false
 
-[node name="ColorfulStar88" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar88" parent="Interactables/SecretPassagePlatform1" unique_id=1893064659 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -4.60777)
 visible = false
 
-[node name="ColorfulStar89" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar89" parent="Interactables/SecretPassagePlatform1" unique_id=1879043108 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -4.60777)
 visible = false
 
-[node name="ColorfulStar90" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar90" parent="Interactables/SecretPassagePlatform1" unique_id=1573141451 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -4.60777)
 visible = false
 
-[node name="ColorfulStar91" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar91" parent="Interactables/SecretPassagePlatform1" unique_id=1255868248 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -4.60777)
 visible = false
 
-[node name="ColorfulStar92" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar92" parent="Interactables/SecretPassagePlatform1" unique_id=149004808 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, -1.60777)
 visible = false
 
-[node name="ColorfulStar93" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar93" parent="Interactables/SecretPassagePlatform1" unique_id=604559888 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, -1.60777)
 visible = false
 
-[node name="ColorfulStar94" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar94" parent="Interactables/SecretPassagePlatform1" unique_id=1624196539 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, -1.60777)
 visible = false
 
-[node name="ColorfulStar95" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar95" parent="Interactables/SecretPassagePlatform1" unique_id=677912412 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, -1.60777)
 visible = false
 
-[node name="ColorfulStar96" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar96" parent="Interactables/SecretPassagePlatform1" unique_id=301550437 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 1.39223)
 visible = false
 
-[node name="ColorfulStar97" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar97" parent="Interactables/SecretPassagePlatform1" unique_id=1598230801 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 1.39223)
 visible = false
 
-[node name="ColorfulStar98" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar98" parent="Interactables/SecretPassagePlatform1" unique_id=2112566213 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 1.39223)
 visible = false
 
-[node name="ColorfulStar99" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar99" parent="Interactables/SecretPassagePlatform1" unique_id=1469421555 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 1.39223)
 visible = false
 
-[node name="ColorfulStar100" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar100" parent="Interactables/SecretPassagePlatform1" unique_id=1420484726 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 4.39223)
 visible = false
 
-[node name="ColorfulStar101" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar101" parent="Interactables/SecretPassagePlatform1" unique_id=377977819 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 4.39223)
 visible = false
 
-[node name="ColorfulStar102" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar102" parent="Interactables/SecretPassagePlatform1" unique_id=973530057 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 4.39223)
 visible = false
 
-[node name="ColorfulStar103" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar103" parent="Interactables/SecretPassagePlatform1" unique_id=1651606950 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 4.39223)
 visible = false
 
-[node name="ColorfulStar104" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar104" parent="Interactables/SecretPassagePlatform1" unique_id=1094119043 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89669, 3, 7.39223)
 visible = false
 
-[node name="ColorfulStar105" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar105" parent="Interactables/SecretPassagePlatform1" unique_id=1705339396 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8967, 3, 7.39223)
 visible = false
 
-[node name="ColorfulStar106" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar106" parent="Interactables/SecretPassagePlatform1" unique_id=50678578 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8967, 3, 7.39223)
 visible = false
 
-[node name="ColorfulStar107" parent="Interactables/SecretPassagePlatform1" instance=ExtResource("14")]
+[node name="ColorfulStar107" parent="Interactables/SecretPassagePlatform1" unique_id=951873667 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8967, 3, 7.39223)
 visible = false
 
-[node name="StaticPlatforms" type="Node3D" parent="."]
+[node name="StaticPlatforms" type="Node3D" parent="." unique_id=1050702229]
 
-[node name="Platform" parent="StaticPlatforms" instance=ExtResource("6")]
+[node name="Platform" parent="StaticPlatforms" unique_id=1057054530 instance=ExtResource("6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.9754, -25.6723, -287.732)
 
-[node name="Platform2" parent="StaticPlatforms" instance=ExtResource("6")]
+[node name="Platform2" parent="StaticPlatforms" unique_id=1508503037 instance=ExtResource("6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0284, -22.3732, -295.592)
 
-[node name="Platform3" parent="StaticPlatforms" instance=ExtResource("6")]
+[node name="Platform3" parent="StaticPlatforms" unique_id=1438953481 instance=ExtResource("6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06499, -18.5628, -299.583)
 
-[node name="Platform4" parent="StaticPlatforms" instance=ExtResource("6")]
+[node name="Platform4" parent="StaticPlatforms" unique_id=854341570 instance=ExtResource("6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.26649, -15.412, -305.084)
 
-[node name="Platform5" parent="StaticPlatforms" instance=ExtResource("6")]
+[node name="Platform5" parent="StaticPlatforms" unique_id=1522978646 instance=ExtResource("6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7496, -10.9007, -311.475)
 
-[node name="Platform6" parent="StaticPlatforms" instance=ExtResource("6")]
+[node name="Platform6" parent="StaticPlatforms" unique_id=1410672308 instance=ExtResource("6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.875, -6.91206, -301.515)
 
-[node name="Platform7" parent="StaticPlatforms" instance=ExtResource("6")]
+[node name="Platform7" parent="StaticPlatforms" unique_id=1534470426 instance=ExtResource("6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.9162, -3.82698, -290.21)
 
-[node name="Platform10" parent="StaticPlatforms" instance=ExtResource("6")]
+[node name="Platform10" parent="StaticPlatforms" unique_id=1457323594 instance=ExtResource("6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.4732, -14.1037, -148.666)
 
-[node name="Platform11" parent="StaticPlatforms" instance=ExtResource("6")]
+[node name="Platform11" parent="StaticPlatforms" unique_id=1059750532 instance=ExtResource("6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.473, -8.19539, -138.666)
 
-[node name="Platform12" parent="StaticPlatforms" instance=ExtResource("6")]
+[node name="Platform12" parent="StaticPlatforms" unique_id=2049733357 instance=ExtResource("6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.473, -1.35414, -128.666)
 
-[node name="Platform8" type="CharacterBody3D" parent="StaticPlatforms"]
+[node name="Platform8" type="CharacterBody3D" parent="StaticPlatforms" unique_id=1244278972]
 transform = Transform3D(-2.36042e-07, 5.4, -2.36042e-07, 2.98023e-08, -4.37114e-08, -1, -1, -4.37114e-08, -2.98023e-08, 15.6883, 0.766208, -282.425)
 collision_layer = 2
 
-[node name="Mesh" type="MeshInstance3D" parent="StaticPlatforms/Platform8"]
+[node name="Mesh" type="MeshInstance3D" parent="StaticPlatforms/Platform8" unique_id=583574845]
 transform = Transform3D(1, 0, 0, 0, 1, 1.3027e-15, -2.4869e-14, 1.3027e-15, 1, 0, 0, 0)
 mesh = SubResource("11")
 surface_material_override/0 = SubResource("StandardMaterial3D_i8in6")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticPlatforms/Platform8"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticPlatforms/Platform8" unique_id=418352674]
 shape = SubResource("13")
 
-[node name="Platform9" type="CharacterBody3D" parent="StaticPlatforms"]
+[node name="Platform9" type="CharacterBody3D" parent="StaticPlatforms" unique_id=1611479645]
 transform = Transform3D(-1, 1.19209e-07, -2.98023e-08, 2.98023e-08, -4.37114e-08, -1, 2.08616e-07, -5.4, 2.36042e-07, -0.31172, 0.766208, -293.425)
 collision_layer = 2
 
-[node name="Mesh" type="MeshInstance3D" parent="StaticPlatforms/Platform9"]
+[node name="Mesh" type="MeshInstance3D" parent="StaticPlatforms/Platform9" unique_id=1329240045]
 transform = Transform3D(1, 0, 3.56454e-14, 0, 1, 0, -3.56148e-14, 0, 1, 0, 0, 0)
 mesh = SubResource("11")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_i8in6")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticPlatforms/Platform9"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticPlatforms/Platform9" unique_id=1092437938]
 transform = Transform3D(1, 0, 4.27508e-14, 0, 1, 0, -4.27202e-14, 0, 1, 0, 0, 0)
 shape = SubResource("13")
 
-[node name="Springs" type="Node3D" parent="."]
+[node name="Springs" type="Node3D" parent="." unique_id=1522198122]
 
-[node name="Spring2" parent="Springs" instance=ExtResource("12")]
+[node name="Spring2" parent="Springs" unique_id=207297741 instance=ExtResource("12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0297318, -27.7477, -224.964)
 
-[node name="Spring3" parent="Springs" instance=ExtResource("12")]
+[node name="Spring3" parent="Springs" unique_id=1262249385 instance=ExtResource("12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2928, -13.0334, -148.167)
 
-[node name="Spring5" parent="Springs" instance=ExtResource("12")]
+[node name="Spring5" parent="Springs" unique_id=1509251274 instance=ExtResource("12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1984, -17.2341, -184.66)
 
-[node name="Spring6" parent="Springs" instance=ExtResource("12")]
+[node name="Spring6" parent="Springs" unique_id=62755874 instance=ExtResource("12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.4222, -6.33497, -146.242)
 
-[node name="Spring7" parent="Springs" instance=ExtResource("12")]
+[node name="Spring7" parent="Springs" unique_id=304811140 instance=ExtResource("12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.141, 1.86572, -148.947)
 
-[node name="Spring8" parent="Springs" instance=ExtResource("12")]
+[node name="Spring8" parent="Springs" unique_id=918264131 instance=ExtResource("12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -191.184, 1.86703, -216.122)
 
-[node name="Spring9" parent="Springs" instance=ExtResource("12")]
+[node name="Spring9" parent="Springs" unique_id=1750315405 instance=ExtResource("12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -191.184, 1.86703, -185.197)
 
-[node name="Spring10" parent="Springs" instance=ExtResource("12")]
+[node name="Spring10" parent="Springs" unique_id=1536553387 instance=ExtResource("12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -159.663, 1.86703, -216.122)
 
-[node name="Spring11" parent="Springs" instance=ExtResource("12")]
+[node name="Spring11" parent="Springs" unique_id=1095009344 instance=ExtResource("12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -159.663, 1.86703, -185.197)
 
-[node name="Collectables" type="Node3D" parent="."]
+[node name="Collectables" type="Node3D" parent="." unique_id=631719508]
 
-[node name="ColorfulStar7" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar7" parent="Collectables" unique_id=1764966703 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 33.9015, 2.1717, -128.734)
 
-[node name="ColorfulStar16" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar16" parent="Collectables" unique_id=1136215284 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 33.9015, 6.1717, -128.734)
 
-[node name="ColorfulStar8" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar8" parent="Collectables" unique_id=2021121578 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 33.9015, -4.3343, -138.456)
 
-[node name="ColorfulStar17" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar17" parent="Collectables" unique_id=349235275 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 33.9015, -0.334304, -138.456)
 
-[node name="ColorfulStar9" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar9" parent="Collectables" unique_id=1821273410 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 33.9015, -10.3987, -148.649)
 
-[node name="ColorfulStar18" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar18" parent="Collectables" unique_id=1305453928 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 33.9015, -6.39868, -148.649)
 
-[node name="ColorfulStar10" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar10" parent="Collectables" unique_id=950935317 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.6787, -11.1356, -119.449)
 
-[node name="ColorfulStar19" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar19" parent="Collectables" unique_id=785092883 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.6787, -8.24569, -119.449)
 
-[node name="ColorfulStar11" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar11" parent="Collectables" unique_id=1853553371 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.6787, -11.1356, -115.684)
 
-[node name="ColorfulStar20" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar20" parent="Collectables" unique_id=2006673950 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.6787, -8.24569, -115.684)
 
-[node name="ColorfulStar12" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar12" parent="Collectables" unique_id=163106390 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.6787, -11.1356, -112.113)
 
-[node name="ColorfulStar21" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar21" parent="Collectables" unique_id=1658229880 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.6787, -8.24569, -112.113)
 
-[node name="ColorfulStar13" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar13" parent="Collectables" unique_id=1328683332 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.6787, -11.1356, -108.348)
 
-[node name="ColorfulStar22" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar22" parent="Collectables" unique_id=164237311 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.6787, -8.24569, -108.348)
 
-[node name="ColorfulStar47" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar47" parent="Collectables" unique_id=369937587 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.732, 6.51342, -186.037)
 
-[node name="ColorfulStar63" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar63" parent="Collectables" unique_id=747801693 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.732, 10.513, -187.287)
 
-[node name="ColorfulStar64" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar64" parent="Collectables" unique_id=1720275988 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.732, 14.513, -188.537)
 
-[node name="ColorfulStar65" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar65" parent="Collectables" unique_id=1508389047 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.732, 18.513, -189.787)
 
-[node name="ColorfulStar66" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar66" parent="Collectables" unique_id=669410731 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.732, 22.513, -191.037)
 
-[node name="ColorfulStar72" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar72" parent="Collectables" unique_id=934486619 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.732, 26.513, -192.959)
 
-[node name="ColorfulStar110" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar110" parent="Collectables" unique_id=2133749684 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.732, 30.513, -195.704)
 
-[node name="ColorfulStar112" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar112" parent="Collectables" unique_id=1402010083 instance=ExtResource("14")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -190.732, 6.51342, -214.407)
 
-[node name="ColorfulStar113" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar113" parent="Collectables" unique_id=589552983 instance=ExtResource("14")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -190.732, 10.513, -213.157)
 
-[node name="ColorfulStar114" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar114" parent="Collectables" unique_id=231319582 instance=ExtResource("14")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -190.732, 14.513, -211.907)
 
-[node name="ColorfulStar115" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar115" parent="Collectables" unique_id=1912299791 instance=ExtResource("14")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -190.732, 18.513, -210.657)
 
-[node name="ColorfulStar116" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar116" parent="Collectables" unique_id=2134145738 instance=ExtResource("14")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -190.732, 22.513, -209.407)
 
-[node name="ColorfulStar117" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar117" parent="Collectables" unique_id=1914848588 instance=ExtResource("14")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -190.732, 26.513, -207.329)
 
-[node name="ColorfulStar118" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar118" parent="Collectables" unique_id=1507383556 instance=ExtResource("14")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -190.732, 30.513, -204.617)
 
-[node name="ColorfulStar111" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar111" parent="Collectables" unique_id=1521683938 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.732, 34.513, -200.018)
 
-[node name="ColorfulStar119" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar119" parent="Collectables" unique_id=1470114907 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -189.303, 6.51342, -216.074)
 
-[node name="ColorfulStar120" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar120" parent="Collectables" unique_id=102386743 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -188.053, 10.513, -216.074)
 
-[node name="ColorfulStar121" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar121" parent="Collectables" unique_id=928706275 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -186.803, 14.513, -216.074)
 
-[node name="ColorfulStar122" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar122" parent="Collectables" unique_id=1148305755 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -185.553, 18.513, -216.074)
 
-[node name="ColorfulStar123" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar123" parent="Collectables" unique_id=2131192286 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -184.303, 22.513, -216.074)
 
-[node name="ColorfulStar124" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar124" parent="Collectables" unique_id=1864083471 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -182.382, 26.513, -216.074)
 
-[node name="ColorfulStar125" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar125" parent="Collectables" unique_id=353535908 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -179.636, 30.513, -216.074)
 
-[node name="ColorfulStar126" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar126" parent="Collectables" unique_id=608706505 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -160.934, 6.51342, -216.074)
 
-[node name="ColorfulStar127" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar127" parent="Collectables" unique_id=1082952559 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -162.184, 10.513, -216.074)
 
-[node name="ColorfulStar128" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar128" parent="Collectables" unique_id=1626698246 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -163.434, 14.513, -216.074)
 
-[node name="ColorfulStar129" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar129" parent="Collectables" unique_id=882148601 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -164.684, 18.513, -216.074)
 
-[node name="ColorfulStar130" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar130" parent="Collectables" unique_id=969308277 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -165.934, 22.513, -216.074)
 
-[node name="ColorfulStar131" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar131" parent="Collectables" unique_id=1005834634 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -168.012, 26.513, -216.074)
 
-[node name="ColorfulStar132" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar132" parent="Collectables" unique_id=1291735848 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -170.723, 30.513, -216.074)
 
-[node name="ColorfulStar133" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar133" parent="Collectables" unique_id=388163572 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -175.322, 34.513, -216.074)
 
-[node name="ColorfulStar134" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar134" parent="Collectables" unique_id=1764432086 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -189.303, 6.51342, -185.064)
 
-[node name="ColorfulStar135" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar135" parent="Collectables" unique_id=1667840551 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -188.053, 10.513, -185.064)
 
-[node name="ColorfulStar136" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar136" parent="Collectables" unique_id=1894476560 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -186.803, 14.513, -185.064)
 
-[node name="ColorfulStar137" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar137" parent="Collectables" unique_id=258698565 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -185.553, 18.513, -185.064)
 
-[node name="ColorfulStar138" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar138" parent="Collectables" unique_id=519640923 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -184.303, 22.513, -185.064)
 
-[node name="ColorfulStar139" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar139" parent="Collectables" unique_id=469918231 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -182.382, 26.513, -185.064)
 
-[node name="ColorfulStar140" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar140" parent="Collectables" unique_id=1178160877 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -179.636, 30.513, -185.064)
 
-[node name="ColorfulStar141" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar141" parent="Collectables" unique_id=292222655 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -160.934, 6.51342, -185.064)
 
-[node name="ColorfulStar142" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar142" parent="Collectables" unique_id=1449572260 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -162.184, 10.513, -185.064)
 
-[node name="ColorfulStar143" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar143" parent="Collectables" unique_id=414565281 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -163.434, 14.513, -185.064)
 
-[node name="ColorfulStar144" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar144" parent="Collectables" unique_id=1587531045 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -164.684, 18.513, -185.064)
 
-[node name="ColorfulStar145" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar145" parent="Collectables" unique_id=970507197 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -165.934, 22.513, -185.064)
 
-[node name="ColorfulStar146" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar146" parent="Collectables" unique_id=1998728804 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -168.012, 26.513, -185.064)
 
-[node name="ColorfulStar147" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar147" parent="Collectables" unique_id=2001195957 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -170.723, 30.513, -185.064)
 
-[node name="ColorfulStar148" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar148" parent="Collectables" unique_id=363087951 instance=ExtResource("14")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -175.322, 34.513, -185.064)
 
-[node name="ColorfulStar48" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar48" parent="Collectables" unique_id=684395169 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.446, 4.96061, -131.859)
 
-[node name="ColorfulStar49" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar49" parent="Collectables" unique_id=1230697927 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.446, 4.96061, -131.859)
 
-[node name="ColorfulStar50" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar50" parent="Collectables" unique_id=807050713 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.446, 4.96061, -131.859)
 
-[node name="ColorfulStar51" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar51" parent="Collectables" unique_id=561131986 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.446, 4.96061, -127.859)
 
-[node name="ColorfulStar52" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar52" parent="Collectables" unique_id=994494306 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.446, 4.96061, -127.859)
 
-[node name="ColorfulStar53" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar53" parent="Collectables" unique_id=422451792 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.446, 4.96061, -127.859)
 
-[node name="ColorfulStar54" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar54" parent="Collectables" unique_id=1877515532 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.446, 4.96061, -123.859)
 
-[node name="ColorfulStar55" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar55" parent="Collectables" unique_id=686668312 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.446, 4.96061, -123.859)
 
-[node name="ColorfulStar56" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar56" parent="Collectables" unique_id=1789205368 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.446, 4.96061, -123.859)
 
-[node name="ColorfulStar57" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar57" parent="Collectables" unique_id=976058799 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.446, 4.96061, -119.859)
 
-[node name="ColorfulStar58" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar58" parent="Collectables" unique_id=851417593 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.446, 4.96061, -119.859)
 
-[node name="ColorfulStar59" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar59" parent="Collectables" unique_id=1588252450 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.446, 4.96061, -119.859)
 
-[node name="ColorfulStar60" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar60" parent="Collectables" unique_id=1300284642 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.446, 4.96061, -115.859)
 
-[node name="ColorfulStar61" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar61" parent="Collectables" unique_id=1744279569 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.446, 4.96061, -115.859)
 
-[node name="ColorfulStar62" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar62" parent="Collectables" unique_id=1894922246 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.446, 4.96061, -115.859)
 
-[node name="ColorfulStar67" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar67" parent="Collectables" unique_id=1511116720 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.446, 4.96061, -131.859)
 
-[node name="ColorfulStar68" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar68" parent="Collectables" unique_id=695233994 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.446, 4.96061, -127.859)
 
-[node name="ColorfulStar69" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar69" parent="Collectables" unique_id=1340259222 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.446, 4.96061, -123.859)
 
-[node name="ColorfulStar70" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar70" parent="Collectables" unique_id=1592675595 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.446, 4.96061, -119.859)
 
-[node name="ColorfulStar71" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar71" parent="Collectables" unique_id=1594835219 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.446, 4.96061, -115.859)
 
-[node name="ColorfulStar29" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar29" parent="Collectables" unique_id=433318548 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0968676, -24.0188, -224.819)
 
-[node name="ColorfulStar85" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar85" parent="Collectables" unique_id=458067228 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0879, -23.419, -287.714)
 
-[node name="ColorfulStar86" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar86" parent="Collectables" unique_id=1560112811 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0879, -19.1501, -287.714)
 
-[node name="ColorfulStar87" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar87" parent="Collectables" unique_id=1092054049 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9878, -19.9871, -295.595)
 
-[node name="ColorfulStar88" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar88" parent="Collectables" unique_id=313343011 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9878, -15.7182, -295.595)
 
-[node name="ColorfulStar89" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar89" parent="Collectables" unique_id=1795098022 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.77947, -16.1208, -299.578)
 
-[node name="ColorfulStar90" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar90" parent="Collectables" unique_id=1894674171 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.77947, -11.8518, -299.578)
 
-[node name="ColorfulStar91" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar91" parent="Collectables" unique_id=503537108 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.29804, -12.9575, -305.081)
 
-[node name="ColorfulStar92" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar92" parent="Collectables" unique_id=1253379661 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.29804, -8.68851, -305.081)
 
-[node name="ColorfulStar93" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar93" parent="Collectables" unique_id=388248048 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3685, -8.47607, -311.571)
 
-[node name="ColorfulStar94" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar94" parent="Collectables" unique_id=1530282606 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3685, -4.2071, -311.571)
 
-[node name="ColorfulStar95" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar95" parent="Collectables" unique_id=1428755912 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0184, -4.42602, -301.45)
 
-[node name="ColorfulStar96" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar96" parent="Collectables" unique_id=267519253 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0184, -0.157063, -301.45)
 
-[node name="ColorfulStar97" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar97" parent="Collectables" unique_id=446026326 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8326, -1.44641, -290.267)
 
-[node name="ColorfulStar98" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar98" parent="Collectables" unique_id=1611838861 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8326, 2.82255, -290.267)
 
-[node name="ColorfulStar99" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar99" parent="Collectables" unique_id=750045677 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8467, 3.06681, -282.326)
 
-[node name="ColorfulStar100" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar100" parent="Collectables" unique_id=546468617 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4092, 3.06681, -282.326)
 
-[node name="ColorfulStar101" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar101" parent="Collectables" unique_id=1730729122 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9718, 3.06681, -282.326)
 
-[node name="ColorfulStar102" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar102" parent="Collectables" unique_id=1601920868 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4903, 3.06681, -282.326)
 
-[node name="ColorfulStar103" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar103" parent="Collectables" unique_id=1401932996 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.05288, 3.06681, -282.326)
 
-[node name="ColorfulStar104" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar104" parent="Collectables" unique_id=562484273 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52754, 3.06681, -282.326)
 
-[node name="ColorfulStar105" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar105" parent="Collectables" unique_id=722994328 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.217474, 3.06681, -282.326)
 
-[node name="ColorfulStar106" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar106" parent="Collectables" unique_id=1847242759 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.217474, 3.06681, -287.027)
 
-[node name="ColorfulStar107" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar107" parent="Collectables" unique_id=1692138110 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.217474, 3.06681, -291.773)
 
-[node name="ColorfulStar108" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar108" parent="Collectables" unique_id=1400235683 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.217474, 3.06681, -296.369)
 
-[node name="ColorfulStar109" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar109" parent="Collectables" unique_id=1919484913 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.217474, 3.06681, -300.927)
 
-[node name="ColorfulStar30" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar30" parent="Collectables" unique_id=1421681672 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.097168, -20.0177, -224.819)
 
-[node name="ColorfulStar31" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar31" parent="Collectables" unique_id=490422806 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.097168, -16.0177, -224.819)
 
-[node name="ColorfulStar32" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar32" parent="Collectables" unique_id=35836003 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.097168, -12.0177, -224.819)
 
-[node name="ColorfulStar33" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar33" parent="Collectables" unique_id=1112495458 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.097168, -8.01772, -224.819)
 
-[node name="ColorfulStar34" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar34" parent="Collectables" unique_id=1501585105 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.097168, -4.01772, -224.819)
 
-[node name="ColorfulStar35" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar35" parent="Collectables" unique_id=2144568508 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.097168, -0.0177212, -224.819)
 
-[node name="ColorfulStar36" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar36" parent="Collectables" unique_id=57626285 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.097168, 3.98228, -224.819)
 
-[node name="ColorfulStar37" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar37" parent="Collectables" unique_id=2026317629 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5634, 3.6993, 23.2259)
 
-[node name="ColorfulStar38" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar38" parent="Collectables" unique_id=1265056185 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5634, 3.6993, 23.2259)
 
-[node name="ColorfulStar39" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar39" parent="Collectables" unique_id=671949290 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.80735, 3.6993, 23.2259)
 
-[node name="ColorfulStar40" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar40" parent="Collectables" unique_id=1552866874 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.80735, 3.6993, 23.2259)
 
-[node name="ColorfulStar41" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar41" parent="Collectables" unique_id=1314582264 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5634, 3.6993, 27.2259)
 
-[node name="ColorfulStar42" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar42" parent="Collectables" unique_id=1951864837 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5634, 3.6993, 27.2259)
 
-[node name="ColorfulStar43" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar43" parent="Collectables" unique_id=424296979 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.80735, 3.6993, 27.2259)
 
-[node name="ColorfulStar44" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar44" parent="Collectables" unique_id=1260109165 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.80735, 3.6993, 27.2259)
 
-[node name="ColorfulStar73" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar73" parent="Collectables" unique_id=579100179 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.11297, 3.6993, 23.2259)
 
-[node name="ColorfulStar74" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar74" parent="Collectables" unique_id=537575807 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.113, 3.6993, 23.2259)
 
-[node name="ColorfulStar75" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar75" parent="Collectables" unique_id=103222141 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.11297, 3.6993, 27.2259)
 
-[node name="ColorfulStar76" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar76" parent="Collectables" unique_id=1881033251 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.113, 3.6993, 27.2259)
 
-[node name="ColorfulStar77" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar77" parent="Collectables" unique_id=732696765 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.218, 3.6993, 23.2259)
 
-[node name="ColorfulStar78" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar78" parent="Collectables" unique_id=843270066 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.218, 3.6993, 23.2259)
 
-[node name="ColorfulStar79" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar79" parent="Collectables" unique_id=53211830 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.218, 3.6993, 27.2259)
 
-[node name="ColorfulStar80" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar80" parent="Collectables" unique_id=1177676741 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.218, 3.6993, 27.2259)
 
-[node name="ColorfulStar81" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar81" parent="Collectables" unique_id=1553153747 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.218, 3.6993, 23.2259)
 
-[node name="ColorfulStar82" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar82" parent="Collectables" unique_id=410102569 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.218, 3.6993, 23.2259)
 
-[node name="ColorfulStar83" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar83" parent="Collectables" unique_id=1537985268 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.218, 3.6993, 27.2259)
 
-[node name="ColorfulStar84" parent="Collectables" instance=ExtResource("14")]
+[node name="ColorfulStar84" parent="Collectables" unique_id=2011110342 instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.218, 3.6993, 27.2259)
 
-[node name="Grounds" type="Node3D" parent="."]
+[node name="Grounds" type="Node3D" parent="." unique_id=1076331489]
 
-[node name="Ground" parent="Grounds" instance=ExtResource("1")]
+[node name="Ground" parent="Grounds" unique_id=1311061222 instance=ExtResource("1")]
 transform = Transform3D(1.75, 0, 0, 0, 1, 0, 0, 0, 1.75, -1.10378, 0.662905, 0)
 mesh = SubResource("BoxMesh_a7nm4")
 
-[node name="Ground2" parent="Grounds" instance=ExtResource("1")]
+[node name="Ground2" parent="Grounds" unique_id=334544089 instance=ExtResource("1")]
 transform = Transform3D(1.75, 0, 0, 0, 1.0001, 0, 0, 0, 1.75, 0, -14.4744, -125)
+visible = false
 mesh = SubResource("BoxMesh_a7nm4")
 
-[node name="Ground3" parent="Grounds" instance=ExtResource("1")]
+[node name="Ground3" parent="Grounds" unique_id=1384608418 instance=ExtResource("1")]
 transform = Transform3D(1.75, 0, 0, 0, 1.0001, 0, 0, 0, 1.75, 0, -29.4852, -250)
 mesh = SubResource("BoxMesh_a7nm4")
 
-[node name="Ground4" parent="Grounds" instance=ExtResource("1")]
+[node name="Ground4" parent="Grounds" unique_id=300214526 instance=ExtResource("1")]
 transform = Transform3D(1.75, 0, 0, 0, 1.0001, 0, 0, 0, 1.75, -93.548, 0.582253, -125)
 mesh = SubResource("BoxMesh_a7nm4")
 
-[node name="Ground5" parent="Grounds" instance=ExtResource("1")]
+[node name="Ground5" parent="Grounds" unique_id=2002025250 instance=ExtResource("1")]
 transform = Transform3D(1.75, 0, 0, 0, 1.0001, 0, 0, 0, 1.75, -174.895, 0, -200.139)
 mesh = SubResource("BoxMesh_a7nm4")
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=1529521567]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -718,36 +719,36 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 1
 
-[node name="HUD" parent="Control" instance=ExtResource("9")]
+[node name="HUD" parent="Control" unique_id=1346451985 instance=ExtResource("9")]
 layout_mode = 1
 mouse_filter = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="TutorialControl" parent="Control" instance=ExtResource("10")]
+[node name="TutorialControl" parent="Control" unique_id=723354747 instance=ExtResource("10")]
 layout_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Step0" parent="Control/TutorialControl/Triggers" index="0" node_paths=PackedStringArray("control") instance=ExtResource("14_rtsv6")]
+[node name="Step0" parent="Control/TutorialControl/Triggers" index="0" unique_id=329557636 node_paths=PackedStringArray("control") instance=ExtResource("14_rtsv6")]
 transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, -0.965785, 1.78516, -8.20768)
 control = NodePath("../..")
 
-[node name="Step1" parent="Control/TutorialControl/Triggers" index="1" node_paths=PackedStringArray("control") instance=ExtResource("14_rtsv6")]
+[node name="Step1" parent="Control/TutorialControl/Triggers" index="1" unique_id=104204699 node_paths=PackedStringArray("control") instance=ExtResource("14_rtsv6")]
 transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, 16.7448, 1.78516, -22.8391)
 control = NodePath("../..")
 
-[node name="Step2" parent="Control/TutorialControl/Triggers" index="2" node_paths=PackedStringArray("control") instance=ExtResource("14_rtsv6")]
+[node name="Step2" parent="Control/TutorialControl/Triggers" index="2" unique_id=235963885 node_paths=PackedStringArray("control") instance=ExtResource("14_rtsv6")]
 transform = Transform3D(-0.388754, 0, 0.921342, 0, 1, 0, -0.921342, 0, -0.388754, -15.5381, -13.3063, -138.674)
 control = NodePath("../..")
 
-[node name="Step3" parent="Control/TutorialControl/Triggers" index="3" node_paths=PackedStringArray("control") instance=ExtResource("14_rtsv6")]
+[node name="Step3" parent="Control/TutorialControl/Triggers" index="3" unique_id=1655155905 node_paths=PackedStringArray("control") instance=ExtResource("14_rtsv6")]
 transform = Transform3D(0.875363, 0, 0.483466, 0, 1, 0, -0.483466, 0, 0.875363, -102.802, 1.78516, -151.381)
 control = NodePath("../..")
 
-[node name="GlobalLevelsScreens" parent="Control" instance=ExtResource("3")]
+[node name="GlobalLevelsScreens" parent="Control" unique_id=511220348 instance=ExtResource("3")]
 layout_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Label" type="Label" parent="Control" unique_id=1216596389]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.852

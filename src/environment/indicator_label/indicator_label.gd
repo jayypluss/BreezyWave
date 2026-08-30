@@ -1,3 +1,4 @@
+@tool
 extends Label3D
 
 
@@ -9,6 +10,7 @@ var move_length_y: float = 1
 var tween_duration_y: float = 0.2
 
 func _ready():
+	collapse()
 	initial_y = position.y
 	initial_scale = scale
 
@@ -18,6 +20,12 @@ func _on_body_entered(_body):
 func _on_body_exited(_body):
 	collapse()
 	
+func toggle_expand():
+	if is_visible():
+		collapse()
+	else:
+		expand()
+	
 func expand():
 	show()
 	if (is_inside_tree()):
@@ -25,7 +33,6 @@ func expand():
 		go_up_tween.tween_property(self, "position:y", (initial_y + move_length_y), tween_duration_y)
 		go_up_tween.tween_property(self, "scale", Vector3(1, 1, 1), tween_duration_y)
 		go_up_tween.tween_callback(func(): show())
-	
 
 func collapse():
 	if (is_inside_tree()):

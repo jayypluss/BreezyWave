@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://p3hk7kg0ry5k"]
+[gd_scene format=3 uid="uid://p3hk7kg0ry5k"]
 
 [ext_resource type="Shader" uid="uid://hd7mixwfmxgk" path="res://assets/shaders/random_glitches.gdshader" id="1_8sgub"]
 [ext_resource type="Script" uid="uid://c0c2og7xnjouo" path="res://src/environment/portal/portal.gd" id="1_8tuhl"]
@@ -37,28 +37,27 @@ shader_parameter/from_middle_color_range = 0.882
 shader_parameter/radius_color_range_ratio = 0.65
 shader_parameter/transparency = 0.01
 
-[node name="Portal" type="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344, 2.32673, -279.182)
+[node name="Portal" type="Area3D" unique_id=1563355964]
 collision_layer = 2
 script = ExtResource("1_8tuhl")
 
-[node name="InteractionAreaCollision" type="CollisionShape3D" parent="."]
+[node name="InteractionAreaCollision" type="CollisionShape3D" parent="." unique_id=1468867186]
 transform = Transform3D(22.5913, 0, 0, 0, 18.0731, 0, 0, 0, 1.25507, 0, 2.47144, 1.94556)
 shape = SubResource("5")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2028825464]
 transform = Transform3D(18.4638, 0, 0, 0, 14.771, 0, 0, 0, 0.3, 0, 5.95404, 0)
 mesh = SubResource("6")
 surface_material_override/0 = SubResource("ShaderMaterial_svmrm")
 
-[node name="PortalCollision" type="CollisionShape3D" parent="."]
+[node name="PortalCollision" type="CollisionShape3D" parent="." unique_id=1592939115]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.01609, 0.917358)
 shape = SubResource("BoxShape3D_bsgka")
 
-[node name="EnterAnimPosition" type="Node3D" parent="."]
+[node name="EnterAnimPosition" type="Node3D" parent="." unique_id=238696917]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.92001, 2.87625)
 
-[node name="Portal2DShaderControl" type="Control" parent="."]
+[node name="Portal2DShaderControl" type="Control" parent="." unique_id=1493626866]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -67,7 +66,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Portal2DShader" type="ColorRect" parent="Portal2DShaderControl"]
+[node name="Portal2DShader" type="ColorRect" parent="Portal2DShaderControl" unique_id=320046411]
 material = SubResource("ShaderMaterial_v2a4q")
 layout_mode = 1
 anchors_preset = 15
