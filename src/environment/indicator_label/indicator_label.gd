@@ -10,6 +10,8 @@ var move_length_y: float = 1
 var tween_duration_y: float = 0.2
 
 func _ready():
+	if Engine.is_editor_hint():
+		return
 	collapse()
 	initial_y = position.y
 	initial_scale = scale

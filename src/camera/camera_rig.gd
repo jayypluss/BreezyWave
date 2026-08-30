@@ -19,6 +19,8 @@ var zoom := 0.5 : set = set_zoom
 
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
 	set_as_top_level(true)
 	await owner.ready
 	player = owner

@@ -15,6 +15,8 @@ extends CharacterBody3D
 var last_floor_position: Vector3 = Vector3(0, 3, 0)
 
 func _ready():
+	if Engine.is_editor_hint():
+		return
 	GameState.player = self
 	last_position_timer.start()
 	GameState.player.set_meshes_visibility(%Camera3D.current)
