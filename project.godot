@@ -51,7 +51,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/editor_plugins/plugin.cfg")
+enabled=PackedStringArray("res://addons/editor_tools/plugin.cfg")
 
 [input]
 
