@@ -159,12 +159,11 @@ func _physics_process(delta: float) -> void:
 			last_direction = direction
 
 	elif jump_multiplier > 1.0:
-		if available_jumps > 0:
-			available_jumps = available_jumps - 1
-			player.velocity.y = jump_impulse * jump_multiplier
-			if jump_effect:
-				jump_effect.set_emitting(true)
-			last_direction = direction
+		player.velocity.y = jump_impulse * jump_multiplier
+		jump_multiplier = default_jump_multiplier
+		if jump_effect:
+			jump_effect.set_emitting(true)
+		last_direction = direction
 
 	if player.is_on_floor() and player.get_slide_collision_count() > 0:
 		print("resetting..................")
