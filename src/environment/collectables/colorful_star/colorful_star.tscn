@@ -1,45 +1,257 @@
-[gd_scene load_steps=7 format=3 uid="uid://vo7iv0nu1qqy"]
+[gd_scene format=3 uid="uid://vo7iv0nu1qqy"]
 
 [ext_resource type="Texture2D" uid="uid://ci3sr0wk58j1t" path="res://assets/sprites/colorful_star.png" id="1"]
 [ext_resource type="Script" uid="uid://dmrimr72upt11" path="res://src/environment/collectables/colorful_star/colorful_star.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://5o15eo28gvmh" path="res://assets/sounds/effects/sparkle/sparkle_01.ogg" id="3"]
 
-[sub_resource type="StandardMaterial3D" id="14"]
-transparency = 2
-alpha_scissor_threshold = 0.98
-alpha_antialiasing_mode = 0
-albedo_texture = ExtResource("1")
-billboard_mode = 1
+[sub_resource type="Shader" id="Shader_hsyvs"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.7.2.stable's StandardMaterial3D with 3D Billboard Rotation.
+
+shader_type spatial;
+// Change cull_back to cull_disabled below:
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_burley, specular_schlick_ggx;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform float alpha_scissor_threshold : hint_range(0.0, 1.0, 0.001);
+uniform ivec2 albedo_texture_size;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+// Custom Inspector Property for Rotation
+uniform float roll_angle_degrees : hint_range(-360.0, 360.0) = 0.0;
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform int particles_anim_h_frames : hint_range(1, 128);
+uniform int particles_anim_v_frames : hint_range(1, 128);
+uniform bool particles_anim_loop;
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+uniform float glare_intensity : hint_range(0.0, 2.0) = 0.0;
+uniform vec4 glare_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+
+void vertex() {
+    UV = UV * uv1_scale.xy + uv1_offset.xy;
+
+    // Convert degrees to radians.
+    float rad = radians(roll_angle_degrees);
+    float c = cos(rad);
+    float s = sin(rad);
+
+    // Camera-facing basis vectors in world space.
+    // These are the axes of the billboard before rolling.
+    vec3 camera_right = normalize(INV_VIEW_MATRIX[0].xyz);
+    vec3 camera_up = normalize(INV_VIEW_MATRIX[1].xyz);
+    vec3 camera_forward = normalize(INV_VIEW_MATRIX[2].xyz);
+
+    // Rotate the billboard within its own camera-facing plane.
+    // This is a roll around the camera's viewing axis.
+    vec3 rolled_right = camera_right * c + camera_up * s;
+    vec3 rolled_up = -camera_right * s + camera_up * c;
+
+    // Preserve the original MeshInstance3D scale.
+    float scale_x = length(MODEL_MATRIX[0].xyz);
+    float scale_y = length(MODEL_MATRIX[1].xyz);
+    float scale_z = length(MODEL_MATRIX[2].xyz);
+
+    // Build the billboard transform with the rolled axes.
+    mat4 mat_world = mat4(
+        vec4(rolled_right * scale_x, 0.0),
+        vec4(rolled_up * scale_y, 0.0),
+        vec4(camera_forward * scale_z, 0.0),
+        MODEL_MATRIX[3]
+    );
+
+    // Transform the vertices into view space.
+    MODELVIEW_MATRIX = VIEW_MATRIX * mat_world;
+
+    // Keep normals consistent with the billboard transform.
+    MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+
+    // Particle spritesheet animation.
+    float h_frames = float(particles_anim_h_frames);
+    float v_frames = float(particles_anim_v_frames);
+    float particle_total_frames =
+        float(particles_anim_h_frames * particles_anim_v_frames);
+
+    float particle_frame =
+        floor(INSTANCE_CUSTOM.z * particle_total_frames);
+
+    if (!particles_anim_loop) {
+        particle_frame = clamp(
+            particle_frame,
+            0.0,
+            particle_total_frames - 1.0
+        );
+    } else {
+        particle_frame = mod(
+            particle_frame,
+            particle_total_frames
+        );
+    }
+
+    UV /= vec2(h_frames, v_frames);
+
+    UV += vec2(
+        mod(particle_frame, h_frames) / h_frames,
+        floor((particle_frame + 0.5) / h_frames) / v_frames
+    );
+}
+
+
+void fragment() {
+    vec2 base_uv = UV;
+
+    // Flip UV horizontally when viewing the back face so texture isn't mirrored
+    if (!FRONT_FACING) {
+        base_uv.x = 1.0 - base_uv.x;
+    }
+
+    vec4 albedo_tex = texture(texture_albedo, base_uv);
+    ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+    // Additive glare effect controlled by Inspector / AnimationPlayer
+    ALBEDO += glare_color.rgb * glare_intensity * albedo_tex.a;
+
+    float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
+    METALLIC = metallic_tex * metallic;
+    SPECULAR = specular;
+
+    vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+    float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
+    ROUGHNESS = roughness_tex * roughness;
+    ALPHA *= albedo.a * albedo_tex.a;
+    ALPHA_SCISSOR_THRESHOLD = alpha_scissor_threshold;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3cem3"]
+render_priority = 0
+shader = SubResource("Shader_hsyvs")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("1")
+shader_parameter/alpha_scissor_threshold = 0.98
+shader_parameter/albedo_texture_size = Vector2i(1901, 1801)
+shader_parameter/point_size = 1.0
+shader_parameter/roll_angle_degrees = 0.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/particles_anim_h_frames = 1
+shader_parameter/particles_anim_v_frames = 1
+shader_parameter/particles_anim_loop = false
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/glare_intensity = 0.0
+shader_parameter/glare_color = Color(1, 1, 1, 1)
 
 [sub_resource type="QuadMesh" id="13"]
 resource_local_to_scene = true
-material = SubResource("14")
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("ShaderMaterial_3cem3")
 size = Vector2(2, 2)
 
 [sub_resource type="SphereShape3D" id="10"]
 radius = 2.0
 
-[node name="ColorfulStar" type="Area3D"]
+[sub_resource type="Animation" id="Animation_3cem3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/roll_angle_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/glare_intensity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hsyvs"]
+resource_name = "rotation"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/roll_angle_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 360.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/glare_intensity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.53333336, 0.73333335, 4),
+"transitions": PackedFloat32Array(1, 2, 2.297397, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.400000019, 0.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3cem3"]
+_data = {
+&"RESET": SubResource("Animation_3cem3"),
+&"rotation": SubResource("Animation_hsyvs")
+}
+
+[node name="ColorfulStar" type="Area3D" unique_id=2025817077]
 collision_layer = 2
 script = ExtResource("2")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=325945287]
+transform = Transform3D(0.6431647, -0.4790657, 0.59735686, -0.597357, -0.8019754, 0, 0.4790655, -0.35683528, -0.80197555, 0, 0, 0)
 mesh = SubResource("13")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=970112718]
 shape = SubResource("10")
 
-[node name="SparkleSoundEffect" type="AudioStreamPlayer" parent="."]
+[node name="SparkleSoundEffect" type="AudioStreamPlayer" parent="." unique_id=2144122399]
 stream = ExtResource("3")
 volume_db = -15.0
 mix_target = 1
 
-[node name="DeleteAfterCollectTimer" type="Timer" parent="."]
+[node name="DeleteAfterCollectTimer" type="Timer" parent="." unique_id=853163033]
 wait_time = 2.0
 one_shot = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1374751681]
+libraries/ = SubResource("AnimationLibrary_3cem3")
+autoplay = &"rotation"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DeleteAfterCollectTimer" to="." method="_on_Timer_timeout"]
